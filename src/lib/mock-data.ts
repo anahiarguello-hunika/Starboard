@@ -28,6 +28,18 @@ export type Document = {
   status: "Draft" | "In Review" | "Approved";
 };
 
+export type Matter = {
+  id: string;
+  name: string;
+  client: string;
+  status: "Active" | "Closed" | "On Hold";
+  leadAttorney: string;
+  openDate: string;
+  documentCount: number;
+  contractCount: number;
+};
+
+
 export const contractsData: Contract[] = [
   {
     id: "CTR-001",
@@ -162,5 +174,58 @@ export const documentsData: Document[] = [
     version: 4,
     lastUpdated: "2024-05-18",
     status: "Approved",
+  },
+];
+
+export const mattersData: Matter[] = [
+  {
+    id: "MAT-001",
+    name: "Acquisition of TechCorp",
+    client: "Innovate Inc.",
+    status: "Active",
+    leadAttorney: "Alice Johnson",
+    openDate: "2024-03-15",
+    documentCount: 42,
+    contractCount: 5,
+  },
+  {
+    id: "MAT-002",
+    name: "Series A Financing",
+    client: "Stbd Law",
+    status: "Active",
+    leadAttorney: "Charlie Brown",
+    openDate: "2024-05-01",
+    documentCount: 15,
+    contractCount: 8,
+  },
+    {
+    id: "MAT-003",
+    name: "Patent Litigation vs. CompetitorX",
+    client: "Stbd Law",
+    status: "Active",
+    leadAttorney: "Diana Prince",
+    openDate: "2023-11-10",
+    documentCount: 256,
+    contractCount: 2,
+  },
+  {
+    id: "MAT-004",
+    name: "Real Estate Lease - SF Office",
+    client: "Stbd Law",
+    status: "Closed",
+    leadAttorney: "Bob Williams",
+    openDate: "2022-06-01",
+    documentCount: 23,
+    contractCount: 1,
+  },
+   {
+    id: "MAT-005",
+    name: "GDPR Compliance Overhaul",
+    client: "Stbd Law",
+    status: "On Hold",
+    leadAttorney: "Alice Johnson",
+    openDate: "2024-06-20",
+    documentCount: 8,
+    contractCount: 0,
   },
 ];
