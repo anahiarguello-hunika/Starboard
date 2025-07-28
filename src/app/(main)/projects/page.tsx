@@ -10,13 +10,9 @@ import {
   ChevronRight,
   Plus,
   ArrowUpDown,
-  Upload,
-  Download,
-  CheckCircle2,
-  Circle,
   MessageSquare,
   Paperclip,
-  FilePlus,
+  Settings,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -25,128 +21,66 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 
 const tasks = [
-  {
-    name: "Initiate",
-    status: "complete",
-    summary: { comments: 4, attachments: 2 },
-    children: [],
-  },
-  {
-    name: "Define",
-    status: "complete",
-    summary: { comments: 1, attachments: 1 },
-    children: [],
-  },
-  {
-    name: "Measure",
-    status: "complete",
-    summary: { comments: 2, attachments: 2 },
-    children: [],
-  },
-  {
-    name: "Tollgate 4 - Identify Performance Indicators",
-    status: "complete",
-    summary: { comments: 0, attachments: 0 },
-    children: [
-      {
-        name: "Document Key Performance Indicators",
-        status: "complete",
-        summary: { comments: 2, attachments: 2 },
-        children: [
-          {
-            name: "Create detailed process map",
-            status: "active",
-            summary: { comments: 0, attachments: 0 },
-            children: [],
-          },
-          {
-            name: "Review process map for areas of improvement",
-            status: "complete",
-            summary: { comments: 2, attachments: 1 },
-            children: [],
-          },
-          {
-            name: "Review CTQ Tree",
-            status: "complete",
-            summary: { comments: 0, attachments: 2 },
-            children: [],
-          },
-          {
-            name: "Determine the key dependent variables",
-            status: "complete",
-            summary: { comments: 8, attachments: 2 },
-            children: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Conduct Tollgate 4 Review Meeting",
-    status: "in_progress",
-    summary: { comments: 0, attachments: 0 },
-    children: [
-      {
-        name: "Schedule meeting with Sponsor",
-        status: "complete",
-        summary: { comments: 0, attachments: 0 },
-        children: [],
-      },
-      {
-        name: "Prepare Tollgate Review Memo",
-        status: "complete",
-        summary: { comments: 1, attachments: 0 },
-        children: [],
-      },
-      {
-        name: "Send Sponsor supporting material",
-        status: "complete",
-        summary: { comments: 0, attachments: 0 },
-        children: [],
-      },
-      {
-        name: "Prepare the team members attending the meeting",
-        status: "complete",
-        summary: { comments: 0, attachments: 0 },
-        children: [],
-      },
-       {
-        name: "Conduct meeting",
-        status: "complete",
-        summary: { comments: 0, attachments: 0 },
-        children: [],
-      },
-    ],
-  },
-  {
-    name: "Tollgate 5 - Data Collection Plan",
-    status: "complete",
-    summary: { comments: 8, attachments: 0 },
-    children: [],
-  },
-];
+    {
+      name: "COMPREHENSIVE ACQUISITION AND DUE DILIGENCE PLAYBOOK",
+      status: null,
+      summary: { comments: 0, attachments: 1 },
+      children: [
+        { name: "DISCLAIMER", status: null, summary: {}, children: [] },
+        { name: "USER NOTES", status: null, summary: {}, children: [] },
+      ],
+    },
+    { name: "1. PROSPECT", status: null, summary: {}, children: [] },
+    { name: "2. INITIAL ANALYSIS", status: null, summary: {}, children: [] },
+    { name: "3. LIGHT DILIGENCE", status: null, summary: {}, children: [] },
+    { name: "4. TRANSACTION SENSE-CHECK", status: null, summary: {}, children: [] },
+    { name: "5. COMMERCIAL", status: null, summary: {}, children: [] },
+    { name: "6. FINANCIAL", status: null, summary: {}, children: [] },
+    { name: "7. TAX", status: null, summary: {}, children: [] },
+    { name: "8. LEGAL", status: null, summary: {}, children: [] },
+    {
+      name: "9. HR",
+      status: null,
+      summary: {},
+      children: [
+        { name: "Workstream Charter", status: null, summary: {}, children: [] },
+        { name: "Background", status: null, summary: {}, children: [] },
+        {
+          name: "Employment - Organization",
+          status: null,
+          summary: {},
+          children: [
+            { name: "Organization chart", status: 'active', summary: {}, children: [] },
+            { name: "Key people", status: null, summary: {}, children: [] },
+            { name: "Employment agreements", status: null, summary: {}, children: [] },
+            { name: "Confidentiality & non-solicitation", status: null, summary: {}, children: [] },
+            { name: "Salary arrangements", status: null, summary: {}, children: [] },
+          ],
+        },
+        { name: "Cultural Diagnostic", status: null, summary: {}, children: [] },
+        { name: "Bonuses & Equity Incentives", status: null, summary: {}, children: [] },
+        { name: "Employee Benefits", status: null, summary: {}, children: [] },
+      ],
+    },
+  ];
 
 const TaskItem = ({ task, level = 0 }: { task: any; level?: number }) => (
-  <div style={{ paddingLeft: `${level * 20}px` }}>
-    <div className={`flex items-center justify-between p-2 rounded-md ${task.status === 'active' ? 'bg-orange-100' : ''}`}>
-      <div className="flex items-center gap-2">
+  <div style={{ paddingLeft: `${level * 20}px` }} className={`border-b border-gray-200 last:border-b-0 ${task.status === 'active' ? 'bg-orange-100' : ''}`}>
+    <div className="flex items-center justify-between p-2">
+      <div className="flex items-center gap-2 flex-1">
         {task.children.length > 0 ? (
           <ChevronDown className="h-4 w-4" />
         ) : (
           <ChevronRight className="h-4 w-4 text-transparent" />
         )}
-        <span>{task.name}</span>
-        <span className="text-xs text-muted-foreground">+ Assign responsible</span>
+        <span className="flex-1">{task.name}</span>
+         {level > 0 && <span className="text-xs text-muted-foreground">+ Assign responsible</span>}
       </div>
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2 text-sm">
-          {task.status === 'complete' && <CheckCircle2 className="h-5 w-5 text-green-500" />}
-          {task.status === 'in_progress' && <Circle className="h-5 w-5 text-yellow-500" />}
-          <span className="text-xs text-muted-foreground">Set duration</span>
-        </div>
-        <div className="flex items-center gap-2 text-xs text-muted-foreground w-20">
-            {task.summary.comments > 0 && <div className="flex items-center gap-1"><MessageSquare className="h-4 w-4" /> {task.summary.comments}</div>}
-            {task.summary.attachments > 0 && <div className="flex items-center gap-1"><Paperclip className="h-4 w-4" /> {task.summary.attachments}</div>}
+      <div className="flex items-center gap-4 w-40 justify-end">
+        {level > 0 && <span className="text-xs text-muted-foreground">Set duration</span>}
+        <div className="flex items-center gap-2 text-xs text-muted-foreground w-12 justify-end">
+            {task.summary?.comments > 0 && <div className="flex items-center gap-1"><MessageSquare className="h-4 w-4" /> {task.summary.comments}</div>}
+            {task.summary?.attachments > 0 && <div className="flex items-center gap-1"><Paperclip className="h-4 w-4" /> {task.summary.attachments}</div>}
         </div>
       </div>
     </div>
@@ -165,12 +99,8 @@ export default function ProjectsPage() {
     <div className="flex flex-col h-full">
       <header className="mb-4">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold tracking-tight">xServe NPS Improvement</h1>
-          <Button asChild>
-            <Link href="/projects/new-playbook">
-              <Plus className="mr-2 h-4 w-4" /> New Playbook
-            </Link>
-          </Button>
+          <h1 className="text-2xl font-bold tracking-tight">Acquisition and Due Diligence (all work...</h1>
+          
         </div>
         <Tabs defaultValue="tasks" className="mt-2">
             <TabsList>
@@ -183,11 +113,11 @@ export default function ProjectsPage() {
         </Tabs>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1">
         {/* Left column */}
-        <div className="lg:col-span-2 flex flex-col gap-4">
+        <div className="lg:col-span-1 flex flex-col gap-4">
             <div className="flex items-center gap-2">
-                <Button variant="outline" className="bg-green-500 text-white hover:bg-green-600">
+                <Button className="bg-green-500 text-white hover:bg-green-600">
                     <Plus className="mr-2 h-4 w-4" /> TASK
                 </Button>
                  <Button variant="outline">
@@ -201,14 +131,14 @@ export default function ProjectsPage() {
                 </Button>
             </div>
           <Card className="flex-1">
-            <CardHeader className="flex flex-row justify-between items-center">
-              <CardTitle>Tasks</CardTitle>
-              <div className="flex gap-8 text-sm font-semibold">
+            <CardHeader className="flex flex-row justify-between items-center bg-gray-50 p-2 border-b">
+              <CardTitle className="text-sm font-semibold pl-8">Tasks</CardTitle>
+              <div className="flex gap-8 text-sm font-semibold pr-2 w-40 justify-end">
                 <span>Status</span>
-                <span className="w-20">Summary</span>
+                <span>Summary</span>
               </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0">
               {tasks.map((task, index) => (
                 <TaskItem key={index} task={task} />
               ))}
@@ -221,52 +151,48 @@ export default function ProjectsPage() {
             <Tabs defaultValue="task_info" className="flex-1">
               <TabsList>
                 <TabsTrigger value="task_info">TASK INFO</TabsTrigger>
-                <TabsTrigger value="documents">DOCUMENTS <Badge className="ml-2">2</Badge></TabsTrigger>
+                <TabsTrigger value="documents">DOCUMENTS <Badge className="ml-2">0</Badge></TabsTrigger>
                 <TabsTrigger value="issues">ISSUES <Badge variant="destructive" className="ml-2">0</Badge></TabsTrigger>
-                <TabsTrigger value="events">EVENTS <Badge variant="destructive" className="ml-2">0</Badge></TabsTrigger>
+                <TabsTrigger value="events">EVENTS</TabsTrigger>
                 <TabsTrigger value="activity">ACTIVITY</TabsTrigger>
                 <TabsTrigger value="schedule">SCHEDULE</TabsTrigger>
               </TabsList>
               <TabsContent value="task_info" className="mt-4 flex-1">
                 <Card className="h-full">
                   <CardHeader>
-                    <CardTitle>Create detailed process map</CardTitle>
+                    <CardTitle>Organization chart</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <Card>
-                        <CardHeader className="flex-row items-center justify-between">
-                            <CardTitle className="text-base">Deal Notes / Goals</CardTitle>
+                        <CardHeader className="flex-row items-center justify-between p-4">
+                            <CardTitle className="text-base">Notes</CardTitle>
                             <Button variant="secondary" size="sm">EDIT</Button>
                         </CardHeader>
                     </Card>
                      <Card>
-                        <CardHeader className="flex-row items-center justify-between">
+                        <CardHeader className="flex-row items-center justify-between p-4">
                             <CardTitle className="text-base">Dependencies</CardTitle>
                              <Button variant="secondary" size="sm"><Plus className="mr-2 h-4 w-4" />DEPENDENCY</Button>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="p-4 pt-0">
                             <div className="p-4 bg-blue-50 border border-blue-200 rounded-md">
                                 <a href="#" className="text-blue-600 underline">Click here to learn more about the Task Dependencies.</a>
                             </div>
                         </CardContent>
                     </Card>
                      <Card>
-                        <CardHeader className="flex-row items-center justify-between">
+                        <CardHeader className="flex-row items-center justify-between p-4">
                             <CardTitle className="text-base">Guide</CardTitle>
                             <Button variant="secondary" size="sm">EDIT</Button>
                         </CardHeader>
-                        <CardContent className="text-sm text-muted-foreground space-y-4">
-                           <p>Build a more detailed version of the process map developed in the Define phase. Focus on building a comprehensive view of the as-is model. This will likely require some participation from employees with expertise in the process. Often the view employees that interact with the process have varies greatly from official documentation or what leadership 'thinks' the process is. Build an accurate picture of how the process really functions.</p>
-                           <p>The process drawing(s) at this stage should include decisions and process branching and swim lanes to indicate the parties responsible for each activity. No longer is only the 'happy path' depicted but error conditions, rework and waste patterns are clearly shown. In the end, the team, including process experts, should agree that the process is as depicted. If there is uncertainty, test the drawing by observing the process in action if possible with the diagram handy for reference.</p>
-                           <div>
-                            <h4 className="font-semibold text-foreground mb-2">Resources:</h4>
-                            <p>Description of attached documents and links in the Documents tab.</p>
-                            <ul className="list-disc pl-5 mt-2">
-                                <li>Everyone Should Learn BPMN - Business Process Modeling Notation (BPMN) is a diagraming standard governed by the Object Management Group (OMG). It is a powerful, compact and precise notation but can take a little work to master.</li>
-                            </ul>
-                           </div>
+                        <CardContent className="text-sm text-muted-foreground space-y-4 p-4 pt-0">
+                           <p>Review an organization chart of all employees (including number of employees and location) and information regarding organizational changes of the work force within the last five years (including list of employees on maternity/paternity leave, leaves of absence etc.).</p>
+                           <p>Further to the above, obtain details of the numbers and types of employees together with details of their full name, sex, age, date of commencement of service, number of years continuous employment, place of employment, (and mobility clauses) notice period, remuneration, annual leave, and all other benefits (in each case whether contractual or otherwise).</p>
                         </CardContent>
                     </Card>
+                    <div className="p-2 bg-gray-100 rounded-md text-sm text-muted-foreground">
+                        Task ID: 2798
+                    </div>
                   </CardContent>
                 </Card>
               </TabsContent>
