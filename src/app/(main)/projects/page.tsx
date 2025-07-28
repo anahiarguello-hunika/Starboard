@@ -16,11 +16,13 @@ import {
   Circle,
   MessageSquare,
   Paperclip,
+  FilePlus,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
 
 const tasks = [
   {
@@ -162,7 +164,14 @@ export default function ProjectsPage() {
   return (
     <div className="flex flex-col h-full">
       <header className="mb-4">
-        <h1 className="text-2xl font-bold tracking-tight">xServe NPS Improvement</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-bold tracking-tight">xServe NPS Improvement</h1>
+          <Button asChild>
+            <Link href="/projects/new-playbook">
+              <Plus className="mr-2 h-4 w-4" /> New Playbook
+            </Link>
+          </Button>
+        </div>
         <Tabs defaultValue="tasks" className="mt-2">
             <TabsList>
                 <TabsTrigger value="overview">Overview</TabsTrigger>
