@@ -32,7 +32,7 @@ import { cn } from "@/lib/utils";
 
 const projectNav = [
     { name: 'Dashboard', icon: LayoutDashboard, active: true },
-    { name: '+ Project', icon: PlusCircle },
+    { name: '+ Project', icon: PlusCircle, href: "/projects/new-playbook" },
     { name: 'Progress', icon: BarChart2 },
     { name: 'Task', icon: ListTodo },
     { name: 'Documents', icon: File },
@@ -62,13 +62,13 @@ export default function ProjectsPage() {
         <div className="flex flex-col gap-4">
              <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
                  {projectNav.map((item) => (
-                    <a key={item.name} href="#" className={cn(
+                    <Link key={item.name} href={item.href || "#"} className={cn(
                         'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
                         item.active ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
                     )}>
                         <item.icon className="h-5 w-5" />
                         <span>{item.name}</span>
-                    </a>
+                    </Link>
                 ))}
             </nav>
         </div>
@@ -124,8 +124,8 @@ export default function ProjectsPage() {
                             <span>{project.contractCount} Contracts</span>
                         </div>
                     </div>
-                  <Button variant="outline" size="sm">
-                    View Project
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href="/projects/six-sigma">View Project</Link>
                   </Button>
                 </CardFooter>
               </Card>
