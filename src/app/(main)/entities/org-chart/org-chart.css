@@ -1,0 +1,157 @@
+
+.org-chart-container {
+  width: 100%;
+  padding: 2rem;
+}
+
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+}
+
+.org-level {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+}
+
+.org-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 8px;
+}
+
+.org-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-sm);
+  min-width: 220px;
+  text-align: left;
+}
+
+.org-card.main-company {
+    border-left: 4px solid hsl(var(--primary));
+}
+
+.percentage-badge {
+  background-color: hsl(var(--muted));
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: hsl(var(--muted-foreground));
+  position: absolute;
+  top: -25px;
+  transform: translateX(-50%);
+  left: 50%;
+  white-space: nowrap;
+}
+
+.org-children {
+  margin-top: 40px;
+  width: 100%;
+}
+
+/* --- CONNECTING LINES --- */
+
+.org-level:not(:first-child) {
+    margin-top: 40px;
+}
+
+/* Vertical line from parent to children level */
+.org-node > .org-children::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 40px;
+    background-color: hsl(var(--border));
+}
+
+/* Horizontal line connecting siblings */
+.org-level > .org-node:not(:first-child)::before,
+.org-level > .org-node:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: -41px; 
+    height: 2px;
+    background-color: hsl(var(--border));
+    width: calc(50% + 10px);
+}
+
+.org-level > .org-node:not(:first-child)::before {
+    left: -10px;
+}
+
+.org-level > .org-node:not(:last-child)::after {
+    right: -10px;
+}
+
+/* Adjustments for single children */
+.org-level > .org-node:only-child::before,
+.org-level > .org-node:only-child::after {
+    display: none;
+}
+
+/* Specific lines for the complex layout */
+.org-chart > .org-level:first-of-type::after {
+    content: '';
+    position: absolute;
+    bottom: -62px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 60px;
+    background-color: hsl(var(--border));
+}
+
+
+.org-level > .org-node[percentage="1.00%"]::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: hsl(var(--border));
+}
+
+.org-level > .org-node[percentage="0.08%"] > .org-children::before {
+    top: -40px;
+}
+
+.org-level > .org-node[percentage="0.08%"] > .org-children .org-level::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    background-color: hsl(var(--border));
+}
+
+/* Custom curve for Acme NV/SA */
+.org-level > .org-node[percentage="0.01%"]::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 20%;
+    width: 130px;
+    height: 20px;
+    border: 2px solid hsl(var(--border));
+    border-color: hsl(var(--border)) transparent transparent hsl(var(--border));
+    border-radius: 10px 0 0 0;
+    transform: rotate(10deg);
+}
+
