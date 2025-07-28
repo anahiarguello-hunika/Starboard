@@ -1,0 +1,106 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  BookOpenCheck,
+  CircleUser,
+  Crown,
+  FileText,
+  Folder,
+  LayoutDashboard,
+  ListTodo,
+  Scale,
+} from "lucide-react";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarProvider,
+  SidebarInset,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { UserNav } from "./components/user-nav";
+
+const navItems = [
+  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/contracts", icon: FileText, label: "Contracts" },
+  { href: "/tasks", icon: ListTodo, label: "Tasks" },
+  { href: "/documents", icon: Folder, label: "Documents" },
+  { href: "/summarize", icon: BookOpenCheck, label: "AI Summarizer" },
+];
+
+export default function MainLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const adjustedPathname = pathname === '/' ? '/dashboard' : pathname;
+
+  return (
+    <SidebarProvider>
+      <Sidebar side="left" collapsible="icon" variant="sidebar">
+        <SidebarHeader>
+          <div className="flex items-center gap-2 p-2">
+            <Button variant="ghost" size="icon" className="h-9 w-9 text-sidebar-foreground">
+              <Scale />
+            </Button>
+            <span className="text-lg font-semibold text-sidebar-foreground font-headline">
+              Stbd Law
+            </span>
+          </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarMenu>
+            {navItems.map((item) => (
+              <SidebarMenuItem key={item.href}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={adjustedPathname.startsWith(item.href)}
+                  tooltip={item.label}
+                >
+                  <Link href={item.href}>
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarContent>
+        <SidebarFooter>
+          <Card className="m-2 bg-sidebar-accent/30 text-sidebar-foreground border-sidebar-border">
+            <CardHeader className="p-4">
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Crown className="text-yellow-400" />
+                Enterprise Plan
+              </CardTitle>
+              <CardDescription className="text-sidebar-foreground/80">
+                All features unlocked.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-4 pt-0">
+              <Button size="sm" className="w-full bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90">
+                Manage Subscription
+              </Button>
+            </CardContent>
+          </Card>
+        </SidebarFooter>
+      </Sidebar>
+      <SidebarInset>
+        <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6">
+          <SidebarTrigger className="md:hidden" />
+          <div className="flex-1">
+            {/* Can add breadcrumbs or page title here */}
+          </div>
+          <UserNav />
+        </header>
+        <main className="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">{children}</main>
+      </SidebarInset>
+    </SidebarProvider>
+  );
+}
