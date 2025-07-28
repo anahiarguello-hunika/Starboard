@@ -32,7 +32,7 @@ import { UserNav } from "./components/user-nav";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/matters", icon: Briefcase, label: "Matters" },
+  { href: "/projects", icon: Briefcase, label: "Projects" },
   { href: "/contracts", icon: FileText, label: "Contracts" },
   { href: "/tasks", icon: ListTodo, label: "Tasks" },
   { href: "/documents", icon: Folder, label: "Documents" },

@@ -28,7 +28,7 @@ export type Document = {
   status: "Draft" | "In Review" | "Approved";
 };
 
-export type Matter = {
+export type Project = {
   id: string;
   name: string;
   client: string;
@@ -177,9 +177,9 @@ export const documentsData: Document[] = [
   },
 ];
 
-export const mattersData: Matter[] = [
+export const projectsData: Project[] = [
   {
-    id: "MAT-001",
+    id: "PROJ-001",
     name: "Acquisition of TechCorp",
     client: "Innovate Inc.",
     status: "Active",
@@ -189,7 +189,7 @@ export const mattersData: Matter[] = [
     contractCount: 5,
   },
   {
-    id: "MAT-002",
+    id: "PROJ-002",
     name: "Series A Financing",
     client: "Stbd Law",
     status: "Active",
@@ -199,7 +199,7 @@ export const mattersData: Matter[] = [
     contractCount: 8,
   },
     {
-    id: "MAT-003",
+    id: "PROJ-003",
     name: "Patent Litigation vs. CompetitorX",
     client: "Stbd Law",
     status: "Active",
@@ -209,7 +209,7 @@ export const mattersData: Matter[] = [
     contractCount: 2,
   },
   {
-    id: "MAT-004",
+    id: "PROJ-004",
     name: "Real Estate Lease - SF Office",
     client: "Stbd Law",
     status: "Closed",
@@ -219,7 +219,7 @@ export const mattersData: Matter[] = [
     contractCount: 1,
   },
    {
-    id: "MAT-005",
+    id: "PROJ-005",
     name: "GDPR Compliance Overhaul",
     client: "Stbd Law",
     status: "On Hold",
