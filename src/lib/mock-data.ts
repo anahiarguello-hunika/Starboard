@@ -39,6 +39,14 @@ export type Project = {
   contractCount: number;
 };
 
+export type Entity = {
+  id: string;
+  name: string;
+  type: "LLC" | "Corporation" | "Partnership" | "Sole Proprietorship";
+  jurisdiction: string;
+  status: "Active" | "Dissolved" | "In Good Standing";
+  incorporationDate: string;
+};
 
 export const contractsData: Contract[] = [
   {
@@ -227,5 +235,48 @@ export const projectsData: Project[] = [
     openDate: "2024-06-20",
     documentCount: 8,
     contractCount: 0,
+  },
+];
+
+export const entitiesData: Entity[] = [
+  {
+    id: "ENT-001",
+    name: "Stbd Law Platform, Inc.",
+    type: "Corporation",
+    jurisdiction: "Delaware",
+    status: "In Good Standing",
+    incorporationDate: "2022-01-15",
+  },
+  {
+    id: "ENT-002",
+    name: "Innovate Holdings, LLC",
+    type: "LLC",
+    jurisdiction: "Wyoming",
+    status: "Active",
+    incorporationDate: "2021-05-20",
+  },
+  {
+    id: "ENT-003",
+    name: "Synergy Partners",
+    type: "Partnership",
+    jurisdiction: "California",
+    status: "Active",
+    incorporationDate: "2020-11-01",
+  },
+  {
+    id: "ENT-004",
+    name: "Tech Innovations Co.",
+    type: "Corporation",
+    jurisdiction: "Delaware",
+    status: "In Good Standing",
+    incorporationDate: "2019-03-10",
+  },
+  {
+    id: "ENT-005",
+    name: "Legacy Ventures",
+    type: "Corporation",
+    jurisdiction: "New York",
+    status: "Dissolved",
+    incorporationDate: "2015-08-25",
   },
 ];

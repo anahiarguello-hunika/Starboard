@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BookOpenCheck,
+  Building2,
   CircleUser,
   Crown,
   FileText,
@@ -36,6 +37,7 @@ const navItems = [
   { href: "/contracts", icon: FileText, label: "Contracts" },
   { href: "/tasks", icon: ListTodo, label: "Tasks" },
   { href: "/documents", icon: Folder, label: "Documents" },
+  { href: "/entities", icon: Building2, label: "Entity Management"},
   { href: "/summarize", icon: BookOpenCheck, label: "AI Summarizer" },
 ];
 
