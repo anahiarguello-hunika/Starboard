@@ -48,17 +48,17 @@ export default function ServiceRequestPage() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>Contrato de Prestación de Servicios (Cliente)</DropdownMenuItem>
-            <DropdownMenuItem>Contrato de Arrendamiento</DropdownMenuItem>
-            <DropdownMenuItem>Contrato de Subarrendamiento</DropdownMenuItem>
-            <DropdownMenuItem>Contrato de Prestación de Servicio (Prestador)</DropdownMenuItem>
-            <DropdownMenuItem>Contrato de Confidencialidad</DropdownMenuItem>
-            <DropdownMenuItem>Contrato Individual de Trabajo (Tiempo determinado)</DropdownMenuItem>
-            <DropdownMenuItem>Contrato Individual de Trabajo (Indeterminado con tiempo de Prueba)</DropdownMenuItem>
-            <DropdownMenuItem>Convenio de Terminación General</DropdownMenuItem>
-            <DropdownMenuItem>Convenio de Terminación Laboral</DropdownMenuItem>
-            <DropdownMenuItem>Contrato de Préstamo (Obligado Solidario)</DropdownMenuItem>
-            <DropdownMenuItem>Contrato de Compraventa de Acciones</DropdownMenuItem>
+            <DropdownMenuItem>1. Contrato de Prestación de Servicios (Cliente)</DropdownMenuItem>
+            <DropdownMenuItem>2. Contrato de Arrendamiento</DropdownMenuItem>
+            <DropdownMenuItem>3. Contrato de Subarrendamiento</DropdownMenuItem>
+            <DropdownMenuItem>4. Contrato de Prestación de Servicio (Prestador)</DropdownMenuItem>
+            <DropdownMenuItem>5. Contrato de Confidencialidad</DropdownMenuItem>
+            <DropdownMenuItem>6. Contrato Individual de Trabajo (Tiempo determinado)</DropdownMenuItem>
+            <DropdownMenuItem>7. Contrato Individual de Trabajo (Indeterminado con tiempo de Prueba)</DropdownMenuItem>
+            <DropdownMenuItem>8. Convenio de Terminación General</DropdownMenuItem>
+            <DropdownMenuItem>9. Convenio de Terminación Laboral</DropdownMenuItem>
+            <DropdownMenuItem>10. Contrato de Préstamo (Obligado Solidario)</DropdownMenuItem>
+            <DropdownMenuItem>11. Contrato de Compraventa de Acciones</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
