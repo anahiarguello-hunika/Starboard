@@ -20,19 +20,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Paperclip, Calendar as CalendarIcon } from "lucide-react";
+import { Paperclip, Calendar as CalendarIcon, FilePlus2 } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function ServiceRequestPage() {
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Solicitud de Servicio
-        </h1>
-        <p className="text-muted-foreground max-w-2xl">
-          Cree un nuevo ticket para solicitar asistencia del equipo legal.
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight font-headline">
+            Solicitud de Servicio
+          </h1>
+          <p className="text-muted-foreground max-w-2xl">
+            Cree un nuevo ticket para solicitar asistencia del equipo legal.
+          </p>
+        </div>
+        <Button>
+          <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato
+        </Button>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <Card className="lg:col-span-2">
