@@ -169,7 +169,18 @@ const documentsNav = [
             "Otros"
         ]
     },
-    { name: 'Litigios', icon: Scale, href: "#" },
+    { name: 'Litigios', 
+        icon: Scale, 
+        href: "#",
+        submenu: [
+            "Civiles",
+            "Mercantiles",
+            "Penales",
+            "Fiscales",
+            "Administrativos",
+            "Laborales"
+        ]
+    },
     { name: 'Concesiones', icon: FileCheck, href: "#" },
     { name: 'Formatos', icon: FileType, href: "#" },
     { name: 'Miscelaneos', icon: Book, href: "#" },
