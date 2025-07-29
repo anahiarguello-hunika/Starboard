@@ -14,6 +14,7 @@ import {
   Scale,
   Briefcase,
   Sparkles,
+  Ticket,
 } from "lucide-react";
 
 import {
@@ -40,6 +41,7 @@ const navItems = [
   { href: "/documents", icon: Folder, label: "Documentos" },
   { href: "/entities", icon: Building2, label: "Gestión de Entidades"},
   { href: "/summarize", icon: Sparkles, label: "IA" },
+  { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
 ];
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
