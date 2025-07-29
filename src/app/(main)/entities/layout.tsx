@@ -25,19 +25,19 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 const entityNav = [
-  { name: 'Overview', href: '/entities/overview', icon: Users },
-  { name: 'Reminders', href: '#', icon: Siren },
-  { name: 'Governance', href: '#', icon: Scale },
-  { name: 'Delegations', href: '#', icon: HeartHandshake },
-  { name: 'Ownership', href: '#', icon: Landmark },
-  { name: 'Interests', href: '#', icon: Wallet },
+  { name: 'Resumen', href: '/entities/overview', icon: Users },
+  { name: 'Recordatorios', href: '#', icon: Siren },
+  { name: 'Gobernanza', href: '#', icon: Scale },
+  { name: 'Delegaciones', href: '#', icon: HeartHandshake },
+  { name: 'Propiedad', href: '#', icon: Landmark },
+  { name: 'Intereses', href: '#', icon: Wallet },
   { name: 'UBO', href: '#', icon: Users },
-  { name: 'Organisational chart', href: '/entities/org-chart', icon: AreaChart },
-  { name: 'Documents', href: '#', icon: Library },
-  { name: 'Financial', href: '#', icon: Library },
-  { name: 'Connections', href: '#', icon: Link2 },
-  { name: 'Contacts', href: '#', icon: AppWindow },
-  { name: 'Settings', href: '#', icon: Settings },
+  { name: 'Organigrama', href: '/entities/org-chart', icon: AreaChart },
+  { name: 'Documentos', href: '#', icon: Library },
+  { name: 'Financiero', href: '#', icon: Library },
+  { name: 'Conexiones', href: '#', icon: Link2 },
+  { name: 'Contactos', href: '#', icon: AppWindow },
+  { name: 'Configuración', href: '#', icon: Settings },
 ];
 
 export default function EntitiesLayout({

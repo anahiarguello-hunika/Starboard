@@ -42,16 +42,16 @@ const shareClasses = [
     color: 'hsl(var(--chart-2))',
     shares: 71932,
     percentage: 27.97,
-    voting: 'Single',
-    economic: ['Preferred dividend rights', 'Liquidation preference'],
-    description: ['Special majorities', 'Board composition'],
+    voting: 'Único',
+    economic: ['Derechos de dividendo preferente', 'Preferencia de liquidación'],
+    description: ['Mayorías especiales', 'Composición del consejo'],
   },
   {
     class: 'B',
     color: 'hsl(var(--chart-3))',
     shares: 185208,
     percentage: 72.03,
-    voting: 'Single',
+    voting: 'Único',
     economic: [],
     description: [],
   },
@@ -72,26 +72,26 @@ export default function EntitiesOverviewPage() {
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
             <span>Acme NV/SA</span>
             <ChevronRight className="h-4 w-4" />
-            <span>Securities</span>
+            <span>Valores</span>
             <ChevronRight className="h-4 w-4" />
-            <span className="text-foreground">Shares</span>
+            <span className="text-foreground">Acciones</span>
           </div>
           <h1 className="text-3xl font-bold tracking-tight font-headline flex items-center gap-2">
-            Shares
+            Acciones
             <Badge variant="outline" className="text-sm font-normal">
-              Last operation executed on 27 June 2022
+              Última operación ejecutada el 27 de junio de 2022
             </Badge>
           </h1>
         </div>
         <div className="flex gap-2">
           <Button variant="outline">
-            <History className="mr-2 h-4 w-4" /> Version history
+            <History className="mr-2 h-4 w-4" /> Historial de versiones
           </Button>
           <Button variant="outline">
-            <Download className="mr-2 h-4 w-4" /> Export
+            <Download className="mr-2 h-4 w-4" /> Exportar
           </Button>
           <Button>
-            <FilePlus className="mr-2 h-4 w-4" /> New transaction{' '}
+            <FilePlus className="mr-2 h-4 w-4" /> Nueva transacción{' '}
             <ChevronDown className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -99,12 +99,12 @@ export default function EntitiesOverviewPage() {
 
       <Tabs defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="shareholders">Shareholders</TabsTrigger>
-          <TabsTrigger value="transactions">Transactions</TabsTrigger>
+          <TabsTrigger value="overview">Resumen</TabsTrigger>
+          <TabsTrigger value="shareholders">Accionistas</TabsTrigger>
+          <TabsTrigger value="transactions">Transacciones</TabsTrigger>
           <TabsTrigger value="ubo">UBO</TabsTrigger>
-          <TabsTrigger value="notes">Shareholder notes</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger value="notes">Notas de accionistas</TabsTrigger>
+          <TabsTrigger value="settings">Configuración</TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="mt-6">
           <div className="space-y-8">
@@ -112,19 +112,19 @@ export default function EntitiesOverviewPage() {
               <div className="flex justify-between items-start">
                 <div>
                   <AlertTitle className="font-bold text-lg">
-                    Export a compliant register with a few simple clicks
+                    Exporte un registro compatible con unos pocos clics
                   </AlertTitle>
                   <AlertDescription>
-                    Corporify offers a fully digital managed share register. No
-                    more paper book required. This register is fully compliant
-                    with the Belgian Companies Code.
+                    Corporify ofrece un registro de acciones gestionado de forma totalmente digital. No
+                    más libros en papel. Este registro es totalmente compatible
+                    con el Código de Sociedades de Bélgica.
                   </AlertDescription>
                   <div className="mt-4 flex gap-2">
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                      Export register
+                      Exportar registro
                     </Button>
                     <Button variant="ghost" className="text-blue-700">
-                      Ok, I got it
+                      Ok, lo entiendo
                     </Button>
                   </div>
                 </div>
@@ -140,52 +140,52 @@ export default function EntitiesOverviewPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Summary</CardTitle>
+                <CardTitle>Resumen</CardTitle>
               </CardHeader>
               <CardContent className="grid grid-cols-5 gap-4 text-center">
                 <div>
-                  <p className="text-sm text-muted-foreground">Total shares</p>
+                  <p className="text-sm text-muted-foreground">Acciones totales</p>
                   <p className="text-2xl font-bold">257.140</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Par value</p>
+                  <p className="text-sm text-muted-foreground">Valor nominal</p>
                   <p className="text-2xl font-bold">€ 418,99</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">
-                    Share capital
+                    Capital social
                   </p>
                   <p className="text-2xl font-bold">€ 107.740.252,12</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">
-                    Share premium
+                    Prima de emisión
                   </p>
                   <p className="text-2xl font-bold">€ 262.202,80</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">
-                    Amounts are linked to:
+                    Los importes están vinculados a:
                   </p>
-                  <p className="text-2xl font-bold">Shareholders</p>
+                  <p className="text-2xl font-bold">Accionistas</p>
                 </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Share classes</CardTitle>
+                <CardTitle>Clases de acciones</CardTitle>
               </CardHeader>
               <CardContent className="grid grid-cols-[1fr_200px] gap-8">
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Class</TableHead>
-                      <TableHead>Number of shares</TableHead>
-                      <TableHead>Percentage</TableHead>
-                      <TableHead>Voting rights</TableHead>
-                      <TableHead>Economic rights</TableHead>
-                      <TableHead>Description</TableHead>
+                      <TableHead>Clase</TableHead>
+                      <TableHead>Número de acciones</TableHead>
+                      <TableHead>Porcentaje</TableHead>
+                      <TableHead>Derechos de voto</TableHead>
+                      <TableHead>Derechos económicos</TableHead>
+                      <TableHead>Descripción</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -267,7 +267,7 @@ export default function EntitiesOverviewPage() {
                           y="60%"
                           className="text-sm text-muted-foreground"
                         >
-                          Shares
+                          Acciones
                         </tspan>
                       </text>
                     </PieChart>

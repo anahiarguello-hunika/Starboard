@@ -1,8 +1,8 @@
 export type Contract = {
   id: string;
   name: string;
-  status: "Active" | "Draft" | "Expired" | "Terminated";
-  riskLevel: "Low" | "Medium" | "High";
+  status: "Activo" | "Borrador" | "Expirado" | "Terminado";
+  riskLevel: "Bajo" | "Medio" | "Alto";
   renewalDate: string;
   counterparty: string;
 };
@@ -14,25 +14,25 @@ export type LegalTask = {
     name: string;
     avatar: string;
   };
-  vertical: "Corporate" | "IP" | "Litigation" | "Commercial";
-  status: "To Do" | "In Progress" | "Done" | "Blocked";
+  vertical: "Corporativo" | "PI" | "Litigios" | "Comercial";
+  status: "Por Hacer" | "En Progreso" | "Hecho" | "Bloqueado";
   dueDate: string;
 };
 
 export type Document = {
   id: string;
   name: string;
-  type: "Agreement" | "NDA" | "Policy" | "Minutes" | "Filing";
+  type: "Acuerdo" | "NDA" | "Política" | "Minuta" | "Presentación";
   version: number;
   lastUpdated: string;
-  status: "Draft" | "In Review" | "Approved";
+  status: "Borrador" | "En Revisión" | "Aprobado";
 };
 
 export type Project = {
   id: string;
   name: string;
   client: string;
-  status: "Active" | "Closed" | "On Hold";
+  status: "Activo" | "Cerrado" | "En Espera";
   leadAttorney: string;
   openDate: string;
   documentCount: number;
@@ -42,58 +42,58 @@ export type Project = {
 export type Entity = {
   id: string;
   name: string;
-  type: "LLC" | "Corporation" | "Partnership" | "Sole Proprietorship";
+  type: "LLC" | "Corporación" | "Sociedad" | "Empresa Individual";
   jurisdiction: string;
-  status: "Active" | "Dissolved" | "In Good Standing";
+  status: "Activa" | "Disuelta" | "En Regla";
   incorporationDate: string;
 };
 
 export const contractsData: Contract[] = [
   {
     id: "CTR-001",
-    name: "Master Services Agreement",
-    status: "Active",
-    riskLevel: "Medium",
+    name: "Acuerdo Marco de Servicios",
+    status: "Activo",
+    riskLevel: "Medio",
     renewalDate: "2025-08-15",
     counterparty: "Innovate Inc.",
   },
   {
     id: "CTR-002",
-    name: "Software License Agreement",
-    status: "Active",
-    riskLevel: "Low",
+    name: "Acuerdo de Licencia de Software",
+    status: "Activo",
+    riskLevel: "Bajo",
     renewalDate: "2024-12-31",
     counterparty: "Tech Solutions LLC",
   },
   {
     id: "CTR-003",
-    name: "Non-Disclosure Agreement",
-    status: "Expired",
-    riskLevel: "Low",
+    name: "Acuerdo de No Divulgación",
+    status: "Expirado",
+    riskLevel: "Bajo",
     renewalDate: "2023-01-20",
     counterparty: "Stealth Startup",
   },
   {
     id: "CTR-004",
-    name: "Office Lease Agreement",
-    status: "Active",
-    riskLevel: "High",
+    name: "Contrato de Arrendamiento de Oficina",
+    status: "Activo",
+    riskLevel: "Alto",
     renewalDate: "2026-06-30",
     counterparty: "Downtown Properties",
   },
   {
     id: "CTR-005",
-    name: "Vendor Agreement",
-    status: "Draft",
-    riskLevel: "Medium",
+    name: "Acuerdo de Proveedor",
+    status: "Borrador",
+    riskLevel: "Medio",
     renewalDate: "2024-11-01",
     counterparty: "SupplyCo",
   },
   {
     id: "CTR-006",
-    name: "Partnership Agreement",
-    status: "Terminated",
-    riskLevel: "High",
+    name: "Acuerdo de Asociación",
+    status: "Terminado",
+    riskLevel: "Alto",
     renewalDate: "2022-05-10",
     counterparty: "Synergy Partners",
   },
@@ -102,42 +102,42 @@ export const contractsData: Contract[] = [
 export const legalTasksData: LegalTask[] = [
   {
     id: "TSK-001",
-    taskName: "Review Q3 Financials NDA",
+    taskName: "Revisar NDA de Finanzas del Q3",
     assignedTo: { name: "Alice Johnson", avatar: "https://placehold.co/100x100" },
-    vertical: "Corporate",
-    status: "In Progress",
+    vertical: "Corporativo",
+    status: "En Progreso",
     dueDate: "2024-09-05",
   },
   {
     id: "TSK-002",
-    taskName: "File 'Innovate' Trademark Application",
+    taskName: "Presentar solicitud de marca 'Innovate'",
     assignedTo: { name: "Bob Williams", avatar: "https://placehold.co/100x100" },
-    vertical: "IP",
-    status: "To Do",
+    vertical: "PI",
+    status: "Por Hacer",
     dueDate: "2024-09-20",
   },
   {
     id: "TSK-003",
-    taskName: "Draft response to discovery request",
+    taskName: "Redactar respuesta a solicitud de descubrimiento",
     assignedTo: { name: "Charlie Brown", avatar: "https://placehold.co/100x100" },
-    vertical: "Litigation",
-    status: "Done",
+    vertical: "Litigios",
+    status: "Hecho",
     dueDate: "2024-08-28",
   },
   {
     id: "TSK-004",
-    taskName: "Update Employee Handbook",
+    taskName: "Actualizar Manual del Empleado",
     assignedTo: { name: "Alice Johnson", avatar: "https://placehold.co/100x100" },
-    vertical: "Corporate",
-    status: "Blocked",
+    vertical: "Corporativo",
+    status: "Bloqueado",
     dueDate: "2024-10-01",
   },
   {
     id: "TSK-005",
-    taskName: "Negotiate terms for new vendor MSA",
+    taskName: "Negociar términos para nuevo MSA de proveedor",
     assignedTo: { name: "Diana Prince", avatar: "https://placehold.co/100x100" },
-    vertical: "Commercial",
-    status: "In Progress",
+    vertical: "Comercial",
+    status: "En Progreso",
     dueDate: "2024-09-12",
   },
 ];
@@ -145,52 +145,52 @@ export const legalTasksData: LegalTask[] = [
 export const documentsData: Document[] = [
   {
     id: "DOC-001",
-    name: "MSA_Innovate_Inc_Executed.pdf",
-    type: "Agreement",
+    name: "MSA_Innovate_Inc_Ejecutado.pdf",
+    type: "Acuerdo",
     version: 3,
     lastUpdated: "2023-08-15",
-    status: "Approved",
+    status: "Aprobado",
   },
   {
     id: "DOC-002",
-    name: "Privacy_Policy_v2.1.docx",
-    type: "Policy",
+    name: "Politica_Privacidad_v2.1.docx",
+    type: "Política",
     version: 2,
     lastUpdated: "2024-07-01",
-    status: "In Review",
+    status: "En Revisión",
   },
   {
     id: "DOC-003",
-    name: "Board_Minutes_Q2_2024.pdf",
-    type: "Minutes",
+    name: "Minuta_Junta_Q2_2024.pdf",
+    type: "Minuta",
     version: 1,
     lastUpdated: "2024-06-30",
-    status: "Approved",
+    status: "Aprobado",
   },
   {
     id: "DOC-004",
-    name: "NDA_Stealth_Startup_draft.docx",
+    name: "NDA_Stealth_Startup_borrador.docx",
     type: "NDA",
     version: 1,
     lastUpdated: "2024-08-20",
-    status: "Draft",
+    status: "Borrador",
   },
   {
     id: "DOC-005",
-    name: "Patent_Filing_PX-101.pdf",
-    type: "Filing",
+    name: "Presentacion_Patente_PX-101.pdf",
+    type: "Presentación",
     version: 4,
     lastUpdated: "2024-05-18",
-    status: "Approved",
+    status: "Aprobado",
   },
 ];
 
 export const projectsData: Project[] = [
   {
     id: "PROJ-001",
-    name: "Acquisition of TechCorp",
+    name: "Adquisición de TechCorp",
     client: "Innovate Inc.",
-    status: "Active",
+    status: "Activo",
     leadAttorney: "Alice Johnson",
     openDate: "2024-03-15",
     documentCount: 42,
@@ -198,9 +198,9 @@ export const projectsData: Project[] = [
   },
   {
     id: "PROJ-002",
-    name: "Series A Financing",
+    name: "Financiamiento Serie A",
     client: "Stbd Law",
-    status: "Active",
+    status: "Activo",
     leadAttorney: "Charlie Brown",
     openDate: "2024-05-01",
     documentCount: 15,
@@ -208,9 +208,9 @@ export const projectsData: Project[] = [
   },
     {
     id: "PROJ-003",
-    name: "Patent Litigation vs. CompetitorX",
+    name: "Litigio de Patentes vs. CompetitorX",
     client: "Stbd Law",
-    status: "Active",
+    status: "Activo",
     leadAttorney: "Diana Prince",
     openDate: "2023-11-10",
     documentCount: 256,
@@ -218,9 +218,9 @@ export const projectsData: Project[] = [
   },
   {
     id: "PROJ-004",
-    name: "Real Estate Lease - SF Office",
+    name: "Arrendamiento Inmobiliario - Oficina SF",
     client: "Stbd Law",
-    status: "Closed",
+    status: "Cerrado",
     leadAttorney: "Bob Williams",
     openDate: "2022-06-01",
     documentCount: 23,
@@ -228,9 +228,9 @@ export const projectsData: Project[] = [
   },
    {
     id: "PROJ-005",
-    name: "GDPR Compliance Overhaul",
+    name: "Revisión de Cumplimiento GDPR",
     client: "Stbd Law",
-    status: "On Hold",
+    status: "En Espera",
     leadAttorney: "Alice Johnson",
     openDate: "2024-06-20",
     documentCount: 8,
@@ -242,9 +242,9 @@ export const entitiesData: Entity[] = [
   {
     id: "ENT-001",
     name: "Stbd Law Platform, Inc.",
-    type: "Corporation",
+    type: "Corporación",
     jurisdiction: "Delaware",
-    status: "In Good Standing",
+    status: "En Regla",
     incorporationDate: "2022-01-15",
   },
   {
@@ -252,31 +252,31 @@ export const entitiesData: Entity[] = [
     name: "Innovate Holdings, LLC",
     type: "LLC",
     jurisdiction: "Wyoming",
-    status: "Active",
+    status: "Activa",
     incorporationDate: "2021-05-20",
   },
   {
     id: "ENT-003",
     name: "Synergy Partners",
-    type: "Partnership",
+    type: "Sociedad",
     jurisdiction: "California",
-    status: "Active",
+    status: "Activa",
     incorporationDate: "2020-11-01",
   },
   {
     id: "ENT-004",
     name: "Tech Innovations Co.",
-    type: "Corporation",
+    type: "Corporación",
     jurisdiction: "Delaware",
-    status: "In Good Standing",
+    status: "En Regla",
     incorporationDate: "2019-03-10",
   },
   {
     id: "ENT-005",
     name: "Legacy Ventures",
-    type: "Corporation",
+    type: "Corporación",
     jurisdiction: "New York",
-    status: "Dissolved",
+    status: "Disuelta",
     incorporationDate: "2015-08-25",
   },
 ];

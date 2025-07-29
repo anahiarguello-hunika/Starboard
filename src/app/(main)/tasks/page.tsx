@@ -51,39 +51,39 @@ import {
 
 const myWorkNav = [
     { name: 'Dashboards', icon: LayoutDashboard },
-    { name: 'My Non Working...', icon: CalendarX },
-    { name: 'Direct Employee...', icon: Users },
-    { name: 'Task Requests', icon: ClipboardList },
-    { name: 'My Tasks', icon: UserCheck },
-    { name: 'My Utilisation', icon: PieChart },
-    { name: 'My Task Times', icon: Timer },
-    { name: 'My Quality Checks', icon: BadgeCheck },
-    { name: 'My Teams Tasks', icon: BookUser, active: true },
-    { name: "My Teams SLA's", icon: ShieldCheck },
-    { name: 'My Teams Utilisation', icon: GanttChartSquare },
-    { name: 'My Teams Task Times', icon: Network },
+    { name: 'Mi No Trabajo...', icon: CalendarX },
+    { name: 'Empleado Directo...', icon: Users },
+    { name: 'Solicitudes de Tareas', icon: ClipboardList },
+    { name: 'Mis Tareas', icon: UserCheck },
+    { name: 'Mi Utilización', icon: PieChart },
+    { name: 'Mis Tiempos de Tarea', icon: Timer },
+    { name: 'Mis Controles de Calidad', icon: BadgeCheck },
+    { name: 'Tareas de Mis Equipos', icon: BookUser, active: true },
+    { name: "SLA's de Mis Equipos", icon: ShieldCheck },
+    { name: 'Utilización de Mis Equipos', icon: GanttChartSquare },
+    { name: 'Tiempos de Tarea de Mis Equipos', icon: Network },
 ];
 
 const adminNav = [
-    { name: 'Services', icon: Briefcase },
-    { name: 'Work Mgmt Tasks', icon: ListChecks },
-    { name: 'Quality Control', icon: SlidersHorizontal },
-    { name: 'Competency Levels', icon: Award },
-    { name: 'Employees', icon: Users },
-    { name: 'Employee Compe...', icon: UserCheck },
+    { name: 'Servicios', icon: Briefcase },
+    { name: 'Tareas de Gestión de Trabajo', icon: ListChecks },
+    { name: 'Control de Calidad', icon: SlidersHorizontal },
+    { name: 'Niveles de Competencia', icon: Award },
+    { name: 'Empleados', icon: Users },
+    { name: 'Compe de Empleado...', icon: UserCheck },
 ];
 
 
 export default function TasksPage() {
     const getStatusVariant = (status: LegalTask['status']) => {
         switch (status) {
-            case 'Done':
+            case 'Hecho':
                 return 'default'
-            case 'In Progress':
+            case 'En Progreso':
                 return 'secondary'
-            case 'To Do':
+            case 'Por Hacer':
                 return 'outline'
-            case 'Blocked':
+            case 'Bloqueado':
                 return 'destructive'
         }
     }
@@ -93,25 +93,25 @@ export default function TasksPage() {
              <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
                 <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
                     <Home className="h-5 w-5" />
-                    <span>Home</span>
+                    <span>Inicio</span>
                 </a>
                 <a href="#" className="flex items-center justify-between gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted">
                      <div className="flex items-center gap-3">
                         <Clock className="h-5 w-5" />
-                        <span>Recent</span>
+                        <span>Reciente</span>
                     </div>
                     <ChevronDown className="h-4 w-4" />
                 </a>
                  <a href="#" className="flex items-center justify-between gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted">
                      <div className="flex items-center gap-3">
                         <Pin className="h-5 w-5" />
-                        <span>Pinned</span>
+                        <span>Fijado</span>
                     </div>
                     <ChevronDown className="h-4 w-4" />
                 </a>
                 <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base font-semibold text-foreground">
-                        My Work
+                        Mi Trabajo
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
@@ -127,7 +127,7 @@ export default function TasksPage() {
                 </Collapsible>
                 <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Administration
+                        Administración
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
@@ -146,31 +146,31 @@ export default function TasksPage() {
         <div className="flex flex-col gap-8">
             <div>
                 <h1 className="text-3xl font-bold tracking-tight font-headline">
-                Legal Task Management
+                Gestión de Tareas Legales
                 </h1>
                 <p className="text-muted-foreground">
-                Create and manage legal tasks, and track assignments by vertical.
+                Cree y gestione tareas legales, y rastree asignaciones por vertical.
                 </p>
             </div>
 
             <Card>
                 <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                    <ListTodo /> Active Tasks
+                    <ListTodo /> Tareas Activas
                 </CardTitle>
                 <CardDescription>
-                    All ongoing and upcoming legal tasks.
+                    Todas las tareas legales en curso y próximas.
                 </CardDescription>
                 </CardHeader>
                 <CardContent>
                 <Table>
                     <TableHeader>
                     <TableRow>
-                        <TableHead>Task</TableHead>
-                        <TableHead>Assigned To</TableHead>
+                        <TableHead>Tarea</TableHead>
+                        <TableHead>Asignado A</TableHead>
                         <TableHead>Vertical</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Due Date</TableHead>
+                        <TableHead>Estado</TableHead>
+                        <TableHead>Fecha de Vencimiento</TableHead>
                     </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -189,7 +189,7 @@ export default function TasksPage() {
                         <TableCell>{task.vertical}</TableCell>
                         <TableCell>
                             <Badge variant={getStatusVariant(task.status)}
-                                className={task.status === 'In Progress' ? 'bg-blue-100 text-blue-800' : task.status === 'Done' ? 'bg-accent text-accent-foreground' : ''}>
+                                className={task.status === 'En Progreso' ? 'bg-blue-100 text-blue-800' : task.status === 'Hecho' ? 'bg-accent text-accent-foreground' : ''}>
                             {task.status}
                             </Badge>
                         </TableCell>

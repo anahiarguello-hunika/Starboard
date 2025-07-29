@@ -20,24 +20,24 @@ import { FileText } from "lucide-react";
 export default function ContractsPage() {
   const getStatusVariant = (status: Contract["status"]) => {
     switch (status) {
-      case "Active":
+      case "Activo":
         return "default";
-      case "Draft":
+      case "Borrador":
         return "secondary";
-      case "Expired":
+      case "Expirado":
         return "outline";
-      case "Terminated":
+      case "Terminado":
         return "destructive";
     }
   };
 
   const getRiskVariant = (risk: Contract["riskLevel"]) => {
     switch (risk) {
-      case "Low":
+      case "Bajo":
         return "default";
-      case "Medium":
+      case "Medio":
         return "secondary";
-      case "High":
+      case "Alto":
         return "destructive";
     }
   };
@@ -46,31 +46,31 @@ export default function ContractsPage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Contract Management
+          Gestión de Contratos
         </h1>
         <p className="text-muted-foreground">
-          Track statuses, identify risks, and monitor key dates for all your contracts.
+          Rastree estados, identifique riesgos y monitoree fechas clave para todos sus contratos.
         </p>
       </div>
 
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <FileText /> All Contracts
+            <FileText /> Todos los Contratos
           </CardTitle>
           <CardDescription>
-            A complete list of all managed legal contracts.
+            Una lista completa de todos los contratos legales gestionados.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Contract Name</TableHead>
-                <TableHead>Counterparty</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Risk Level</TableHead>
-                <TableHead>Renewal Date</TableHead>
+                <TableHead>Nombre del Contrato</TableHead>
+                <TableHead>Contraparte</TableHead>
+                <TableHead>Estado</TableHead>
+                <TableHead>Nivel de Riesgo</TableHead>
+                <TableHead>Fecha de Renovación</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -80,7 +80,7 @@ export default function ContractsPage() {
                   <TableCell>{contract.counterparty}</TableCell>
                   <TableCell>
                     <Badge variant={getStatusVariant(contract.status)}
-                           className={contract.status === 'Active' ? 'bg-accent text-accent-foreground' : ''}>
+                           className={contract.status === 'Activo' ? 'bg-accent text-accent-foreground' : ''}>
                       {contract.status}
                     </Badge>
                   </TableCell>

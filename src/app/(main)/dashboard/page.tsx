@@ -27,16 +27,16 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const activeProjects = [
-  { id: "PROJ-001", name: "Project Alpha", status: "On Track", progress: 75 },
-  { id: "PROJ-002", name: "Q4 Compliance Audit", status: "At Risk", progress: 30 },
-  { id: "PROJ-003", name: "IP Portfolio Review", status: "On Track", progress: 90 },
-  { id: "PROJ-004", name: "Vendor Contract Consolidation", status: "Needs Review", progress: 50 },
+  { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75 },
+  { id: "PROJ-002", name: "Auditoría de Cumplimiento Q4", status: "En riesgo", progress: 30 },
+  { id: "PROJ-003", name: "Revisión de Cartera de PI", status: "En curso", progress: 90 },
+  { id: "PROJ-004", name: "Consolidación de Contratos de Proveedores", status: "Necesita revisión", progress: 50 },
 ];
 
 const alerts = [
-    { id: "ALRT-001", title: "Contract Renewal Due", description: "MSA with Innovate Inc. expires in 30 days.", level: "warning" },
-    { id: "ALRT-002", title: "New Regulation", description: "Data Privacy Act update effective Oct 1.", level: "info" },
-    { id: "ALRT-003", title: "Task Overdue", description: "Review of vendor agreement is 3 days overdue.", level: "error" },
+    { id: "ALRT-001", title: "Vencimiento de Renovación de Contrato", description: "El MSA con Innovate Inc. vence en 30 días.", level: "warning" },
+    { id: "ALRT-002", title: "Nueva Regulación", description: "Actualización de la Ley de Privacidad de Datos efectiva el 1 de octubre.", level: "info" },
+    { id: "ALRT-003", title: "Tarea Vencida", description: "La revisión del acuerdo de proveedor está vencida por 3 días.", level: "error" },
 ]
 
 export default function DashboardPage() {
@@ -44,54 +44,54 @@ export default function DashboardPage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Legal Dashboard
+          Dashboard Legal
         </h1>
         <p className="text-muted-foreground">
-          Welcome back! Here's your summary for today.
+          ¡Bienvenido de nuevo! Aquí está tu resumen de hoy.
         </p>
       </div>
 
       <Tabs defaultValue="general_counsel">
         <TabsList>
-          <TabsTrigger value="general_counsel">General Counsel</TabsTrigger>
+          <TabsTrigger value="general_counsel">Consejero General</TabsTrigger>
           <TabsTrigger value="paralegal">Paralegal</TabsTrigger>
-          <TabsTrigger value="business_user">Business User</TabsTrigger>
+          <TabsTrigger value="business_user">Usuario de Negocio</TabsTrigger>
         </TabsList>
         <TabsContent value="general_counsel" className="mt-4">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card className="lg:col-span-1">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <ShieldCheck className="text-accent" /> Compliance Meter
+                  <ShieldCheck className="text-accent" /> Medidor de Cumplimiento
                 </CardTitle>
                 <CardDescription>
-                  Overall organizational compliance status.
+                  Estado general de cumplimiento de la organización.
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                     <span className="text-5xl font-bold text-accent">92%</span>
-                    <span className="text-sm text-green-600 font-semibold">+2% this month</span>
+                    <span className="text-sm text-green-600 font-semibold">+2% este mes</span>
                 </div>
-                <Progress value={92} aria-label="92% compliant" />
-                <p className="text-xs text-muted-foreground">All departments reporting normal parameters.</p>
+                <Progress value={92} aria-label="92% de cumplimiento" />
+                <p className="text-xs text-muted-foreground">Todos los departamentos reportan parámetros normales.</p>
               </CardContent>
             </Card>
             
             <Card className="lg:col-span-2">
               <CardHeader>
-                <CardTitle>Active Projects</CardTitle>
+                <CardTitle>Proyectos Activos</CardTitle>
                 <CardDescription>
-                  Key legal projects currently in flight.
+                  Proyectos legales clave actualmente en curso.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Project</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead className="text-right">Progress</TableHead>
+                      <TableHead>Proyecto</TableHead>
+                      <TableHead>Estado</TableHead>
+                      <TableHead className="text-right">Progreso</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -100,8 +100,8 @@ export default function DashboardPage() {
                         <TableCell className="font-medium">{project.name}</TableCell>
                         <TableCell>
                           <Badge
-                            variant={project.status === 'At Risk' ? 'destructive' : project.status === 'Needs Review' ? 'secondary' : 'default'}
-                            className={project.status === 'On Track' ? 'bg-green-100 text-green-800' : ''}
+                            variant={project.status === 'En riesgo' ? 'destructive' : project.status === 'Necesita revisión' ? 'secondary' : 'default'}
+                            className={project.status === 'En curso' ? 'bg-green-100 text-green-800' : ''}
                           >
                             {project.status}
                           </Badge>
@@ -116,7 +116,7 @@ export default function DashboardPage() {
 
             <Card className="lg:col-span-3">
                 <CardHeader>
-                    <CardTitle>Recent Alerts</CardTitle>
+                    <CardTitle>Alertas Recientes</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     {alerts.map(alert => (
@@ -131,24 +131,24 @@ export default function DashboardPage() {
 
             <Card className="lg:col-span-1">
               <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
+                <CardTitle>Acciones Rápidas</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
                 <Button>
-                  <FilePlus2 className="mr-2 h-4 w-4" /> New Contract
+                  <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato
                 </Button>
-                <Button variant="secondary">Request Legal Review</Button>
-                <Button variant="ghost" className="justify-start">Generate Report</Button>
+                <Button variant="secondary">Solicitar Revisión Legal</Button>
+                <Button variant="ghost" className="justify-start">Generar Informe</Button>
               </CardContent>
             </Card>
             
           </div>
         </TabsContent>
         <TabsContent value="paralegal">
-            <p className="text-muted-foreground p-4 text-center">Paralegal dashboard coming soon.</p>
+            <p className="text-muted-foreground p-4 text-center">Dashboard de Paralegal próximamente.</p>
         </TabsContent>
         <TabsContent value="business_user">
-            <p className="text-muted-foreground p-4 text-center">Business user dashboard coming soon.</p>
+            <p className="text-muted-foreground p-4 text-center">Dashboard de Usuario de Negocio próximamente.</p>
         </TabsContent>
       </Tabs>
     </div>

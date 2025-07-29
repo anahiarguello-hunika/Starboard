@@ -43,10 +43,10 @@ export default function OrgChartPage() {
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
           <span>Acme NV/SA</span>
           <ChevronRight className="h-4 w-4" />
-          <span className="text-foreground">Organisational Chart</span>
+          <span className="text-foreground">Organigrama</span>
         </div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Organisational Chart
+          Organigrama
         </h1>
       </div>
       <div className="org-chart-container p-8 bg-muted/50 rounded-lg overflow-auto">

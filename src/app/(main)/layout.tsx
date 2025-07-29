@@ -33,12 +33,12 @@ import { UserNav } from "./components/user-nav";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/projects", icon: Briefcase, label: "Projects" },
-  { href: "/contracts", icon: FileText, label: "Contracts" },
-  { href: "/tasks", icon: ListTodo, label: "Tasks" },
-  { href: "/documents", icon: Folder, label: "Documents" },
-  { href: "/entities", icon: Building2, label: "Entity Management"},
-  { href: "/summarize", icon: BookOpenCheck, label: "AI Summarizer" },
+  { href: "/projects", icon: Briefcase, label: "Proyectos" },
+  { href: "/contracts", icon: FileText, label: "Contratos" },
+  { href: "/tasks", icon: ListTodo, label: "Tareas" },
+  { href: "/documents", icon: Folder, label: "Documentos" },
+  { href: "/entities", icon: Building2, label: "Gestión de Entidades"},
+  { href: "/summarize", icon: BookOpenCheck, label: "Resumidor IA" },
 ];
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
@@ -81,15 +81,15 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             <CardHeader className="p-4">
               <CardTitle className="flex items-center gap-2 text-base">
                 <Crown className="text-yellow-400" />
-                Enterprise Plan
+                Plan Empresarial
               </CardTitle>
               <CardDescription className="text-sidebar-foreground/80">
-                All features unlocked.
+                Todas las funciones desbloqueadas.
               </CardDescription>
             </CardHeader>
             <CardContent className="p-4 pt-0">
               <Button size="sm" className="w-full bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90">
-                Manage Subscription
+                Gestionar Suscripción
               </Button>
             </CardContent>
           </Card>

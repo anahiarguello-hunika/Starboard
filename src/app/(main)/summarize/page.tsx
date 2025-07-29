@@ -5,11 +5,11 @@ export default function SummarizePage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Smart Contract Summaries
+          Resúmenes de Contratos Inteligentes
         </h1>
         <p className="text-muted-foreground max-w-2xl">
-          Leverage GenAI to get instant summaries of your legal contracts.
-          Highlight key provisions, obligations, and potential risks in seconds.
+          Aproveche la IA generativa para obtener resúmenes instantáneos de sus contratos legales.
+          Destaque las disposiciones clave, las obligaciones y los riesgos potenciales en segundos.
         </p>
       </div>
 

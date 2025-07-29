@@ -40,55 +40,55 @@ import Link from 'next/link';
 
 const tasks = [
     {
-        name: 'Initiate',
-        status: 'Set duration',
+        name: 'Iniciar',
+        status: 'Establecer duración',
         summary: [4,1],
         subtasks: []
     },
     {
-        name: 'Define',
-        status: 'Set duration',
+        name: 'Definir',
+        status: 'Establecer duración',
         summary: [1],
         subtasks: []
     },
     {
-        name: 'Measure',
-        status: 'Set duration',
+        name: 'Medir',
+        status: 'Establecer duración',
         summary: [2],
         subtasks: [
             {
-                name: 'Tollgate 4 - Identify Performance Indicators',
-                status: 'Set duration',
+                name: 'Tollgate 4 - Identificar Indicadores de Desempeño',
+                status: 'Establecer duración',
                 summary: [8,1],
                 subtasks: [
                     {
-                        name: 'Document Key Performance Indicators',
-                        status: 'Set duration',
+                        name: 'Documentar Indicadores Clave de Desempeño',
+                        status: 'Establecer duración',
                         summary: [2],
                         subtasks: [
-                            { name: 'Create detailed process map', status: 'Set duration', summary: [2], active: true },
-                            { name: 'Review process map for areas of improvement', status: 'Set duration', summary: [2] },
-                            { name: 'Review CTQ Tree', status: 'Set duration', summary: [1] },
-                            { name: 'Determine the key dependent variables', status: 'Set duration', summary: [2] },
+                            { name: 'Crear mapa de proceso detallado', status: 'Establecer duración', summary: [2], active: true },
+                            { name: 'Revisar mapa de proceso para áreas de mejora', status: 'Establecer duración', summary: [2] },
+                            { name: 'Revisar Árbol CTQ', status: 'Establecer duración', summary: [1] },
+                            { name: 'Determinar las variables dependientes clave', status: 'Establecer duración', summary: [2] },
                         ]
                     },
                 ]
             },
             {
-                name: 'Conduct Tollgate 4 Review Meeting',
-                status: 'Set duration',
+                name: 'Realizar Reunión de Revisión de Tollgate 4',
+                status: 'Establecer duración',
                 summary: [8],
                 subtasks: [
-                    { name: 'Schedule meeting with Sponsor', status: 'Set duration', summary: [] },
-                    { name: 'Prepare Tollgate Review Memo', status: 'Set duration', summary: [1] },
-                    { name: 'Send Sponsor supporting material', status: 'Set duration', summary: [] },
-                    { name: 'Prepare the team members attending the meeting', status: 'Set duration', summary: [] },
-                    { name: 'Conduct meeting', status: 'Set duration', summary: [] },
+                    { name: 'Programar reunión con el Patrocinador', status: 'Establecer duración', summary: [] },
+                    { name: 'Preparar Memo de Revisión de Tollgate', status: 'Establecer duración', summary: [1] },
+                    { name: 'Enviar material de apoyo al Patrocinador', status: 'Establecer duración', summary: [] },
+                    { name: 'Preparar a los miembros del equipo que asisten a la reunión', status: 'Establecer duración', summary: [] },
+                    { name: 'Realizar la reunión', status: 'Establecer duración', summary: [] },
                 ]
             },
             {
-                name: 'Tollgate 5 - Data Collection Plan',
-                status: 'Set duration',
+                name: 'Tollgate 5 - Plan de Recolección de Datos',
+                status: 'Establecer duración',
                 summary: [],
                 subtasks: []
             },
@@ -110,7 +110,7 @@ const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
 
           <span className="font-medium">{task.name}</span>
         </div>
-        <p className="text-xs text-muted-foreground ml-8">+ Assign responsible</p>
+        <p className="text-xs text-muted-foreground ml-8">+ Asignar responsable</p>
       </TableCell>
       <TableCell>
         <div className="flex items-center gap-2">
@@ -144,34 +144,34 @@ export default function SixSigmaProjectPage() {
     <div className="flex flex-col gap-4">
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-            <Badge variant="outline" className="bg-amber-100 text-amber-800 border-amber-200">NEW SIX SIGMA (JASON)</Badge>
-            <h1 className="text-2xl font-bold font-headline">xServe NPS Improvement</h1>
+            <Badge variant="outline" className="bg-amber-100 text-amber-800 border-amber-200">NUEVO SEIS SIGMA (JASON)</Badge>
+            <h1 className="text-2xl font-bold font-headline">Mejora de NPS de xServe</h1>
         </div>
         <div className="flex items-center gap-2 text-sm">
             <Link href="#" className="text-muted-foreground hover:text-primary">PIPELINE</Link>
-            <Link href="#" className="text-primary font-semibold hover:text-primary">PROJECTS</Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary">DATA</Link>
+            <Link href="#" className="text-primary font-semibold hover:text-primary">PROYECTOS</Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary">DATOS</Link>
             <Link href="#" className="text-muted-foreground hover:text-primary">WIDGETS</Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary">ANALYTICS</Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary">USERS</Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary">SUPPORT</Link>
-            <Link href="#" className="text-muted-foreground hover:text-primary">FAQS</Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary">ANALÍTICAS</Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary">USUARIOS</Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary">SOPORTE</Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary">PREGUNTAS FRECUENTES</Link>
         </div>
       </header>
 
        <div className="border-b">
          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link href="#" className="flex items-center gap-2 py-2 text-primary border-b-2 border-primary">
-                <FileText className="h-4 w-4" /> Tasks
+                <FileText className="h-4 w-4" /> Tareas
             </Link>
              <Link href="#" className="flex items-center gap-2 py-2 hover:text-primary">
-                <AlertCircle className="h-4 w-4" /> Issues
+                <AlertCircle className="h-4 w-4" /> Incidencias
             </Link>
              <Link href="#" className="flex items-center gap-2 py-2 hover:text-primary">
-                <FileText className="h-4 w-4" /> Documents
+                <FileText className="h-4 w-4" /> Documentos
             </Link>
               <Link href="#" className="flex items-center gap-2 py-2 hover:text-primary">
-                <Calendar className="h-4 w-4" /> Events
+                <Calendar className="h-4 w-4" /> Eventos
             </Link>
         </nav>
       </div>
@@ -179,19 +179,19 @@ export default function SixSigmaProjectPage() {
       <main className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         <div className="lg:col-span-1 flex flex-col gap-4">
             <div className="flex items-center gap-2">
-                <Button><Plus className="mr-2 h-4 w-4" /> Task</Button>
-                <Button variant="outline">Reorder Tasks</Button>
-                <Button variant="outline">Import <ChevronDown className="ml-2 h-4 w-4" /></Button>
-                <Button variant="outline">Export <ChevronDown className="ml-2 h-4 w-4" /></Button>
+                <Button><Plus className="mr-2 h-4 w-4" /> Tarea</Button>
+                <Button variant="outline">Reordenar Tareas</Button>
+                <Button variant="outline">Importar <ChevronDown className="ml-2 h-4 w-4" /></Button>
+                <Button variant="outline">Exportar <ChevronDown className="ml-2 h-4 w-4" /></Button>
             </div>
             <Card>
                 <CardContent className="p-0">
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Tasks</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead>Summary</TableHead>
+                                <TableHead>Tareas</TableHead>
+                                <TableHead>Estado</TableHead>
+                                <TableHead>Resumen</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -206,53 +206,53 @@ export default function SixSigmaProjectPage() {
         <div className="lg:col-span-1 space-y-6">
             <Tabs defaultValue="task_info">
                 <TabsList>
-                    <TabsTrigger value="task_info">Task Info</TabsTrigger>
-                    <TabsTrigger value="documents">Documents <Badge className="ml-2">2</Badge></TabsTrigger>
-                    <TabsTrigger value="issues">Issues <Badge variant="destructive" className="ml-2">0</Badge></TabsTrigger>
-                    <TabsTrigger value="events">Events <Badge className="ml-2">0</Badge></TabsTrigger>
-                    <TabsTrigger value="activity">Activity</TabsTrigger>
-                    <TabsTrigger value="schedule">Schedule</TabsTrigger>
+                    <TabsTrigger value="task_info">Info de Tarea</TabsTrigger>
+                    <TabsTrigger value="documents">Documentos <Badge className="ml-2">2</Badge></TabsTrigger>
+                    <TabsTrigger value="issues">Incidencias <Badge variant="destructive" className="ml-2">0</Badge></TabsTrigger>
+                    <TabsTrigger value="events">Eventos <Badge className="ml-2">0</Badge></TabsTrigger>
+                    <TabsTrigger value="activity">Actividad</TabsTrigger>
+                    <TabsTrigger value="schedule">Horario</TabsTrigger>
                 </TabsList>
                 <TabsContent value="task_info" className="mt-4">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Create detailed process map</CardTitle>
+                            <CardTitle>Crear mapa de proceso detallado</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-6">
                            <Card>
                                 <CardHeader className="flex flex-row items-center justify-between">
-                                    <CardTitle className="text-base">Deal Notes / Goals</CardTitle>
-                                    <Button variant="secondary" size="sm">Edit</Button>
+                                    <CardTitle className="text-base">Notas / Objetivos del Trato</CardTitle>
+                                    <Button variant="secondary" size="sm">Editar</Button>
                                 </CardHeader>
                            </Card>
                             <Card>
                                 <CardHeader className="flex flex-row items-center justify-between">
-                                    <CardTitle className="text-base">Dependencies</CardTitle>
-                                    <Button variant="secondary" size="sm"><Plus className="mr-2 h-4 w-4" /> Dependency</Button>
+                                    <CardTitle className="text-base">Dependencias</CardTitle>
+                                    <Button variant="secondary" size="sm"><Plus className="mr-2 h-4 w-4" /> Dependencia</Button>
                                 </CardHeader>
                                 <CardContent>
                                     <div className="p-4 bg-blue-50 border border-blue-200 rounded-md">
-                                        <Link href="#" className="text-blue-600 underline">Click here</Link> to learn more about the Task Dependencies.
+                                        <Link href="#" className="text-blue-600 underline">Haga clic aquí</Link> para obtener más información sobre las Dependencias de Tareas.
                                     </div>
                                 </CardContent>
                             </Card>
                              <Card>
                                 <CardHeader className="flex flex-row items-center justify-between">
-                                    <CardTitle className="text-base">Guide</CardTitle>
-                                     <Button variant="secondary" size="sm">Edit</Button>
+                                    <CardTitle className="text-base">Guía</CardTitle>
+                                     <Button variant="secondary" size="sm">Editar</Button>
                                 </CardHeader>
                                 <CardContent className="text-sm text-muted-foreground space-y-4">
                                     <p>
-                                        Build a more detailed version of the process map developed in the Define phase. Focus on building a comprehensive view of the as-is model. This will likely require some participation from employees with expertise in the process. Often the view employees that interact with the process have varies greatly from official documentation or what leadership `thinks` the process is. Build an accurate picture of how the process really functions.
+                                        Construya una versión más detallada del mapa de procesos desarrollado en la fase de Definición. Concéntrese en construir una vista integral del modelo actual. Esto probablemente requerirá la participación de empleados con experiencia en el proceso. A menudo, la visión que tienen los empleados que interactúan con el proceso varía mucho de la documentación oficial o de lo que el liderazgo "cree" que es el proceso. Construya una imagen precisa de cómo funciona realmente el proceso.
                                     </p>
                                     <p>
-                                        The process drawing(s) at this stage should include decisions and process branching and swim lanes to indicate the parties responsible for each activity. No longer is only the `happy path` depicted but error conditions, rework and waste patterns are clearly shown. In the end, the team, including process experts, should agree that the process is as depicted. If there is uncertainty, test the drawing by observing the process in action if possible with the diagram handy for reference.
+                                        Los dibujos del proceso en esta etapa deben incluir decisiones y ramificaciones del proceso y carriles para indicar a las partes responsables de cada actividad. Ya no solo se representa el "camino feliz", sino que se muestran claramente las condiciones de error, el retrabajo y los patrones de desperdicio. Al final, el equipo, incluidos los expertos en procesos, debe estar de acuerdo en que el proceso es como se representa. Si hay incertidumbre, pruebe el diagrama observando el proceso en acción si es posible con el diagrama a mano como referencia.
                                     </p>
                                     <div>
-                                        <h4 className="font-semibold text-foreground mb-2">Resources:</h4>
-                                        <p>Description of attached documents and links in the Documents tab.</p>
+                                        <h4 className="font-semibold text-foreground mb-2">Recursos:</h4>
+                                        <p>Descripción de los documentos y enlaces adjuntos en la pestaña Documentos.</p>
                                         <ul className="list-disc pl-5 mt-2">
-                                            <li>Everyone Should Learn BPMN - Business Process Modeling Notation (BPMN) is a diagraming standard governed by the Object Management Group (OMG). It is a powerful, compact and precise notation but can take a little work to master.</li>
+                                            <li>Todos Deberían Aprender BPMN - La Notación de Modelado de Procesos de Negocio (BPMN) es un estándar de diagramación regido por el Object Management Group (OMG). Es una notación poderosa, compacta y precisa, pero puede requerir un poco de trabajo para dominarla.</li>
                                         </ul>
                                     </div>
                                 </CardContent>

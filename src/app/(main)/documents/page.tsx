@@ -20,11 +20,11 @@ import { Folder } from "lucide-react";
 export default function DocumentsPage() {
     const getStatusVariant = (status: Document['status']) => {
         switch (status) {
-            case 'Approved':
+            case 'Aprobado':
                 return 'default'
-            case 'In Review':
+            case 'En Revisión':
                 return 'secondary'
-            case 'Draft':
+            case 'Borrador':
                 return 'outline'
         }
     }
@@ -33,30 +33,30 @@ export default function DocumentsPage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Document Management
+          Gestión de Documentos
         </h1>
         <p className="text-muted-foreground">
-          Upload, version, and control your legal documents.
+          Suba, versione y controle sus documentos legales.
         </p>
       </div>
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Folder /> Document Library
+            <Folder /> Biblioteca de Documentos
           </CardTitle>
           <CardDescription>
-            All documents stored in the system.
+            Todos los documentos almacenados en el sistema.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Document Name</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Version</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Last Updated</TableHead>
+                <TableHead>Nombre del Documento</TableHead>
+                <TableHead>Tipo</TableHead>
+                <TableHead>Versión</TableHead>
+                <TableHead>Estado</TableHead>
+                <TableHead>Última Actualización</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -69,7 +69,7 @@ export default function DocumentsPage() {
                   <TableCell>v{doc.version}.0</TableCell>
                   <TableCell>
                     <Badge variant={getStatusVariant(doc.status)}
-                           className={doc.status === 'Approved' ? 'bg-accent text-accent-foreground' : ''}>
+                           className={doc.status === 'Aprobado' ? 'bg-accent text-accent-foreground' : ''}>
                       {doc.status}
                     </Badge>
                   </TableCell>

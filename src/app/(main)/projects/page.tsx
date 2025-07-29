@@ -32,27 +32,27 @@ import { cn } from "@/lib/utils";
 
 const projectNav = [
     { name: 'Dashboard', icon: LayoutDashboard, active: true },
-    { name: '+ Project', icon: PlusCircle, href: "/projects/new-playbook" },
-    { name: 'Progress', icon: BarChart2 },
-    { name: 'Task', icon: ListTodo },
-    { name: 'Documents', icon: File },
-    { name: 'Events', icon: Calendar },
-    { name: 'Issues', icon: AlertTriangle },
-    { name: 'Analytics', icon: BarChart },
-    { name: 'Notes', icon: StickyNote },
-    { name: 'Activity', icon: History },
-    { name: 'Support', icon: LifeBuoy },
+    { name: '+ Proyecto', icon: PlusCircle, href: "/projects/new-playbook" },
+    { name: 'Progreso', icon: BarChart2 },
+    { name: 'Tarea', icon: ListTodo },
+    { name: 'Documentos', icon: File },
+    { name: 'Eventos', icon: Calendar },
+    { name: 'Incidencias', icon: AlertTriangle },
+    { name: 'Analíticas', icon: BarChart },
+    { name: 'Notas', icon: StickyNote },
+    { name: 'Actividad', icon: History },
+    { name: 'Soporte', icon: LifeBuoy },
 ];
 
 
 export default function ProjectsPage() {
   const getStatusVariant = (status: Project["status"]) => {
     switch (status) {
-      case "Active":
+      case "Activo":
         return "default";
-      case "On Hold":
+      case "En Espera":
         return "secondary";
-      case "Closed":
+      case "Cerrado":
         return "outline";
     }
   };
@@ -76,17 +76,17 @@ export default function ProjectsPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold tracking-tight font-headline">
-                Projects
+                Proyectos
               </h1>
               <p className="text-muted-foreground">
-                A portfolio of all your legal projects and matters.
+                Un portafolio de todos sus proyectos y asuntos legales.
               </p>
             </div>
             <div>
               <Link href="/projects/new-playbook">
                 <Button>
                   <PlusCircle className="mr-2 h-4 w-4" />
-                  New Project
+                  Nuevo Proyecto
                 </Button>
               </Link>
             </div>
@@ -102,30 +102,30 @@ export default function ProjectsPage() {
                         <CardDescription>{project.client}</CardDescription>
                       </div>
                        <Badge variant={getStatusVariant(project.status)}
-                             className={project.status === 'Active' ? 'bg-accent text-accent-foreground' : ''}>
+                             className={project.status === 'Activo' ? 'bg-accent text-accent-foreground' : ''}>
                         {project.status}
                       </Badge>
                   </div>
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <div className="text-sm text-muted-foreground">
-                    <p>Lead: {project.leadAttorney}</p>
-                    <p>Opened: {project.openDate}</p>
+                    <p>Líder: {project.leadAttorney}</p>
+                    <p>Abierto: {project.openDate}</p>
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     <div className="flex gap-4 text-sm">
                         <div className="flex items-center gap-1.5">
                             <Folder className="h-4 w-4 text-muted-foreground" />
-                            <span>{project.documentCount} Docs</span>
+                            <span>{project.documentCount} Documentos</span>
                         </div>
                          <div className="flex items-center gap-1.5">
                             <FileText className="h-4 w-4 text-muted-foreground" />
-                            <span>{project.contractCount} Contracts</span>
+                            <span>{project.contractCount} Contratos</span>
                         </div>
                     </div>
                   <Button variant="outline" size="sm" asChild>
-                    <Link href="/projects/six-sigma">View Project</Link>
+                    <Link href="/projects/six-sigma">Ver Proyecto</Link>
                   </Button>
                 </CardFooter>
               </Card>

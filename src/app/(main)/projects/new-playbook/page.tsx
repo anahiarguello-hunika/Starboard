@@ -13,16 +13,16 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
 const playbooks = [
-    { title: "General", description: "A general-purpose playbook for any legal matter." },
-    { title: "Due Diligence", description: "A structured process for conducting thorough due diligence." },
-    { title: "M&A Process", description: "Manage mergers and acquisitions from start to finish." },
-    { title: "Real Estate General", description: "A standard playbook for real estate transactions." },
-    { title: "Fund Creation", description: "Streamline the process of creating a new investment fund." },
-    { title: "Legal Six Sigma", description: "Apply Six Sigma principles to optimize legal processes." },
-    { title: "Technology", description: "Handle technology-related legal matters like IP and licensing." },
-    { title: "Transformation", description: "Guide your organization through major legal transformations." },
-    { title: "Contracts", description: "A dedicated playbook for contract lifecycle management." },
-    { title: "Fractional Law", description: "Manage legal services for multiple clients as a fractional counsel." },
+    { title: "General", description: "Un playbook de propósito general para cualquier asunto legal." },
+    { title: "Diligencia Debida", description: "Un proceso estructurado para llevar a cabo una diligencia debida exhaustiva." },
+    { title: "Proceso de M&A", description: "Gestione fusiones y adquisiciones de principio a fin." },
+    { title: "Inmobiliario General", description: "Un playbook estándar para transacciones inmobiliarias." },
+    { title: "Creación de Fondos", description: "Agilice el proceso de creación de un nuevo fondo de inversión." },
+    { title: "Seis Sigma Legal", description: "Aplique los principios de Seis Sigma para optimizar los procesos legales." },
+    { title: "Tecnología", description: "Maneje asuntos legales relacionados con la tecnología como PI y licencias." },
+    { title: "Transformación", description: "Guíe a su organización a través de importantes transformaciones legales." },
+    { title: "Contratos", description: "Un playbook dedicado a la gestión del ciclo de vida de los contratos." },
+    { title: "Derecho Fraccional", description: "Gestione servicios legales para múltiples clientes como abogado fraccional." },
 ]
 
 export default function NewPlaybookPage() {
@@ -38,10 +38,10 @@ export default function NewPlaybookPage() {
     <div className="flex flex-col gap-8 max-w-6xl mx-auto">
        <div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Create New Project
+          Crear Nuevo Proyecto
         </h1>
         <p className="text-muted-foreground">
-          Select a playbook to get started with a new project.
+          Seleccione un playbook para comenzar con un nuevo proyecto.
         </p>
       </div>
 
@@ -54,14 +54,14 @@ export default function NewPlaybookPage() {
                 </CardHeader>
                 <CardContent className="flex-grow flex items-end justify-end">
                      <Button variant="outline" size="sm" onClick={handleSelect}>
-                        Select <ArrowRight className="ml-2 h-4 w-4" />
+                        Seleccionar <ArrowRight className="ml-2 h-4 w-4" />
                      </Button>
                 </CardContent>
             </Card>
         ))}
       </div>
        <div className="flex justify-start">
-            <Button variant="outline" onClick={() => router.back()}>Cancel</Button>
+            <Button variant="outline" onClick={() => router.back()}>Cancelar</Button>
        </div>
     </div>
   );
