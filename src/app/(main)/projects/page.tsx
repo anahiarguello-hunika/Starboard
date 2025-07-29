@@ -142,7 +142,7 @@ export default function ProjectsPage() {
                         </div>
                     </div>
                   <Button variant="outline" size="sm" asChild>
-                    <Link href="/projects/six-sigma">Ver Proyecto</Link>
+                    <Link href={project.name.includes('Adquisición') ? "/projects/ma-process" : "/projects/six-sigma"}>Ver Proyecto</Link>
                   </Button>
                 </CardFooter>
               </Card>
