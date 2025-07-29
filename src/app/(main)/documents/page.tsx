@@ -93,7 +93,17 @@ const documentsNav = [
             "Litigios laborales"
         ]
     },
-    { name: 'Propiedad intelectual', icon: BrainCircuit, href: "#"},
+    { 
+        name: 'Propiedad intelectual', 
+        icon: BrainCircuit, 
+        href: "#",
+        submenu: [
+            "Lista de Marcas y Patentes",
+            "Listas de Avisos Comerciales",
+            "Contratos de Propiedad Intelectual",
+            "Registros de Propiedad Intelectual"
+        ]
+    },
     { name: 'Activos', icon: Package, href: "#" },
     { name: 'Contratos', icon: FileText, href: "#" },
     { name: 'Cumplimiento Legal y Regulatorio', icon: ShieldCheck, href: "#"},
