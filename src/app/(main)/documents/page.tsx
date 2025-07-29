@@ -119,7 +119,22 @@ const documentsNav = [
             "Otra documentación de Activos"
         ]
     },
-    { name: 'Contratos', icon: FileText, href: "#" },
+    { name: 'Contratos', 
+        icon: FileText, 
+        href: "#",
+        submenu: [
+            "Contratos con Clientes",
+            "Contratos con Proveedores",
+            "Contratos de Fusiones y Adquisiciones",
+            "Convenios de Confidencialidad",
+            "Contratos de servicio",
+            "Contratos de distribución",
+            "Contratos de licencia",
+            "Términos y condiciones",
+            "Aviso de Privacidad",
+            "Otros"
+        ]
+    },
     { name: 'Cumplimiento Legal y Regulatorio', icon: ShieldCheck, href: "#"},
     { name: 'Seguros', icon: Landmark, href: "#" },
     { name: 'Sistemas y TI', icon: Server, href: "#" },
