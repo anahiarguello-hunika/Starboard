@@ -15,6 +15,7 @@ import {
   Briefcase,
   Sparkles,
   Ticket,
+  Landmark,
 } from "lucide-react";
 
 import {
@@ -40,6 +41,7 @@ const navItems = [
   { href: "/tasks", icon: ListTodo, label: "Tareas" },
   { href: "/documents", icon: Folder, label: "Documentos" },
   { href: "/entities", icon: Building2, label: "Gestión de Entidades"},
+  { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial Personal"},
   { href: "/summarize", icon: Sparkles, label: "IA" },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
 ];
