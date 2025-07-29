@@ -19,8 +19,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Textarea } from "@/components/ui/textarea";
-import { Paperclip, Calendar as CalendarIcon, FilePlus2 } from "lucide-react";
+import { Paperclip, Calendar as CalendarIcon, FilePlus2, ChevronDown } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function ServiceRequestPage() {
@@ -35,9 +41,26 @@ export default function ServiceRequestPage() {
             Cree un nuevo ticket para solicitar asistencia del equipo legal.
           </p>
         </div>
-        <Button>
-          <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button>
+              <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato <ChevronDown className="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem>Contrato de Prestación de Servicios (Cliente)</DropdownMenuItem>
+            <DropdownMenuItem>Contrato de Arrendamiento</DropdownMenuItem>
+            <DropdownMenuItem>Contrato de Subarrendamiento</DropdownMenuItem>
+            <DropdownMenuItem>Contrato de Prestación de Servicio (Prestador)</DropdownMenuItem>
+            <DropdownMenuItem>Contrato de Confidencialidad</DropdownMenuItem>
+            <DropdownMenuItem>Contrato Individual de Trabajo (Tiempo determinado)</DropdownMenuItem>
+            <DropdownMenuItem>Contrato Individual de Trabajo (Indeterminado con tiempo de Prueba)</DropdownMenuItem>
+            <DropdownMenuItem>Convenio de Terminación General</DropdownMenuItem>
+            <DropdownMenuItem>Convenio de Terminación Laboral</DropdownMenuItem>
+            <DropdownMenuItem>Contrato de Préstamo (Obligado Solidario)</DropdownMenuItem>
+            <DropdownMenuItem>Contrato de Compraventa de Acciones</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <Card className="lg:col-span-2">
