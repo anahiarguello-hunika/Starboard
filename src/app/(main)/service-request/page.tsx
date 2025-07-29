@@ -208,11 +208,6 @@ export default function ServiceRequestPage() {
                 </Card>
             </div>
 
-            <div className="grid gap-2">
-                <Label>¿Cómo llegaste al despacho?</Label>
-                <Input placeholder="Describa brevemente" />
-            </div>
-
              <div className="grid gap-2">
                 <Label>Adjuntos</Label>
                 <div className="flex items-center gap-4 rounded-lg border border-dashed p-4">
