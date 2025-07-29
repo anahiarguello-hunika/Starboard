@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LayoutGrid, List, Table as TableIcon } from "lucide-react";
 
 const playbooks = [
     { title: "General", description: "Un playbook de propósito general para cualquier asunto legal." },
@@ -36,14 +36,32 @@ export default function NewPlaybookPage() {
 
   return (
     <div className="flex flex-col gap-8 max-w-6xl mx-auto">
-       <div>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Crear Nuevo Proyecto
-        </h1>
-        <p className="text-muted-foreground">
-          Seleccione un playbook para comenzar con un nuevo proyecto.
-        </p>
-      </div>
+       <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight font-headline">
+              Crear Nuevo Proyecto
+            </h1>
+            <p className="text-muted-foreground">
+              Seleccione un playbook para comenzar con un nuevo proyecto.
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+              <Button variant="ghost" size="sm" className="bg-background">
+                <LayoutGrid className="h-4 w-4 mr-2" />
+                Kanban
+              </Button>
+              <Button variant="ghost" size="sm">
+                <List className="h-4 w-4 mr-2" />
+                Lista
+              </Button>
+              <Button variant="ghost" size="sm">
+                <TableIcon className="h-4 w-4 mr-2" />
+                Tabla
+              </Button>
+            </div>
+          </div>
+       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {playbooks.map((playbook) => (
