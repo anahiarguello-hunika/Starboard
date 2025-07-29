@@ -25,7 +25,10 @@ import {
   BarChart,
   StickyNote,
   History,
-  LifeBuoy
+  LifeBuoy,
+  LayoutGrid,
+  List,
+  Table as TableIcon
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -82,8 +85,22 @@ export default function ProjectsPage() {
                 Un portafolio de todos sus proyectos y asuntos legales.
               </p>
             </div>
-            <div>
-              <Link href="/projects/new-playbook">
+            <div className="flex items-center gap-2">
+               <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+                  <Button variant="ghost" size="sm" className="bg-background">
+                    <LayoutGrid className="h-4 w-4 mr-2" />
+                    Kanban
+                  </Button>
+                   <Button variant="ghost" size="sm">
+                    <List className="h-4 w-4 mr-2" />
+                    Lista
+                  </Button>
+                   <Button variant="ghost" size="sm">
+                    <TableIcon className="h-4 w-4 mr-2" />
+                    Tabla
+                  </Button>
+               </div>
+               <Link href="/projects/new-playbook">
                 <Button>
                   <PlusCircle className="mr-2 h-4 w-4" />
                   Nuevo Proyecto
