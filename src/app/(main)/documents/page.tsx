@@ -183,7 +183,18 @@ const documentsNav = [
     },
     { name: 'Concesiones', icon: FileCheck, href: "#" },
     { name: 'Formatos', icon: FileType, href: "#" },
-    { name: 'Miscelaneos', icon: Book, href: "#" },
+    { 
+        name: 'Miscelaneos', 
+        icon: Book, 
+        href: "#",
+        submenu: [
+            "Propuestas",
+            "Presentaciones",
+            "Documentos de trabajo",
+            "Memoranda",
+            "Correos"
+        ]
+    },
     { name: 'Metodologías', icon: FileText, href: "#" },
     { name: 'Otros', icon: MoreHorizontal, href: "#" },
 ];
