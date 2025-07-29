@@ -149,7 +149,15 @@ const documentsNav = [
             "Otros"
         ]
     },
-    { name: 'Seguros', icon: Landmark, href: "#" },
+    { 
+        name: 'Seguros', 
+        icon: Landmark, 
+        href: "#",
+        submenu: [
+            "Póliticas de Seguros",
+            "Demandas y reclamaciones"
+        ]
+    },
     { name: 'Sistemas y TI', icon: Server, href: "#" },
     { name: 'Litigios', icon: Scale, href: "#" },
     { name: 'Concesiones', icon: FileCheck, href: "#" },
