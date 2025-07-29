@@ -20,73 +20,199 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Paperclip } from "lucide-react";
+import { Paperclip, Calendar as CalendarIcon } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function ServiceRequestPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Solicitud de Servicio
+          Solicitud de Servicio Legal (o "SSL" o "RFP")
         </h1>
         <p className="text-muted-foreground max-w-2xl">
           Cree un nuevo ticket para solicitar asistencia del equipo legal.
         </p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Enviar una Solicitud</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-6">
-            <div className="grid gap-2">
-              <Label htmlFor="subject">Asunto</Label>
-              <Input id="subject" placeholder="Ej: Revisión de NDA con Acme Corp" />
-            </div>
+            <Card>
+                <CardHeader>
+                    <CardTitle className="text-lg">Solicitante</CardTitle>
+                </CardHeader>
+                <CardContent className="grid grid-cols-2 gap-4">
+                    <div className="grid gap-2">
+                        <Label htmlFor="request-date">Fecha de solicitud</Label>
+                        <Input id="request-date" type="date" defaultValue={new Date().toISOString().substring(0, 10)} />
+                    </div>
+                     <div className="grid gap-2">
+                        <Label htmlFor="name">Nombre</Label>
+                        <Input id="name" placeholder="Tu nombre" />
+                    </div>
+                     <div className="grid gap-2">
+                        <Label htmlFor="department">Unidad de negocio/Departamento</Label>
+                        <Input id="department" placeholder="Ej: Ventas, Marketing" />
+                    </div>
+                     <div className="grid gap-2">
+                        <Label htmlFor="email">Correo</Label>
+                        <Input id="email" type="email" placeholder="tu@email.com" />
+                    </div>
+                     <div className="grid gap-2">
+                        <Label htmlFor="phone">Teléfono</Label>
+                        <Input id="phone" type="tel" placeholder="Tu número de teléfono" />
+                    </div>
+                </CardContent>
+            </Card>
 
+            <Card>
+                <CardHeader>
+                    <CardTitle className="text-lg">Solicitud para servicio legal</CardTitle>
+                </CardHeader>
+                <CardContent className="grid gap-4">
+                     <div className="grid gap-2">
+                        <Label htmlFor="description">Descripción</Label>
+                        <Textarea
+                            id="description"
+                            placeholder="Por favor describa a detalle el problema para el cual busca consejo legal"
+                            className="min-h-[120px]"
+                        />
+                    </div>
+                     <div className="grid gap-2">
+                        <Label htmlFor="assistance">Asistencia solicitada</Label>
+                        <Textarea
+                            id="assistance"
+                            placeholder="Por favor describa la solicitud hacia el departamento legal"
+                             className="min-h-[120px]"
+                        />
+                    </div>
+                     <div className="grid gap-2">
+                        <Label htmlFor="solution">Solución buscada</Label>
+                        <Textarea
+                            id="solution"
+                            placeholder="Porfavor describa la solución buscada"
+                             className="min-h-[120px]"
+                        />
+                    </div>
+                </CardContent>
+            </Card>
+            
             <div className="grid grid-cols-2 gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="type">Tipo de Solicitud</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Seleccione un tipo" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="consulta">Consulta Legal</SelectItem>
-                      <SelectItem value="revision">Revisión de Contrato</SelectItem>
-                      <SelectItem value="redaccion">Redacción de Documento</SelectItem>
-                      <SelectItem value="pi">Asunto de PI</SelectItem>
-                       <SelectItem value="otro">Otro</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="priority">Prioridad</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Seleccione la prioridad" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="baja">Baja</SelectItem>
-                      <SelectItem value="normal">Normal</SelectItem>
-                      <SelectItem value="alta">Alta</SelectItem>
-                      <SelectItem value="urgente">Urgente</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-lg">Riesgo</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid gap-4">
+                        <div className="grid gap-2">
+                             <Label>Rating</Label>
+                             <RadioGroup defaultValue="bajo" className="flex gap-4">
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="bajo" id="risk-low" />
+                                    <Label htmlFor="risk-low">Bajo</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="medio" id="risk-medium" />
+                                    <Label htmlFor="risk-medium">Medio</Label>
+                                </div>
+                                 <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="alto" id="risk-high" />
+                                    <Label htmlFor="risk-high">Alto</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
+                        <div className="grid gap-2">
+                            <Label>Consecuencia/Impacto monetario</Label>
+                             <Input id="value" placeholder="Valor $" />
+                             <Input id="exposure" placeholder="Exposición $" />
+                        </div>
+                         <div className="grid gap-2">
+                             <Label>Probabilidad de riesgo</Label>
+                             <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Bajo, Medio, Alto" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="bajo">Bajo</SelectItem>
+                                    <SelectItem value="medio">Medio</SelectItem>
+                                    <SelectItem value="alto">Alto</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                        <div className="grid gap-2">
+                             <Label>Habilidad legal para mitigar el riesgo</Label>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Eliminar, Reducir, Sin impacto" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="eliminar">Eliminar</SelectItem>
+                                    <SelectItem value="reducir">Reducir</SelectItem>
+                                    <SelectItem value="sin-impacto">Sin impacto</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </CardContent>
+                </Card>
+                 <Card>
+                    <CardHeader>
+                        <CardTitle className="text-lg">Urgencia</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid gap-4">
+                        <div className="grid gap-2">
+                             <Label>Rating</Label>
+                             <RadioGroup defaultValue="medio" className="flex gap-4">
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="bajo" id="urgency-low" />
+                                    <Label htmlFor="urgency-low">Bajo</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="medio" id="urgency-medium" />
+                                    <Label htmlFor="urgency-medium">Medio</Label>
+                                </div>
+                                 <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="alto" id="urgency-high" />
+                                    <Label htmlFor="urgency-high">Alto</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
+                         <div className="grid gap-2">
+                            <Label htmlFor="start-date">Fecha de inicio deseada</Label>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Inmediato, ASAP, Flexible" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="inmediato">Inmediato</SelectItem>
+                                    <SelectItem value="asap">ASAP</SelectItem>
+                                    <SelectItem value="flexible">Flexible</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                        <div className="grid gap-2">
+                            <Label htmlFor="end-date">Fecha de fin deseada</Label>
+                             <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Inmediato, ASAP, Flexible" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="inmediato">Inmediato</SelectItem>
+                                    <SelectItem value="asap">ASAP</SelectItem>
+                                    <SelectItem value="flexible">Flexible</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="description">Descripción</Label>
-              <Textarea
-                id="description"
-                placeholder="Por favor, describa su solicitud en detalle..."
-                className="min-h-[150px]"
-              />
-              <p className="text-xs text-muted-foreground">
-                Proporcione todos los detalles relevantes, como nombres de las partes, fechas clave y el resultado deseado.
-              </p>
+                <Label>¿Cómo llegaste al despacho?</Label>
+                <Input placeholder="Describa brevemente" />
             </div>
+
              <div className="grid gap-2">
                 <Label>Adjuntos</Label>
                 <div className="flex items-center gap-4 rounded-lg border border-dashed p-4">
