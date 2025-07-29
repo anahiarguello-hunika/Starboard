@@ -17,6 +17,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
 import { documentsData, type Document } from "@/lib/mock-data";
 import { 
     Folder,
@@ -38,11 +46,26 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import React from 'react';
 
 
 const documentsNav = [
     { name: 'Proyectos (Matters)', icon: Briefcase, href: "#"},
-    { name: 'Información Corporativa', icon: Building, href: "#"},
+    { 
+        name: 'Información Corporativa', 
+        icon: Building, 
+        href: "#",
+        submenu: [
+            "Escritura Constitutiva",
+            "Libro de Registro de Acciones",
+            "Libro de Variaciones del Capital",
+            "Libro de Actas de Asamblea",
+            "Libro de Actas de Sesiones del Consejo",
+            "Títulos accionarios",
+            "Contratos de compraventa de acciones",
+            "Convenios entre accionistas"
+        ]
+    },
     { name: 'Información Financiera', icon: DollarSign, href: "#"},
     { name: 'Laboral', icon: Users, href: "#" },
     { name: 'Propiedad intelectual', icon: BrainCircuit, href: "#"},
@@ -71,6 +94,21 @@ export default function DocumentsPage() {
                 return 'outline'
         }
     }
+    const [activeSubMenu, setActiveSubMenu] = React.useState<string[] | undefined>(undefined);
+    const [activeSubMenuItem, setActiveSubMenuItem] = React.useState<string | undefined>(undefined);
+    const [activeMainItem, setActiveMainItem] = React.useState<string>("Proyectos (Matters)");
+
+    const handleMainMenuClick = (item: typeof documentsNav[0]) => {
+        setActiveMainItem(item.name);
+        if (item.submenu) {
+            setActiveSubMenu(item.submenu);
+            setActiveSubMenuItem(item.submenu[0]);
+        } else {
+            setActiveSubMenu(undefined);
+            setActiveSubMenuItem(undefined);
+        }
+    };
+
 
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
@@ -79,8 +117,9 @@ export default function DocumentsPage() {
                  {documentsNav.map((item, index) => (
                     <Link key={item.name} href={item.href || "#"} className={cn(
                         'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
-                        'hover:bg-muted'
-                    )}>
+                        activeMainItem === item.name ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                    )}
+                    onClick={() => handleMainMenuClick(item)}>
                         <span className="text-xs w-6 text-right">{String(index+1).padStart(2, '0')}</span>
                         <item.icon className="h-5 w-5" />
                         <span>{item.name}</span>
@@ -89,13 +128,32 @@ export default function DocumentsPage() {
             </nav>
         </div>
         <div className="flex flex-col gap-8">
-            <div>
-                <h1 className="text-3xl font-bold tracking-tight font-headline">
-                Gestión de Documentos
-                </h1>
-                <p className="text-muted-foreground">
-                Suba, versione y controle sus documentos legales.
-                </p>
+            <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-3xl font-bold tracking-tight font-headline">
+                    Gestión de Documentos
+                    </h1>
+                    <p className="text-muted-foreground">
+                    Suba, versione y controle sus documentos legales.
+                    </p>
+                </div>
+                {activeSubMenu && (
+                     <Menubar>
+                        <MenubarMenu>
+                            <MenubarTrigger>{activeSubMenuItem}</MenubarTrigger>
+                            <MenubarContent>
+                                {activeSubMenu.map((item, index) => (
+                                     <React.Fragment key={item}>
+                                        <MenubarItem onClick={() => setActiveSubMenuItem(item)}>
+                                            {String(index + 1).padStart(2, '0')} {item}
+                                        </MenubarItem>
+                                        {index < activeSubMenu.length - 1 && <MenubarSeparator />}
+                                    </React.Fragment>
+                                ))}
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                )}
             </div>
             <Card>
                 <CardHeader>
