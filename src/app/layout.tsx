@@ -25,7 +25,7 @@ export default function RootLayout({
         />
         <Script src="/src/lib/frameworks-bootstrap.min.js" strategy="beforeInteractive" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased" suppressHydrationWarning={true}>
         {children}
         <Toaster />
       </body>
