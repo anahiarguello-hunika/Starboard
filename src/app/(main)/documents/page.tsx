@@ -82,7 +82,17 @@ const documentsNav = [
             "Presupuestos y Pronósticos"
         ]
     },
-    { name: 'Laboral', icon: Users, href: "#" },
+    { 
+        name: 'Laboral', 
+        icon: Users, 
+        href: "#",
+        submenu: [
+            "Lista de empleados",
+            "Contratos con empleados",
+            "Políticas y planeación",
+            "Litigios laborales"
+        ]
+    },
     { name: 'Propiedad intelectual', icon: BrainCircuit, href: "#"},
     { name: 'Activos', icon: Package, href: "#" },
     { name: 'Contratos', icon: FileText, href: "#" },
