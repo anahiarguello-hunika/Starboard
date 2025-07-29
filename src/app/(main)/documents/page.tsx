@@ -135,7 +135,20 @@ const documentsNav = [
             "Otros"
         ]
     },
-    { name: 'Cumplimiento Legal y Regulatorio', icon: ShieldCheck, href: "#"},
+    { 
+        name: 'Cumplimiento Legal y Regulatorio', 
+        icon: ShieldCheck, 
+        href: "#",
+        submenu: [
+            "Documentos ambientales",
+            "Licencias y permisos",
+            "Políticas de Cumplimiento",
+            "Avisos PLD",
+            "Expediente Único",
+            "Beneficiario Controlador",
+            "Otros"
+        ]
+    },
     { name: 'Seguros', icon: Landmark, href: "#" },
     { name: 'Sistemas y TI', icon: Server, href: "#" },
     { name: 'Litigios', icon: Scale, href: "#" },
