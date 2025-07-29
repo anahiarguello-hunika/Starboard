@@ -22,6 +22,7 @@ const playbooks = [
     { title: "Tecnología", description: "Maneje asuntos legales relacionados con la tecnología como PI y licencias.", href: "/projects" },
     { title: "Transformación", description: "Guíe a su organización a través de importantes transformaciones legales.", href: "/projects" },
     { title: "Contratos", description: "Un playbook dedicado a la gestión del ciclo de vida de los contratos.", href: "/projects" },
+    { title: "Bienes Raíces", description: "Gestione transacciones y asuntos de bienes raíces.", href: "/projects/real-estate" },
     { title: "Derecho Fraccional", description: "Gestione servicios legales para múltiples clientes como abogado fraccional.", href: "/projects" },
 ]
 
