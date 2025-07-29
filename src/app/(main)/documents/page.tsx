@@ -66,7 +66,22 @@ const documentsNav = [
             "Convenios entre accionistas"
         ]
     },
-    { name: 'Información Financiera', icon: DollarSign, href: "#"},
+    { 
+        name: 'Información Financiera', 
+        icon: DollarSign, 
+        href: "#",
+        submenu: [
+            "Estados Financieros",
+            "Reportes de Auditoría",
+            "Documentos Fiscales",
+            "Préstamos y documentos financieros",
+            "Pagarés",
+            "Fianzas",
+            "Planeación de gastos",
+            "Cuentas de administración",
+            "Presupuestos y Pronósticos"
+        ]
+    },
     { name: 'Laboral', icon: Users, href: "#" },
     { name: 'Propiedad intelectual', icon: BrainCircuit, href: "#"},
     { name: 'Activos', icon: Package, href: "#" },
