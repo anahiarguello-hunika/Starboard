@@ -45,7 +45,7 @@ const navItems = [
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial Personal"},
   { href: "/summarize", icon: Sparkles, label: "IA" },
   { href: "/legal-audits", icon: BookOpenCheck, label: "Auditorías Legales" },
-  { href: "/background-check", icon: UserSearch, label: "Background check" },
+  { href: "https://backgroundcheck.mx/Dashboard/Home/", icon: UserSearch, label: "Background check", external: true },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
 ];
 
@@ -82,13 +82,13 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <SidebarContent>
           <SidebarMenu>
             {navItems.map((item) => (
-              <SidebarMenuItem key={item.href}>
+              <SidebarMenuItem key={item.label}>
                 <SidebarMenuButton
                   asChild
-                  isActive={adjustedPathname.startsWith(item.href)}
+                  isActive={!item.external && adjustedPathname.startsWith(item.href)}
                   tooltip={item.label}
                 >
-                  <Link href={item.href}>
+                  <Link href={item.href} target={item.external ? '_blank' : undefined}>
                     <item.icon />
                     <span>{item.label}</span>
                   </Link>
