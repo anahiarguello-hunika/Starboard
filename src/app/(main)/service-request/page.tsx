@@ -28,7 +28,7 @@ export default function ServiceRequestPage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Solicitud de Servicio Legal (o "SSL" o "RFP")
+          Solicitud de Servicio
         </h1>
         <p className="text-muted-foreground max-w-2xl">
           Cree un nuevo ticket para solicitar asistencia del equipo legal.
