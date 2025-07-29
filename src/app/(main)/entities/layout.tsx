@@ -11,6 +11,7 @@ import {
   HeartHandshake,
   History,
   Landmark,
+  LayoutDashboard,
   Library,
   Link2,
   Scale,
@@ -25,6 +26,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 const entityNav = [
+  { name: 'Dashboard', href: '#', icon: LayoutDashboard },
   { name: 'Resumen', href: '/entities/overview', icon: Users },
   { name: 'Recordatorios', href: '#', icon: Siren },
   { name: 'Gobernanza', href: '#', icon: Scale },
