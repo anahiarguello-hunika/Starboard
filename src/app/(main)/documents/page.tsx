@@ -104,7 +104,21 @@ const documentsNav = [
             "Registros de Propiedad Intelectual"
         ]
     },
-    { name: 'Activos', icon: Package, href: "#" },
+    { 
+        name: 'Activos', 
+        icon: Package, 
+        href: "#",
+        submenu: [
+            "Inmuebles",
+            "Lista de Inmuebles en propiedad",
+            "Lista de Inmuebles en renta",
+            "Propiedades Arrendadas",
+            "Otra documentación de Inmuebles y Activos",
+            "Muebles",
+            "Equipo y Maquinaria",
+            "Otra documentación de Activos"
+        ]
+    },
     { name: 'Contratos', icon: FileText, href: "#" },
     { name: 'Cumplimiento Legal y Regulatorio', icon: ShieldCheck, href: "#"},
     { name: 'Seguros', icon: Landmark, href: "#" },
