@@ -37,6 +37,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import Link from 'next/link';
+import { cn } from "@/lib/utils";
 
 const tasks = [
     {
