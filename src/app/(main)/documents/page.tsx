@@ -195,7 +195,18 @@ const documentsNav = [
             "Correos"
         ]
     },
-    { name: 'Metodologías', icon: FileText, href: "#" },
+    { 
+        name: 'Metodologías', 
+        icon: FileText, 
+        href: "#",
+        submenu: [
+            "Cultura",
+            "Personas",
+            "Procesos",
+            "Tecnología",
+            "Data"
+        ] 
+    },
     { name: 'Otros', icon: MoreHorizontal, href: "#" },
 ];
 
