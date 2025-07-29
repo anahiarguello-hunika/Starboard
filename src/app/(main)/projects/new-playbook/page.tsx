@@ -19,7 +19,6 @@ const playbooks = [
     { title: "Proceso de M&A", description: "Gestione fusiones y adquisiciones de principio a fin.", href: "/projects/ma-process" },
     { title: "Inmobiliario General", description: "Un playbook estándar para transacciones inmobiliarias.", href: "/projects" },
     { title: "Creación de Fondos", description: "Agilice el proceso de creación de un nuevo fondo de inversión.", href: "/projects" },
-    { title: "Seis Sigma Legal", description: "Aplique los principios de Seis Sigma para optimizar los procesos legales.", href: "/projects/six-sigma" },
     { title: "Tecnología", description: "Maneje asuntos legales relacionados con la tecnología como PI y licencias.", href: "/projects" },
     { title: "Transformación", description: "Guíe a su organización a través de importantes transformaciones legales.", href: "/projects" },
     { title: "Contratos", description: "Un playbook dedicado a la gestión del ciclo de vida de los contratos.", href: "/projects" },
