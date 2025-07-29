@@ -158,7 +158,17 @@ const documentsNav = [
             "Demandas y reclamaciones"
         ]
     },
-    { name: 'Sistemas y TI', icon: Server, href: "#" },
+    { 
+        name: 'Sistemas y TI', 
+        icon: Server, 
+        href: "#",
+        submenu: [
+            "Descripción General de Infraestructura en Sistemas",
+            "Contratos de Licencias de Software",
+            "Protección de Datos y Políticas de Privacidad",
+            "Otros"
+        ]
+    },
     { name: 'Litigios', icon: Scale, href: "#" },
     { name: 'Concesiones', icon: FileCheck, href: "#" },
     { name: 'Formatos', icon: FileType, href: "#" },
