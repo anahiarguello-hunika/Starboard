@@ -99,58 +99,53 @@ const tasks = [
 ]
 
 const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
-  <React.Fragment>
-    <TableRow className={cn(task.active && 'bg-blue-100')}>
-        <TableCell style={{ paddingLeft: `${level * 24 + 16}px` }}>
-            <div className="flex items-center gap-2">
-                {task.subtasks.length > 0 ? (
-                    <CollapsibleTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-6 w-6">
-                            <ChevronRight className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-90" />
-                        </Button>
-                    </CollapsibleTrigger>
-                ) : <span className="w-6 h-6 inline-block" />}
+    <Collapsible asChild defaultOpen={level < 2}>
+      <React.Fragment>
+        <TableRow className={cn(task.active && 'bg-blue-100')}>
+            <TableCell style={{ paddingLeft: `${level * 24 + 16}px` }}>
+                <div className="flex items-center gap-2">
+                    {task.subtasks.length > 0 ? (
+                        <CollapsibleTrigger asChild>
+                            <Button variant="ghost" size="icon" className="h-6 w-6">
+                                <ChevronRight className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-90" />
+                            </Button>
+                        </CollapsibleTrigger>
+                    ) : <span className="w-6 h-6 inline-block" />}
 
-                <span className="font-medium">{task.name}</span>
-            </div>
-             <p className="text-xs text-muted-foreground ml-8">+ Asignar responsable</p>
-        </TableCell>
-        <TableCell>
-            <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <span className="text-muted-foreground text-xs">{task.status}</span>
-            </div>
-        </TableCell>
-        <TableCell>
-            <div className="flex items-center gap-1.5">
-                {task.summary.map((s: number, i: number) => (
-                    <div key={i} className="flex items-center gap-1 text-muted-foreground text-xs border rounded-full px-2 py-0.5">
-                        <Paperclip className="h-3 w-3" />
-                        <span>{s}</span>
-                    </div>
-                ))}
-            </div>
-        </TableCell>
-    </TableRow>
-    {task.subtasks.length > 0 && (
-      <CollapsibleContent asChild>
-        <tr>
-          <td colSpan={3} className="p-0">
-             {task.subtasks.map((subtask: any, index: number) => (
-               <TaskCollapsible key={index} task={subtask} level={level + 1} />
-             ))}
-          </td>
-        </tr>
-      </CollapsibleContent>
-    )}
-  </React.Fragment>
+                    <span className="font-medium">{task.name}</span>
+                </div>
+                 <p className="text-xs text-muted-foreground ml-8">+ Asignar responsable</p>
+            </TableCell>
+            <TableCell>
+                <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-500" />
+                    <span className="text-muted-foreground text-xs">{task.status}</span>
+                </div>
+            </TableCell>
+            <TableCell>
+                <div className="flex items-center gap-1.5">
+                    {task.summary.map((s: number, i: number) => (
+                        <div key={i} className="flex items-center gap-1 text-muted-foreground text-xs border rounded-full px-2 py-0.5">
+                            <Paperclip className="h-3 w-3" />
+                            <span>{s}</span>
+                        </div>
+                    ))}
+                </div>
+            </TableCell>
+        </TableRow>
+        {task.subtasks.length > 0 && (
+          <CollapsibleContent asChild>
+            <React.Fragment>
+              {task.subtasks.map((subtask: any, index: number) => (
+                <TaskRow key={index} task={subtask} level={level + 1} />
+              ))}
+            </React.Fragment>
+          </CollapsibleContent>
+        )}
+      </React.Fragment>
+    </Collapsible>
 );
 
-const TaskCollapsible = ({ task, level = 0 }: { task: any, level?: number }) => (
-    <Collapsible defaultOpen={level < 2}>
-        <TaskRow task={task} level={level} />
-    </Collapsible>
-)
 
 export default function SixSigmaProjectPage() {
   return (
@@ -209,7 +204,7 @@ export default function SixSigmaProjectPage() {
                         </TableHeader>
                         <TableBody>
                             {tasks.map((task, index) => (
-                                <TaskCollapsible key={index} task={task} />
+                                <TaskRow key={index} task={task} />
                             ))}
                         </TableBody>
                     </Table>
