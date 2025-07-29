@@ -13,6 +13,7 @@ import {
   ListTodo,
   Scale,
   Briefcase,
+  Sparkles,
 } from "lucide-react";
 
 import {
@@ -38,7 +39,7 @@ const navItems = [
   { href: "/tasks", icon: ListTodo, label: "Tareas" },
   { href: "/documents", icon: Folder, label: "Documentos" },
   { href: "/entities", icon: Building2, label: "Gestión de Entidades"},
-  { href: "/summarize", icon: BookOpenCheck, label: "Resumidor IA" },
+  { href: "/summarize", icon: Sparkles, label: "IA" },
 ];
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
