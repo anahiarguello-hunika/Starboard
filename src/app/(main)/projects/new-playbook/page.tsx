@@ -17,6 +17,7 @@ const playbooks = [
     { title: "General", description: "Un playbook de propósito general para cualquier asunto legal.", href: "/projects" },
     { title: "Diligencia Debida", description: "Un proceso estructurado para llevar a cabo una diligencia debida exhaustiva.", href: "/projects" },
     { title: "Proceso de M&A", description: "Gestione fusiones y adquisiciones de principio a fin.", href: "/projects/ma-process" },
+    { title: "Legal Seis Sigma", description: "Un playbook para gestionar proyectos de mejora de procesos legales.", href: "/projects/six-sigma-legal" },
     { title: "Inmobiliario General", description: "Un playbook estándar para transacciones inmobiliarias.", href: "/projects" },
     { title: "Creación de Fondos", description: "Agilice el proceso de creación de un nuevo fondo de inversión.", href: "/projects" },
     { title: "Tecnología", description: "Maneje asuntos legales relacionados con la tecnología como PI y licencias.", href: "/projects" },
