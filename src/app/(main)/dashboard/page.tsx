@@ -1,9 +1,11 @@
+
 import {
   AlertCircle,
   CheckCircle2,
   FilePlus2,
   ShieldCheck,
-  ChevronRight
+  ChevronRight,
+  Ticket,
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -25,6 +27,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from 'next/link';
 
 const activeProjects = [
   { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75 },
@@ -137,7 +140,12 @@ export default function DashboardPage() {
                 <Button>
                   <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato
                 </Button>
-                <Button variant="secondary">Solicitar Revisión Legal</Button>
+                <Button variant="secondary" asChild>
+                  <Link href="/service-request">
+                    <Ticket className="mr-2 h-4 w-4" />
+                    Solicitud de Servicio
+                  </Link>
+                </Button>
                 <Button variant="ghost" className="justify-start">Generar Informe</Button>
               </CardContent>
             </Card>
