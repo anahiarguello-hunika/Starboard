@@ -283,10 +283,10 @@ export default function ClientDetailPage() {
                             <CardContent className="space-y-4">
                                 <p className="text-sm text-muted-foreground">A global commercial airline business. This is a VIP customer of ours.</p>
                                 <div className="text-sm space-y-2">
-                                    <p><strong>Business Size</strong><br />9.9</p>
-                                    <p><strong>Services Sold</strong><br /><Badge variant="secondary">Expert Services</Badge></p>
-                                    <p><strong>Client Asset Folder</strong><br /><Link href="#" className="text-primary flex items-center gap-1"><Folder className="h-4 w-4"/> https://googledrive.com</Link></p>
-                                    <p><strong>Location</strong><br /><Link href="#" className="text-primary flex items-center gap-1"><Globe className="h-4 w-4" /> USA</Link></p>
+                                    <div><strong>Business Size</strong><br />9.9</div>
+                                    <div><strong>Services Sold</strong><br /><Badge variant="secondary">Expert Services</Badge></div>
+                                    <div><strong>Client Asset Folder</strong><br /><Link href="#" className="text-primary flex items-center gap-1"><Folder className="h-4 w-4"/> https://googledrive.com</Link></div>
+                                    <div><strong>Location</strong><br /><Link href="#" className="text-primary flex items-center gap-1"><Globe className="h-4 w-4" /> USA</Link></div>
                                 </div>
                                 <Button variant="link" size="sm" className="p-0 text-primary">Show more <ChevronDown className="h-4 w-4 ml-1" /></Button>
                             </CardContent>
