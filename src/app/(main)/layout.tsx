@@ -19,6 +19,7 @@ import {
   Landmark,
   UserSearch,
   Users,
+  Award,
 } from "lucide-react";
 
 import {
@@ -45,10 +46,11 @@ const navItems = [
   { href: "/documents", icon: Folder, label: "Documentos" },
   { href: "/entities", icon: Building2, label: "Gestión de Entidades"},
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial Personal"},
-  { href: "/summarize", icon: Sparkles, label: "IA" },
+  { href: "/trademarks", icon: Award, label: "Marcas y Patentes"},
   { href: "/legal-audits", icon: BookOpenCheck, label: "Auditorías Legales" },
   { href: "/background-check", icon: UserSearch, label: "Background check" },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
+  { href: "/summarize", icon: Sparkles, label: "IA" },
 ];
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
