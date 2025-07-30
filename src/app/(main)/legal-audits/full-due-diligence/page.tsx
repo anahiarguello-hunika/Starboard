@@ -419,6 +419,14 @@ export default function FullDueDiligencePage() {
                     </div>
                 </div>
 
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Favor de anexar los documentos que amparen el pago de regalías con relación a licencias de marcas y otra Propiedad Industrial.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
             </div>
         </CardContent>
       </Card>
