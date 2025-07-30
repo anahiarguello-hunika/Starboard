@@ -789,7 +789,6 @@ export default function FullDueDiligencePage() {
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
-
                 <div className="space-y-4 rounded-lg border p-6 mt-6">
                     <Label className="text-base">Adjuntar todas las cartas de intención, memoranda de entendimiento, contratos de co-inversión u otros contratos de asociación.</Label>
                     <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
@@ -990,9 +989,35 @@ export default function FullDueDiligencePage() {
                         ))}
                     </TableBody>
                 </Table>
+                 <div className="space-y-2 rounded-lg border p-6 mt-6">
+                    <Label>Mencione todos los requisitos o restricciones ecológicos a los que la Sociedad está sujeta.</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
+                 <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar los estudios "Fase I" y "Fase II" de Caracterización Ambiental realizados sobre los inmuebles propiedad de la Sociedad.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                 <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar la documentación relacionada con inspecciones gubernamentales, auditorias ambientales, certificados ambientales o reportes de cumplimiento (internos o externos) de la Sociedad.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar las notificaciones o reportes de derrames ambientales, liberación, o condiciones de contaminación (internos o externos) realizados por la Sociedad y descripción de todas las acciones tomadas en respuesta a dichos reportes o notificaciones.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
             </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
