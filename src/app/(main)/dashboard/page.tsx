@@ -1,4 +1,6 @@
 
+'use client';
+
 import {
   AlertCircle,
   CheckCircle2,
@@ -7,6 +9,7 @@ import {
   ChevronRight,
   Ticket,
   ChevronDown,
+  PieChart as PieChartIcon,
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -35,6 +38,12 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from 'next/link';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
+import { Pie, PieChart, Cell } from 'recharts';
 
 const activeProjects = [
   { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75 },
@@ -48,6 +57,16 @@ const alerts = [
     { id: "ALRT-002", title: "Nueva Regulación", description: "Actualización de la Ley de Privacidad de Datos efectiva el 1 de octubre.", level: "info" },
     { id: "ALRT-003", title: "Tarea Vencida", description: "La revisión del acuerdo de proveedor está vencida por 3 días.", level: "error" },
 ]
+
+const projectStatusData = [
+  { name: 'En Progreso', count: 2, fill: 'hsl(var(--chart-2))' },
+  { name: 'En Pausa', count: 1, fill: 'hsl(var(--chart-4))' },
+  { name: 'Completados', count: 3, fill: 'hsl(var(--border))' },
+];
+
+const totalProjects = projectStatusData.reduce((sum, item) => sum + item.count, 0);
+const inProgressPercentage = Math.round((projectStatusData.find(p => p.name === 'En Progreso')!.count / totalProjects) * 100);
+
 
 export default function DashboardPage() {
   return (
@@ -117,7 +136,7 @@ export default function DashboardPage() {
         </TabsList>
         <TabsContent value="general_counsel" className="mt-4">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="lg:col-span-1">
+             <Card className="lg:col-span-1">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <ShieldCheck className="text-accent" /> Medidor de Cumplimiento
@@ -136,7 +155,61 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
             
-            <Card className="lg:col-span-2">
+            <Card className="lg:col-span-1">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                    <PieChartIcon className="text-muted-foreground" />
+                    Resumen de Proyectos
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col justify-center gap-2">
+                        {projectStatusData.map(item => (
+                            <div key={item.name} className="flex items-center justify-between text-sm">
+                                <div className="flex items-center gap-2">
+                                    <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
+                                    <span className="text-muted-foreground">{item.name}</span>
+                                </div>
+                                <span className="font-semibold">{item.count}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <ChartContainer config={{}} className="w-full h-[120px]">
+                        <PieChart>
+                          <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                          <Pie
+                            data={projectStatusData}
+                            dataKey="count"
+                            nameKey="name"
+                            innerRadius={35}
+                            outerRadius={50}
+                            strokeWidth={2}
+                          >
+                            {projectStatusData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={entry.fill} />
+                            ))}
+                          </Pie>
+                           <text
+                                x="50%"
+                                y="50%"
+                                textAnchor="middle"
+                                dominantBaseline="middle"
+                                className="fill-foreground text-center"
+                            >
+                                <tspan x="50%" y="52%" className="text-xl font-bold">
+                                {inProgressPercentage}%
+                                </tspan>
+                            </text>
+                        </PieChart>
+                      </ChartContainer>
+                    </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Card className="lg:col-span-1">
               <CardHeader>
                 <CardTitle>Proyectos Activos</CardTitle>
                 <CardDescription>
