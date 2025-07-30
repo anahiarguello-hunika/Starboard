@@ -61,6 +61,7 @@ const penalComplianceQuestions = [
     "¿La Sociedad ha designado un Órgano de Control u Oficial de Cumplimiento que supervise la ejecución de los Protocolos y/o Manuales Internos?",
     "En caso de contar con Manuales y/o Protocolos, ¿éstos fueron aprobados por el Consejo de Administración?",
     "¿La Sociedad ha implementado un canal de denuncias interno entre los miembros o trabajadores de la empresa ante el conocimiento de hechos ilícitos?",
+    "¿El Órgano de Control u Oficial de Cumplimiento informa al Consejo de Administración sobre la implementación de los Protocolos y/o Manuales Internos?",
 ];
 
 const penalComplianceRadioOptions = ["Sí", "No", "No sé"];
@@ -331,6 +332,17 @@ export default function FullDueDiligencePage() {
                         ))}
                     </TableBody>
                 </Table>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Favor de adjuntar el Manual, Protocolo o Políticas Internas para la prevención delictiva, en caso de contar con él.</Label>
+                    <p className="text-sm text-muted-foreground">Sube 1 archivo compatible. El tamaño máximo es de 10 GB.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Mencione el nombre completo de las personas que conforman el Órgano de Control u Oficial de Cumplimiento.</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
             </div>
         </CardContent>
       </Card>
