@@ -188,7 +188,7 @@ const getStatusIcon = (status: string) => {
 
 const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
   <Collapsible asChild defaultOpen={level < 2}>
-    <>
+    <React.Fragment>
       <TableRow className={cn(task.active && 'bg-amber-100/50')}>
         <TableCell style={{ paddingLeft: `${level * 24 + 16}px` }}>
           <div className="flex items-center gap-2">
@@ -222,13 +222,13 @@ const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
         <TableCell></TableCell>
       </TableRow>
       <CollapsibleContent asChild>
-         <>
+        <>
           {task.subtasks.map((subtask: any, index: number) => (
             <TaskRow key={index} task={subtask} level={level + 1} />
           ))}
-         </>
+        </>
       </CollapsibleContent>
-    </>
+    </React.Fragment>
   </Collapsible>
 );
 
