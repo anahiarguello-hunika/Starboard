@@ -62,7 +62,7 @@ const alerts = [
 
 const projectStatusData = [
   { name: 'En Progreso', count: 2, fill: 'hsl(var(--chart-2))' },
-  { name: 'En Pausa', count: 1, fill: 'hsl(var(--chart-4))' },
+  { name: 'En Pausa', count: 1, fill: 'hsl(var(--chart-3))' },
   { name: 'Completados', count: 3, fill: 'hsl(var(--border))' },
 ];
 
@@ -293,7 +293,7 @@ export default function DashboardPage() {
                     <TableCell>
                       <Badge
                         variant={project.status === 'En riesgo' ? 'destructive' : project.status === 'Necesita revisión' ? 'secondary' : 'default'}
-                        className={project.status === 'En curso' ? 'bg-green-100 text-green-800' : ''}
+                        className={project.status === 'En curso' ? 'bg-blue-100 text-blue-800' : ''}
                       >
                         {project.status}
                       </Badge>

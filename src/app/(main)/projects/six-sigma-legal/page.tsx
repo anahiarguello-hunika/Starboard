@@ -199,7 +199,7 @@ const getStatusIcon = (status: string) => {
 };
 
 const TaskRow = ({ task, level = 0 }: { task: any; level?: number }) => (
-    <TableRow className={cn(task.status === 'active' && 'bg-orange-100/80')}>
+    <TableRow className={cn(task.status === 'active' && 'bg-gray-300/80')}>
         <TableCell style={{ paddingLeft: `${level * 24 + 16}px` }}>
             <div className="flex items-center gap-2">
                 <CollapsibleTrigger asChild>
@@ -208,7 +208,7 @@ const TaskRow = ({ task, level = 0 }: { task: any; level?: number }) => (
                     </Button>
                 </CollapsibleTrigger>
                 <div className="flex-1">
-                    <span className={cn("font-medium", task.status === 'active' && 'text-orange-600')}>{task.name}</span>
+                    <span className={cn("font-medium", task.status === 'active' && 'text-gray-800')}>{task.name}</span>
                     <p className={cn("text-xs", task.assignees.startsWith('+') ? "text-blue-500" : "text-muted-foreground")}>{task.assignees}</p>
                 </div>
             </div>
@@ -344,7 +344,7 @@ export default function SixSigmaLegalPage() {
             <div className="flex justify-between items-center h-8">
                <div />
               <TabsList className="bg-transparent border-0 p-0 h-auto">
-                <TabsTrigger value="task_info" className="text-xs p-2 h-auto border-b-2 border-orange-500 text-orange-500">TASK INFO</TabsTrigger>
+                <TabsTrigger value="task_info" className="text-xs p-2 h-auto border-b-2 border-gray-600 text-gray-600">TASK INFO</TabsTrigger>
                 <TabsTrigger value="documents" className="text-xs p-2 h-auto border-0 rounded-none">DOCUMENTS <Badge className="ml-2 bg-green-500 text-white rounded-sm text-[8px] px-1 py-0.5">2</Badge></TabsTrigger>
                 <TabsTrigger value="issues" className="text-xs p-2 h-auto border-0 rounded-none">ISSUES <Badge variant="destructive" className="ml-2 rounded-sm text-[8px] px-1 py-0.5">1</Badge></TabsTrigger>
                 <TabsTrigger value="events" className="text-xs p-2 h-auto border-0 rounded-none">EVENTS <Badge className="ml-2 bg-blue-500 text-white rounded-sm text-[8px] px-1 py-0.5">0</Badge></TabsTrigger>
