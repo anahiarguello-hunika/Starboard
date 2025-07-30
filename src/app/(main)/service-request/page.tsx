@@ -38,7 +38,7 @@ export default function ServiceRequestPage() {
             Solicitud de Servicio
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            Cree un nuevo ticket para solicitar asistencia del equipo legal.
+            Cree un nuevo servicio para solicitar asistencia del equipo legal.
           </p>
         </div>
         <DropdownMenu>

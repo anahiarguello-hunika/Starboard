@@ -286,11 +286,11 @@ export default function DashboardPage() {
               <CardContent className="flex flex-col items-center justify-center gap-4 text-center">
                   <div className="space-y-2">
                     <p className="text-4xl font-bold">33</p>
-                    <p className="text-sm text-muted-foreground">Tickets Abiertos</p>
+                    <p className="text-sm text-muted-foreground">Servicios Abiertos</p>
                   </div>
                    <div className="space-y-2">
                     <p className="text-4xl font-bold">25</p>
-                    <p className="text-sm text-muted-foreground">Tickets Cerrados</p>
+                    <p className="text-sm text-muted-foreground">Servicios Cerrados</p>
                   </div>
               </CardContent>
             </Card>

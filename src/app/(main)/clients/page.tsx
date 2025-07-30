@@ -275,12 +275,12 @@ export default function ClientDetailPage() {
                                     <CollapsibleTrigger className="w-full">
                                         <div className="flex items-center gap-2 text-sm font-semibold py-2">
                                             <Ticket className="h-4 w-4" />
-                                            Tickets <Badge variant="secondary" className="ml-1">2</Badge>
+                                            Servicios <Badge variant="secondary" className="ml-1">2</Badge>
                                             <ChevronDown className="h-4 w-4 ml-auto" />
                                         </div>
                                     </CollapsibleTrigger>
                                     <CollapsibleContent>
-                                        <p className="text-muted-foreground p-4 text-center">No tickets to display.</p>
+                                        <p className="text-muted-foreground p-4 text-center">No hay servicios para mostrar.</p>
                                     </CollapsibleContent>
                                 </Collapsible>
                             </CardContent>
@@ -472,11 +472,11 @@ export default function ClientDetailPage() {
                              <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <Label htmlFor="assign-to">Assign to *</Label>
-                                    <Select>
+                                     <Select>
                                         <SelectTrigger id="assign-to">
                                              <div className="flex items-center gap-2">
-                                                <Badge variant="secondary">
-                                                    Elias Bardawil <span className="ml-1 cursor-pointer"><X className="h-3 w-3"/></span>
+                                                <Badge variant="secondary" className="cursor-pointer">
+                                                    Elias Bardawil <span className="ml-1"><X className="h-3 w-3"/></span>
                                                 </Badge>
                                              </div>
                                         </SelectTrigger>
