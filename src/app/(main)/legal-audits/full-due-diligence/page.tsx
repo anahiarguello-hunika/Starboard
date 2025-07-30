@@ -140,6 +140,14 @@ const providersQuestions = [
 
 const providersRadioOptions = ["Sí", "No", "No sé"];
 
+const realEstateQuestions = [
+    "¿La Sociedad posee bienes muebles e inmuebles a su nombre?",
+    "¿Los bienes muebles e inmuebles tienen algún tipo de gravamen?",
+    "¿La Sociedad requiere obtener licencias de construcción, de uso de suelo, etc. respecto algún inmueble?",
+];
+
+const realEstateRadioOptions = ["Sí", "No", "No sé"];
+
 export default function FullDueDiligencePage() {
   return (
     <div className="space-y-8">
@@ -827,6 +835,43 @@ export default function FullDueDiligencePage() {
                 <div className="space-y-4 rounded-lg border p-6 mt-6">
                     <Label className="text-base">Adjuntar todos los contratos de prestación de servicios o cualquier otro que de soporte a la relación jurídica con proveedores.</Label>
                     <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 GB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+            </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 11 de 14: Bienes muebles e inmuebles</CardTitle>
+                    <CardDescription>Favor de anexar los siguientes documentos, solo en caso de ser aplicable para la Sociedad:</CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Lea con atención y responda lo siguiente:</TableHead>
+                            {realEstateRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {realEstateQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {realEstateRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`real-estate-${index}-${option}`} id={`real-estate-${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+                 <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar las escrituras públicas y/o títulos de propiedad de los bienes inmuebles que sean propiedad de la Sociedad, incluyendo las correspondientes constancias de inscripción ante el Registro Público de la Propiedad.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
                     <div className="flex items-center justify-between mt-4">
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
