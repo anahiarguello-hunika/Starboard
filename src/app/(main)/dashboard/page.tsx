@@ -252,17 +252,26 @@ export default function DashboardPage() {
                 </CardHeader>
                 <CardContent>
                     <ul className="space-y-3">
-                        <li className="flex items-center gap-3">
-                            <span className="h-3 w-3 rounded-full bg-red-500"></span>
-                            <span>Contratos vencidos</span>
+                        <li className="flex items-center justify-between gap-3">
+                            <div className="flex items-center gap-3">
+                                <span className="h-3 w-3 rounded-full bg-red-500"></span>
+                                <span>Contratos vencidos</span>
+                            </div>
+                            <span className="font-semibold">20</span>
                         </li>
-                        <li className="flex items-center gap-3">
-                            <span className="h-3 w-3 rounded-full bg-yellow-400"></span>
-                            <span>Contratos próximos a vencer (30 días)</span>
+                        <li className="flex items-center justify-between gap-3">
+                             <div className="flex items-center gap-3">
+                                <span className="h-3 w-3 rounded-full bg-yellow-400"></span>
+                                <span>Contratos próximos a vencer (30 días)</span>
+                            </div>
+                            <span className="font-semibold">10</span>
                         </li>
-                        <li className="flex items-center gap-3">
-                            <span className="h-3 w-3 rounded-full bg-green-500"></span>
-                            <span>Vigentes</span>
+                        <li className="flex items-center justify-between gap-3">
+                             <div className="flex items-center gap-3">
+                                <span className="h-3 w-3 rounded-full bg-green-500"></span>
+                                <span>Vigentes</span>
+                            </div>
+                             <span className="font-semibold">25</span>
                         </li>
                     </ul>
                 </CardContent>
