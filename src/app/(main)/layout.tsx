@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -33,7 +34,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserNav } from "./components/user-nav";
 
 const navItems = [
@@ -47,7 +47,7 @@ const navItems = [
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial Personal"},
   { href: "/summarize", icon: Sparkles, label: "IA" },
   { href: "/legal-audits", icon: BookOpenCheck, label: "Auditorías Legales" },
-  { href: "https://backgroundcheck.mx/Dashboard/Home/", icon: UserSearch, label: "Background check", external: true },
+  { href: "/background-check", icon: UserSearch, label: "Background check" },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
 ];
 
