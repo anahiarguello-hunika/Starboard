@@ -123,6 +123,15 @@ const pldActivities = [
     "La constitución de derechos personales de uso o goce de bienes inmuebles por un valor mensual 1705 veces el salario mínimo vigente."
 ];
 
+const pldQuestions = [
+    "¿Cuenta con un formato de Expediente Único para la identificación de sus Clientes?",
+    "¿Cuenta con un formato de Constancia de Dueño Beneficiario?",
+    "¿Presenta los Avisos e Informes por conducto del SAT en tiempo y forma?",
+    "¿Actualmente la empresa cuenta con los Expedientes Únicos de Identificación, Constancias de Dueño Beneficiario y Avisos e Informes respecto de todas las Actividades Vulnerables realizadas?",
+    "¿Resguarda la información y documentación que da soporte a las Actividades Vulnerables y/o Identifican a sus Clientes o Usuarios por un plazo de 5 años?",
+];
+
+const pldRadioOptions = ["Sí", "No"];
 
 export default function FullDueDiligencePage() {
   return (
@@ -604,6 +613,40 @@ export default function FullDueDiligencePage() {
                                 <Label htmlFor={`pld-${index}`} className="font-normal">{activity}</Label>
                             </div>
                         ))}
+                    </div>
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base font-semibold">En caso de realizar Actividad(es) Vulnerable(s) responda lo siguiente:</Label>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead></TableHead>
+                                {pldRadioOptions.map((option) => (
+                                    <TableHead key={option} className="text-center">{option}</TableHead>
+                                ))}
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {pldQuestions.map((question, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="font-medium">{question}</TableCell>
+                                    {pldRadioOptions.map((option) => (
+                                        <TableCell key={option} className="text-center">
+                                            <RadioGroup>
+                                                <RadioGroupItem value={`pld-question-${index}-${option}`} id={`pld-question-${index}-${option}`} />
+                                            </RadioGroup>
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar los formatos de Expediente Único de Identificación y Constancia de Dueño Beneficiario, en caso de contar con ellos.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
             </div>
