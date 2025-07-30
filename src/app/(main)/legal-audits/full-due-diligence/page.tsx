@@ -112,7 +112,15 @@ const pldActivities = [
     "Comercialización o distribución de vehículos, aéreos, marítimos o terrestres con valor 3,210 veces el salario mínimo vigente",
     "Servicios de blindaje de vehículos terrestres o de bienes inmuebles, con valor de 2,410 veces el salario mínimo vigente.",
     "Servicios de traslado o custodia de dinero o valores, con excepción del Banco de México y las instituciones dedicadas al depósito de valores",
-    "La compraventa de bienes inmuebles o la cesión de derechos sobre estos;"
+    "La compraventa de bienes inmuebles o la cesión de derechos sobre estos;",
+    "La administración y manejo de recursos, valores o cualquier otro activo de sus clientes",
+    "El manejo de cuentas bancarias, de ahorro o de valores;",
+    "La organización de aportaciones de capital o recursos para las sociedades mercantiles.",
+    "La constitución, escisión, fusión, operación y administración de personas morales o vehículos corporativos",
+    "La prestación de servicios de fe pública",
+    "La recepción de donativos, por parte de las AC y sociedades sin lucro, con valor de 1,605 veces el salario mínimo vigente.",
+    "La prestación de servicios de comercio exterior como agente o apoderado aduanal",
+    "La constitución de derechos personales de uso o goce de bienes inmuebles por un valor mensual 1705 veces el salario mínimo vigente."
 ];
 
 
@@ -604,3 +612,5 @@ export default function FullDueDiligencePage() {
     </div>
   );
 }
+
+    
