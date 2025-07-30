@@ -650,10 +650,46 @@ export default function FullDueDiligencePage() {
                     </div>
                 </div>
             </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 9 de 14: Contratos y convenios.</CardTitle>
+                    <CardDescription>Favor de anexar los siguientes documentos, en caso de ser aplicable a la Sociedad:</CardDescription>
+                </CardHeader>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todos los contratos, convenios o acuerdos celebrados con dependencias, instituciones gubernamentales u organismos públicos descentralizados.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar cualquier registro o solicitud de la Sociedad con dependencias gubernamentales mexicanas o extranjeras y las respuestas otorgadas por éstas.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar cualquier garantía substancial otorgada por la Sociedad, ya sea prendas, avales o cualquier otro instrumento (con excepción de hipotecas sobre los bienes inmuebles propiedad de la Sociedad).</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todos los contratos de distribución.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 100 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
-
-    
