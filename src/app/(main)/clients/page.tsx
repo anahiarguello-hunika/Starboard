@@ -31,6 +31,11 @@ import {
   ListTodo,
   Sparkles,
   X,
+  Bold,
+  Italic,
+  Underline,
+  List as ListIcon,
+  ListOrdered
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -483,6 +488,54 @@ export default function ClientDetailPage() {
                                 <div className="space-y-2">
                                     <Label htmlFor="location">Location</Label>
                                     <Input id="location" placeholder="Select a location" />
+                                </div>
+                            </div>
+                        </div>
+
+                         <div className="space-y-6">
+                            <h2 className="text-xl font-semibold">Matter note</h2>
+                            <div className="space-y-2">
+                                <div className="flex items-center justify-between p-2 border-b">
+                                    <Input placeholder="Enter subject here." className="border-0 focus-visible:ring-0" />
+                                    <div className="flex items-center gap-2 text-muted-foreground">
+                                        <Button variant="ghost" size="icon"><Bold className="h-4 w-4" /></Button>
+                                        <Button variant="ghost" size="icon"><Italic className="h-4 w-4" /></Button>
+                                        <Button variant="ghost" size="icon"><Underline className="h-4 w-4" /></Button>
+                                        <Button variant="ghost" size="icon"><ListIcon className="h-4 w-4" /></Button>
+                                        <Button variant="ghost" size="icon"><ListOrdered className="h-4 w-4" /></Button>
+                                    </div>
+                                </div>
+                                <Textarea placeholder="Enter notes here." className="min-h-[120px] border-t-0 focus-visible:ring-0" />
+                            </div>
+                        </div>
+
+                         <div className="space-y-6">
+                            <h2 className="text-xl font-semibold">Marketing</h2>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="source">Source</Label>
+                                    <Select>
+                                        <SelectTrigger id="source">
+                                            <SelectValue placeholder="Select a source" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="web">Website</SelectItem>
+                                            <SelectItem value="referral">Referral</SelectItem>
+                                            <SelectItem value="advertisement">Advertisement</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="referred-by">Referred by</Label>
+                                     <Select>
+                                        <SelectTrigger id="referred-by">
+                                            <SelectValue placeholder="Select contact" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="contact1">Contact 1</SelectItem>
+                                            <SelectItem value="contact2">Contact 2</SelectItem>
+                                        </SelectContent>
+                                    </Select>
                                 </div>
                             </div>
                         </div>
