@@ -198,6 +198,9 @@ export default function FullDueDiligencePage() {
                 <Input id="email" placeholder="Tu dirección de correo electrónico" required />
             </div>
              <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 1 de 14: Información Corporativa</CardTitle>
+                </CardHeader>
                 <Label className="text-base font-semibold">Mencione si la Sociedad cuenta con los siguientes requerimientos: <span className="text-destructive">*</span></Label>
                  <Table>
                     <TableHeader>
@@ -1021,3 +1024,4 @@ export default function FullDueDiligencePage() {
   );
 }
 
+    
