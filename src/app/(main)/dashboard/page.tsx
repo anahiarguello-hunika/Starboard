@@ -277,23 +277,40 @@ export default function DashboardPage() {
                 </Table>
               </CardContent>
             </Card>
-
-            <Card className="lg:col-span-1">
-              <CardHeader>
-                <CardTitle>Solicitudes de Servicio</CardTitle>
-                 <CardDescription>Últimos 30 días</CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col items-center justify-center gap-4 text-center">
-                  <div className="space-y-2">
-                    <p className="text-4xl font-bold">33</p>
-                    <p className="text-sm text-muted-foreground">Servicios Abiertos</p>
-                  </div>
-                   <div className="space-y-2">
-                    <p className="text-4xl font-bold">25</p>
-                    <p className="text-sm text-muted-foreground">Servicios Cerrados</p>
-                  </div>
-              </CardContent>
-            </Card>
+            <div className="lg:col-span-1 flex flex-col gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Solicitudes de Servicio</CardTitle>
+                     <CardDescription>Últimos 30 días</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col items-center justify-center gap-4 text-center">
+                      <div className="space-y-2">
+                        <p className="text-4xl font-bold">33</p>
+                        <p className="text-sm text-muted-foreground">Servicios Abiertos</p>
+                      </div>
+                       <div className="space-y-2">
+                        <p className="text-4xl font-bold">25</p>
+                        <p className="text-sm text-muted-foreground">Servicios Cerrados</p>
+                      </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Trimestre Fiscal Actual a la Fecha</CardTitle>
+                     <CardDescription>Q1 2024</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col items-center justify-center gap-4 text-center">
+                      <div className="space-y-2">
+                        <p className="text-4xl font-bold">14</p>
+                        <p className="text-sm text-muted-foreground">Servicios Abiertos</p>
+                      </div>
+                       <div className="space-y-2">
+                        <p className="text-4xl font-bold">3</p>
+                        <p className="text-sm text-muted-foreground">Servicios Cerrados</p>
+                      </div>
+                  </CardContent>
+                </Card>
+            </div>
 
 
             <Card className="lg:col-span-4">
