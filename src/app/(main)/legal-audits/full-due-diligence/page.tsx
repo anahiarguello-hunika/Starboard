@@ -199,7 +199,7 @@ export default function FullDueDiligencePage() {
             </div>
              <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 1 de 14: Información Corporativa</CardTitle>
+                    <CardTitle>Sección 1 de 13: Información Corporativa</CardTitle>
                 </CardHeader>
                 <Label className="text-base font-semibold">Mencione si la Sociedad cuenta con los siguientes requerimientos: <span className="text-destructive">*</span></Label>
                  <Table>
@@ -294,7 +294,7 @@ export default function FullDueDiligencePage() {
 
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 2 de 14: Datos de miembros de la Sociedad.</CardTitle>
+                    <CardTitle>Sección 2 de 13: Datos de miembros de la Sociedad.</CardTitle>
                     <CardDescription>Favor de adjuntar y/o mencionar los datos solicitados, según se indique. Si los apoderados o miembros del Consejo de Administración son accionistas y la información ya se adjuntó no es necesario repetirla.</CardDescription>
                 </CardHeader>
                 
@@ -379,7 +379,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 3 de 14: Funcionamiento del Gobierno Corporativo.</CardTitle>
+                    <CardTitle>Sección 3 de 13: Funcionamiento del Gobierno Corporativo.</CardTitle>
                     <CardDescription>Lea con atención y responda las siguientes preguntas:</CardDescription>
                 </CardHeader>
                 <Table>
@@ -409,7 +409,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 4 de 14: Compliance Penal</CardTitle>
+                    <CardTitle>Sección 4 de 13: Compliance Penal</CardTitle>
                     <CardDescription>Lea con atención y responda lo siguiente:</CardDescription>
                 </CardHeader>
                 <Table>
@@ -450,7 +450,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 5 de 14: Propiedad Intelectual e Industrial.</CardTitle>
+                    <CardTitle>Sección 5 de 13: Propiedad Intelectual e Industrial.</CardTitle>
                     <CardDescription>
                         Para efectos de este formulario, en esta sección se utilizarán las siguientes definiciones:
                         <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -526,7 +526,7 @@ export default function FullDueDiligencePage() {
 
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 6 de 14: Materia Laboral.</CardTitle>
+                    <CardTitle>Sección 6 de 13: Materia Laboral.</CardTitle>
                     <CardDescription>
                         Favor de anexar los documentos que se solicitan en caso de ser aplicable para la Sociedad.
                     </CardDescription>
@@ -601,7 +601,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 7 de 14: Aviso de Privacidad</CardTitle>
+                    <CardTitle>Sección 7 de 13: Aviso de Privacidad</CardTitle>
                     <CardDescription>
                         El Aviso de Privacidad es un documento (en cualquier formato), a través del cual el responsable informa al titular sobre la existencia y características principales del tratamiento al que serán sometidos sus datos personales. Todo responsable que trate datos personales, sin importar la actividad que realice o si se trata de una persona física o moral, requiere elaborar y poner a disposición su aviso de privacidad.
                     </CardDescription>
@@ -640,7 +640,7 @@ export default function FullDueDiligencePage() {
             </div>
              <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 8 de 14: Prevención de Lavado de dinero</CardTitle>
+                    <CardTitle>Sección 8 de 13: Prevención de Lavado de dinero</CardTitle>
                     <CardDescription>
                         La <a href="#" className="text-primary underline">Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita</a> establece los lineamientos para identificar los actos u operaciones que involucren recursos de procedencia ilícita. Debido a esto, toda Sociedad que realice Actividades Vulnerables se encuentra obligada a realizar la identificación de Clientes y Usuarios, Avisos e informes por conducto del SAT, entre otros.
                     </CardDescription>
@@ -693,7 +693,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 9 de 14: Contratos y convenios.</CardTitle>
+                    <CardTitle>Sección 9 de 13: Contratos y convenios.</CardTitle>
                     <CardDescription>Favor de anexar los siguientes documentos, en caso de ser aplicable para la Sociedad:</CardDescription>
                 </CardHeader>
 
@@ -823,7 +823,7 @@ export default function FullDueDiligencePage() {
             </div>
              <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 10 de 14: Proveedores.</CardTitle>
+                    <CardTitle>Sección 10 de 13: Proveedores.</CardTitle>
                     <CardDescription>Favor de anexar los siguientes documentos, solo en caso de ser aplicable para la Sociedad:</CardDescription>
                 </CardHeader>
                 <Table>
@@ -864,7 +864,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 11 de 14: Bienes muebles e inmuebles</CardTitle>
+                    <CardTitle>Sección 11 de 13: Bienes muebles e inmuebles</CardTitle>
                     <CardDescription>Favor de anexar los siguientes documentos, solo en caso de ser aplicable para la Sociedad:</CardDescription>
                 </CardHeader>
                 <Table>
@@ -926,7 +926,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 12 de 14: Materia fiscal</CardTitle>
+                    <CardTitle>Sección 12 de 13: Materia fiscal</CardTitle>
                     <CardDescription>Lea con atención y responda lo siguiente:</CardDescription>
                 </CardHeader>
                 <Table>
@@ -963,7 +963,7 @@ export default function FullDueDiligencePage() {
             </div>
              <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 13 de 14: Ambiental</CardTitle>
+                    <CardTitle>Sección 13 de 13: Ambiental</CardTitle>
                     <CardDescription>
                         Favor de anexar los documentos que se solicitan en caso de ser aplicable para la Sociedad. Lea con atención y responda lo siguiente:
                     </CardDescription>
