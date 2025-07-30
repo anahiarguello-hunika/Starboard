@@ -153,7 +153,6 @@ const fiscalQuestions = [
     "¿La Sociedad ha presentado todas las Declaraciones Anuales y Provisionales de Impuestos y cualquier otro requerimiento del SAT desde su constitución?",
     "¿La Sociedad cuenta con los Estados Financieros de todos los ejercicios fiscales, desde la constitución de la Sociedad?",
     "¿La Sociedad se encuentra al corriente en el pago de impuestos?",
-    "¿La Sociedad ha sido objeto de auditorias por parte del SAT?",
     "¿La Sociedad ha sido o es parte de algún litigio de materia fiscal?",
     "En caso de contar con Firma Electrónica avanzada ¿la Sociedad tiene conocimiento de confiarla a terceros?",
 ];
@@ -581,7 +580,7 @@ export default function FullDueDiligencePage() {
                     <Textarea placeholder="Tu respuesta" />
                 </div>
                 <div className="space-y-2 rounded-lg border p-6 mt-6">
-                    <Label>Favor de adjuntar la Constancia de Empleador para emplear extranjeros, en caso de contar con ella.</Label>
+                    <Label className="text-base">Favor de adjuntar la Constancia de Empleador para emplear extranjeros, en caso de contar con ella.</Label>
                     <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
                     <div className="flex items-center justify-between mt-4">
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
@@ -943,6 +942,13 @@ export default function FullDueDiligencePage() {
                         ))}
                     </TableBody>
                 </Table>
+                 <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Favor de adjuntar la cédula de identificación fiscal actualizada de la Sociedad.</Label>
+                    <p className="text-sm text-muted-foreground">Sube 1 archivo compatible. El tamaño máximo es de 100 MB.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
             </div>
         </CardContent>
       </Card>
