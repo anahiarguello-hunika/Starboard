@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 
 
 const corporateRequirements = [
@@ -97,6 +98,22 @@ const privacyNoticeQuestions = [
 ];
 
 const privacyNoticeRadioOptions = ["Sí", "No"];
+
+
+const pldActivities = [
+    "La Sociedad no realiza ninguna de las actividades descritas.",
+    "Las vinculadas a la práctica de juegos con apuesta, concursos o sorteos",
+    "La emisión o comercialización de tarjetas de servicios, de crédito, de tarjetas prepagadas o con valor monetario que no sean emitidas o comercializadas por Entidades Financieras.",
+    "La emisión y comercialización habitual o profesional de cheques de viajero distinta a la realizada por las Entidades Financieras.",
+    "Ofrecimiento de operaciones de mutuo, de garantía, de otorgamiento de préstamos o créditos, por parte de sujetos distintos a las Entidades Financieras.",
+    "Servicios de construcción o desarrollo de bienes inmuebles.",
+    "Comercialización o intermediación de Metales Preciosos, Piedras Preciosas, joyas o relojes.",
+    "Subasta o comercialización de obras de arte, compra o venta con valor a 2,410 veces el salario mínimo vigente.",
+    "Comercialización o distribución de vehículos, aéreos, marítimos o terrestres con valor 3,210 veces el salario mínimo vigente",
+    "Servicios de blindaje de vehículos terrestres o de bienes inmuebles, con valor de 2,410 veces el salario mínimo vigente.",
+    "Servicios de traslado o custodia de dinero o valores, con excepción del Banco de México y las instituciones dedicadas al depósito de valores",
+    "La compraventa de bienes inmuebles o la cesión de derechos sobre estos;"
+];
 
 
 export default function FullDueDiligencePage() {
@@ -563,10 +580,27 @@ export default function FullDueDiligencePage() {
                     </div>
                 </div>
             </div>
+             <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 8 de 14: Prevención de Lavado de dinero</CardTitle>
+                    <CardDescription>
+                        La <a href="#" className="text-primary underline">Ley Federal para la Prevención e Identificación de Operaciones con Recursos de Procedencia Ilícita</a> establece los lineamientos para identificar los actos u operaciones que involucren recursos de procedencia ilícita. Debido a esto, toda Sociedad que realice Actividades Vulnerables se encuentra obligada a realizar la identificación de Clientes y Usuarios, Avisos e informes por conducto del SAT, entre otros.
+                    </CardDescription>
+                </CardHeader>
+                 <div className="space-y-2">
+                    <Label className="font-semibold">Seleccione la(s) Actividad(es) Vulnerable(s) que realiza la Sociedad.</Label>
+                     <div className="space-y-2 pt-2">
+                        {pldActivities.map((activity, index) => (
+                             <div key={index} className="flex items-center space-x-2">
+                                <Checkbox id={`pld-${index}`} />
+                                <Label htmlFor={`pld-${index}`} className="font-normal">{activity}</Label>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
-
-    
