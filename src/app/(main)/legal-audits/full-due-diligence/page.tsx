@@ -155,6 +155,7 @@ const fiscalQuestions = [
     "¿La Sociedad se encuentra al corriente en el pago de impuestos?",
     "¿La Sociedad ha sido objeto de auditorias por parte del SAT?",
     "¿La Sociedad ha sido o es parte de algún litigio de materia fiscal?",
+    "En caso de contar con Firma Electrónica avanzada ¿la Sociedad tiene conocimiento de confiarla a terceros?",
 ];
 
 const fiscalRadioOptions = ["Sí", "No", "No sé"];
