@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   ChevronRight,
   Ticket,
+  ChevronDown,
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -17,6 +18,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Progress } from "@/components/ui/progress";
 import {
   Table,
@@ -45,13 +52,61 @@ const alerts = [
 export default function DashboardPage() {
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight font-headline">
-          Dashboard Legal
-        </h1>
-        <p className="text-muted-foreground">
-          ¡Bienvenido de nuevo! Aquí está tu resumen de hoy.
-        </p>
+      <div className="flex justify-between items-start">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight font-headline">
+            Dashboard Legal
+          </h1>
+          <p className="text-muted-foreground">
+            ¡Bienvenido de nuevo! Aquí está tu resumen de hoy.
+          </p>
+        </div>
+        <div className="flex gap-2">
+           <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button>
+                <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato{" "}
+                <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                1. Contrato de Prestación de Servicios (Cliente)
+              </DropdownMenuItem>
+              <DropdownMenuItem>2. Contrato de Arrendamiento</DropdownMenuItem>
+              <DropdownMenuItem>3. Contrato de Subarrendamiento</DropdownMenuItem>
+              <DropdownMenuItem>
+                4. Contrato de Prestación de Servicio (Prestador)
+              </DropdownMenuItem>
+              <DropdownMenuItem>5. Contrato de Confidencialidad</DropdownMenuItem>
+              <DropdownMenuItem>
+                6. Contrato Individual de Trabajo (Tiempo determinado)
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                7. Contrato Individual de Trabajo (Indeterminado con tiempo de
+                Prueba)
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                8. Convenio de Terminación General
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                9. Convenio de Terminación Laboral
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                10. Contrato de Préstamo (Obligado Solidario)
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                11. Contrato de Compraventa de Acciones
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button variant="outline" asChild>
+            <Link href="/service-request">
+              <Ticket className="mr-2 h-4 w-4" />
+              Solicitud de Servicio
+            </Link>
+          </Button>
+        </div>
       </div>
 
       <Tabs defaultValue="general_counsel">
@@ -130,24 +185,6 @@ export default function DashboardPage() {
                         </Alert>
                     ))}
                 </CardContent>
-            </Card>
-
-            <Card className="lg:col-span-1">
-              <CardHeader>
-                <CardTitle>Acciones Rápidas</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-2">
-                <Button>
-                  <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato
-                </Button>
-                <Button variant="secondary" asChild>
-                  <Link href="/service-request">
-                    <Ticket className="mr-2 h-4 w-4" />
-                    Solicitud de Servicio
-                  </Link>
-                </Button>
-                <Button variant="ghost" className="justify-start">Generar Informe</Button>
-              </CardContent>
             </Card>
             
           </div>
