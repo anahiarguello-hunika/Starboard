@@ -722,11 +722,53 @@ export default function FullDueDiligencePage() {
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar cualquier contrato de fideicomiso o algún otro documento, si alguna acción es detentada por alguna institución fiduciaria o agente.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todos los convenios de adquisición de sociedades, consolidaciones, escisiones, fusiones o reestructuras.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todos los convenios de confidencialidad o no-divulgación.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todos los contratos de asistencia técnica, "know-how", transferencia de tecnología o similares.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todas las cartas de intención, memoranda de entendimiento, contratos de co-inversión u otros contratos de asociación.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
             </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
+    
 
     
