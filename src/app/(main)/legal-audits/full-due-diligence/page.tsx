@@ -159,6 +159,15 @@ const fiscalQuestions = [
 
 const fiscalRadioOptions = ["Sí", "No", "No sé"];
 
+const environmentalQuestions = [
+    "¿La Sociedad está sujeta a restricciones ecológicas?",
+    "¿La Sociedad ha tenido inspecciones, auditorias y/o certificados ambientales?",
+    "¿La Sociedad maneja o dispone de residuos sólidos, peligrosos o no peligrosos?",
+    "¿La Sociedad está sujeta a obtener licencias y/o permisos de reglamentos ambientales?",
+];
+
+const environmentalRadioOptions = ["Sí", "No", "No sé"];
+
 export default function FullDueDiligencePage() {
   return (
     <div className="space-y-8">
@@ -949,6 +958,38 @@ export default function FullDueDiligencePage() {
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
+            </div>
+             <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 13 de 14: Ambiental</CardTitle>
+                    <CardDescription>
+                        Favor de anexar los documentos que se solicitan en caso de ser aplicable para la Sociedad. Lea con atención y responda lo siguiente:
+                    </CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead></TableHead>
+                            {environmentalRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {environmentalQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {environmentalRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`environmental-${index}-${option}`} id={`environmental-${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
             </div>
         </CardContent>
       </Card>
