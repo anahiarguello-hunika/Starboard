@@ -671,7 +671,7 @@ export default function FullDueDiligencePage() {
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
                     <CardTitle>Sección 9 de 14: Contratos y convenios.</CardTitle>
-                    <CardDescription>Favor de anexar los siguientes documentos, en caso de ser aplicable a la Sociedad:</CardDescription>
+                    <CardDescription>Favor de anexar los siguientes documentos, en caso de ser aplicable para la Sociedad:</CardDescription>
                 </CardHeader>
 
                 <div className="space-y-4 rounded-lg border p-6 mt-6">
@@ -871,6 +871,31 @@ export default function FullDueDiligencePage() {
                 </Table>
                  <div className="space-y-4 rounded-lg border p-6 mt-6">
                     <Label className="text-base">Anexar las escrituras públicas y/o títulos de propiedad de los bienes inmuebles que sean propiedad de la Sociedad, incluyendo las correspondientes constancias de inscripción ante el Registro Público de la Propiedad.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar copias de hipotecas o cualquier otro gravamen afectando a los bienes inmuebles propiedad de la Sociedad y, en su caso, evidencia de su registro ante el Registro Público de la Propiedad correspondiente.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar todos los permisos, licencias, concesiones y resoluciones emitidos por cualquier autoridad mexicana (ya sea federal, estatal o municipal) o extranjera, a favor de la Sociedad o respecto de sus inmuebles.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 GB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                <div className="space-y-2 rounded-lg border p-6 mt-6">
+                    <Label>Mencione todos los bienes muebles que sean propiedad de la Sociedad.</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar toda la documentación que evidencie cualquier gravamen o embargo otorgado sobre bienes muebles propiedad de la Sociedad.</Label>
                     <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
                     <div className="flex items-center justify-between mt-4">
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
