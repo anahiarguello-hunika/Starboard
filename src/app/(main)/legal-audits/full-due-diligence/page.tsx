@@ -66,6 +66,14 @@ const penalComplianceQuestions = [
 
 const penalComplianceRadioOptions = ["Sí", "No", "No sé"];
 
+const intellectualPropertyQuestions = [
+    "¿La Sociedad cuenta con Propiedad Intelectual y/o Industrial?",
+    "¿La Sociedad cuenta con Propiedad Intelectual y/o Industrial registrada en el extranjero?",
+    "¿La Sociedad ha tenido o tiene procedimientos en contra por violación de derechos de Propiedad Intelectual y/o Industrial?",
+];
+
+const intellectualPropertyRadioOptions = ["Sí", "No", "No sé"];
+
 
 export default function FullDueDiligencePage() {
   return (
@@ -343,6 +351,44 @@ export default function FullDueDiligencePage() {
                     <Label className="text-base">Mencione el nombre completo de las personas que conforman el Órgano de Control u Oficial de Cumplimiento.</Label>
                     <Textarea placeholder="Tu respuesta" />
                 </div>
+            </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 5 de 14: Propiedad Intelectual e Industrial.</CardTitle>
+                    <CardDescription>
+                        Para efectos de este formulario, en esta sección se utilizarán las siguientes definiciones:
+                        <ul className="list-disc pl-5 mt-2 space-y-1">
+                            <li>Propiedad Intelectual: comprende las obras literarias, caricaturas, programas de radio, bases de datos, programa de cómputo.</li>
+                            <li>Propiedad Industrial: tales como las marcas, patentes, dibujos industriales, modelos de utilidad, y frases comerciales.</li>
+                            <li>IMPI: Instituto Mexicano de la Propiedad Industrial.</li>
+                            <li>INDAUTOR: Instituto Nacional del Derecho de Autor.</li>
+                        </ul>
+                    </CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Lea con atención y responda lo siguiente:</TableHead>
+                            {intellectualPropertyRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {intellectualPropertyQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {intellectualPropertyRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`ip-${index}-${option}`} id={`ip-${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
             </div>
         </CardContent>
       </Card>
