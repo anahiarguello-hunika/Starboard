@@ -17,6 +17,7 @@ import {
   Ticket,
   Landmark,
   UserSearch,
+  Users,
 } from "lucide-react";
 
 import {
@@ -37,6 +38,7 @@ import { UserNav } from "./components/user-nav";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/clients", icon: Users, label: "Clientes" },
   { href: "/projects", icon: Briefcase, label: "Proyectos" },
   { href: "/contracts", icon: FileText, label: "Contratos" },
   { href: "/tasks", icon: ListTodo, label: "Tareas" },
