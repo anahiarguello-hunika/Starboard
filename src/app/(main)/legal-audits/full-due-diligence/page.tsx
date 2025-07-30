@@ -3,7 +3,10 @@
 'use client';
 
 import { ChevronRight } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 export default function FullDueDiligencePage() {
   return (
@@ -18,16 +21,22 @@ export default function FullDueDiligencePage() {
           Due Dilligence Completo
         </h1>
          <p className="text-muted-foreground">
-            Complete el siguiente cuestionario.
+            La evaluación que a continuación se presenta es una herramienta de diagnóstico sobre la situación actual de su empresa (sociedad o compañía) con el fin de determinar las áreas susceptibles a ser mejoradas dentro de la misma.
         </p>
       </div>
       <Card>
-        <CardHeader>
-            <CardTitle>Cuestionario de Due Dilligence Completo</CardTitle>
-        </CardHeader>
-        <CardContent>
-            {/* Questionnaire content will go here */}
-            <p className="text-muted-foreground">Formato de cuestionario próximamente.</p>
+        <CardContent className="p-6 space-y-6">
+            <div>
+                <p className="text-sm text-muted-foreground">Se registrarán el nombre, la foto y el correo electrónico asociados con tu Cuenta de Google cuando subas archivos y envíes este formulario.</p>
+            </div>
+            <Separator />
+            <div>
+                <p className="text-sm text-destructive">* Indica que la pregunta es obligatoria</p>
+            </div>
+             <div className="space-y-4 rounded-lg border p-6">
+                <Label htmlFor="email" className="text-base font-semibold">Correo electrónico <span className="text-destructive">*</span></Label>
+                <Input id="email" placeholder="Tu dirección de correo electrónico" required />
+            </div>
         </CardContent>
       </Card>
     </div>
