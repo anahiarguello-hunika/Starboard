@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { ChevronRight } from "lucide-react";
@@ -7,6 +6,28 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+
+
+const corporateRequirements = [
+    "Primer Testimonio del acta constitutiva.",
+    "Boleta de inscripción del Acta Constitutiva.",
+    "¿Los Estatutos han sufrido alguna modificación?",
+    "Libros Corporativos actualizados incluye...",
+    "Títulos de acciones representativos del c...",
+    "En caso que la Sociedad haya emitido lo...",
+    "Resoluciones Unánimes adoptadas fuera...",
+    "En caso de contar con Comités Especial...",
+    "¿Se han nombrado Apoderados o Repres...",
+];
+
+const radioOptions = [
+    "Sí, se encuentra actualizado.",
+    "Sí, pero no se encuentra actualizado.",
+    "Sí",
+    "No"
+];
 
 export default function FullDueDiligencePage() {
   return (
@@ -36,6 +57,33 @@ export default function FullDueDiligencePage() {
              <div className="space-y-4 rounded-lg border p-6">
                 <Label htmlFor="email" className="text-base font-semibold">Correo electrónico <span className="text-destructive">*</span></Label>
                 <Input id="email" placeholder="Tu dirección de correo electrónico" required />
+            </div>
+             <div className="space-y-4 rounded-lg border p-6">
+                <Label className="text-base font-semibold">Mencione si la Sociedad cuenta con los siguientes requerimientos: <span className="text-destructive">*</span></Label>
+                 <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead></TableHead>
+                            {radioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                         {corporateRequirements.map((req, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{index + 1}. {req}</TableCell>
+                                {radioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`${req}-${option}`} id={`${req}-${option}`}/>
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                         ))}
+                    </TableBody>
+                </Table>
             </div>
         </CardContent>
       </Card>
