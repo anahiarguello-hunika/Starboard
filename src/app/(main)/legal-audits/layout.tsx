@@ -1,0 +1,56 @@
+
+
+'use client';
+
+import {
+    BookCheck,
+    BookCopy,
+    ClipboardCheck,
+    ClipboardList,
+    GraduationCap,
+    Scale,
+    ChevronRight,
+} from "lucide-react";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from "@/lib/utils";
+
+const auditNav = [
+  { name: 'Due Dilligence Básico', href: '/legal-audits/basic-due-diligence', icon: BookCheck },
+  { name: 'Due Dilligence Completo', href: '/legal-audits/full-due-diligence', icon: BookCopy },
+  { name: 'Madurez Legal', href: '/legal-audits/legal-maturity', icon: GraduationCap },
+  { name: 'Madurez Contractual', href: '/legal-audits/contract-maturity', icon: ClipboardList },
+  { name: 'Madurez de Gobierno Corporativo', href: '/legal-audits/corporate-governance-maturity', icon: Scale },
+  { name: 'Madurez de Cumplimiento', href: '/legal-audits/compliance-maturity', icon: ClipboardCheck },
+];
+
+
+export default function LegalAuditsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+
+  return (
+    <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
+        <div className="flex flex-col gap-4">
+             <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
+                 {auditNav.map((item, index) => (
+                    <Link key={item.name} href={item.href || "#"} className={cn(
+                        'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
+                        pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                    )}>
+                        <span className="text-xs w-6 text-right">{String(index+1).padStart(2, '0')}</span>
+                        <item.icon className="h-5 w-5" />
+                        <span>{item.name}</span>
+                    </Link>
+                ))}
+            </nav>
+        </div>
+        <div className="flex flex-col gap-8">
+            {children}
+        </div>
+    </div>
+  );
+}
