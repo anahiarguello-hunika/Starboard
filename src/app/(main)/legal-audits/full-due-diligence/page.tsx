@@ -499,6 +499,21 @@ export default function FullDueDiligencePage() {
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar los contratos colectivos de trabajo y cualquier otro tipo de contrato celebrado por la Sociedad con algún sindicato, junto con la evidencia de su depósito y admisión ante la Junta de Conciliación y Arbitraje respectiva y sus revisiones.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                <div className="space-y-2 rounded-lg border p-6 mt-6">
+                    <Label>Mencione los litigios pendientes (o probables) de carácter laboral y/o de seguridad social, ya sean de naturaleza individual o colectiva, incluyendo el nombre del actor y del demandando, autoridad encargada del asunto, fecha de inicio, contingencia a la fecha y estado procesal actual.</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
+                <div className="space-y-2 rounded-lg border p-6 mt-6">
+                    <Label>Favor de adjuntar la Constancia de Empleador para emplear extranjeros, en caso de contar con ella.</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
             </div>
         </CardContent>
       </Card>
