@@ -90,6 +90,15 @@ const laborQuestions = [
 
 const laborRadioOptions = ["Sí", "No", "No sé"];
 
+const privacyNoticeQuestions = [
+    "¿La Sociedad cuenta con Aviso de Privacidad?",
+    "En caso de contar con página web, ¿el Aviso de Privacidad se encuentra visible?",
+    "¿Actualmente el Aviso de Privacidad ha sido firmado por todos los empleados, clientes y proveedores de la Sociedad?",
+];
+
+const privacyNoticeRadioOptions = ["Sí", "No"];
+
+
 export default function FullDueDiligencePage() {
   return (
     <div className="space-y-8">
@@ -513,6 +522,45 @@ export default function FullDueDiligencePage() {
                 <div className="space-y-2 rounded-lg border p-6 mt-6">
                     <Label>Favor de adjuntar la Constancia de Empleador para emplear extranjeros, en caso de contar con ella.</Label>
                     <Textarea placeholder="Tu respuesta" />
+                </div>
+            </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 7 de 14: Aviso de Privacidad</CardTitle>
+                    <CardDescription>
+                        El Aviso de Privacidad es un documento (en cualquier formato), a través del cual el responsable informa al titular sobre la existencia y características principales del tratamiento al que serán sometidos sus datos personales. Todo responsable que trate datos personales, sin importar la actividad que realice o si se trata de una persona física o moral, requiere elaborar y poner a disposición su aviso de privacidad.
+                    </CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Lea con atención y conteste lo siguiente:</TableHead>
+                            {privacyNoticeRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {privacyNoticeQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {privacyNoticeRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`privacy-${index}-${option}`} id={`privacy-${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar el Aviso de Privacidad de la Sociedad, en caso de contar con el.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 100 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
                 </div>
             </div>
         </CardContent>
