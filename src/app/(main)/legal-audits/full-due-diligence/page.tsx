@@ -133,6 +133,13 @@ const pldQuestions = [
 
 const pldRadioOptions = ["Sí", "No"];
 
+const providersQuestions = [
+    "¿La Sociedad tiene contratos con cada uno de sus proveedores?",
+    "¿La Sociedad cuenta con órdenes de compra y facturas para cada operación realizada con sus proveedores?",
+];
+
+const providersRadioOptions = ["Sí", "No", "No sé"];
+
 export default function FullDueDiligencePage() {
   return (
     <div className="space-y-8">
@@ -784,14 +791,49 @@ export default function FullDueDiligencePage() {
                     </div>
                 </div>
             </div>
+             <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 10 de 14: Proveedores.</CardTitle>
+                    <CardDescription>Favor de anexar los siguientes documentos, solo en caso de ser aplicable para la Sociedad:</CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Lea con atención y responda lo siguiente:</TableHead>
+                            {providersRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {providersQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {providersRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`providers-${index}-${option}`} id={`providers-${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+                <div className="space-y-2 rounded-lg border p-6 mt-6">
+                    <Label>Mencione todos los proveedores de la Sociedad:</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todos los contratos de prestación de servicios o cualquier otro que de soporte a la relación jurídica con proveedores.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 GB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
-
-    
-
-    
-
-    
