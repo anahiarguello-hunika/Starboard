@@ -555,7 +555,10 @@ export default function FullDueDiligencePage() {
                 </div>
                 <div className="space-y-2 rounded-lg border p-6 mt-6">
                     <Label>Favor de adjuntar la Constancia de Empleador para emplear extranjeros, en caso de contar con ella.</Label>
-                    <Textarea placeholder="Tu respuesta" />
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
                 </div>
             </div>
             <div className="space-y-4 rounded-lg border p-6">
@@ -687,9 +690,43 @@ export default function FullDueDiligencePage() {
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar los contratos de arrendamiento en los que la Sociedad sea parte.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar todos los contratos de publicidad o comercialización.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 100 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar los contratos de compraventa de activos y/o bienes propiedad de la empresa.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 100 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar los convenios de pago con los acreedores y/o con los deudores de la empresa.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
             </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
+    
