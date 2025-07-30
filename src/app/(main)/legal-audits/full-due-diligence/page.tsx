@@ -148,6 +148,17 @@ const realEstateQuestions = [
 
 const realEstateRadioOptions = ["Sí", "No", "No sé"];
 
+const fiscalQuestions = [
+    "¿La Sociedad se encuentra dada de alta en el RFC?",
+    "¿La Sociedad ha presentado todas las Declaraciones Anuales y Provisionales de Impuestos y cualquier otro requerimiento del SAT desde su constitución?",
+    "¿La Sociedad cuenta con los Estados Financieros de todos los ejercicios fiscales, desde la constitución de la Sociedad?",
+    "¿La Sociedad se encuentra al corriente en el pago de impuestos?",
+    "¿La Sociedad ha sido objeto de auditorias por parte del SAT?",
+    "¿La Sociedad ha sido o es parte de algún litigio de materia fiscal?",
+];
+
+const fiscalRadioOptions = ["Sí", "No", "No sé"];
+
 export default function FullDueDiligencePage() {
   return (
     <div className="space-y-8">
@@ -901,6 +912,36 @@ export default function FullDueDiligencePage() {
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
+            </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 12 de 14: Materia fiscal</CardTitle>
+                    <CardDescription>Lea con atención y responda lo siguiente:</CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead></TableHead>
+                            {fiscalRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {fiscalQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {fiscalRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`fiscal-${index}-${option}`} id={`fiscal-${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
             </div>
         </CardContent>
       </Card>
