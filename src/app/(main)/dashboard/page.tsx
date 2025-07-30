@@ -3,14 +3,16 @@
 
 import {
   AlertCircle,
+  ArrowDown,
+  ArrowUp,
   CheckCircle2,
   FilePlus2,
-  ShieldCheck,
-  ChevronRight,
-  Ticket,
-  ChevronDown,
   PieChart as PieChartIcon,
-} from "lucide-react";
+  ShieldCheck,
+  Ticket,
+  TrendingUp,
+  ChevronDown,
+} from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -44,6 +46,7 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { Pie, PieChart, Cell } from 'recharts';
+import { cn } from '@/lib/utils';
 
 const activeProjects = [
   { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75 },
@@ -66,6 +69,13 @@ const projectStatusData = [
 
 const totalProjects = projectStatusData.reduce((sum, item) => sum + item.count, 0);
 const inProgressPercentage = Math.round((projectStatusData.find(p => p.name === 'En Progreso')!.count / totalProjects) * 100);
+
+const keyMetrics = [
+  { name: 'Satisfacción', value: '80%', trend: 'up' },
+  { name: 'Capacidad de Respuesta', value: '87%', trend: 'down' },
+  { name: 'Reducción de Riesgo', value: '75%', trend: 'down' },
+  { name: 'Eficiencia de Costos', value: '33%', trend: 'up' },
+];
 
 
 export default function DashboardPage() {
@@ -136,24 +146,47 @@ export default function DashboardPage() {
         </TabsList>
         <TabsContent value="general_counsel" className="mt-4">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-             <Card className="lg:col-span-1">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <ShieldCheck className="text-accent" /> Medidor de Cumplimiento
-                </CardTitle>
-                <CardDescription>
-                  Estado general de cumplimiento de la organización.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                    <span className="text-5xl font-bold text-accent">92%</span>
-                    <span className="text-sm text-green-600 font-semibold">+2% este mes</span>
-                </div>
-                <Progress value={92} aria-label="92% de cumplimiento" />
-                <p className="text-xs text-muted-foreground">Todos los departamentos reportan parámetros normales.</p>
-              </CardContent>
-            </Card>
+             <div className="lg:col-span-1 flex flex-col gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <ShieldCheck className="text-accent" /> Medidor de Cumplimiento
+                    </CardTitle>
+                    <CardDescription>
+                      Estado general de cumplimiento de la organización.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between">
+                        <span className="text-5xl font-bold text-accent">92%</span>
+                        <span className="text-sm text-green-600 font-semibold">+2% este mes</span>
+                    </div>
+                    <Progress value={92} aria-label="92% de cumplimiento" />
+                    <p className="text-xs text-muted-foreground">Todos los departamentos reportan parámetros normales.</p>
+                  </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-lg font-semibold">Métricas Clave</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <ul className="space-y-4">
+                            {keyMetrics.map(metric => (
+                                <li key={metric.name} className="flex justify-between items-center text-sm">
+                                    <span>{metric.name}</span>
+                                    <div className="flex items-center gap-2">
+                                        <span className="font-semibold">{metric.value}</span>
+                                        {metric.trend === 'up' ?
+                                            <ArrowUp className="h-4 w-4 text-green-500" /> :
+                                            <ArrowDown className="h-4 w-4 text-red-500" />
+                                        }
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </CardContent>
+                </Card>
+             </div>
             
             <Card className="lg:col-span-1">
                 <CardHeader>
