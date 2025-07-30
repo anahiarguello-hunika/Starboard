@@ -145,7 +145,7 @@ export default function DashboardPage() {
           <TabsTrigger value="business_user">Usuario de Negocio</TabsTrigger>
         </TabsList>
         <TabsContent value="general_counsel" className="mt-4">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
              <div className="lg:col-span-1 flex flex-col gap-6">
                 <Card>
                   <CardHeader>
@@ -278,7 +278,25 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
 
-            <Card className="lg:col-span-3">
+            <Card className="lg:col-span-1">
+              <CardHeader>
+                <CardTitle>Solicitudes de Servicio</CardTitle>
+                 <CardDescription>Últimos 30 días</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col items-center justify-center gap-4 text-center">
+                  <div className="space-y-2">
+                    <p className="text-4xl font-bold">33</p>
+                    <p className="text-sm text-muted-foreground">Tickets Abiertos</p>
+                  </div>
+                   <div className="space-y-2">
+                    <p className="text-4xl font-bold">25</p>
+                    <p className="text-sm text-muted-foreground">Tickets Cerrados</p>
+                  </div>
+              </CardContent>
+            </Card>
+
+
+            <Card className="lg:col-span-4">
                 <CardHeader>
                     <CardTitle>Alertas Recientes</CardTitle>
                 </CardHeader>
