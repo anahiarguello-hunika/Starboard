@@ -47,6 +47,8 @@ const corporateGovernanceQuestions = [
     "¿En las juntas se discuten los temas de auditoría, planeación y finanzas?",
     "¿Existe un Director General y/ó funcionarios de alto nivel de la Sociedad nombrados por el Consejo de Administración?",
     "¿El Consejo ó algún Comité en particular evalúan y aprueban periodicamente la gestión del Director General y/ó funcionarios de alto nivel de la Sociedad?",
+    "¿Se cuenta con indicadores de desempeño corporativo (financiero y no financiero)?",
+    "¿Se realizan evaluaciones periódicas sobre la actividad del Consejo, sus Comités y su Director General?",
 ];
 
 const corporateGovernanceRadioOptions = ["Sí", "No", "No sé"];
