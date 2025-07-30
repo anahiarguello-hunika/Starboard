@@ -82,6 +82,10 @@ const laborQuestions = [
     "¿La Sociedad tiene litigios pendientes de carácter laboral?",
     "¿La Sociedad realiza el Reparto de Utilidades?",
     "¿Todos los trabajadores han firmado su contrato laboral con la Sociedad?",
+    "¿La Sociedad emite recibos para el pago de prima vacacional , nóminas, aguinaldo, etc?",
+    "¿La Sociedad archiva los expedientes de los trabajadores, nóminas, contratos, etc. por un periodo de 5 años?",
+    "En caso de que la Sociedad haya celebrado Contrato Colectivos de Trabajo ¿realizan revisiones al mismo cada dos años?",
+    "¿La Sociedad tiene Constancia de Empleador actualizada ante el Instituto de Migración para emplear extranjeros?",
 ];
 
 const laborRadioOptions = ["Sí", "No", "No sé"];
