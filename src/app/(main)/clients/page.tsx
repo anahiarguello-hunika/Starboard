@@ -476,7 +476,7 @@ export default function ClientDetailPage() {
                                         <SelectTrigger id="assign-to">
                                              <div className="flex items-center gap-2">
                                                 <Badge variant="secondary">
-                                                    Elias Bardawil <Button variant="ghost" size="icon" className="h-4 w-4 ml-1"><X className="h-3 w-3"/></Button>
+                                                    Elias Bardawil <span className="ml-1 cursor-pointer"><X className="h-3 w-3"/></span>
                                                 </Badge>
                                              </div>
                                         </SelectTrigger>
