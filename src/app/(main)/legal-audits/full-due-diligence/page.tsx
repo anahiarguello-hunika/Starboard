@@ -474,9 +474,36 @@ export default function FullDueDiligencePage() {
                         ))}
                     </TableBody>
                 </Table>
+                <div className="space-y-2 rounded-lg border p-6 mt-6">
+                    <Label>Mencione el nombre completo de los empleados de la sociedad, la fecha de ingreso y el sueldo, así como si son empleados directamente por la empresa o por medio de outsourcing.</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar el formato del Contrato Individual de Trabajo que la sociedad utiliza con los empleados.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Adjuntar los formatos de documentos laborales tales como carta de renuncia, finiquitos y convenios de terminación.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                 <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Anexar todos los contratos de outsourcing que la Sociedad haya celebrado.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 100 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
             </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
+    
