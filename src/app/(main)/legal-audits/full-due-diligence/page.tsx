@@ -74,6 +74,17 @@ const intellectualPropertyQuestions = [
 
 const intellectualPropertyRadioOptions = ["Sí", "No", "No sé"];
 
+const laborQuestions = [
+    "¿La Sociedad emplea directamente a sus empleados?",
+    "¿La Sociedad emplea a sus trabajadores por medio de outsourcing?",
+    "¿La Sociedad se encuentra al corriente de los pagos de IMSS, Infonavit, etc.?",
+    "¿La Sociedad cuenta con trabajadores sindicalizados?",
+    "¿La Sociedad tiene litigios pendientes de carácter laboral?",
+    "¿La Sociedad realiza el Reparto de Utilidades?",
+    "¿Todos los trabajadores han firmado su contrato laboral con la Sociedad?",
+];
+
+const laborRadioOptions = ["Sí", "No", "No sé"];
 
 export default function FullDueDiligencePage() {
   return (
@@ -426,7 +437,39 @@ export default function FullDueDiligencePage() {
                         <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
                     </div>
                 </div>
+            </div>
 
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 6 de 14: Materia Laboral.</CardTitle>
+                    <CardDescription>
+                        Favor de anexar los documentos que se solicitan en caso de ser aplicable para la Sociedad.
+                    </CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Lea con atención y responda lo siguiente:</TableHead>
+                            {laborRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {laborQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {laborRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`labor-${index}-${option}`} id={`labor-${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
             </div>
         </CardContent>
       </Card>
