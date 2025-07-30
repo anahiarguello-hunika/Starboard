@@ -94,22 +94,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
-          <Card className="m-2 bg-sidebar-accent/30 text-sidebar-foreground border-sidebar-border">
-            <CardHeader className="p-4">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Crown className="text-yellow-400" />
-                Plan Empresarial
-              </CardTitle>
-              <CardDescription className="text-sidebar-foreground/80">
-                Todas las funciones desbloqueadas.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="p-4 pt-0">
-              <Button size="sm" className="w-full bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90">
-                Gestionar Suscripción
-              </Button>
-            </CardContent>
-          </Card>
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
