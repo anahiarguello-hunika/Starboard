@@ -1,13 +1,15 @@
 
 'use client';
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, FileUp, Folder, Upload } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 
 const corporateRequirements = [
@@ -84,6 +86,21 @@ export default function FullDueDiligencePage() {
                          ))}
                     </TableBody>
                 </Table>
+            </div>
+             <div className="space-y-4 rounded-lg border p-6">
+                <Label className="text-base">Favor de adjuntar la escritura pública que contenga el nombramiento de Apoderados y Representantes Legales y en su caso la boleta de inscripción en el Registro Público de Comercio (SOLO si no fueron otorgados en el Acta Constitutiva, Asamblea de Accionistas y/o Resoluciones Unánimes).</Label>
+                <div className="flex items-center justify-between mt-4">
+                    <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    <Link href="#" className="flex items-center gap-2 text-sm text-primary hover:underline">
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.20312 20.7891L10.0781 15.6562H15.8281L13.5938 19.5L10.7188 24.6328L7.20312 20.7891Z" fill="#0066DA" />
+                            <path d="M10.7188 0L7.20312 3.84375L10.0781 8.97656L16.5938 8.97656L23.1094 8.97656L10.7188 0Z" fill="#00A9F4" />
+                            <path d="M16.5938 8.97656L10.0781 8.97656L3.46875 20.0625L7.20312 20.7891L13.5938 19.5L16.5938 8.97656Z" fill="#00C973" />
+                            <path d="M0 16.5938L3.46875 20.0625L10.0781 8.97656H3.46875L0 16.5938Z" fill="#FFC700" />
+                        </svg>
+                        Ver carpeta
+                    </Link>
+                </div>
             </div>
         </CardContent>
       </Card>
