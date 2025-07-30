@@ -29,6 +29,8 @@ import {
   Crown,
   CreditCard,
   ListTodo,
+  Sparkles,
+  X,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -58,6 +60,10 @@ import { Progress } from '@/components/ui/progress';
 import { clientData, type ClientWorkItem } from '@/lib/client-data';
 import Link from 'next/link';
 import { cn } from "@/lib/utils";
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 const getStatusBadge = (status: ClientWorkItem['status']) => {
   switch (status) {
@@ -314,6 +320,174 @@ export default function ClientDetailPage() {
                         </Card>
                     </div>
                 </div>
+            </TabsContent>
+            <TabsContent value="contacts" className="mt-4">
+                <Card>
+                    <CardContent className="p-6 space-y-8">
+                        <div className="space-y-6">
+                            <div className="grid grid-cols-4 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="prefix">Prefix</Label>
+                                    <Input id="prefix" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="first-name">First name *</Label>
+                                    <Input id="first-name" required />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="middle-name">Middle name</Label>
+                                    <Input id="middle-name" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="last-name">Last name *</Label>
+                                    <Input id="last-name" required />
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="dob">Date of Birth</Label>
+                                    <Input id="dob" type="date" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="contact-type">Contact type</Label>
+                                    <Select>
+                                        <SelectTrigger id="contact-type">
+                                            <SelectValue placeholder="Lead" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="lead">Lead</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="tags">Tags</Label>
+                                <Input id="tags" placeholder="Type to search tags" />
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="email">Email address</Label>
+                                    <Input id="email" type="email" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="email-type">Email type</Label>
+                                    <Select>
+                                        <SelectTrigger id="email-type">
+                                            <SelectValue placeholder="Home" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="home">Home</SelectItem>
+                                            <SelectItem value="work">Work</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="phone">Phone number</Label>
+                                    <Input id="phone" placeholder="+52( ) - " />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="phone-type">Phone type</Label>
+                                    <Select>
+                                        <SelectTrigger id="phone-type">
+                                            <SelectValue placeholder="Mobile" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="mobile">Mobile</SelectItem>
+                                            <SelectItem value="home">Home</SelectItem>
+                                            <SelectItem value="work">Work</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label>Mexico</Label>
+                                    <Label htmlFor="street-address">Street address</Label>
+                                    <Textarea id="street-address" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="address-type">Address type</Label>
+                                    <Select>
+                                        <SelectTrigger id="address-type">
+                                            <SelectValue placeholder="Home" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="home">Home</SelectItem>
+                                            <SelectItem value="work">Work</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="space-y-6">
+                            <h2 className="text-xl font-semibold">Matter details</h2>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="matter-type">Matter type *</Label>
+                                    <Select>
+                                        <SelectTrigger id="matter-type">
+                                            <SelectValue placeholder="Unassigned" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="unassigned">Unassigned</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="matter-status">Matter status *</Label>
+                                    <Select>
+                                        <SelectTrigger id="matter-status">
+                                            <SelectValue placeholder="Lead (Podemos ayudar)" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="lead">Lead (Podemos ayudar)</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="description">Description *</Label>
+                                <Textarea id="description" required />
+                            </div>
+                            <div className="grid grid-cols-2 gap-4 items-start">
+                                <div className="space-y-2">
+                                    <Label htmlFor="estimated-value">Estimated value</Label>
+                                    <Input id="estimated-value" placeholder="Enter a value" />
+                                </div>
+                                <div className="bg-muted p-4 rounded-lg flex items-center gap-4">
+                                    <Sparkles className="h-8 w-8 text-primary" />
+                                    <p className="text-sm text-muted-foreground">
+                                        <strong>Unsure how to estimate value?</strong> Try taking the average revenue of matters of the same type.
+                                    </p>
+                                </div>
+                            </div>
+                             <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="assign-to">Assign to *</Label>
+                                    <Select>
+                                        <SelectTrigger id="assign-to">
+                                             <div className="flex items-center gap-2">
+                                                <Badge variant="secondary">
+                                                    Elias Bardawil <Button variant="ghost" size="icon" className="h-4 w-4 ml-1"><X className="h-3 w-3"/></Button>
+                                                </Badge>
+                                             </div>
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="eb">Elias Bardawil</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="location">Location</Label>
+                                    <Input id="location" placeholder="Select a location" />
+                                </div>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
             </TabsContent>
         </Tabs>
         </div>
