@@ -60,6 +60,7 @@ const penalComplianceQuestions = [
     "¿La sociedad tiene identificados los delitos penales o sanciones aplicables a sus actividades, giro del negocio u objeto social?",
     "¿La Sociedad ha designado un Órgano de Control u Oficial de Cumplimiento que supervise la ejecución de los Protocolos y/o Manuales Internos?",
     "En caso de contar con Manuales y/o Protocolos, ¿éstos fueron aprobados por el Consejo de Administración?",
+    "¿La Sociedad ha implementado un canal de denuncias interno entre los miembros o trabajadores de la empresa ante el conocimiento de hechos ilícitos?",
 ];
 
 const penalComplianceRadioOptions = ["Sí", "No", "No sé"];
