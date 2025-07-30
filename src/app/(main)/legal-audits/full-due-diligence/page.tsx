@@ -389,6 +389,36 @@ export default function FullDueDiligencePage() {
                         ))}
                     </TableBody>
                 </Table>
+
+                <div className="space-y-2 rounded-lg border p-6 mt-6">
+                    <Label>Mencione toda la Propiedad Intelectual y/o Industrial que la Sociedad utilice y especifique si se encuentra o no inscrita en el IMPI, INDAUTOR o el extranjero.</Label>
+                    <Textarea placeholder="Tu respuesta" />
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Favor de anexar los títulos de registro o evidencia de la Propiedad Intelectual y/o Industrial que se encuentra inscrita en el IMPI e INDAUTOR.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 GB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Favor de anexar los convenios, contratos y sus reformas que conceden a la Sociedad el uso de cualquier patente o marca y documentos que amparen el registro de los mismos ante el IMPI (incluyendo licencias por el uso de software).</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles: PDF o document. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+                
+                <div className="space-y-4 rounded-lg border p-6 mt-6">
+                    <Label className="text-base">Favor de anexar los documentos relativos a los procedimientos o reclamaciones que existan en contra de la Sociedad por el incumplimiento o violación de derechos de Propiedad Intelectual y/o Industrial.</Label>
+                    <p className="text-sm text-muted-foreground">Sube hasta 10 archivos compatibles. El tamaño máximo es de 10 MB por archivo.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    </div>
+                </div>
+
             </div>
         </CardContent>
       </Card>
