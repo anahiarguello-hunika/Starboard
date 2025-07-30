@@ -49,9 +49,20 @@ const corporateGovernanceQuestions = [
     "¿El Consejo ó algún Comité en particular evalúan y aprueban periodicamente la gestión del Director General y/ó funcionarios de alto nivel de la Sociedad?",
     "¿Se cuenta con indicadores de desempeño corporativo (financiero y no financiero)?",
     "¿Se realizan evaluaciones periódicas sobre la actividad del Consejo, sus Comités y su Director General?",
+    "¿El Consejo de Administración y/o sus Comités cuentan con un calendario anual de actividades?",
+    "¿Se cuenta con un Secretario del Consejo de Administración que sea independiente de la Sociedad?",
 ];
 
 const corporateGovernanceRadioOptions = ["Sí", "No", "No sé"];
+
+const penalComplianceQuestions = [
+    "¿Los consejeros y miembros de la Sociedad son conscientes de las responsabilidades y sanciones que se derivan de sus actuaciones dentro de la misma?",
+    "¿La sociedad tiene identificados los delitos penales o sanciones aplicables a sus actividades, giro del negocio u objeto social?",
+    "¿La Sociedad ha designado un Órgano de Control u Oficial de Cumplimiento que supervise la ejecución de los Protocolos y/o Manuales Internos?",
+    "En caso de contar con Manuales y/o Protocolos, ¿éstos fueron aprobados por el Consejo de Administración?",
+];
+
+const penalComplianceRadioOptions = ["Sí", "No", "No sé"];
 
 
 export default function FullDueDiligencePage() {
@@ -177,7 +188,7 @@ export default function FullDueDiligencePage() {
 
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 2 de 13: Datos de miembros de la Sociedad.</CardTitle>
+                    <CardTitle>Sección 2 de 14: Datos de miembros de la Sociedad.</CardTitle>
                     <CardDescription>Favor de adjuntar y/o mencionar los datos solicitados, según se indique. Si los apoderados o miembros del Consejo de Administración son accionistas y la información ya se adjuntó no es necesario repetirla.</CardDescription>
                 </CardHeader>
                 
@@ -262,7 +273,7 @@ export default function FullDueDiligencePage() {
             </div>
             <div className="space-y-4 rounded-lg border p-6">
                 <CardHeader className="px-0 pt-0">
-                    <CardTitle>Sección 3 de 13: Funcionamiento del Gobierno Corporativo.</CardTitle>
+                    <CardTitle>Sección 3 de 14: Funcionamiento del Gobierno Corporativo.</CardTitle>
                     <CardDescription>Lea con atención y responda las siguientes preguntas:</CardDescription>
                 </CardHeader>
                 <Table>
@@ -282,6 +293,36 @@ export default function FullDueDiligencePage() {
                                     <TableCell key={option} className="text-center">
                                         <RadioGroup>
                                             <RadioGroupItem value={`${index}-${option}`} id={`${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 4 de 14: Compliance Penal</CardTitle>
+                    <CardDescription>Lea con atención y responda lo siguiente:</CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead></TableHead>
+                            {penalComplianceRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {penalComplianceQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {penalComplianceRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`penal-${index}-${option}`} id={`penal-${index}-${option}`} />
                                         </RadioGroup>
                                     </TableCell>
                                 ))}
