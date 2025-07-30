@@ -132,6 +132,21 @@ export default function FullDueDiligencePage() {
                     </Link>
                 </div>
             </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <Label className="text-base">En su caso, favor de adjuntar el Acta o Actas de Asamblea donde conste la modificación de los Estatutos, incluyendo su boleta de inscripción en el Registro Público de Comercio.</Label>
+                <div className="flex items-center justify-between mt-4">
+                    <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                    <Link href="#" className="flex items-center gap-2 text-sm text-primary hover:underline">
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.20312 20.7891L10.0781 15.6562H15.8281L13.5938 19.5L10.7188 24.6328L7.20312 20.7891Z" fill="#0066DA" />
+                            <path d="M10.7188 0L7.20312 3.84375L10.0781 8.97656L16.5938 8.97656L23.1094 8.97656L10.7188 0Z" fill="#00A9F4" />
+                            <path d="M16.5938 8.97656L10.0781 8.97656L3.46875 20.0625L7.20312 20.7891L13.5938 19.5L16.5938 8.97656Z" fill="#00C973" />
+                            <path d="M0 16.5938L3.46875 20.0625L10.0781 8.97656H3.46875L0 16.5938Z" fill="#FFC700" />
+                        </svg>
+                        Ver carpeta
+                    </Link>
+                </div>
+            </div>
              <div className="space-y-4 rounded-lg border p-6">
                 <Label className="text-base">Favor de adjuntar la escritura pública que contenga el nombramiento de Apoderados y Representantes Legales y en su caso la boleta de inscripción en el Registro Público de Comercio (SOLO si no fueron otorgados en el Acta Constitutiva, Asamblea de Accionistas y/o Resoluciones Unánimes).</Label>
                 <div className="flex items-center justify-between mt-4">
@@ -196,6 +211,42 @@ export default function FullDueDiligencePage() {
                     <Textarea placeholder="Texto de respuesta largo" />
                 </div>
 
+                 <div className="space-y-2">
+                    <Label>Favor de asentar los siguientes datos respecto de cada miembro del Consejo de Administración/Administrador Único.<br/>- Nombre completo; - Lugar y fecha de nacimiento; - Profesión, ocupación o giro del negocio al que se dedique;<br/>- Domicilio;- Estado civil (en caso de estar casado(a), mencione el régimen);</Label>
+                    <Textarea placeholder="Texto de respuesta largo" />
+                </div>
+
+                <div className="space-y-2">
+                    <Label>Anexar la identificación oficial de cada Apoderado/Representante Legal, integrantes del Consejo de Administración y Comisario (solo si no son accionistas y ya se adjuntó)<br/>(Puede ser la credencial para votar, pasaporte, licencia de conducir o Forma Migratoria en caso de extranjeros)</Label>
+                    <div className="flex items-center justify-between mt-2">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                        <Link href="#" className="flex items-center gap-2 text-sm text-primary hover:underline">
+                            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.20312 20.7891L10.0781 15.6562H15.8281L13.5938 19.5L10.7188 24.6328L7.20312 20.7891Z" fill="#0066DA" />
+                                <path d="M10.7188 0L7.20312 3.84375L10.0781 8.97656L16.5938 8.97656L23.1094 8.97656L10.7188 0Z" fill="#00A9F4" />
+                                <path d="M16.5938 8.97656L10.0781 8.97656L3.46875 20.0625L7.20312 20.7891L13.5938 19.5L16.5938 8.97656Z" fill="#00C973" />
+                                <path d="M0 16.5938L3.46875 20.0625L10.0781 8.97656H3.46875L0 16.5938Z" fill="#FFC700" />
+                            </svg>
+                            Ver carpeta
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="space-y-2">
+                    <Label>Anexar la Cédula de Identificación fiscal expedida por el SAT de cada Apoderado/Representante Legal, integrantes del Consejo de Administración y Comisario (solo si no son accionistas y ya se adjuntó).</Label>
+                    <div className="flex items-center justify-between mt-2">
+                        <Button variant="outline"><FileUp className="mr-2 h-4 w-4" /> Agregar archivo</Button>
+                        <Link href="#" className="flex items-center gap-2 text-sm text-primary hover:underline">
+                            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.20312 20.7891L10.0781 15.6562H15.8281L13.5938 19.5L10.7188 24.6328L7.20312 20.7891Z" fill="#0066DA" />
+                                <path d="M10.7188 0L7.20312 3.84375L10.0781 8.97656L16.5938 8.97656L23.1094 8.97656L10.7188 0Z" fill="#00A9F4" />
+                                <path d="M16.5938 8.97656L10.0781 8.97656L3.46875 20.0625L7.20312 20.7891L13.5938 19.5L16.5938 8.97656Z" fill="#00C973" />
+                                <path d="M0 16.5938L3.46875 20.0625L10.0781 8.97656H3.46875L0 16.5938Z" fill="#FFC700" />
+                            </svg>
+                            Ver carpeta
+                        </Link>
+                    </div>
+                </div>
             </div>
         </CardContent>
       </Card>
