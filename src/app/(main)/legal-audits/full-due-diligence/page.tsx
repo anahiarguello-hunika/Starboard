@@ -128,7 +128,7 @@ const pldQuestions = [
     "¿Cuenta con un formato de Constancia de Dueño Beneficiario?",
     "¿Presenta los Avisos e Informes por conducto del SAT en tiempo y forma?",
     "¿Actualmente la empresa cuenta con los Expedientes Únicos de Identificación, Constancias de Dueño Beneficiario y Avisos e Informes respecto de todas las Actividades Vulnerables realizadas?",
-    "¿Resguarda la información y documentación que da soporte a las Actividades Vulnerables y/o Identifican a sus Clientes o Usuarios por un plazo de 5 años?",
+    "¿Resguarda la información y documentation que da soporte a las Actividades Vulnerables y/o Identifican a sus Clientes o Usuarios por un plazo de 5 años?",
 ];
 
 const pldRadioOptions = ["Sí", "No"];
@@ -218,7 +218,9 @@ export default function FullDueDiligencePage() {
                                 {radioOptions.map((option) => (
                                     <TableCell key={option} className="text-center">
                                         <RadioGroup>
-                                            <RadioGroupItem value={`${req}-${option}`} id={`${req}-${option}`}/>
+                                            <div className="flex justify-center">
+                                                <RadioGroupItem value={`${req}-${option}`} id={`${req}-${option}`}/>
+                                            </div>
                                         </RadioGroup>
                                     </TableCell>
                                 ))}
