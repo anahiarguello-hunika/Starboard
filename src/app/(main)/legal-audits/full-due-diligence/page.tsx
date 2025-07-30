@@ -41,6 +41,16 @@ const corporateDocumentsRequirements = [
     "Favor de adjuntar los Títulos Accionarios emitidos.",
 ];
 
+const corporateGovernanceQuestions = [
+    "¿El Consejo de Administración y sus Comités se reúnen al menos 4 veces por año?",
+    "¿Existe una agenda u orden del día que se ponga a disposición de los consejeros, previamente a las juntas de consejo ó de los comités?",
+    "¿En las juntas se discuten los temas de auditoría, planeación y finanzas?",
+    "¿Existe un Director General y/ó funcionarios de alto nivel de la Sociedad nombrados por el Consejo de Administración?",
+    "¿El Consejo ó algún Comité en particular evalúan y aprueban periodicamente la gestión del Director General y/ó funcionarios de alto nivel de la Sociedad?",
+];
+
+const corporateGovernanceRadioOptions = ["Sí", "No", "No sé"];
+
 
 export default function FullDueDiligencePage() {
   return (
@@ -247,6 +257,36 @@ export default function FullDueDiligencePage() {
                         </Link>
                     </div>
                 </div>
+            </div>
+            <div className="space-y-4 rounded-lg border p-6">
+                <CardHeader className="px-0 pt-0">
+                    <CardTitle>Sección 3 de 13: Funcionamiento del Gobierno Corporativo.</CardTitle>
+                    <CardDescription>Lea con atención y responda las siguientes preguntas:</CardDescription>
+                </CardHeader>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead></TableHead>
+                            {corporateGovernanceRadioOptions.map((option) => (
+                                <TableHead key={option} className="text-center">{option}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {corporateGovernanceQuestions.map((question, index) => (
+                            <TableRow key={index}>
+                                <TableCell className="font-medium">{question}</TableCell>
+                                {corporateGovernanceRadioOptions.map((option) => (
+                                    <TableCell key={option} className="text-center">
+                                        <RadioGroup>
+                                            <RadioGroupItem value={`${index}-${option}`} id={`${index}-${option}`} />
+                                        </RadioGroup>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
             </div>
         </CardContent>
       </Card>
