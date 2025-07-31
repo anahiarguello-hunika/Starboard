@@ -336,6 +336,40 @@ const changeManagementQuestions = [
     },
 ];
 
+const trainingAndDevelopmentQuestions = [
+    {
+        question: '¿Existe un plan anual de capacitación legal por áreas temáticas?',
+        pain: 'Equipo obsoleto',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se evalúa el conocimiento legal del equipo y se actualiza?',
+        pain: 'Errores recurrentes',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Capacitan al equipo no legal en temas críticos (contratos, cumplimiento)?',
+        pain: 'Riesgo sistémico',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Cuentan con recursos (internos o externos) para entrenar en nuevas leyes?',
+        pain: 'Falta de reacción',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Monitorean el impacto de la capacitación en la reducción de errores legales?',
+        pain: 'ROI no visible',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Qué habilidades legales considera críticas para su equipo?',
+        pain: '',
+        okr: '',
+    },
+];
+
+
 
 export default function LegalMaturityPage() {
   return (
@@ -634,6 +668,33 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {changeManagementQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">12. Entrenamiento y Desarrollo</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Falta de actualización legal, errores por desconocimiento.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Capacitar continuamente al equipo en aspectos legales y de negocio.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {trainingAndDevelopmentQuestions.map((item, index) => (
                                 <TableRow key={index}>
                                     <TableCell>{item.question}</TableCell>
                                     <TableCell>{item.pain}</TableCell>
