@@ -20,6 +20,7 @@ import {
   UserSearch,
   Users,
   Award,
+  BookUser,
 } from "lucide-react";
 
 import {
@@ -51,6 +52,7 @@ const navItems = [
   { href: "/background-check", icon: UserSearch, label: "Background check" },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/summarize", icon: Sparkles, label: "IA" },
+  { href: "/customer-portal", icon: BookUser, label: "Portal de Clientes" },
 ];
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
