@@ -270,6 +270,39 @@ const legalDataAnalyticsQuestions = [
     },
 ];
 
+const organizationalOptimizationQuestions = [
+    {
+        question: '¿Tienen organigrama del área legal actualizado?',
+        pain: 'Ambigüedad de roles',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Definen roles, perfiles y niveles de responsabilidad legal?',
+        pain: 'Reproceso y errores',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se hace evaluación de desempeño del equipo legal?',
+        pain: 'Sin accountability',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Cuentan con plan de desarrollo profesional para el equipo?',
+        pain: 'Desmotivación',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿El área legal tiene visibilidad e influencia en la organización?',
+        pain: 'Baja percepción de valor',
+        okr: 'Ambos',
+    },
+    {
+        question: '¿Qué fortalezas o debilidades tiene hoy su equipo legal?',
+        pain: '',
+        okr: '',
+    },
+];
+
 
 export default function LegalMaturityPage() {
   return (
@@ -525,9 +558,35 @@ export default function LegalMaturityPage() {
                     </Table>
                 </Card>
             </div>
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">10. Optimización Organizacional</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Equipos legales mal estructurados o desmotivados.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Construir equipos legales eficaces, alineados al negocio.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {organizationalOptimizationQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
-
