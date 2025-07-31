@@ -27,6 +27,16 @@ const strategicPlanningQuestions = [
         pain: 'Reacción tardía',
         okr: 'Riesgo',
     },
+    {
+        question: '¿Existe una cultura de medición de resultados dentro del área legal?',
+        pain: 'Falta de accountability',
+        okr: 'Ambos',
+    },
+    {
+        question: '¿Cómo se alinea hoy su área legal con la estrategia del negocio?',
+        pain: '',
+        okr: '',
+    },
 ];
 
 export default function LegalMaturityPage() {
