@@ -5,6 +5,7 @@ import { ChevronRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const strategicPlanningQuestions = [
     {
@@ -36,6 +37,7 @@ const strategicPlanningQuestions = [
         question: '¿Cómo se alinea hoy su área legal con la estrategia del negocio?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -69,6 +71,7 @@ const financialManagementQuestions = [
         question: '¿Cómo monitorean actualmente su gasto legal?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -102,6 +105,7 @@ const legalProvidersManagementQuestions = [
         question: '¿Qué procesos tienen para elegir o cambiar de despacho?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -135,6 +139,7 @@ const legalTechnologyQuestions = [
         question: '¿Qué herramientas tecnológicas usan hoy en la empresa para los temas legales?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -168,6 +173,7 @@ const legalSupportModelsQuestions = [
         question: '¿Cómo definen qué tareas delegan o tercerizan?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -201,6 +207,7 @@ const legalProjectManagementQuestions = [
         question: '¿Qué metodología usan para gestionar asuntos legales?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -234,6 +241,7 @@ const legalProcessOptimizationQuestions = [
         question: '¿Qué procesos legales considera que deben mejorarse?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -267,6 +275,7 @@ const legalDataAnalyticsQuestions = [
         question: '¿Qué datos legales tienen más valor para su empresa?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -300,6 +309,7 @@ const organizationalOptimizationQuestions = [
         question: '¿Qué fortalezas o debilidades tiene hoy su equipo legal?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -333,6 +343,7 @@ const changeManagementQuestions = [
         question: '¿Qué tan fácil es para su empresa adaptarse a cambios legales?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -366,6 +377,7 @@ const trainingAndDevelopmentQuestions = [
         question: '¿Qué habilidades legales considera críticas para su equipo?',
         pain: '',
         okr: '',
+        freeform: true
     },
 ];
 
@@ -426,10 +438,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {strategicPlanningQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -453,10 +471,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {financialManagementQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -479,11 +503,17 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {legalProvidersManagementQuestions.map((item, index) => (
-                                <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                 <TableRow key={index}>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -506,11 +536,17 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {legalTechnologyQuestions.map((item, index) => (
-                                <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                 <TableRow key={index}>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -534,10 +570,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {legalSupportModelsQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -545,7 +587,7 @@ export default function LegalMaturityPage() {
                 </Card>
             </div>
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">7. Gestión de Proyectos Legales</h2>
+                <h2 className="text-xl font-bold">6. Gestión de Proyectos Legales</h2>
                 <p><strong className="text-foreground">Dolor asociado:</strong> Asuntos legales desorganizados, sin fechas claras ni responsables.</p>
                 <p><strong className="text-foreground">Objetivo:</strong> Ejecutar proyectos legales con enfoque ágil y trazable.</p>
                 <Card>
@@ -561,10 +603,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {legalProjectManagementQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -572,9 +620,9 @@ export default function LegalMaturityPage() {
                 </Card>
             </div>
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">8. Optimización de Procesos Legales</h2>
-                <p><strong className="text-foreground">Dolor asociado:</strong> Asuntos legales desorganizados, sin fechas claras ni responsables.</p>
-                <p><strong className="text-foreground">Objetivo:</strong> Ejecutar proyectos legales con enfoque ágil y trazable.</p>
+                <h2 className="text-xl font-bold">7. Optimización de Procesos Legales</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Flujos de trabajo legales caóticos, manuales y propensos a errores.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Estandarizar y optimizar procesos legales clave.</p>
                 <Card>
                     <Table>
                         <TableHeader>
@@ -588,10 +636,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {legalProcessOptimizationQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -599,7 +653,7 @@ export default function LegalMaturityPage() {
                 </Card>
             </div>
              <div className="space-y-4">
-                <h2 className="text-xl font-bold">9. Analítica de Datos Legales</h2>
+                <h2 className="text-xl font-bold">8. Analítica de Datos Legales</h2>
                 <p><strong className="text-foreground">Dolor asociado:</strong> Decisiones legales sin datos, sin análisis de riesgos ni tendencias.</p>
                 <p><strong className="text-foreground">Objetivo:</strong> Tomar decisiones legales basadas en datos.</p>
                 <Card>
@@ -615,10 +669,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {legalDataAnalyticsQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -626,7 +686,7 @@ export default function LegalMaturityPage() {
                 </Card>
             </div>
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">10. Optimización Organizacional</h2>
+                <h2 className="text-xl font-bold">9. Optimización Organizacional</h2>
                 <p><strong className="text-foreground">Dolor asociado:</strong> Equipos legales mal estructurados o desmotivados.</p>
                 <p><strong className="text-foreground">Objetivo:</strong> Construir equipos legales eficaces, alineados al negocio.</p>
                 <Card>
@@ -642,10 +702,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {organizationalOptimizationQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -653,7 +719,7 @@ export default function LegalMaturityPage() {
                 </Card>
             </div>
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">11. Gestión del Cambio</h2>
+                <h2 className="text-xl font-bold">10. Gestión del Cambio</h2>
                 <p><strong className="text-foreground">Dolor asociado:</strong> Cambios legales, tecnológicos o normativos mal implementados.</p>
                 <p><strong className="text-foreground">Objetivo:</strong> Gestionar el cambio legal con comunicación y adaptación.</p>
                 <Card>
@@ -669,10 +735,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {changeManagementQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -680,7 +752,7 @@ export default function LegalMaturityPage() {
                 </Card>
             </div>
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">12. Entrenamiento y Desarrollo</h2>
+                <h2 className="text-xl font-bold">11. Entrenamiento y Desarrollo</h2>
                 <p><strong className="text-foreground">Dolor asociado:</strong> Falta de actualización legal, errores por desconocimiento.</p>
                 <p><strong className="text-foreground">Objetivo:</strong> Capacitar continuamente al equipo en aspectos legales y de negocio.</p>
                 <Card>
@@ -696,10 +768,16 @@ export default function LegalMaturityPage() {
                         <TableBody>
                             {trainingAndDevelopmentQuestions.map((item, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{item.question}</TableCell>
-                                    <TableCell>{item.pain}</TableCell>
-                                    <TableCell>{item.okr}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                    <TableCell className="font-medium">{item.question}</TableCell>
+                                    {item.freeform ? (
+                                        <TableCell colSpan={3}><Textarea placeholder="Tu respuesta" /></TableCell>
+                                    ) : (
+                                        <>
+                                            <TableCell>{item.pain}</TableCell>
+                                            <TableCell>{item.okr}</TableCell>
+                                            <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                        </>
+                                    )}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -711,3 +789,5 @@ export default function LegalMaturityPage() {
     </div>
   );
 }
+
+    
