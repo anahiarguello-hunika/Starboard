@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const commercialContractQuestions = [
     {
@@ -153,25 +154,20 @@ export default function ContractMaturityPage() {
                     <Input />
                 </div>
             </div>
-            <div className="space-y-4">
-                <Card>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[80%]">Pregunta</TableHead>
-                                <TableHead>Valor (1-5)</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {commercialContractQuestions.map((item, index) => (
-                                <TableRow key={index}>
-                                    <TableCell className="font-medium">{item.question}</TableCell>
-                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </Card>
+            <div className="space-y-8">
+                {commercialContractQuestions.map((item, index) => (
+                    <Card key={index} className="p-4">
+                        <CardHeader>
+                           <CardTitle className="text-base">{item.question}</CardTitle>
+                        </CardHeader>
+                         <CardContent>
+                            <RadioGroup>
+                                {/* Options will be added here based on user input */}
+                            </RadioGroup>
+                             <Textarea placeholder="Otra respuesta (por favor especifique)" className="mt-4" />
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
              <div className="space-y-4 rounded-lg border p-6">
                 <div className="space-y-2">
