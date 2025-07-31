@@ -303,6 +303,39 @@ const organizationalOptimizationQuestions = [
     },
 ];
 
+const changeManagementQuestions = [
+    {
+        question: '¿Se comunica al equipo legal y al negocio sobre cambios legales importantes?',
+        pain: 'Incumplimiento',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Tienen una metodología para implementar cambios legales internos?',
+        pain: 'Fricción',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se capacita al personal ante nuevos procesos, leyes o herramientas?',
+        pain: 'Errores operativos',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Cuentan con responsables del cambio (líderes legales)?',
+        pain: 'Cambios aislados',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Evalúan el impacto del cambio en las operaciones legales?',
+        pain: 'No saben si funcionó',
+        okr: 'Ambos',
+    },
+    {
+        question: '¿Qué tan fácil es para su empresa adaptarse a cambios legales?',
+        pain: '',
+        okr: '',
+    },
+];
+
 
 export default function LegalMaturityPage() {
   return (
@@ -574,6 +607,33 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {organizationalOptimizationQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">11. Gestión del Cambio</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Cambios legales, tecnológicos o normativos mal implementados.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Gestionar el cambio legal con comunicación y adaptación.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {changeManagementQuestions.map((item, index) => (
                                 <TableRow key={index}>
                                     <TableCell>{item.question}</TableCell>
                                     <TableCell>{item.pain}</TableCell>
