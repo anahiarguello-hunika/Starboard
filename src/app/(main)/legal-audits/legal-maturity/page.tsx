@@ -72,6 +72,39 @@ const financialManagementQuestions = [
     },
 ];
 
+const legalProvidersManagementQuestions = [
+    {
+        question: '¿Tienen criterios formales para seleccionar y evaluar despachos externos?',
+        pain: 'Proveedores mal elegidos',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Utilizan métricas o encuestas de desempeño de proveedores legales?',
+        pain: 'Sin accountability',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Tienen acuerdos de servicio (SLAs) claros con cada proveedor legal?',
+        pain: 'Tiempos impredecibles',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Revisan periódicamente contratos marco o tarifas negociadas?',
+        pain: 'Términos caducos',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Utilizan alguna herramienta digital para gestionar a estos proveedores?',
+        pain: 'Desorganización',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Qué procesos tienen para elegir o cambiar de despacho?',
+        pain: '',
+        okr: '',
+    },
+];
+
 export default function LegalMaturityPage() {
   return (
     <div className="space-y-8">
@@ -153,6 +186,33 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {financialManagementQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
+             <div className="space-y-4">
+                <h2 className="text-xl font-bold">3. Gestión de Proveedores Legales</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Proveedores legales mal evaluados, sin métricas ni alineación estratégica con la empresa.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Maximizar valor y desempeño de proveedores legales.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {legalProvidersManagementQuestions.map((item, index) => (
                                 <TableRow key={index}>
                                     <TableCell>{item.question}</TableCell>
                                     <TableCell>{item.pain}</TableCell>
