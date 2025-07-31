@@ -39,6 +39,39 @@ const strategicPlanningQuestions = [
     },
 ];
 
+const financialManagementQuestions = [
+    {
+        question: '¿Cuentan con un presupuesto legal anual aprobado y monitoreado?',
+        pain: 'Gasto imprevisible',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se utilizan herramientas de seguimiento de gastos y ROI legal?',
+        pain: 'Costos sin justificación',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Existe una política clara de compras y selección de proveedores legales?',
+        pain: 'Desorden del proveedor',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se controlan y negocian los honorarios de despachos externos?',
+        pain: 'Poca eficiencia',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se comparan métricas de costo por tipo de asunto o servicio?',
+        pain: 'Ineficiencia',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Cómo monitorean actualmente su gasto legal?',
+        pain: '',
+        okr: '',
+    },
+];
+
 export default function LegalMaturityPage() {
   return (
     <div className="space-y-8">
@@ -93,6 +126,33 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {strategicPlanningQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
+             <div className="space-y-4">
+                <h2 className="text-xl font-bold">2. Gestión Financiera Legal</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Gasto legal descontrolado, falta de presupuestos o visibilidad de costos del área.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Controlar, predecir y optimizar el gasto legal de la empresa.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {financialManagementQuestions.map((item, index) => (
                                 <TableRow key={index}>
                                     <TableCell>{item.question}</TableCell>
                                     <TableCell>{item.pain}</TableCell>
