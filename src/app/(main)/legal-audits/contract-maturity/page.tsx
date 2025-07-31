@@ -66,6 +66,48 @@ const commercialContractQuestions = [
     {
         question: '¿El equipo legal utiliza una guía de estilo de redacción?',
     },
+    {
+        question: '¿Cómo se actualizan las plantillas contractuales?',
+    },
+    {
+        question: '¿Existen niveles de servicio para que el equipo legal complete la redacción de los contratos?',
+    },
+    {
+        question: '¿Cómo aseguran que se mantengan posiciones consistentes durante las negociaciones?',
+    },
+    {
+        question: '¿Utilizan herramientas de inteligencia artificial (IA) para analizar contratos simples redactados por la contraparte?',
+    },
+    {
+        question: '¿Tienen objetivos de tiempo para que el equipo legal entregue versiones durante una negociación?',
+    },
+    {
+        question: '¿El equipo legal utiliza herramientas de redacción para acelerar las negociaciones contractuales?',
+    },
+    {
+        question: '¿El equipo legal utiliza herramientas de colaboración para facilitar la negociación?',
+    },
+    {
+        question: '¿Cuentan con un proceso formal de aprobación de contratos?',
+    },
+    {
+        question: '¿Utilizan firmas electrónicas?',
+    },
+    {
+        question: '¿Llevan seguimiento del tiempo total que toma cerrar un contrato?',
+    },
+    {
+        question: '¿Dónde y cómo almacenan sus contratos actualmente?',
+    },
+    {
+        question: '¿Cómo gestionan los contratos una vez firmados?',
+    },
+    {
+        question: '¿Cómo dan seguimiento al proceso contractual completo?',
+    },
+    {
+        question: '¿Qué mecanismos utilizan para mejorar continuamente su proceso de contratación?',
+    },
 ];
 
 export default function ContractMaturityPage() {
@@ -130,6 +172,12 @@ export default function ContractMaturityPage() {
                         </TableBody>
                     </Table>
                 </Card>
+            </div>
+             <div className="space-y-4 rounded-lg border p-6">
+                <div className="space-y-2">
+                    <Label>¿Tiene algún otro comentario que desee compartir?</Label>
+                    <Textarea />
+                </div>
             </div>
         </CardContent>
       </Card>
