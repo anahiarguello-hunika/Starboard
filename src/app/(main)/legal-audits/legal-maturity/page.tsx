@@ -237,6 +237,39 @@ const legalProcessOptimizationQuestions = [
     },
 ];
 
+const legalDataAnalyticsQuestions = [
+    {
+        question: '¿Tienen dashboards con métricas legales clave (riesgos, litigios, contratos)?',
+        pain: 'Falta de visibilidad',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Integran datos legales con indicadores de negocio?',
+        pain: 'Legal aislado',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿Analizan resultados legales por proveedor, asunto o área de negocio?',
+        pain: 'Falta de aprendizaje',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Usan modelos predictivos de riesgo o cumplimiento?',
+        pain: 'Sorpresas legales',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Legal participa en la analítica corporativa con KPIs legales?',
+        pain: 'Aislamiento',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿Qué datos legales tienen más valor para su empresa?',
+        pain: '',
+        okr: '',
+    },
+];
+
 
 export default function LegalMaturityPage() {
   return (
@@ -465,8 +498,36 @@ export default function LegalMaturityPage() {
                     </Table>
                 </Card>
             </div>
+             <div className="space-y-4">
+                <h2 className="text-xl font-bold">9. Analítica de Datos Legales</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Decisiones legales sin datos, sin análisis de riesgos ni tendencias.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Tomar decisiones legales basadas en datos.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {legalDataAnalyticsQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
