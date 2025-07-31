@@ -138,6 +138,40 @@ const legalTechnologyQuestions = [
     },
 ];
 
+const legalSupportModelsQuestions = [
+    {
+        question: '¿Usan proveedores alternativos de servicios legales para tareas operativas?',
+        pain: 'Carga operativa',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿Tienen acuerdos con firmas especializadas en ciertos temas legales?',
+        pain: 'Falta de especialización',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿Han tercerizado la revisión de contratos, due diligence u otros procesos?',
+        pain: 'Estructura costosa',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Evalúan costo-beneficio entre hacerlo internamente contra tercerizar la función legal integralmente?',
+        pain: 'Descontrol financiero',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se tiene claridad sobre qué funciones deben mantenerse internas?',
+        pain: 'Recursos mal usados',
+        okr: 'Ambos',
+    },
+    {
+        question: '¿Cómo definen qué tareas delegan o tercerizan?',
+        pain: '',
+        okr: '',
+    },
+];
+
+
 export default function LegalMaturityPage() {
   return (
     <div className="space-y-8">
@@ -284,8 +318,36 @@ export default function LegalMaturityPage() {
                     </Table>
                 </Card>
             </div>
+             <div className="space-y-4">
+                <h2 className="text-xl font-bold">5. Modelos Alternativos de Apoyo Legal</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Personal interno sobrecargados con tareas legales de bajo valor.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Externalizar o delegar funciones legales no estratégicas.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {legalSupportModelsQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
