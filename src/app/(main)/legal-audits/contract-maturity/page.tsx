@@ -34,27 +34,34 @@ const commercialContractQuestions = [
     },
     {
         question: '¿Ofrecen recursos en línea (como plantillas o guías) accesibles al equipo de negocio a través de un portal?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Brindan capacitación a los equipos de negocio sobre la gestión de contratos?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿El equipo de negocio cuenta con plantillas para contratos simples que puedan generar por sí mismos?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Los contratos generados por el equipo de negocio están automatizados para facilitar su creación rápida?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Existen sistemas para aprobar contratos de alto riesgo generados por el negocio?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Tienen un programa activo para migrar trabajo legal tradicional hacia un modelo de autoservicio?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Cómo se envían actualmente las solicitudes de apoyo al equipo legal?',
     },
     {
         question: '¿Existen niveles de servicio (SLAs) para que el equipo legal reconozca y responda a dichas solicitudes?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Cómo manejan los picos de demanda o solicitudes masivas?',
@@ -64,39 +71,49 @@ const commercialContractQuestions = [
     },
     {
         question: '¿Las plantillas del equipo legal están automatizadas para acelerar la creación de contratos?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿El equipo legal utiliza una guía de estilo de redacción?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Cómo se actualizan las plantillas contractuales?',
     },
     {
         question: '¿Existen niveles de servicio para que el equipo legal complete la redacción de los contratos?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Cómo aseguran que se mantengan posiciones consistentes durante las negociaciones?',
     },
     {
         question: '¿Utilizan herramientas de inteligencia artificial (IA) para analizar contratos simples redactados por la contraparte?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Tienen objetivos de tiempo para que el equipo legal entregue versiones durante una negociación?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿El equipo legal utiliza herramientas de redacción para acelerar las negociaciones contractuales?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿El equipo legal utiliza herramientas de colaboración para facilitar la negociación?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Cuentan con un proceso formal de aprobación de contratos?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Utilizan firmas electrónicas?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Llevan seguimiento del tiempo total que toma cerrar un contrato?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Dónde y cómo almacenan sus contratos actualmente?',
