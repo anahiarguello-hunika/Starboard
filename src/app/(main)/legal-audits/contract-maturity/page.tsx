@@ -30,6 +30,7 @@ const commercialContractQuestions = [
     },
     {
         question: '¿Usted y sus proveedores comparten conocimientos y participan en una gobernanza conjunta?',
+        options: ['Sí', 'No'],
     },
     {
         question: '¿Ofrecen recursos en línea (como plantillas o guías) accesibles al equipo de negocio a través de un portal?',
@@ -161,8 +162,13 @@ export default function ContractMaturityPage() {
                            <CardTitle className="text-base">{index + 1}. {item.question}</CardTitle>
                         </CardHeader>
                          <CardContent>
-                            <RadioGroup className="mb-4">
-                                {/* Options will be added here based on user input */}
+                            <RadioGroup className="mb-4 space-y-2">
+                                {item.options && item.options.map((option: string) => (
+                                    <div key={option} className="flex items-center space-x-2">
+                                        <RadioGroupItem value={option.toLowerCase()} id={`q${index}-${option.toLowerCase()}`} />
+                                        <Label htmlFor={`q${index}-${option.toLowerCase()}`} className="font-normal">{option}</Label>
+                                    </div>
+                                ))}
                             </RadioGroup>
                              <Textarea placeholder="Escriba su respuesta aquí" />
                         </CardContent>
