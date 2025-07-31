@@ -161,10 +161,10 @@ export default function ContractMaturityPage() {
                            <CardTitle className="text-base">{index + 1}. {item.question}</CardTitle>
                         </CardHeader>
                          <CardContent>
-                            <RadioGroup>
+                            <RadioGroup className="mb-4">
                                 {/* Options will be added here based on user input */}
                             </RadioGroup>
-                             <Textarea placeholder="Otra respuesta (por favor especifique)" className="mt-4" />
+                             <Textarea placeholder="Escriba su respuesta aquí" />
                         </CardContent>
                     </Card>
                 ))}
