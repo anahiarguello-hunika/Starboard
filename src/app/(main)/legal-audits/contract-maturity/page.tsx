@@ -158,7 +158,7 @@ export default function ContractMaturityPage() {
                 {commercialContractQuestions.map((item, index) => (
                     <Card key={index} className="p-4">
                         <CardHeader>
-                           <CardTitle className="text-base">{item.question}</CardTitle>
+                           <CardTitle className="text-base">{index + 1}. {item.question}</CardTitle>
                         </CardHeader>
                          <CardContent>
                             <RadioGroup>
