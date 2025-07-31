@@ -204,6 +204,39 @@ const legalProjectManagementQuestions = [
     },
 ];
 
+const legalProcessOptimizationQuestions = [
+    {
+        question: '¿Han mapeado sus flujos legales críticos (ej. Onboarding de trabajadores, o procesos de contratos más recurrentes)?',
+        pain: 'Flujo caótico',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se han identificado cuellos de botella o áreas repetitivas?',
+        pain: 'Pérdida de eficiencia',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Usan herramientas para automatizar tareas?',
+        pain: 'Uso ineficiente de talento',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Han implementado estándares de calidad legal?',
+        pain: 'Variabilidad y errores',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Monitorean el tiempo promedio por tipo de proyecto legal?',
+        pain: 'Desconocimiento de performance',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿Qué procesos legales considera que deben mejorarse?',
+        pain: '',
+        okr: '',
+    },
+];
+
 
 export default function LegalMaturityPage() {
   return (
@@ -394,6 +427,33 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {legalProjectManagementQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">8. Optimización de Procesos Legales</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Asuntos legales desorganizados, sin fechas claras ni responsables.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Ejecutar proyectos legales con enfoque ágil y trazable.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {legalProcessOptimizationQuestions.map((item, index) => (
                                 <TableRow key={index}>
                                     <TableCell>{item.question}</TableCell>
                                     <TableCell>{item.pain}</TableCell>
