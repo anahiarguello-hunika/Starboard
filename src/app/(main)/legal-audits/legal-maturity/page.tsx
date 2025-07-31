@@ -171,6 +171,39 @@ const legalSupportModelsQuestions = [
     },
 ];
 
+const legalProjectManagementQuestions = [
+    {
+        question: '¿Asignan un project manager (interno o externo) a proyectos legales clave?',
+        pain: 'Desorden legal',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Usan herramientas de seguimiento de proyectos?',
+        pain: 'Sin trazabilidad',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Definen objetivos, tiempos y entregables claros por proyecto legal?',
+        pain: 'Dilación de asuntos',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Se hacen reuniones de seguimiento legales?',
+        pain: 'Inercia y atraso',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Miden resultados legales por proyecto?',
+        pain: 'Sin impacto medido',
+        okr: 'Ambos',
+    },
+    {
+        question: '¿Qué metodología usan para gestionar asuntos legales?',
+        pain: '',
+        okr: '',
+    },
+];
+
 
 export default function LegalMaturityPage() {
   return (
@@ -345,9 +378,35 @@ export default function LegalMaturityPage() {
                     </Table>
                 </Card>
             </div>
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">7. Gestión de Proyectos Legales</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Asuntos legales desorganizados, sin fechas claras ni responsables.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Ejecutar proyectos legales con enfoque ágil y trazable.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {legalProjectManagementQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
-
