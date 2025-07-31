@@ -105,6 +105,39 @@ const legalProvidersManagementQuestions = [
     },
 ];
 
+const legalTechnologyQuestions = [
+    {
+        question: '¿Cuentan con una herramienta para administrar contratos como un CLM (Contract Lifecycle Management)?',
+        pain: 'Contratos dispersos',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Tienen una base de datos de contratos centralizada y analizable?',
+        pain: 'No se encuentran',
+        okr: 'Riesgo',
+    },
+    {
+        question: '¿Automatizan tareas repetitivas o documentos legales estándar?',
+        pain: 'Pérdida de tiempo',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿Integran soluciones legales con herramientas de uso ordinario como Microsoft?',
+        pain: 'Silos de información',
+        okr: 'Crecimiento',
+    },
+    {
+        question: '¿Usan analítica legal para tomar decisiones informadas?',
+        pain: 'Decisión sin evidencia',
+        okr: 'Ambos',
+    },
+    {
+        question: '¿Qué herramientas tecnológicas usan hoy en la empresa para los temas legales?',
+        pain: '',
+        okr: '',
+    },
+];
+
 export default function LegalMaturityPage() {
   return (
     <div className="space-y-8">
@@ -213,6 +246,33 @@ export default function LegalMaturityPage() {
                         </TableHeader>
                         <TableBody>
                             {legalProvidersManagementQuestions.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{item.question}</TableCell>
+                                    <TableCell>{item.pain}</TableCell>
+                                    <TableCell>{item.okr}</TableCell>
+                                    <TableCell><Input type="number" min="1" max="5" className="w-20" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Card>
+            </div>
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">4. Uso de Tecnología Legal</h2>
+                <p><strong className="text-foreground">Dolor asociado:</strong> Procesos manuales, contratos desorganizados, falta de sistema de reporteo y control de contratos.</p>
+                <p><strong className="text-foreground">Objetivo:</strong> Digitalizar y automatizar funciones legales clave en la empresa.</p>
+                <Card>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[50%]">Pregunta</TableHead>
+                                <TableHead>Dolor</TableHead>
+                                <TableHead>OKR</TableHead>
+                                <TableHead>Valor (1-5)</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {legalTechnologyQuestions.map((item, index) => (
                                 <TableRow key={index}>
                                     <TableCell>{item.question}</TableCell>
                                     <TableCell>{item.pain}</TableCell>
