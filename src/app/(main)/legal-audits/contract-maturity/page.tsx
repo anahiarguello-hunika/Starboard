@@ -29,7 +29,7 @@ const commercialContractQuestions = [
         question: '¿Utilizan algún proveedor de servicios legales gestionados (managed legal services) o un centro de servicios offshore/nearshore para contratos simples de alto volumen?',
     },
     {
-        question: '¿Usted y sus proveedores comparten conocimientos y participan en una gobernanza conjunta?',
+        question: '¿Usted y sus proveedores comparten conocimientos y participan en una colaboración ganar-ganar?',
         options: ['Sí', 'No'],
     },
     {
