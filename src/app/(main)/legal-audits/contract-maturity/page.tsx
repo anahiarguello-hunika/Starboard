@@ -49,7 +49,7 @@ const commercialContractQuestions = [
         options: ['Sí', 'No'],
     },
     {
-        question: '¿Existen sistemas para aprobar contratos de alto riesgo generados por el negocio?',
+        question: '¿Existen sistemas, políticas o criterios definidos por escrito, para aprobar contratos de alto riesgo generados por el personal del negocio?',
         options: ['Sí', 'No'],
     },
     {
