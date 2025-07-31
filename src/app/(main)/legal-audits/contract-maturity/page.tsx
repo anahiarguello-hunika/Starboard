@@ -108,8 +108,11 @@ const commercialContractQuestions = [
         options: ['Sí', 'No'],
     },
     {
-        question: '¿Utilizan firmas electrónicas?',
+        question: '¿Utilizan firmas electrónicas en sus contratos?',
         options: ['Sí', 'No'],
+    },
+    {
+        question: 'En caso de sí utilizar firmas electrónicas en sus contratos, ¿Cuál utilizan?',
     },
     {
         question: '¿Llevan seguimiento del tiempo total que toma cerrar un contrato?',
