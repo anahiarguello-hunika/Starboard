@@ -63,6 +63,31 @@ const compensationOptions = [
     "No lo sé"
 ];
 
+const annualCompensationOptions = [
+    "0",
+    "< USD 10,000",
+    "USD 11,000 - 29,000",
+    "USD 30,000 - 60,000",
+    "USD 61,000 - 100,000",
+    "USD 100,000 - 500,000",
+    "> USD 500,000"
+];
+
+const meetingFrequencyOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", ">12"];
+
+const meetingDynamicsOptions = [
+    "Los miembros del Consejo aportan poco valor a las reuniones",
+    "Las discusiones son altamente colaborativas",
+    "La gerencia domina (más del 75%) los informes o la presentación de información en la reunión",
+    "Las discusiones pueden ser conflictivas",
+    "Hay pocas presentaciones de la gerencia y los miembros del consejo hablan la mayor parte de la reunión",
+    "Unos pocos miembros del consejo dominan las discusiones",
+    "Se dedica la misma cantidad de tiempo a las presentaciones de la gerencia y a la participación de los miembros del consejo",
+    "Todos los miembros del consejo contribuyen por igual",
+    "La gerencia pasa la mayor parte del tiempo de la reunión (51-75%) presentando información",
+    "Los miembros del consejo crean un impacto transformador durante la reunión"
+];
+
 
 export default function BoardImpactPage() {
   return (
@@ -251,6 +276,42 @@ export default function BoardImpactPage() {
                             <Label htmlFor="otro-remuneracion" className="font-normal">Otro - Escriba (Requerido)</Label>
                             <Input className="max-w-xs" />
                         </div>
+                    </div>
+                </div>
+            </div>
+            <Separator />
+            <div className="space-y-6">
+                <div className="space-y-4">
+                    <Label>14. Compensación anual promedio en efectivo aproximada de cada miembro del Consejo <span className="text-destructive">*</span></Label>
+                    <RadioGroup>
+                        {annualCompensationOptions.map((option) => (
+                            <div key={option} className="flex items-center space-x-2">
+                                <RadioGroupItem value={option} id={`compensation-${option.toLowerCase().replace(/\s/g, '-')}`} />
+                                <Label htmlFor={`compensation-${option.toLowerCase().replace(/\s/g, '-')}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+                <div className="space-y-4">
+                    <Label>15. ¿Cuántas veces al año se reúne el Consejo, en persona o virtualmente? (sin contar las reuniones de comités) <span className="text-destructive">*</span></Label>
+                    <RadioGroup className="flex flex-wrap gap-x-6 gap-y-2">
+                        {meetingFrequencyOptions.map((option) => (
+                            <div key={`frequency-${option}`} className="flex items-center space-x-2">
+                                <RadioGroupItem value={option} id={`frequency-${option}`} />
+                                <Label htmlFor={`frequency-${option}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+                <div className="space-y-4">
+                    <Label>16. ¿Cómo describiría la dinámica típica de las reuniones? (elija las dos que se aplican con más frecuencia) <span className="text-destructive">*</span></Label>
+                    <div className="grid grid-cols-1 gap-4">
+                        {meetingDynamicsOptions.map((option) => (
+                            <div key={option} className="flex items-center space-x-2">
+                                <Checkbox id={option.toLowerCase().replace(/\s/g, '-')} />
+                                <Label htmlFor={option.toLowerCase().replace(/\s/g, '-')} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
