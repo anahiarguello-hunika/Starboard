@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import React from "react";
 
 const boardRoles = [
     "Externo no independiente",
@@ -45,6 +46,23 @@ const ownershipStructures = [
     "Propiedad del Gobierno o Cuasi-Gobierno",
     "Fundación/sin fines de lucro",
 ];
+
+const boardParticipantsOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", ">10"];
+const independentParticipantsOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", ">10"];
+const compensationOptions = [
+    "No pagado",
+    "Tarifa por reunión",
+    "Por reunión virtual",
+    "Tarifa de presidente de comité",
+    "Estipendio anual",
+    "Equidad",
+    "Phantom Equity",
+    "Bono en efectivo / Carry",
+    "Tarifa de presidente del consejo",
+    "Tarifa de miembro principal del consejo",
+    "No lo sé"
+];
+
 
 export default function BoardImpactPage() {
   return (
@@ -194,11 +212,50 @@ export default function BoardImpactPage() {
                         </SelectContent>
                     </Select>
                 </div>
-
+            </div>
+             <Separator />
+             <div className="space-y-6">
+                 <div className="space-y-4">
+                    <Label>11. ¿Número de participantes permanentes en el Consejo? <span className="text-destructive">*</span></Label>
+                     <RadioGroup className="flex flex-wrap gap-x-6 gap-y-2">
+                        {boardParticipantsOptions.map((option) => (
+                            <div key={`participants-${option}`} className="flex items-center space-x-2">
+                                <RadioGroupItem value={option} id={`participants-${option}`} />
+                                <Label htmlFor={`participants-${option}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+                 <div className="space-y-4">
+                    <Label>12. ¿Cuántos de los participantes permanentes en el Consejo son independientes? <span className="text-destructive">*</span></Label>
+                     <RadioGroup className="flex flex-wrap gap-x-6 gap-y-2">
+                        {independentParticipantsOptions.map((option) => (
+                            <div key={`independent-${option}`} className="flex items-center space-x-2">
+                                <RadioGroupItem value={option} id={`independent-${option}`} />
+                                <Label htmlFor={`independent-${option}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+                 <div className="space-y-4">
+                    <Label>13. ¿Cómo se remunera actualmente a los miembros del Consejo? (Elija todas las que correspondan) <span className="text-destructive">*</span></Label>
+                     <div className="grid grid-cols-2 gap-4">
+                        {compensationOptions.map((option) => (
+                            <div key={option} className="flex items-center space-x-2">
+                                <Checkbox id={option.toLowerCase().replace(/\s/g, '-')} />
+                                <Label htmlFor={option.toLowerCase().replace(/\s/g, '-')} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                         <div className="flex items-center space-x-2">
+                            <Checkbox id="otro-remuneracion" />
+                            <Label htmlFor="otro-remuneracion" className="font-normal">Otro - Escriba (Requerido)</Label>
+                            <Input className="max-w-xs" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </CardContent>
       </Card>
     </div>
   );
 }
-
