@@ -27,19 +27,36 @@ export default function ContractsExpiringSoonPage() {
     const getStatusBadge = (status: ExpiringContract['status']) => {
         switch (status) {
             case 'Active':
-                return <Badge className="bg-green-100 text-green-800">Activo</Badge>;
+                return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Activo</Badge>;
             case 'Draft':
                 return <Badge variant="outline">Borrador</Badge>;
             case 'Approved':
-                 return <Badge className="bg-blue-100 text-blue-800">Aprobado</Badge>;
+                 return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">Aprobado</Badge>;
             case 'Pending Approval':
-                return <Badge className="bg-yellow-100 text-yellow-800">Pendiente de Aprobación</Badge>;
+                return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Pendiente de Aprobación</Badge>;
             case 'Pending Review':
-                 return <Badge className="bg-purple-100 text-purple-800">Pendiente de Revisión</Badge>;
+                 return <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100">Pendiente de Revisión</Badge>;
             default:
                 return <Badge variant="secondary">{status}</Badge>;
         }
     };
+
+    const getDiagramSquareColor = (status: ExpiringContract['status']) => {
+        switch (status) {
+            case 'Active':
+                return 'text-green-500';
+            case 'Draft':
+                return 'text-yellow-500';
+            case 'Approved':
+                return 'text-yellow-500';
+            case 'Pending Approval':
+                return 'text-yellow-500';
+            case 'Pending Review':
+                return 'text-yellow-500';
+            default:
+                return 'text-gray-400';
+        }
+    }
 
 
   return (
@@ -70,7 +87,7 @@ export default function ContractsExpiringSoonPage() {
               <TableRow>
                 <TableHead className="w-12"><Checkbox /></TableHead>
                 <TableHead className="w-12">Editar</TableHead>
-                <TableHead className="w-12">Diagrama</TableHead>
+                <TableHead className="w-24">Diagrama</TableHead>
                 <TableHead>ID</TableHead>
                 <TableHead>Título del Contrato</TableHead>
                 <TableHead>Tipo de Contrato</TableHead>
@@ -85,7 +102,12 @@ export default function ContractsExpiringSoonPage() {
                 <TableRow key={contract.id}>
                     <TableCell><Checkbox /></TableCell>
                     <TableCell><Button variant="ghost" size="icon" className="h-8 w-8"><Pencil className="h-4 w-4" /></Button></TableCell>
-                    <TableCell><Button variant="ghost" size="icon" className="h-8 w-8 text-red-500"><Network className="h-4 w-4" /></Button></TableCell>
+                    <TableCell>
+                        <div className="flex items-center gap-2">
+                            <Square className={`h-4 w-4 ${getDiagramSquareColor(contract.status)} fill-current`} />
+                            <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500"><Network className="h-4 w-4" /></Button>
+                        </div>
+                    </TableCell>
                     <TableCell>{contract.id}</TableCell>
                     <TableCell className="font-medium text-primary">
                       {contract.contractTitle}
