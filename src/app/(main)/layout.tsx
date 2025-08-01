@@ -59,8 +59,8 @@ const navItems = [
   { href: "/legal-data-and-metrics", icon: BarChart2, label: "Datos y Métricas Legales" },
   { href: "/background-check", icon: UserSearch, label: "Background check", external: true },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
-  { href: "/summarize", icon: Sparkles, label: "IA" },
   { href: "/customer-portal", icon: BookUser, label: "Portal de Clientes" },
+  { href: "/summarize", icon: Sparkles, label: "IA" },
 ];
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
