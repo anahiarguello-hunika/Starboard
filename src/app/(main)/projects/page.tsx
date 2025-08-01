@@ -34,22 +34,12 @@ import {
   Home,
   Clock,
   Pin,
-  ChevronDown,
-  Search,
-  RefreshCw,
-  X,
+  ChevronDown
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart';
-import { Pie, PieChart, Cell, Bar as RechartsBar, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const projectNav = [
     { name: 'Dashboard', icon: LayoutDashboard, active: true, href: "/projects" },
@@ -65,30 +55,8 @@ const projectNav = [
     { name: 'Soporte', icon: LifeBuoy, href: "#" },
 ];
 
-const projectsInProgressData = [
-  { name: 'Activo', value: 3, fill: '#3b82f6' },
-  { name: 'En Espera', value: 1, fill: '#f97316' },
-  { name: 'En Riesgo', value: 1, fill: '#ef4444' },
-  { name: 'Completado', value: 2, fill: '#14b8a6' },
-];
-
-const projectsByMonthData = [
-  { name: 'Mar 2024', value: 1, fill: '#3b82f6' },
-  { name: 'May 2024', value: 1, fill: '#14b8a6' },
-  { name: 'Jun 2024', value: 1, fill: '#f97316' },
-];
-
-const kpiCards = [
-    { title: "Proyectos en riesgo", value: "1" },
-    { title: "Proyectos en espera", value: "1" },
-    { title: "Proyectos vencidos", value: "0" },
-    { title: "Borradores de proyectos", value: "0" },
-    { title: "Proyectos activos", value: "3" },
-    { title: "Proyectos iniciados este mes", value: "0" },
-];
-
 export default function ProjectsPage() {
-  const [view, setView] = React.useState<'dashboard' |'kanban' | 'list' | 'table'>('dashboard');
+  const [view, setView] = React.useState<'kanban' | 'list' | 'table'>('kanban');
 
   const getStatusVariant = (status: Project["status"]) => {
     switch (status) {
@@ -100,118 +68,6 @@ export default function ProjectsPage() {
         return "outline";
     }
   };
-
-  const DashboardView = () => (
-    <div className="grid grid-cols-[320px_1fr] gap-8 items-start">
-        <div className="flex flex-col gap-8">
-            <div className="flex items-center gap-2">
-                <h1 className="text-xl font-semibold">Panel de Gestión de Proyectos</h1>
-                <ChevronDown className="h-5 w-5 text-muted-foreground" />
-            </div>
-            <Card>
-                <CardContent className="p-4 space-y-4">
-                     <div className="relative">
-                        <Input placeholder="Cliente" className="h-8" />
-                        <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    </div>
-                     <div className="relative">
-                        <Input placeholder="Líder del Proyecto" className="h-8" />
-                        <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    </div>
-                     <div className="relative">
-                        <Input placeholder="Tipo de Proyecto" className="h-8" />
-                        <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    </div>
-                </CardContent>
-            </Card>
-
-            <div className="grid grid-cols-3 gap-4">
-                {kpiCards.map(kpi => (
-                    <Card key={kpi.title} className="text-center">
-                        <CardHeader className="p-4">
-                           <CardDescription className="text-xs">{kpi.title}</CardDescription>
-                        </CardHeader>
-                         <CardContent className="p-4 pt-0">
-                            <p className="text-2xl font-bold">{kpi.value}</p>
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-8 items-start">
-            <Card>
-                <CardHeader className="flex flex-row justify-between items-center">
-                    <CardTitle className="text-base">Proyectos en Progreso</CardTitle>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                        <RefreshCw className="h-4 w-4 cursor-pointer" />
-                        <X className="h-4 w-4 cursor-pointer" />
-                    </div>
-                </CardHeader>
-                <CardContent className="h-[300px]">
-                     <ChartContainer config={{}} className="w-full h-[300px]">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <PieChart>
-                                <ChartTooltip 
-                                    content={<ChartTooltipContent 
-                                        formatter={(value) => <span>{value}</span>}
-                                        labelFormatter={(label, payload) => payload?.[0]?.name}
-                                    />} 
-                                />
-                                <Pie data={projectsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
-                                    {projectsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
-                                </Pie>
-                                <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">{projectsInProgressData.reduce((acc, curr) => acc + curr.value, 0)}</text>
-                                <Legend 
-                                    iconType="square"
-                                    wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
-                                    formatter={(value) => <span className="text-muted-foreground">{value}</span>}
-                                />
-                            </PieChart>
-                        </ResponsiveContainer>
-                    </ChartContainer>
-                </CardContent>
-                 <CardDescription className="text-center text-xs pb-4">
-                    Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
-                </CardDescription>
-            </Card>
-                <Card>
-                <CardHeader className="flex flex-row justify-between items-center">
-                    <CardTitle className="text-base">Proyectos por Mes</CardTitle>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                        <RefreshCw className="h-4 w-4 cursor-pointer" />
-                        <X className="h-4 w-4 cursor-pointer" />
-                    </div>
-                </CardHeader>
-                <CardContent className="h-[300px]">
-                    <ChartContainer config={{}} className="w-full h-[300px]">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <RechartsBarChart data={projectsByMonthData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                                <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                                <YAxis 
-                                    tickFormatter={(value) => value.toLocaleString()} 
-                                    tick={{ fontSize: 12 }} 
-                                    label={{ value: 'Número de Proyectos', angle: -90, position: 'insideLeft', offset: -10, style: { fontSize: '12px' } }} 
-                                />
-                                <RechartsTooltip formatter={(value: number) => `${value.toLocaleString()} proyecto(s)`} />
-                                <Legend 
-                                    iconType="square" 
-                                    wrapperStyle={{ fontSize: '12px' }}
-                                    formatter={() => <span className="text-muted-foreground">Proyectos</span>}
-                                />
-                                <RechartsBar dataKey="value" name="Proyectos" fill="#14b8a6" />
-                            </RechartsBarChart>
-                        </ResponsiveContainer>
-                    </ChartContainer>
-                </CardContent>
-                 <CardDescription className="text-center text-xs pb-4">
-                    Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
-                </CardDescription>
-            </Card>
-        </div>
-    </div>
-  )
 
   const KanbanView = () => (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -337,47 +193,6 @@ export default function ProjectsPage() {
     </Card>
   );
 
-  const ProjectsView = () => (
-    <>
-        <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight font-headline">
-                Proyectos
-              </h1>
-              <p className="text-muted-foreground">
-                Un portafolio de todos sus proyectos y asuntos legales.
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-               <div className="flex items-center gap-1 rounded-md bg-muted p-1">
-                  <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
-                    <LayoutGrid className="h-4 w-4 mr-2" />
-                    Kanban
-                  </Button>
-                   <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
-                    <List className="h-4 w-4 mr-2" />
-                    Lista
-                  </Button>
-                   <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
-                    <TableIcon className="h-4 w-4 mr-2" />
-                    Tabla
-                  </Button>
-               </div>
-               <Link href="/projects/new-playbook">
-                <Button>
-                  <PlusCircle className="mr-2 h-4 w-4" />
-                  Nuevo Proyecto
-                </Button>
-              </Link>
-            </div>
-          </div>
-          
-          {view === 'kanban' && <KanbanView />}
-          {view === 'list' && <ListView />}
-          {view === 'table' && <TableView />}
-    </>
-  )
-
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
         <div className="flex flex-col gap-4">
@@ -432,17 +247,42 @@ export default function ProjectsPage() {
             </nav>
         </div>
         <div className="flex flex-col gap-8">
-          <Button 
-            variant="link" 
-            className="text-primary self-start p-0"
-            onClick={() => setView(view === 'dashboard' ? 'kanban' : 'dashboard')}>
-            {view === 'dashboard' ? 'Volver a Proyectos' : 'Ir al Dashboard de Proyectos'}
-          </Button>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight font-headline">
+              Proyectos
+            </h1>
+            <p className="text-muted-foreground">
+              Un portafolio de todos sus proyectos y asuntos legales.
+            </p>
+          </div>
 
-          {view === 'dashboard' ? <DashboardView /> : <ProjectsView />}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+              <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
+                <LayoutGrid className="h-4 w-4 mr-2" />
+                Kanban
+              </Button>
+               <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
+                <List className="h-4 w-4 mr-2" />
+                Lista
+              </Button>
+               <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
+                <TableIcon className="h-4 w-4 mr-2" />
+                Tabla
+              </Button>
+            </div>
+            <Link href="/projects/new-playbook">
+              <Button>
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Nuevo Proyecto
+              </Button>
+            </Link>
+          </div>
+          
+          {view === 'kanban' && <KanbanView />}
+          {view === 'list' && <ListView />}
+          {view === 'table' && <TableView />}
         </div>
     </div>
   );
 }
-
-    
