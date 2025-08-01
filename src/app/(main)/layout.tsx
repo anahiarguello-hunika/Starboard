@@ -43,6 +43,7 @@ const navItems = [
   { href: "/clients", icon: Users, label: "Clientes" },
   { href: "/projects", icon: Briefcase, label: "Proyectos" },
   { href: "/contracts", icon: FileText, label: "Contratos" },
+  { href: "/fractional-clm", icon: Scale, label: "Fractional CLM®" },
   { href: "/tasks", icon: ListTodo, label: "Tareas" },
   { href: "/documents", icon: Folder, label: "Documentos" },
   { href: "/entities", icon: Building2, label: "Gestión de Entidades"},
