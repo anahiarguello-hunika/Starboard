@@ -53,7 +53,7 @@ const navItems = [
   { href: "/calendar", icon: Calendar, label: "Calendario" },
   { href: "/financial-management", icon: DollarSign, label: "Gestión Financiera" },
   { href: "/entities", icon: Building2, label: "Gestión de Sociedades"},
-  { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial Personal"},
+  { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial"},
   { href: "/trademarks", icon: Award, label: "Marcas y Patentes"},
   { href: "/legal-audits", icon: BookOpenCheck, label: "Auditorías Legales" },
   { href: "/legal-data-and-metrics", icon: BarChart2, label: "Datos y Métricas Legales" },
