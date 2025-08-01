@@ -19,8 +19,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { expiringSoonContracts, type ExpiringContract } from "@/lib/mock-data";
-import { FileText, Pencil, Network, Square } from "lucide-react";
+import { FileText, Pencil, Network, Square, Plus, Search, Eye, Paperclip } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+
 
 export default function ContractsExpiringSoonPage() {
 
@@ -41,23 +43,6 @@ export default function ContractsExpiringSoonPage() {
         }
     };
 
-    const getDiagramSquareColor = (status: ExpiringContract['status']) => {
-        switch (status) {
-            case 'Active':
-                return 'text-green-500';
-            case 'Draft':
-                return 'text-yellow-500';
-            case 'Approved':
-                return 'text-yellow-500';
-            case 'Pending Approval':
-                return 'text-yellow-500';
-            case 'Pending Review':
-                return 'text-yellow-500';
-            default:
-                return 'text-gray-400';
-        }
-    }
-
 
   return (
     <div className="flex flex-col gap-8">
@@ -74,51 +59,69 @@ export default function ContractsExpiringSoonPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText /> Todos los Contratos
-          </CardTitle>
-          <CardDescription>
-            Una lista completa de todos los contratos legales gestionados.
-          </CardDescription>
+          <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                  <CardTitle className="text-base">Mis Contratos Asignados</CardTitle>
+              </div>
+              <div className="flex items-center gap-2">
+                  <Button variant="outline" size="sm"><Plus className="h-4 w-4 mr-2" /> Nuevo</Button>
+                  <Button variant="outline" size="sm">Guardar Cambios</Button>
+                  <Button variant="outline" size="sm">Cancelar Cambios</Button>
+                  <Button variant="outline" size="sm">Vistas <Eye className="h-4 w-4 ml-2" /></Button>
+              </div>
+          </div>
+              <div className="flex justify-between items-center mt-2">
+              <div className="flex items-center gap-2">
+                  <div className="relative">
+                      <Input placeholder="Buscar" className="h-8" />
+                      <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  </div>
+                  <Button variant="outline" size="sm" className="h-8">
+                      <Plus className="h-4 w-4 mr-2" /> Añadir filtros
+                  </Button>
+              </div>
+              <p className="text-xs text-muted-foreground">4 registro(s) encontrados, 1 página(s). <span className="text-primary cursor-pointer">Click para detalles...</span> | <span className="text-primary cursor-pointer">Limpiar Todos los Filtros</span></p>
+          </div>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-12"><Checkbox /></TableHead>
-                <TableHead className="w-12">Editar</TableHead>
-                <TableHead className="w-24">Diagrama</TableHead>
+                <TableHead>Editar</TableHead>
                 <TableHead>ID</TableHead>
+                <TableHead>Diagrama</TableHead>
+                <TableHead>Tipo de Registro</TableHead>
                 <TableHead>Título del Contrato</TableHead>
-                <TableHead>Tipo de Contrato</TableHead>
-                <TableHead>Nombre del Solicitante</TableHead>
                 <TableHead>Nombre de la Empresa</TableHead>
                 <TableHead>Estado</TableHead>
+                <TableHead>Gerente de Contrato</TableHead>
+                <TableHead>Monto del Contrato</TableHead>
                 <TableHead>Fecha de Finalización</TableHead>
+                <TableHead>Último Adjunto</TableHead>
+                <TableHead>Fecha de Envío</TableHead>
+                <TableHead>Fecha de Envío para Firma</TableHead>
+                <TableHead>Fecha de Firma</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {expiringSoonContracts.map((contract) => (
                 <TableRow key={contract.id}>
                     <TableCell><Checkbox /></TableCell>
-                    <TableCell><Button variant="ghost" size="icon" className="h-8 w-8"><Pencil className="h-4 w-4" /></Button></TableCell>
-                    <TableCell>
-                        <div className="flex items-center gap-2">
-                            <Square className={`h-4 w-4 ${getDiagramSquareColor(contract.status)} fill-current`} />
-                            <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500"><Network className="h-4 w-4" /></Button>
-                        </div>
-                    </TableCell>
-                    <TableCell>{contract.id}</TableCell>
-                    <TableCell className="font-medium text-primary">
-                      {contract.contractTitle}
-                    </TableCell>
+                    <TableCell><Pencil className="h-4 w-4 cursor-pointer" /></TableCell>
+                    <TableCell className="text-primary underline cursor-pointer">{contract.id}</TableCell>
+                    <TableCell><Network className="h-4 w-4 text-red-500" /></TableCell>
                     <TableCell>{contract.contractType}</TableCell>
-                    <TableCell>{contract.requesterName}</TableCell>
+                    <TableCell>{contract.contractTitle}</TableCell>
                     <TableCell>{contract.companyName}</TableCell>
-                    <TableCell>
-                        {getStatusBadge(contract.status)}
-                    </TableCell>
+                    <TableCell>{getStatusBadge(contract.status)}</TableCell>
+                    <TableCell>{contract.requesterName}</TableCell>
+                    <TableCell>$1,000</TableCell>
                     <TableCell>{contract.endDate}</TableCell>
+                    <TableCell className="text-primary underline cursor-pointer flex items-center gap-1"><Paperclip className="h-4 w-4"/> Contract ID {contract.id}.docx</TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
                 </TableRow>
               ))}
             </TableBody>
