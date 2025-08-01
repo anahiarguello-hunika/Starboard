@@ -273,124 +273,142 @@ export default function ProjectsPage() {
             </nav>
         </div>
         <div className="flex flex-col gap-8">
-            <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold tracking-tight font-headline">
-                Gestión de Proyectos
-                </h1>
-                <p className="text-muted-foreground">
-                Visualice y gestione sus proyectos legales.
-                </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8 items-start">
-                <Card>
-                    <CardHeader className="flex flex-row justify-between items-center">
-                        <CardTitle className="text-base">Proyectos en Progreso</CardTitle>
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                            <RefreshCw className="h-4 w-4 cursor-pointer" />
-                            <X className="h-4 w-4 cursor-pointer" />
-                        </div>
-                    </CardHeader>
-                    <CardContent className="h-[300px]">
-                        <ChartContainer config={{}} className="w-full h-[300px]">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <PieChart>
-                                    <ChartTooltip 
-                                        content={<ChartTooltipContent 
-                                            formatter={(value) => <span>{value}</span>}
-                                            labelFormatter={(label, payload) => payload?.[0]?.name}
-                                        />} 
-                                    />
-                                    <Pie data={projectsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
-                                        {projectsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
-                                    </Pie>
-                                    <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">7</text>
-                                    <Legend 
-                                        iconType="square"
-                                        wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
-                                        formatter={(value) => <span className="text-muted-foreground">{value}</span>}
-                                    />
-                                </PieChart>
-                            </ResponsiveContainer>
-                        </ChartContainer>
-                    </CardContent>
-                    <CardDescription className="text-center text-xs pb-4">
-                        Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
-                    </CardDescription>
-                </Card>
-                <Card>
-                    <CardHeader className="flex flex-row justify-between items-center">
-                        <CardTitle className="text-base">Proyectos por Mes</CardTitle>
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                            <RefreshCw className="h-4 w-4 cursor-pointer" />
-                            <X className="h-4 w-4 cursor-pointer" />
-                        </div>
-                    </CardHeader>
-                    <CardContent className="h-[300px]">
-                        <ChartContainer config={{}} className="w-full h-[300px]">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <RechartsBarChart data={projectsByMonthData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-                                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                                    <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                                    <YAxis 
-                                        tickFormatter={(value) => value.toLocaleString()} 
-                                        tick={{ fontSize: 12 }} 
-                                        label={{ value: 'Número de Proyectos', angle: -90, position: 'insideLeft', offset: -10, style: { fontSize: '12px' } }} 
-                                    />
-                                    <RechartsTooltip formatter={(value: number) => value.toLocaleString()} />
-                                    <Legend 
-                                        iconType="square" 
-                                        wrapperStyle={{ fontSize: '12px' }}
-                                        formatter={(value) => <span className="text-muted-foreground">{value}</span>}
-                                    />
-                                    <Bar dataKey="value" name="Proyectos" fill="#14b8a6" />
-                                </RechartsBarChart>
-                            </ResponsiveContainer>
-                        </ChartContainer>
-                    </CardContent>
-                    <CardDescription className="text-center text-xs pb-4">
-                        Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
-                    </CardDescription>
-                </Card>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-                {kpiCards.map(kpi => (
-                    <Card key={kpi.title} className="text-center">
-                        <CardHeader className="p-4">
-                        <CardDescription className="text-xs">{kpi.title}</CardDescription>
-                        </CardHeader>
-                        <CardContent className="p-4 pt-0">
-                            <p className="text-2xl font-bold">{kpi.value}</p>
+            <div className="grid grid-cols-[320px_1fr] gap-8 items-start">
+                <div className="flex flex-col gap-8">
+                     <div className="flex items-center gap-2">
+                        <h1 className="text-xl font-semibold">Panel de Gestión de Proyectos</h1>
+                        <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    <Card>
+                        <CardContent className="p-4 space-y-4">
+                            <div className="relative">
+                                <Input placeholder="Departamento" className="h-8" />
+                                <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                            </div>
+                            <div className="relative">
+                                <Input placeholder="Gerente de Proyecto" className="h-8" />
+                                <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                            </div>
+                            <div className="relative">
+                                <Input placeholder="Tipo de Proyecto" className="h-8" />
+                                <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                            </div>
                         </CardContent>
                     </Card>
-                ))}
+                    <div className="grid grid-cols-2 gap-4">
+                        {kpiCards.map(kpi => (
+                            <Card key={kpi.title} className="text-center">
+                                <CardHeader className="p-4">
+                                <CardDescription className="text-xs">{kpi.title}</CardDescription>
+                                </CardHeader>
+                                <CardContent className="p-4 pt-0">
+                                    <p className="text-2xl font-bold">{kpi.value}</p>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+                <div className="grid grid-cols-2 gap-8 items-start">
+                    <Card>
+                        <CardHeader className="flex flex-row justify-between items-center">
+                            <CardTitle className="text-base">Proyectos en Progreso</CardTitle>
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                                <RefreshCw className="h-4 w-4 cursor-pointer" />
+                                <X className="h-4 w-4 cursor-pointer" />
+                            </div>
+                        </CardHeader>
+                        <CardContent className="h-[300px]">
+                            <ChartContainer config={{}} className="w-full h-[300px]">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart>
+                                        <ChartTooltip 
+                                            content={<ChartTooltipContent 
+                                                formatter={(value) => <span>{value}</span>}
+                                                labelFormatter={(label, payload) => payload?.[0]?.name}
+                                            />} 
+                                        />
+                                        <Pie data={projectsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
+                                            {projectsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
+                                        </Pie>
+                                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">7</text>
+                                        <Legend 
+                                            iconType="square"
+                                            wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
+                                            formatter={(value) => <span className="text-muted-foreground">{value}</span>}
+                                        />
+                                    </PieChart>
+                                </ResponsiveContainer>
+                            </ChartContainer>
+                        </CardContent>
+                        <CardDescription className="text-center text-xs pb-4">
+                            Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
+                        </CardDescription>
+                    </Card>
+                    <Card>
+                        <CardHeader className="flex flex-row justify-between items-center">
+                            <CardTitle className="text-base">Proyectos por Mes</CardTitle>
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                                <RefreshCw className="h-4 w-4 cursor-pointer" />
+                                <X className="h-4 w-4 cursor-pointer" />
+                            </div>
+                        </CardHeader>
+                        <CardContent className="h-[300px]">
+                            <ChartContainer config={{}} className="w-full h-[300px]">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <RechartsBarChart data={projectsByMonthData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                        <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+                                        <YAxis 
+                                            tickFormatter={(value) => value.toLocaleString()} 
+                                            tick={{ fontSize: 12 }} 
+                                            label={{ value: 'Número de Proyectos', angle: -90, position: 'insideLeft', offset: -10, style: { fontSize: '12px' } }} 
+                                        />
+                                        <RechartsTooltip formatter={(value: number) => value.toLocaleString()} />
+                                        <Legend 
+                                            iconType="square" 
+                                            wrapperStyle={{ fontSize: '12px' }}
+                                            formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
+                                        />
+                                        <Bar dataKey="value" name="Proyectos" fill="#14b8a6" />
+                                    </RechartsBarChart>
+                                </ResponsiveContainer>
+                            </ChartContainer>
+                        </CardContent>
+                        <CardDescription className="text-center text-xs pb-4">
+                            Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
+                        </CardDescription>
+                    </Card>
+                </div>
             </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1 rounded-md bg-muted p-1">
-              <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
-                <LayoutGrid className="h-4 w-4 mr-2" />
-                Kanban
-              </Button>
-               <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
-                <List className="h-4 w-4 mr-2" />
-                Lista
-              </Button>
-               <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
-                <TableIcon className="h-4 w-4 mr-2" />
-                Tabla
-              </Button>
+            
+            <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-3xl font-bold tracking-tight font-headline">
+                    Gestión de Proyectos
+                    </h1>
+                    <p className="text-muted-foreground">
+                    Visualice y gestione sus proyectos legales.
+                    </p>
+                </div>
+                <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+                    <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
+                        <LayoutGrid className="h-4 w-4 mr-2" />
+                        Kanban
+                    </Button>
+                    <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
+                        <List className="h-4 w-4 mr-2" />
+                        Lista
+                    </Button>
+                    <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
+                        <TableIcon className="h-4 w-4 mr-2" />
+                        Tabla
+                    </Button>
+                </div>
             </div>
-            <Link href="/projects/new-playbook">
-              <Button>
-                <PlusCircle className="mr-2 h-4 w-4" />
-                Nuevo Proyecto
-              </Button>
-            </Link>
-          </div>
-          
-          {view === 'kanban' && <KanbanView />}
-          {view === 'list' && <ListView />}
-          {view === 'table' && <TableView />}
+            
+            {view === 'kanban' && <KanbanView />}
+            {view === 'list' && <ListView />}
+            {view === 'table' && <TableView />}
         </div>
     </div>
   );
