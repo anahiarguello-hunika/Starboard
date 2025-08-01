@@ -10,6 +10,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import React from "react";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 
 const boardRoles = [
     "Externo no independiente",
@@ -108,6 +111,22 @@ const performanceEvaluationOptions = [
     "Sí como Grupo",
     "Sí individualmente",
     "Sí como grupo e individualmente"
+];
+
+const meetingFeelingsOptions = [
+    "Curioso(a) sobre los siguientes pasos",
+    "Sorprendido(a)",
+    "Como si fuera una reunión normal",
+    "Aburrido(a)",
+    "Temeroso(a)",
+    "Apresurado(a)",
+    "Energizado(a)",
+    "Altamente comprometido(a)",
+    "Inspirado(a)",
+    "Curioso(a) sobre cuánto valor creó la reunión",
+    "Frustrado(a)",
+    "Como si fuera una pérdida de tiempo",
+    "Como si fuera una reunión impactante",
 ];
 
 
@@ -362,6 +381,41 @@ export default function BoardImpactPage() {
                     </RadioGroup>
                 </div>
             </div>
+            <Separator />
+            <div className="space-y-6">
+                <div className="space-y-4">
+                    <Label>19. Por lo general, cuando salgo de una reunión de consejo típica, a menudo me siento (seleccione la que se aplica con más frecuencia): <span className="text-destructive">*</span></Label>
+                    <RadioGroup>
+                        {meetingFeelingsOptions.map((option) => (
+                            <div key={option} className="flex items-center space-x-2">
+                                <RadioGroupItem value={option.toLowerCase().replace(/\s/g, '-')} id={`feeling-${option.toLowerCase().replace(/\s/g, '-')}`} />
+                                <Label htmlFor={`feeling-${option.toLowerCase().replace(/\s/g, '-')}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+                <div className="space-y-4">
+                    <Label>20. En general, creo que este Consejo proporciona a la empresa un alto grado de valor estratégico. Utilice la escala para determinar qué nivel de valor se está creando. <span className="text-destructive">*</span></Label>
+                    <div className="flex flex-col gap-2">
+                       <Slider defaultValue={[50]} max={100} step={1} />
+                       <div className="flex justify-between text-sm text-muted-foreground">
+                            <span>Totalmente en desacuerdo</span>
+                            <span>De acuerdo</span>
+                            <span>Totalmente de acuerdo</span>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="space-y-6 text-center">
+                 <p className="text-sm">Haga clic en el botón Enviar a continuación para completar la encuesta y recibir su informe.</p>
+                <Button>Enviar</Button>
+                <div className="flex items-center justify-center gap-2">
+                    <span className="text-sm font-semibold">0%</span>
+                    <Progress value={0} className="w-1/3" />
+                </div>
+            </div>
+
         </CardContent>
       </Card>
     </div>
