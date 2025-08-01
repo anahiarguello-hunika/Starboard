@@ -2,6 +2,7 @@
 
 'use client';
 
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -17,6 +18,9 @@ import {
   X,
   ListTodo,
   User,
+  LayoutGrid,
+  List,
+  Table as TableIcon,
 } from "lucide-react";
 import {
   ChartContainer,
@@ -29,6 +33,7 @@ import { legalTasksData, type LegalTask } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { cn } from '@/lib/utils';
 
 
 const tasksInProgressData = [
@@ -55,6 +60,8 @@ const kpiCards = [
 
 
 export default function TasksDashboardPage() {
+    const [view, setView] = React.useState<'kanban' | 'list' | 'table'>('table');
+    
     const getStatusVariant = (status: LegalTask['status']) => {
         switch (status) {
             case 'Hecho':
@@ -67,6 +74,128 @@ export default function TasksDashboardPage() {
                 return 'destructive'
         }
     }
+
+    const KanbanView = () => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {Object.entries(legalTasksData.reduce((acc, task) => {
+                if (!acc[task.status]) {
+                    acc[task.status] = [];
+                }
+                acc[task.status].push(task);
+                return acc;
+            }, {} as Record<LegalTask['status'], LegalTask[]>)).map(([status, tasks]) => (
+                <Card key={status} className="bg-muted/30">
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                            <span className="text-base">{status}</span>
+                            <span className="text-sm font-normal bg-muted px-2 py-1 rounded-md">{tasks.length}</span>
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        {tasks.map(task => (
+                            <Card key={task.id}>
+                                <CardContent className="p-4 space-y-2">
+                                    <p className="font-semibold">{task.taskName}</p>
+                                    <p className="text-xs text-muted-foreground">{task.vertical}</p>
+                                    <div className="flex items-center justify-between pt-2">
+                                        <div className="flex items-center gap-2">
+                                            <Avatar className="h-6 w-6">
+                                                <AvatarImage src={task.assignedTo.avatar} data-ai-hint="person avatar" />
+                                                <AvatarFallback><User size={12} /></AvatarFallback>
+                                            </Avatar>
+                                            <span className="text-xs">{task.assignedTo.name}</span>
+                                        </div>
+                                        <span className="text-xs">{task.dueDate}</span>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </CardContent>
+                </Card>
+            ))}
+        </div>
+    );
+
+    const ListView = () => (
+        <div className="flex flex-col gap-4">
+            {legalTasksData.map((task) => (
+                <Card key={task.id}>
+                    <CardContent className="p-4 flex justify-between items-center">
+                        <div className="flex items-center gap-4">
+                            <ListTodo className="h-6 w-6 text-muted-foreground" />
+                            <div>
+                                <p className="font-semibold">{task.taskName}</p>
+                                <p className="text-sm text-muted-foreground">{task.vertical} - Vence: {task.dueDate}</p>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                             <div className="flex items-center gap-2">
+                                <Avatar className="h-8 w-8">
+                                    <AvatarImage src={task.assignedTo.avatar} data-ai-hint="person avatar" />
+                                    <AvatarFallback><User size={16} /></AvatarFallback>
+                                </Avatar>
+                                <span>{task.assignedTo.name}</span>
+                            </div>
+                             <Badge variant={getStatusVariant(task.status)}
+                                className={task.status === 'En Progreso' ? 'bg-blue-100 text-blue-800' : task.status === 'Hecho' ? 'bg-accent text-accent-foreground' : ''}>
+                                {task.status}
+                            </Badge>
+                        </div>
+                    </CardContent>
+                </Card>
+            ))}
+        </div>
+    );
+
+  const TableView = () => (
+        <Card>
+            <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <ListTodo /> Tareas Activas
+            </CardTitle>
+            <CardDescription>
+                Todas las tareas legales en curso y próximas.
+            </CardDescription>
+            </CardHeader>
+            <CardContent>
+            <Table>
+                <TableHeader>
+                <TableRow>
+                    <TableHead>Tarea</TableHead>
+                    <TableHead>Asignado A</TableHead>
+                    <TableHead>Vertical</TableHead>
+                    <TableHead>Estado</TableHead>
+                    <TableHead>Fecha de Vencimiento</TableHead>
+                </TableRow>
+                </TableHeader>
+                <TableBody>
+                {legalTasksData.map((task) => (
+                    <TableRow key={task.id}>
+                    <TableCell className="font-medium">{task.taskName}</TableCell>
+                    <TableCell>
+                        <div className="flex items-center gap-2">
+                        <Avatar className="h-8 w-8">
+                            <AvatarImage src={task.assignedTo.avatar} data-ai-hint="person avatar" />
+                            <AvatarFallback><User size={16} /></AvatarFallback>
+                        </Avatar>
+                        <span>{task.assignedTo.name}</span>
+                        </div>
+                    </TableCell>
+                    <TableCell>{task.vertical}</TableCell>
+                    <TableCell>
+                        <Badge variant={getStatusVariant(task.status)}
+                            className={task.status === 'En Progreso' ? 'bg-blue-100 text-blue-800' : task.status === 'Hecho' ? 'bg-accent text-accent-foreground' : ''}>
+                        {task.status}
+                        </Badge>
+                    </TableCell>
+                    <TableCell>{task.dueDate}</TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+            </CardContent>
+        </Card>
+    );
 
   return (
     <div className="flex flex-col gap-8">
@@ -180,53 +309,29 @@ export default function TasksDashboardPage() {
             </div>
         </div>
 
-        <Card>
-            <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-                <ListTodo /> Tareas Activas
-            </CardTitle>
-            <CardDescription>
-                Todas las tareas legales en curso y próximas.
-            </CardDescription>
-            </CardHeader>
-            <CardContent>
-            <Table>
-                <TableHeader>
-                <TableRow>
-                    <TableHead>Tarea</TableHead>
-                    <TableHead>Asignado A</TableHead>
-                    <TableHead>Vertical</TableHead>
-                    <TableHead>Estado</TableHead>
-                    <TableHead>Fecha de Vencimiento</TableHead>
-                </TableRow>
-                </TableHeader>
-                <TableBody>
-                {legalTasksData.map((task) => (
-                    <TableRow key={task.id}>
-                    <TableCell className="font-medium">{task.taskName}</TableCell>
-                    <TableCell>
-                        <div className="flex items-center gap-2">
-                        <Avatar className="h-8 w-8">
-                            <AvatarImage src={task.assignedTo.avatar} data-ai-hint="person avatar" />
-                            <AvatarFallback><User size={16} /></AvatarFallback>
-                        </Avatar>
-                        <span>{task.assignedTo.name}</span>
-                        </div>
-                    </TableCell>
-                    <TableCell>{task.vertical}</TableCell>
-                    <TableCell>
-                        <Badge variant={getStatusVariant(task.status)}
-                            className={task.status === 'En Progreso' ? 'bg-blue-100 text-blue-800' : task.status === 'Hecho' ? 'bg-accent text-accent-foreground' : ''}>
-                        {task.status}
-                        </Badge>
-                    </TableCell>
-                    <TableCell>{task.dueDate}</TableCell>
-                    </TableRow>
-                ))}
-                </TableBody>
-            </Table>
-            </CardContent>
-        </Card>
+        <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-bold tracking-tight font-headline">
+                Gestión de Tareas
+            </h1>
+            <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+                <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
+                    <LayoutGrid className="h-4 w-4 mr-2" />
+                    Kanban
+                </Button>
+                <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
+                    <List className="h-4 w-4 mr-2" />
+                    Lista
+                </Button>
+                <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
+                    <TableIcon className="h-4 w-4 mr-2" />
+                    Tabla
+                </Button>
+            </div>
+        </div>
+        
+        {view === 'kanban' && <KanbanView />}
+        {view === 'list' && <ListView />}
+        {view === 'table' && <TableView />}
     </div>
   );
 }
