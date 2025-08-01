@@ -16,7 +16,7 @@ export default function FractionalClmPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-headline">
-            Login to <span className="text-primary">Smart CLM</span>
+            Login to <span className="text-primary">Fractional CLM®</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
