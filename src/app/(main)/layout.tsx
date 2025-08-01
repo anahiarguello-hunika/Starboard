@@ -50,7 +50,7 @@ const navItems = [
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial Personal"},
   { href: "/trademarks", icon: Award, label: "Marcas y Patentes"},
   { href: "/legal-audits", icon: BookOpenCheck, label: "Auditorías Legales" },
-  { href: "/background-check", icon: UserSearch, label: "Background check" },
+  { href: "/background-check", icon: UserSearch, label: "Background check", external: true },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/summarize", icon: Sparkles, label: "IA" },
   { href: "/customer-portal", icon: BookUser, label: "Portal de Clientes" },
@@ -91,7 +91,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                   isActive={!item.external && adjustedPathname.startsWith(item.href)}
                   tooltip={item.label}
                 >
-                  <Link href={item.href} target={item.external ? '_blank' : undefined}>
+                  <Link href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined}>
                     <item.icon />
                     <span>{item.label}</span>
                   </Link>
