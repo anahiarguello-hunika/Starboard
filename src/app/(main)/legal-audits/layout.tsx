@@ -11,6 +11,7 @@ import {
     Scale,
     ChevronRight,
     Activity,
+    AlertTriangle,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -24,6 +25,7 @@ const auditNav = [
   { name: 'Impacto del Consejo', href: '/legal-audits/board-impact', icon: Activity },
   { name: 'Madurez de Gobierno Corporativo', href: '/legal-audits/corporate-governance-maturity', icon: Scale },
   { name: 'Madurez de Cumplimiento', href: '/legal-audits/compliance-maturity', icon: ClipboardCheck },
+  { name: 'Riesgos Legales', href: '/legal-audits/legal-risks', icon: AlertTriangle },
 ];
 
 
