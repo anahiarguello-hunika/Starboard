@@ -1,3 +1,4 @@
+
 export type Contract = {
   id: string;
   name: string;
@@ -47,6 +48,16 @@ export type Entity = {
   status: "Activa" | "Disuelta" | "En Regla";
   incorporationDate: string;
 };
+
+export type ExpiringContract = {
+    id: number;
+    contractTitle: string;
+    contractType: string;
+    requesterName: string;
+    companyName: string;
+    status: 'Active' | 'Draft' | 'Approved' | 'Pending Approval' | 'Pending Review';
+    endDate: string;
+}
 
 export const contractsData: Contract[] = [
   {
@@ -279,4 +290,17 @@ export const entitiesData: Entity[] = [
     status: "Disuelta",
     incorporationDate: "2015-08-25",
   },
+];
+
+export const expiringSoonContracts: ExpiringContract[] = [
+    { id: 458, contractTitle: 'TESTING EMAIL TO COUNTERPARTY', contractType: 'Customer Service Contract', requesterName: 'Agiloft Admin', companyName: 'IBM', status: 'Active', endDate: 'May 27 2025' },
+    { id: 456, contractTitle: 'Test', contractType: 'Service Contract', requesterName: 'Agiloft Admin', companyName: 'Santander', status: 'Active', endDate: 'May 28 2025' },
+    { id: 455, contractTitle: 'Customer service for one year', contractType: 'Service Contract', requesterName: 'Christopher Lee', companyName: 'Red de Firmas', status: 'Active', endDate: 'Jun 05 2025' },
+    { id: 449, contractTitle: 'test', contractType: 'Customer Service Contract', requesterName: 'Agiloft Admin', companyName: 'Firmamex', status: 'Draft', endDate: 'Apr 30 2024' },
+    { id: 448, contractTitle: 'RDF Supplier Product Support', contractType: 'Supplier Product Support and Upgrades', requesterName: 'Robert Barash', companyName: 'Waymo', status: 'Approved', endDate: 'Apr 30 2024' },
+    { id: 447, contractTitle: 'Maverick Supplier Product', contractType: 'Supplier Product Support and Upgrades', requesterName: 'Robert Barash', companyName: 'Tesla', status: 'Pending Approval', endDate: 'Apr 30 2024' },
+    { id: 446, contractTitle: 'Agiloft Product Support', contractType: 'Supplier Product Support and Upgrades', requesterName: 'Robert Barash', companyName: 'Red de Firmas', status: 'Pending Approval', endDate: 'Apr 30 2024' },
+    { id: 445, contractTitle: 'test', contractType: 'Supplier Product Support and Upgrades', requesterName: 'Helen Jensen', companyName: 'Costa Messa, S.A.', status: 'Approved', endDate: 'Apr 30 2024' },
+    { id: 444, contractTitle: 'Maverick Supplier Product', contractType: 'Supplier Product Support and Upgrades', requesterName: 'Helen Jensen', companyName: 'Inmobiliaria Los Agapantos, S.A.', status: 'Pending Review', endDate: 'Apr 30 2024' },
+    { id: 441, contractTitle: 'Ejemplo', contractType: 'Supplier Subscription Service', requesterName: 'Helen Jensen', companyName: 'El Amatle, S.A.', status: 'Approved', endDate: 'Apr 30 2024' },
 ];
