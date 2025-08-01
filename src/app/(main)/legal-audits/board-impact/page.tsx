@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const boardRoles = [
     "Externo no independiente",
@@ -21,6 +22,28 @@ const boardRoles = [
     "Equipo ejecutivo",
     "Secretario",
     "Otro - Especifique (requerido)",
+];
+
+const boardTypes = [
+    "Consejo de Administración (Fiduciario)",
+    "Consejo Consultivo (No Fiduciario)",
+    "Híbrido",
+];
+
+const ownershipStructures = [
+    "1ra Gen FOB (controles familiares)",
+    "2da Gen FOB (controles familiares)",
+    "3ra Gen y más FOB (controles familiares)",
+    "Empresa Familiar (sin control)",
+    "Propietario mayoritario único (posee más del 50%)",
+    "Mayoría de grupo pequeño (un grupo pequeño posee más del 50% de la empresa)",
+    "Propiedad/control de Capital de Riesgo",
+    "Propiedad/control de Capital Privado",
+    "Propiedad de los empleados (los empleados poseen más del 50%) incluyendo sociedades",
+    "Empresa privada con varios accionistas no relacionados",
+    "Empresa Pública",
+    "Propiedad del Gobierno o Cuasi-Gobierno",
+    "Fundación/sin fines de lucro",
 ];
 
 export default function BoardImpactPage() {
@@ -111,8 +134,71 @@ export default function BoardImpactPage() {
                     </div>
                 </div>
             </div>
+            <Separator />
+             <div className="space-y-6">
+                 <div className="space-y-4">
+                    <Label>7. ¿Cuál es el tipo de Consejo para esta empresa? <span className="text-destructive">*</span></Label>
+                     <RadioGroup>
+                        {boardTypes.map((type) => (
+                            <div key={type} className="flex items-center space-x-2">
+                                <RadioGroupItem value={type} id={type.toLowerCase().replace(/\s/g, '-')} />
+                                <Label htmlFor={type.toLowerCase().replace(/\s/g, '-')} className="font-normal">{type}</Label>
+                            </div>
+                        ))}
+                         <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="otro" id="otro-type" />
+                            <Label htmlFor="otro-type" className="font-normal">Otro - Escriba</Label>
+                            <Input className="max-w-xs" />
+                        </div>
+                    </RadioGroup>
+                </div>
+
+                 <div className="space-y-2">
+                    <Label htmlFor="company-location">8. Ubicación de la empresa <span className="text-destructive">*</span></Label>
+                    <Select>
+                        <SelectTrigger id="company-location">
+                            <SelectValue placeholder="-- Por favor seleccione --" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="mx">México</SelectItem>
+                            <SelectItem value="us">Estados Unidos</SelectItem>
+                            <SelectItem value="ca">Canadá</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+
+                <div className="space-y-4">
+                    <Label>9. Estructura de propiedad <span className="text-destructive">*</span></Label>
+                     <RadioGroup>
+                        {ownershipStructures.map((structure) => (
+                            <div key={structure} className="flex items-center space-x-2">
+                                <RadioGroupItem value={structure} id={structure.toLowerCase().replace(/\s/g, '-')} />
+                                <Label htmlFor={structure.toLowerCase().replace(/\s/g, '-')} className="font-normal">{structure}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+
+                 <div className="space-y-2">
+                    <Label htmlFor="company-revenue">10. Proporcione los ingresos de la empresa a la que sirve este Consejo <span className="text-destructive">*</span></Label>
+                    <Select>
+                        <SelectTrigger id="company-revenue">
+                            <SelectValue placeholder="-- Por favor seleccione --" />
+                        </SelectTrigger>
+                        <SelectContent>
+                             <SelectItem value="rev-1">Menos de $1M</SelectItem>
+                            <SelectItem value="rev-2">$1M - $10M</SelectItem>
+                            <SelectItem value="rev-3">$10M - $50M</SelectItem>
+                            <SelectItem value="rev-4">$50M - $100M</SelectItem>
+                             <SelectItem value="rev-5">Más de $100M</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+
+            </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
