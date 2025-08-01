@@ -88,6 +88,28 @@ const meetingDynamicsOptions = [
     "Los miembros del consejo crean un impacto transformador durante la reunión"
 ];
 
+const recentMeetingMonthOptions = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+];
+
+const performanceEvaluationOptions = [
+    "No",
+    "Sí como Grupo",
+    "Sí individualmente",
+    "Sí como grupo e individualmente"
+];
+
 
 export default function BoardImpactPage() {
   return (
@@ -313,6 +335,31 @@ export default function BoardImpactPage() {
                             </div>
                         ))}
                     </div>
+                </div>
+            </div>
+            <Separator />
+            <div className="space-y-6">
+                <div className="space-y-4">
+                    <Label>17. ¿Cuál es el mes de su reunión más reciente? <span className="text-destructive">*</span></Label>
+                    <RadioGroup>
+                        {recentMeetingMonthOptions.map((option) => (
+                            <div key={option} className="flex items-center space-x-2">
+                                <RadioGroupItem value={option} id={`month-${option.toLowerCase()}`} />
+                                <Label htmlFor={`month-${option.toLowerCase()}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+                <div className="space-y-4">
+                    <Label>18. ¿Se evalúa el rendimiento del Consejo (ya sea como grupo o individualmente)? <span className="text-destructive">*</span></Label>
+                    <RadioGroup>
+                        {performanceEvaluationOptions.map((option) => (
+                            <div key={option} className="flex items-center space-x-2">
+                                <RadioGroupItem value={option} id={`eval-${option.toLowerCase().replace(/\s/g, '-')}`} />
+                                <Label htmlFor={`eval-${option.toLowerCase().replace(/\s/g, '-')}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
                 </div>
             </div>
         </CardContent>
