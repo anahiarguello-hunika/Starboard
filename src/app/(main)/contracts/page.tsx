@@ -97,25 +97,27 @@ export default function ContractsDashboardPage() {
                     </div>
                 </CardHeader>
                 <CardContent className="h-[300px]">
-                     <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                            <ChartTooltip 
-                                content={<ChartTooltipContent 
-                                    formatter={(value, name) => <span>{value}</span>}
-                                    labelFormatter={(label, payload) => payload?.[0]?.name}
-                                />} 
-                            />
-                            <Pie data={contractsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
-                                {contractsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
-                            </Pie>
-                            <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">20</text>
-                             <Legend 
-                                iconType="square"
-                                wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
-                                formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
-                            />
-                        </PieChart>
-                    </ResponsiveContainer>
+                     <ChartContainer config={{}} className="w-full h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <PieChart>
+                                <ChartTooltip 
+                                    content={<ChartTooltipContent 
+                                        formatter={(value, name) => <span>{value}</span>}
+                                        labelFormatter={(label, payload) => payload?.[0]?.name}
+                                    />} 
+                                />
+                                <Pie data={contractsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
+                                    {contractsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
+                                </Pie>
+                                <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">20</text>
+                                <Legend 
+                                    iconType="square"
+                                    wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
+                                    formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
+                                />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </ChartContainer>
                 </CardContent>
                  <CardDescription className="text-center text-xs pb-4">
                     Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
@@ -130,24 +132,26 @@ export default function ContractsDashboardPage() {
                     </div>
                 </CardHeader>
                 <CardContent className="h-[300px]">
-                    <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={upcomingExpirationsData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                            <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                            <YAxis 
-                                tickFormatter={(value) => value.toLocaleString()} 
-                                tick={{ fontSize: 12 }} 
-                                label={{ value: 'Suma del Monto del Contrato', angle: -90, position: 'insideLeft', offset: -10, style: { fontSize: '12px' } }} 
-                            />
-                            <RechartsTooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
-                            <Legend 
-                                iconType="square" 
-                                wrapperStyle={{ fontSize: '12px' }}
-                                formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
-                            />
-                            <Bar dataKey="value" name="Monto del Contrato" fill="#14b8a6" />
-                        </BarChart>
-                    </ResponsiveContainer>
+                    <ChartContainer config={{}} className="w-full h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={upcomingExpirationsData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+                                <YAxis 
+                                    tickFormatter={(value) => value.toLocaleString()} 
+                                    tick={{ fontSize: 12 }} 
+                                    label={{ value: 'Suma del Monto del Contrato', angle: -90, position: 'insideLeft', offset: -10, style: { fontSize: '12px' } }} 
+                                />
+                                <RechartsTooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
+                                <Legend 
+                                    iconType="square" 
+                                    wrapperStyle={{ fontSize: '12px' }}
+                                    formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
+                                />
+                                <Bar dataKey="value" name="Monto del Contrato" fill="#14b8a6" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </ChartContainer>
                 </CardContent>
                  <CardDescription className="text-center text-xs pb-4">
                     Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
