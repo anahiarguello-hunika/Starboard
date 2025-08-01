@@ -113,6 +113,15 @@ const performanceEvaluationOptions = [
     "Sí como grupo e individualmente"
 ];
 
+const evaluationFrequencyOptions = [
+    "Informalmente después de cada reunión",
+    "Formalmente después de cada reunión (escrito y documentado)",
+    "Evaluaciones informales anuales (o más) del consejo",
+    "Evaluaciones formales anuales del consejo (escritas y documentadas)",
+    "Formalmente una vez cada dos años",
+    "Formalmente una vez cada tres años"
+];
+
 const meetingFeelingsOptions = [
     "Curioso(a) sobre los siguientes pasos",
     "Sorprendido(a)",
@@ -380,11 +389,27 @@ export default function BoardImpactPage() {
                         ))}
                     </RadioGroup>
                 </div>
+                <div className="space-y-4">
+                    <Label>19. Si respondió sí a la pregunta anterior, ¿con qué frecuencia la organización realiza evaluaciones o encuestas a los miembros de su consejo? <span className="text-destructive">*</span></Label>
+                     <div className="grid grid-cols-1 gap-4">
+                        {evaluationFrequencyOptions.map((option) => (
+                            <div key={option} className="flex items-center space-x-2">
+                                <Checkbox id={`freq-${option.toLowerCase().replace(/\s/g, '-')}`} />
+                                <Label htmlFor={`freq-${option.toLowerCase().replace(/\s/g, '-')}`} className="font-normal">{option}</Label>
+                            </div>
+                        ))}
+                        <div className="flex items-center space-x-2">
+                            <Checkbox id="freq-otro" />
+                            <Label htmlFor="freq-otro" className="font-normal">Otro - Escriba</Label>
+                            <Input className="max-w-xs" />
+                        </div>
+                    </div>
+                </div>
             </div>
             <Separator />
             <div className="space-y-6">
                 <div className="space-y-4">
-                    <Label>19. Por lo general, cuando salgo de una reunión de consejo típica, a menudo me siento (seleccione la que se aplica con más frecuencia): <span className="text-destructive">*</span></Label>
+                    <Label>20. Por lo general, cuando salgo de una reunión de consejo típica, a menudo me siento (seleccione la que se aplica con más frecuencia): <span className="text-destructive">*</span></Label>
                     <RadioGroup>
                         {meetingFeelingsOptions.map((option) => (
                             <div key={option} className="flex items-center space-x-2">
@@ -395,7 +420,7 @@ export default function BoardImpactPage() {
                     </RadioGroup>
                 </div>
                 <div className="space-y-4">
-                    <Label>20. En general, creo que este Consejo proporciona a la empresa un alto grado de valor estratégico. Utilice la escala para determinar qué nivel de valor se está creando. <span className="text-destructive">*</span></Label>
+                    <Label>21. En general, creo que este Consejo proporciona a la empresa un alto grado de valor estratégico. Utilice la escala para determinar qué nivel de valor se está creando. <span className="text-destructive">*</span></Label>
                     <div className="flex flex-col gap-2">
                        <Slider defaultValue={[50]} max={100} step={1} />
                        <div className="flex justify-between text-sm text-muted-foreground">
@@ -421,3 +446,5 @@ export default function BoardImpactPage() {
     </div>
   );
 }
+
+    
