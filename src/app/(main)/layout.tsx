@@ -49,7 +49,7 @@ const navItems = [
   { href: "/contracts", icon: FileText, label: "Contratos" },
   { href: "/fractional-clm", icon: Scale, label: "Fractional CLM®" },
   { href: "/tasks", icon: ListTodo, label: "Tareas" },
-  { href: "/documents", icon: Folder, label: "Documentos" },
+  { href: "/documents", icon: Folder, label: "Gestión del Conocimiento" },
   { href: "/calendar", icon: Calendar, label: "Calendario" },
   { href: "/financial-management", icon: DollarSign, label: "Gestión Financiera" },
   { href: "/entities", icon: Building2, label: "Gestión de Sociedades"},
