@@ -2,10 +2,8 @@
 'use client';
 
 import {
-  AlertCircle,
   ArrowDown,
   ArrowUp,
-  CheckCircle2,
   FileText,
   FilePlus2,
   PieChart as PieChartIcon,
@@ -14,7 +12,6 @@ import {
   TrendingUp,
   ChevronDown,
 } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -53,12 +50,6 @@ const activeProjects = [
   { id: "PROJ-003", name: "Revisión de Cartera de PI", status: "En curso", progress: 90 },
   { id: "PROJ-004", name: "Consolidación de Contratos de Proveedores", status: "Necesita revisión", progress: 50 },
 ];
-
-const alerts = [
-    { id: "ALRT-001", title: "Vencimiento de Renovación de Contrato", description: "El MSA con Innovate Inc. vence en 30 días.", level: "warning" },
-    { id: "ALRT-002", title: "Nueva Regulación", description: "Actualización de la Ley de Privacidad de Datos efectiva el 1 de octubre.", level: "info" },
-    { id: "ALRT-003", title: "Tarea Vencida", description: "La revisión del acuerdo de proveedor está vencida por 3 días.", level: "error" },
-]
 
 const projectStatusData = [
   { name: 'En Progreso', count: 2, fill: 'hsl(var(--chart-2))' },
@@ -353,23 +344,6 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
         </div>
-
-
-        <Card className="lg:col-span-4">
-            <CardHeader>
-                <CardTitle>Alertas Recientes</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-                {alerts.map(alert => (
-                    <Alert key={alert.id} variant={alert.level === 'error' ? 'destructive' : 'default'}>
-                        {alert.level === 'error' ? <AlertCircle className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
-                        <AlertTitle>{alert.title}</AlertTitle>
-                        <AlertDescription>{alert.description}</AlertDescription>
-                    </Alert>
-                ))}
-            </CardContent>
-        </Card>
-        
       </div>
     </div>
   );
