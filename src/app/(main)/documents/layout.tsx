@@ -21,13 +21,16 @@ import {
     Home,
     Clock,
     Pin,
-    ChevronDown
+    ChevronDown,
+    LayoutDashboard
 } from "lucide-react";
 import Link from 'next/link';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const documentsNav = [
+    { name: 'Dashboard', icon: LayoutDashboard, href: "/documents/dashboard"},
     { name: 'Proyectos (Matters)', icon: Briefcase, href: "#"},
     { 
         name: 'Información Corporativa', 
@@ -98,6 +101,7 @@ export default function DocumentsLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
 
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
@@ -139,7 +143,9 @@ export default function DocumentsLayout({
                     <CollapsibleContent className="pl-4">
                         <div className="flex flex-col gap-1 mt-2">
                         {documentsNav.map((item, index) => (
-                            <Link key={item.name} href={item.href || "#"} className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted">
+                            <Link key={item.name} href={item.href || "#"} className={cn("flex items-center gap-3 px-3 py-2 rounded-lg transition-colors",
+                             pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                            )}>
                                 <span className="text-xs w-6 text-right">{String(index+1).padStart(2, '0')}</span>
                                 <item.icon className="h-5 w-5" />
                                 <span>{item.name}</span>
