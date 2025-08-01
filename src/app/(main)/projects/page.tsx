@@ -45,7 +45,7 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/component
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Input } from '@/components/ui/input';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, Bar } from 'recharts';
 
 const projectNav = [
     { name: 'Dashboard', icon: LayoutDashboard, active: true, href: "/projects" },
@@ -273,41 +273,13 @@ export default function ProjectsPage() {
             </nav>
         </div>
         <div className="flex flex-col gap-8">
-          <div className="grid grid-cols-[320px_1fr] gap-8 items-start">
-            <div className="flex flex-col gap-8">
-                <div className="flex items-center gap-2">
-                    <h1 className="text-xl font-semibold">Panel de Gestión de Proyectos</h1>
-                    <ChevronDown className="h-5 w-5 text-muted-foreground" />
-                </div>
-                <Card>
-                    <CardContent className="p-4 space-y-4">
-                        <div className="relative">
-                            <Input placeholder="Cliente" className="h-8" />
-                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        </div>
-                        <div className="relative">
-                            <Input placeholder="Líder del Proyecto" className="h-8" />
-                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        </div>
-                        <div className="relative">
-                            <Input placeholder="Tipo de Proyecto" className="h-8" />
-                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        </div>
-                    </CardContent>
-                </Card>
-
-                <div className="grid grid-cols-3 gap-4">
-                    {kpiCards.map(kpi => (
-                        <Card key={kpi.title} className="text-center">
-                            <CardHeader className="p-4">
-                            <CardDescription className="text-xs">{kpi.title}</CardDescription>
-                            </CardHeader>
-                            <CardContent className="p-4 pt-0">
-                                <p className="text-2xl font-bold">{kpi.value}</p>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
+            <div className="flex items-center justify-between">
+                <h1 className="text-3xl font-bold tracking-tight font-headline">
+                Gestión de Proyectos
+                </h1>
+                <p className="text-muted-foreground">
+                Visualice y gestione sus proyectos legales.
+                </p>
             </div>
 
             <div className="grid grid-cols-2 gap-8 items-start">
@@ -346,7 +318,7 @@ export default function ProjectsPage() {
                         Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
                     </CardDescription>
                 </Card>
-                    <Card>
+                <Card>
                     <CardHeader className="flex flex-row justify-between items-center">
                         <CardTitle className="text-base">Proyectos por Mes</CardTitle>
                         <div className="flex items-center gap-2 text-muted-foreground">
@@ -381,7 +353,18 @@ export default function ProjectsPage() {
                     </CardDescription>
                 </Card>
             </div>
-          </div>
+            <div className="grid grid-cols-2 gap-4">
+                {kpiCards.map(kpi => (
+                    <Card key={kpi.title} className="text-center">
+                        <CardHeader className="p-4">
+                        <CardDescription className="text-xs">{kpi.title}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-4 pt-0">
+                            <p className="text-2xl font-bold">{kpi.value}</p>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1 rounded-md bg-muted p-1">
               <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
