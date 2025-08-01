@@ -12,6 +12,7 @@ import {
   TrendingUp,
   ChevronDown,
   Calendar as CalendarIcon,
+  Clock,
 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -57,6 +58,11 @@ const projectStatusData = [
   { name: 'En Progreso', count: 2, fill: 'hsl(var(--chart-2))' },
   { name: 'En Pausa', count: 1, fill: 'hsl(var(--chart-3))' },
   { name: 'Completados', count: 3, fill: 'hsl(var(--border))' },
+];
+
+const hoursData = [
+  { name: 'Consumidas', value: 5, fill: 'hsl(var(--chart-2))' },
+  { name: 'Restantes', value: 3, fill: 'hsl(var(--border))' },
 ];
 
 const totalProjects = projectStatusData.reduce((sum, item) => sum + item.count, 0);
@@ -176,6 +182,59 @@ export default function DashboardPage() {
                                 </li>
                             ))}
                         </ul>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                            <Clock className="text-muted-foreground" />
+                            Resumen de Horas
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="flex flex-col justify-center gap-2">
+                                {hoursData.map(item => (
+                                    <div key={item.name} className="flex items-center justify-between text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
+                                            <span className="text-muted-foreground">{item.name}</span>
+                                        </div>
+                                        <span className="font-semibold">{item.value}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <ChartContainer config={{}} className="w-full h-[120px]">
+                                <PieChart>
+                                    <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                                    <Pie
+                                        data={hoursData}
+                                        dataKey="value"
+                                        nameKey="name"
+                                        innerRadius={35}
+                                        outerRadius={50}
+                                        strokeWidth={2}
+                                    >
+                                    {hoursData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                                    ))}
+                                    </Pie>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        textAnchor="middle"
+                                        dominantBaseline="middle"
+                                        className="fill-foreground text-center"
+                                    >
+                                        <tspan x="50%" y="52%" className="text-xl font-bold">
+                                        8
+                                        </tspan>
+                                    </text>
+                                </PieChart>
+                                </ChartContainer>
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
              </div>
