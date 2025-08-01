@@ -232,10 +232,9 @@ export default function EntitiesOverviewPage() {
                     ))}
                   </TableBody>
                 </Table>
-                <div className="flex items-center justify-center">
-                  <ChartContainer
+                <ChartContainer
                     config={{}}
-                    className="w-full h-[200px]"
+                    className="w-full h-[200px] flex items-center justify-center"
                   >
                     <PieChart>
                       <ChartTooltip
@@ -272,7 +271,6 @@ export default function EntitiesOverviewPage() {
                       </text>
                     </PieChart>
                   </ChartContainer>
-                </div>
               </CardContent>
             </Card>
           </div>

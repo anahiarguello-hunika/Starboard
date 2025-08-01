@@ -184,15 +184,17 @@ export default function ContractsDashboardPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="h-[250px]">
-                             <ResponsiveContainer width="100%" height="100%">
-                                <PieChart>
-                                    <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-                                    <Pie data={contractsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
-                                        {contractsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
-                                    </Pie>
-                                     <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-2xl font-bold fill-foreground">20</text>
-                                </PieChart>
-                            </ResponsiveContainer>
+                            <ChartContainer config={{}} className="w-full h-[250px]">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart>
+                                        <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                                        <Pie data={contractsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
+                                            {contractsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
+                                        </Pie>
+                                         <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-2xl font-bold fill-foreground">20</text>
+                                    </PieChart>
+                                </ResponsiveContainer>
+                            </ChartContainer>
                         </CardContent>
                          <CardDescription className="text-center text-xs pb-4">
                             Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
@@ -300,4 +302,3 @@ export default function ContractsDashboardPage() {
     </div>
   );
 }
-
