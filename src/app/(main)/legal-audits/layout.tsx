@@ -10,6 +10,7 @@ import {
     GraduationCap,
     Scale,
     ChevronRight,
+    Activity,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -20,6 +21,7 @@ const auditNav = [
   { name: 'Due Dilligence Completo', href: '/legal-audits/full-due-diligence', icon: BookCopy },
   { name: 'Madurez Legal', href: '/legal-audits/legal-maturity', icon: GraduationCap },
   { name: 'Madurez Contractual', href: '/legal-audits/contract-maturity', icon: ClipboardList },
+  { name: 'Impacto del Consejo', href: '/legal-audits/board-impact', icon: Activity },
   { name: 'Madurez de Gobierno Corporativo', href: '/legal-audits/corporate-governance-maturity', icon: Scale },
   { name: 'Madurez de Cumplimiento', href: '/legal-audits/compliance-maturity', icon: ClipboardCheck },
 ];
