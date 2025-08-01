@@ -25,7 +25,7 @@ const contractsNav = [
     icon: FileClock,
     submenu: [
       { name: 'Expiran en 30 días', href: '/contracts/expiring-soon' },
-      { name: 'Expiran en 90 días', href: '#' },
+      { name: 'Expiran en 90 días', href: '/contracts/expiring-in-90-days' },
       { name: 'Expiran en 12 meses', href: '#' },
       { name: 'Expiran en más de 12 meses', href: '#' },
     ]
