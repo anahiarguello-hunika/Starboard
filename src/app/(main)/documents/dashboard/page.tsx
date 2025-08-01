@@ -36,7 +36,8 @@ import {
   ChevronDown,
   Search,
   RefreshCw,
-  X
+  X,
+  User,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -88,31 +89,90 @@ export default function DocumentsDashboardPage() {
         }
     }
   
+    const KanbanView = () => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.entries(documentsData.reduce((acc, doc) => {
+                if (!acc[doc.status]) {
+                    acc[doc.status] = [];
+                }
+                acc[doc.status].push(doc);
+                return acc;
+            }, {} as Record<Document['status'], Document[]>)).map(([status, docs]) => (
+                <Card key={status} className="bg-muted/30">
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                            <span className="text-base">{status}</span>
+                            <span className="text-sm font-normal bg-muted px-2 py-1 rounded-md">{docs.length}</span>
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        {docs.map(doc => (
+                            <Card key={doc.id}>
+                                <CardContent className="p-4 space-y-2">
+                                    <p className="font-semibold">{doc.name}</p>
+                                    <p className="text-xs text-muted-foreground">{doc.type} - v{doc.version}.0</p>
+                                    <div className="flex items-center justify-between pt-2">
+                                        <Badge variant={getStatusVariant(doc.status)} className={doc.status === 'Aprobado' ? 'bg-accent text-accent-foreground' : ''}>{doc.status}</Badge>
+                                        <span className="text-xs text-muted-foreground">Actualizado: {doc.lastUpdated}</span>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </CardContent>
+                </Card>
+            ))}
+        </div>
+    );
+  
+    const ListView = () => (
+        <div className="flex flex-col gap-4">
+            {documentsData.map((doc) => (
+                <Card key={doc.id}>
+                    <CardContent className="p-4 flex justify-between items-center">
+                        <div className="flex items-center gap-4">
+                            <FileText className="h-6 w-6 text-muted-foreground" />
+                            <div>
+                                <p className="font-semibold">{doc.name}</p>
+                                <p className="text-sm text-muted-foreground">{doc.type} - v{doc.version}.0 - Actualizado: {doc.lastUpdated}</p>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <Badge variant={getStatusVariant(doc.status)}
+                                className={doc.status === 'Aprobado' ? 'bg-accent text-accent-foreground' : ''}>
+                                {doc.status}
+                            </Badge>
+                        </div>
+                    </CardContent>
+                </Card>
+            ))}
+        </div>
+    );
+    
     const TableView = () => (
         <Card>
           <Table>
             <TableHeader>
                 <TableRow>
-                <th className="text-left py-2 px-4 font-semibold">Nombre del Documento</th>
-                <th className="text-left py-2 px-4 font-semibold">Tipo</th>
-                <th className="text-left py-2 px-4 font-semibold">Versión</th>
-                <th className="text-left py-2 px-4 font-semibold">Estado</th>
-                <th className="text-left py-2 px-4 font-semibold">Última Actualización</th>
+                <TableHead>Nombre del Documento</TableHead>
+                <TableHead>Tipo</TableHead>
+                <TableHead>Versión</TableHead>
+                <TableHead>Estado</TableHead>
+                <TableHead>Última Actualización</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {documentsData.map((doc) => (
                 <TableRow key={doc.id} className="border-b">
-                  <TableCell className="py-2 px-4">{doc.name}</TableCell>
-                  <TableCell className="py-2 px-4"><Badge variant="outline">{doc.type}</Badge></TableCell>
-                  <TableCell className="py-2 px-4">v{doc.version}.0</TableCell>
-                  <TableCell className="py-2 px-4">
+                  <TableCell>{doc.name}</TableCell>
+                  <TableCell><Badge variant="outline">{doc.type}</Badge></TableCell>
+                  <TableCell>v{doc.version}.0</TableCell>
+                  <TableCell>
                     <Badge variant={getStatusVariant(doc.status)}
                         className={doc.status === 'Aprobado' ? 'bg-accent text-accent-foreground' : ''}>
                        {doc.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="py-2 px-4">{doc.lastUpdated}</TableCell>
+                  <TableCell>{doc.lastUpdated}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -240,22 +300,24 @@ export default function DocumentsDashboardPage() {
                 </p>
             </div>
              <div className="flex items-center gap-1 rounded-md bg-muted p-1">
-                <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
+                <Button variant={view === 'kanban' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
                     <LayoutGrid className="h-4 w-4 mr-2" />
                     Kanban
                 </Button>
-                <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
+                <Button variant={view === 'list' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
                     <List className="h-4 w-4 mr-2" />
                     Lista
                 </Button>
-                <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
+                <Button variant={view === 'table' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
                     <TableIcon className="h-4 w-4 mr-2" />
                     Tabla
                 </Button>
             </div>
         </div>
 
-        <TableView />
+        {view === 'kanban' && <KanbanView />}
+        {view === 'list' && <ListView />}
+        {view === 'table' && <TableView />}
     </div>
   );
 }
