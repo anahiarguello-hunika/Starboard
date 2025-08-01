@@ -21,6 +21,8 @@ import {
   Users,
   Award,
   BookUser,
+  Calendar,
+  DollarSign,
 } from "lucide-react";
 
 import {
@@ -47,6 +49,8 @@ const navItems = [
   { href: "/fractional-clm", icon: Scale, label: "Fractional CLM®" },
   { href: "/tasks", icon: ListTodo, label: "Tareas" },
   { href: "/documents", icon: Folder, label: "Documentos" },
+  { href: "/calendar", icon: Calendar, label: "Calendario" },
+  { href: "/financial-management", icon: DollarSign, label: "Gestión Financiera" },
   { href: "/entities", icon: Building2, label: "Gestión de Entidades"},
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial Personal"},
   { href: "/trademarks", icon: Award, label: "Marcas y Patentes"},
