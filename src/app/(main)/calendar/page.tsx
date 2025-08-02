@@ -5,16 +5,24 @@ import { Calendar as CalendarIcon, ChevronLeft, ChevronRight } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function CalendarPage() {
     const [view, setView] = useState<'month' | 'year' | 'day'>('month');
-    const [currentDate, setCurrentDate] = useState(new Date());
+    const [currentDate, setCurrentDate] = useState<Date | undefined>(undefined);
+
+    useEffect(() => {
+        setCurrentDate(new Date());
+    }, []);
+
 
     const renderCalendarView = () => {
+        if (!currentDate) {
+            return null; // O un spinner de carga
+        }
         switch (view) {
             case 'month':
-                return <Calendar mode="single" selected={currentDate} onSelect={(date) => date && setCurrentDate(date)} className="p-0" />;
+                return <Calendar mode="single" selected={currentDate} onSelect={(date) => date && setCurrentDate(date)} className="p-0" month={currentDate} />;
             case 'year':
                  return <div className="p-4 grid grid-cols-4 gap-4">
                     {[...Array(12)].map((_, i) => (
@@ -44,26 +52,29 @@ export default function CalendarPage() {
     };
     
     const goToPrevious = () => {
+        if (!currentDate) return;
         if (view === 'month') {
-            setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
+            setCurrentDate(prev => new Date(prev!.getFullYear(), prev!.getMonth() - 1, 1));
         } else if (view === 'year') {
-             setCurrentDate(prev => new Date(prev.getFullYear() - 1, 0, 1));
+             setCurrentDate(prev => new Date(prev!.getFullYear() - 1, 0, 1));
         } else {
-             setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth(), prev.getDate() - 1));
+             setCurrentDate(prev => new Date(prev!.getFullYear(), prev!.getMonth(), prev!.getDate() - 1));
         }
     };
 
     const goToNext = () => {
+         if (!currentDate) return;
          if (view === 'month') {
-            setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1));
+            setCurrentDate(prev => new Date(prev!.getFullYear(), prev!.getMonth() + 1, 1));
         } else if (view === 'year') {
-             setCurrentDate(prev => new Date(prev.getFullYear() + 1, 0, 1));
+             setCurrentDate(prev => new Date(prev!.getFullYear() + 1, 0, 1));
         } else {
-             setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth(), prev.getDate() + 1));
+             setCurrentDate(prev => new Date(prev!.getFullYear(), prev!.getMonth(), prev!.getDate() + 1));
         }
     };
 
     const getHeaderText = () => {
+         if (!currentDate) return '';
          if (view === 'month') {
             return currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
         } else if (view === 'year') {
