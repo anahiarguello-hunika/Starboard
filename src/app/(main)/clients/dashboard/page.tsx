@@ -1,6 +1,7 @@
 
 'use client';
 
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -16,7 +17,10 @@ import {
   X,
   Users,
   Building,
-  DollarSign
+  DollarSign,
+  LayoutGrid,
+  List,
+  Table as TableIcon
 } from "lucide-react";
 import {
   ChartContainer,
@@ -27,6 +31,8 @@ import { Pie, PieChart, Cell, Bar, BarChart as RechartsBarChart, XAxis, YAxis, C
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const clientsByIndustryData = [
   { name: 'Tecnología', value: 8, fill: '#3b82f6' },
@@ -57,11 +63,12 @@ const clientsData = [
     { id: 'CLI-001', name: 'Innovate Inc.', industry: 'Tecnología', primaryContact: 'Alex L', status: 'Activo', openDate: '2023-01-15' },
     { id: 'CLI-002', name: 'Tech Solutions LLC', industry: 'Tecnología', primaryContact: 'Drew B', status: 'Activo', openDate: '2022-11-20' },
     { id: 'CLI-003', name: 'Capital Group', industry: 'Finanzas', primaryContact: 'Siobhan C', status: 'Activo', openDate: '2023-05-10' },
-    { id: 'CLI-004', name: 'HealthWell Corp', industry: 'Salud', primaryContact: 'Maggie I', status: 'En Riesgo', openDate: '2021-08-01' },
+    { id: 'CLI-004', name: 'HealthWell Corp', industry: 'Salud', primaryContact: 'En Riesgo', openDate: '2021-08-01' },
     { id: 'CLI-005', name: 'Retail Giant', industry: 'Retail', primaryContact: 'Ade A', status: 'Inactivo', openDate: '2020-03-25' },
 ]
 
 export default function ClientsDashboardPage() {
+  const [view, setView] = React.useState<'kanban' | 'list' | 'table'>('table');
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -75,6 +82,77 @@ export default function ClientsDashboardPage() {
         return <Badge variant="secondary">{status}</Badge>;
     }
   };
+
+  const KanbanView = () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {clientsData.map((client) => (
+        <Card key={client.id}>
+          <CardHeader>
+            <CardTitle>{client.name}</CardTitle>
+            <CardDescription>{client.industry}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2 text-sm">
+                <p><strong>Contacto:</strong> {client.primaryContact}</p>
+                <p><strong>Alta:</strong> {client.openDate}</p>
+                <div>{getStatusBadge(client.status)}</div>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+
+  const ListView = () => (
+    <div className="flex flex-col gap-4">
+      {clientsData.map((client) => (
+        <Card key={client.id}>
+            <CardContent className="p-4 flex justify-between items-center">
+                <div className="flex items-center gap-4">
+                    <Building className="h-8 w-8 text-muted-foreground" />
+                    <div>
+                        <p className="font-semibold">{client.name}</p>
+                        <p className="text-sm text-muted-foreground">{client.industry} - Contacto: {client.primaryContact}</p>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    {getStatusBadge(client.status)}
+                    <Button variant="outline" size="sm" asChild>
+                      <Link href="#">Ver Cliente</Link>
+                    </Button>
+                </div>
+            </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+
+  const TableView = () => (
+     <Table>
+        <TableHeader>
+            <TableRow>
+                <TableHead>ID de Cliente</TableHead>
+                <TableHead>Nombre</TableHead>
+                <TableHead>Industria</TableHead>
+                <TableHead>Contacto Principal</TableHead>
+                <TableHead>Estado</TableHead>
+                <TableHead>Fecha de Alta</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            {clientsData.map((client) => (
+                <TableRow key={client.id}>
+                    <TableCell className="font-medium">{client.id}</TableCell>
+                    <TableCell>{client.name}</TableCell>
+                    <TableCell><Badge variant="outline">{client.industry}</Badge></TableCell>
+                    <TableCell>{client.primaryContact}</TableCell>
+                    <TableCell>{getStatusBadge(client.status)}</TableCell>
+                    <TableCell>{client.openDate}</TableCell>
+                </TableRow>
+            ))}
+        </TableBody>
+    </Table>
+  );
 
 
   return (
@@ -185,34 +263,27 @@ export default function ClientsDashboardPage() {
           </div>
       </div>
       <Card>
-        <CardHeader>
+        <CardHeader className="flex justify-between items-center">
             <CardTitle>Lista de Clientes</CardTitle>
+            <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+                <Button variant={view === 'kanban' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
+                    <LayoutGrid className="h-4 w-4 mr-2" />
+                    Kanban
+                </Button>
+                <Button variant={view === 'list' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
+                    <List className="h-4 w-4 mr-2" />
+                    Lista
+                </Button>
+                <Button variant={view === 'table' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
+                    <TableIcon className="h-4 w-4 mr-2" />
+                    Tabla
+                </Button>
+            </div>
         </CardHeader>
         <CardContent>
-            <Table>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead>ID de Cliente</TableHead>
-                        <TableHead>Nombre</TableHead>
-                        <TableHead>Industria</TableHead>
-                        <TableHead>Contacto Principal</TableHead>
-                        <TableHead>Estado</TableHead>
-                        <TableHead>Fecha de Alta</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {clientsData.map((client) => (
-                        <TableRow key={client.id}>
-                            <TableCell className="font-medium">{client.id}</TableCell>
-                            <TableCell>{client.name}</TableCell>
-                            <TableCell><Badge variant="outline">{client.industry}</Badge></TableCell>
-                            <TableCell>{client.primaryContact}</TableCell>
-                            <TableCell>{getStatusBadge(client.status)}</TableCell>
-                            <TableCell>{client.openDate}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+            {view === 'kanban' && <KanbanView />}
+            {view === 'list' && <ListView />}
+            {view === 'table' && <TableView />}
         </CardContent>
       </Card>
     </div>
