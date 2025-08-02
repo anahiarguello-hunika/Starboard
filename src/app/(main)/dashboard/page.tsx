@@ -299,7 +299,7 @@ export default function DashboardPage() {
 
             <Card className="md:col-span-2">
               <CardHeader>
-                <CardTitle>Proyectos Activos</CardTitle>
+                <CardTitle>Progreso de Proyectos</CardTitle>
                 <CardDescription>
                   Proyectos legales clave actualmente en curso.
                 </CardDescription>
@@ -348,6 +348,7 @@ export default function DashboardPage() {
                         selected={importantDates.map(d => d.date)}
                         className="p-0"
                         month={date}
+                        onMonthChange={setDate}
                     />
                     <ul className="mt-4 space-y-2">
                        {importantDates.map(item => (
