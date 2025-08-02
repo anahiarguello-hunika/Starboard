@@ -344,8 +344,9 @@ export default function DashboardPage() {
                 </CardHeader>
                 <CardContent>
                     <Calendar
-                        mode="multiple"
-                        selected={importantDates.map(d => d.date)}
+                        mode="single"
+                        selected={date}
+                        onSelect={setDate}
                         className="p-0"
                         month={date}
                         onMonthChange={setDate}
@@ -366,7 +367,7 @@ export default function DashboardPage() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Clock className="text-muted-foreground" />
-                        Resumen de Horas
+                        Informe de Suscripción
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
