@@ -198,7 +198,7 @@ export default function DashboardPage() {
                   <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                       <PieChartIcon className="text-muted-foreground" />
-                      Resumen de Proyectos
+                      Proyectos Activados®
                       </CardTitle>
                   </CardHeader>
                   <CardContent>
