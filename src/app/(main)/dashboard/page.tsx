@@ -13,6 +13,7 @@ import {
   ChevronDown,
   Calendar as CalendarIcon,
   Clock,
+  DollarSign,
 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -415,6 +416,24 @@ export default function DashboardPage() {
                         </div>
                     </div>
                 </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <DollarSign className="text-accent" /> ROI Legal
+                </CardTitle>
+                <CardDescription>
+                  Retorno de la inversión en servicios legales.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                    <span className="text-5xl font-bold text-accent">95%</span>
+                    <span className="text-sm text-green-600 font-semibold">+5% este trimestre</span>
+                </div>
+                <Progress value={95} aria-label="95% de ROI" />
+                <p className="text-xs text-muted-foreground">El ROI se calcula en base a la reducción de riesgos y la eficiencia.</p>
+              </CardContent>
             </Card>
          </div>
       </div>
