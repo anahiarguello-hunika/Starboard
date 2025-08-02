@@ -77,10 +77,12 @@ const keyMetrics = [
 ];
 
 export default function DashboardPage() {
+  const [date, setDate] = React.useState<Date | undefined>(undefined);
   const [importantDates, setImportantDates] = useState<{ date: Date; description: string }[]>([]);
 
   useEffect(() => {
     const today = new Date();
+    setDate(today);
     setImportantDates([
       { date: new Date(today), description: "Reunión de equipo" },
       { date: new Date(new Date().setDate(today.getDate() + 5)), description: "Vencimiento de Contrato X" },
@@ -153,7 +155,7 @@ export default function DashboardPage() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <ShieldCheck className="text-accent" /> Medidor de Cumplimiento
+                      <ShieldCheck className="text-accent" /> Cumplimiento Legal Total
                     </CardTitle>
                     <CardDescription>
                       Estado general de cumplimiento de la organización.
@@ -345,6 +347,7 @@ export default function DashboardPage() {
                         mode="multiple"
                         selected={importantDates.map(d => d.date)}
                         className="p-0"
+                        month={date}
                     />
                     <ul className="mt-4 space-y-2">
                        {importantDates.map(item => (
