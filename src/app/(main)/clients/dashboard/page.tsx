@@ -2,548 +2,219 @@
 'use client';
 
 import {
-  Star,
-  User,
-  MapPin,
-  ChevronDown,
-  Briefcase,
-  Layers,
-  FileText,
-  DollarSign,
-  Users,
-  Eye,
-  Plus,
-  ArrowRight,
-  Filter,
-  Columns2,
-  Ticket,
-  Bot,
-  MessageSquare,
-  Calendar,
-  Clock,
-  Pencil,
-  MoreHorizontal,
-  Folder,
-  Globe,
-  Lock,
-  Crown,
-  CreditCard,
-  ListTodo,
-  Sparkles,
-  X,
-  Bold,
-  Italic,
-  Underline,
-  List as ListIcon,
-  ListOrdered
-} from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { 
+  ChevronDown, 
+  Search,
+  RefreshCw,
+  X,
+  Users,
+  Building,
+  DollarSign
+} from "lucide-react";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Progress } from '@/components/ui/progress';
-import { clientData, type ClientWorkItem } from '@/lib/client-data';
-import Link from 'next/link';
-import { cn } from "@/lib/utils";
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
+import { Pie, PieChart, Cell, Bar, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Input } from "@/components/ui/input";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 
-const getStatusBadge = (status: ClientWorkItem['status']) => {
-  switch (status) {
-    case 'Open':
-      return <Badge variant="outline" className="text-green-600 border-green-600"><span className="h-2 w-2 rounded-full bg-green-600 mr-2"></span>{status}</Badge>;
-    case 'Quote Requested':
-      return <Badge variant="outline" className="text-blue-600 border-blue-600"><span className="h-2 w-2 rounded-full bg-blue-600 mr-2"></span>{status}</Badge>;
-    case 'Closing':
-      return <Badge variant="outline" className="text-purple-600 border-purple-600"><span className="h-2 w-2 rounded-full bg-purple-600 mr-2"></span>{status}</Badge>;
-    case 'Active':
-      return <Badge variant="outline" className="text-green-600 border-green-600"><span className="h-2 w-2 rounded-full bg-green-600 mr-2"></span>{status}</Badge>;
-    case 'Planned':
-      return <Badge variant="outline" className="text-amber-600 border-amber-600"><span className="h-2 w-2 rounded-full bg-amber-600 mr-2"></span>{status}</Badge>;
-    default:
-      return <Badge variant="secondary">{status}</Badge>;
-  }
-};
-
-const UserAvatar = ({ name }: { name: string }) => (
-    <Avatar className="h-6 w-6">
-        <AvatarImage src={`https://placehold.co/100x100.png`} data-ai-hint="person avatar" />
-        <AvatarFallback>{name.charAt(0)}</AvatarFallback>
-    </Avatar>
-);
-
-const clientNav = [
-  { name: 'Información General', icon: User, href: "#", active: true },
-  { name: 'Oportunidades', icon: DollarSign, href: "#" },
-  { name: 'Proyectos', icon: Briefcase, href: "#" },
-  { name: 'Tareas', icon: ListTodo, href: "#" },
-  { name: 'Contactos', icon: Users, href: "#" },
-  { name: 'Suscripción', icon: Crown, href: "#" },
-  { name: 'Solicitudes', icon: Ticket, href: "#" },
-  { name: 'Pagos', icon: CreditCard, href: "#" },
+const clientsByIndustryData = [
+  { name: 'Tecnología', value: 8, fill: '#3b82f6' },
+  { name: 'Finanzas', value: 5, fill: '#f97316' },
+  { name: 'Salud', value: 4, fill: '#14b8a6' },
+  { name: 'Retail', value: 3, fill: '#a855f7' },
 ];
 
+const newClientsByMonthData = [
+    { name: 'Ene', value: 2 },
+    { name: 'Feb', value: 3 },
+    { name: 'Mar', value: 1 },
+    { name: 'Abr', value: 4 },
+    { name: 'May', value: 2 },
+    { name: 'Jun', value: 5 },
+];
 
-export default function ClientDetailPage() {
+const kpiCards = [
+    { title: "Clientes nuevos este mes", value: "5" },
+    { title: "Clientes activos", value: "20" },
+    { title: "Clientes en riesgo", value: "3" },
+    { title: "Oportunidades abiertas", value: "8" },
+    { title: "Proyectos activos", value: "15" },
+    { title: "Facturación pendiente", value: "$120K" },
+];
+
+const clientsData = [
+    { id: 'CLI-001', name: 'Innovate Inc.', industry: 'Tecnología', primaryContact: 'Alex L', status: 'Activo', openDate: '2023-01-15' },
+    { id: 'CLI-002', name: 'Tech Solutions LLC', industry: 'Tecnología', primaryContact: 'Drew B', status: 'Activo', openDate: '2022-11-20' },
+    { id: 'CLI-003', name: 'Capital Group', industry: 'Finanzas', primaryContact: 'Siobhan C', status: 'Activo', openDate: '2023-05-10' },
+    { id: 'CLI-004', name: 'HealthWell Corp', industry: 'Salud', primaryContact: 'Maggie I', status: 'En Riesgo', openDate: '2021-08-01' },
+    { id: 'CLI-005', name: 'Retail Giant', industry: 'Retail', primaryContact: 'Ade A', status: 'Inactivo', openDate: '2020-03-25' },
+]
+
+export default function ClientsDashboardPage() {
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'Activo':
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">{status}</Badge>;
+      case 'En Riesgo':
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">{status}</Badge>;
+      case 'Inactivo':
+        return <Badge variant="outline">{status}</Badge>;
+      default:
+        return <Badge variant="secondary">{status}</Badge>;
+    }
+  };
+
+
   return (
-    <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
-        <div className="flex flex-col gap-4">
-            <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
-                {clientNav.map((item) => (
-                <Link key={item.name} href={item.href || "#"} className={cn(
-                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
-                    item.active ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
-                )}>
-                    <item.icon className="h-5 w-5" />
-                    <span>{item.name}</span>
-                </Link>
-            ))}
-            </nav>
-        </div>
-        <div className="flex flex-col gap-6">
-        <header>
-            <div className="flex justify-between items-start">
-                <div className="flex items-center gap-3">
-                    <div className="bg-muted p-3 rounded-lg"><Briefcase className="h-8 w-8 text-muted-foreground" /></div>
-                    <div>
-                        <div className="flex items-center gap-2">
-                            <h1 className="text-2xl font-bold font-headline">Dynamic Aerotech</h1>
-                            <Star className="h-5 w-5 text-amber-400 fill-current" />
-                        </div>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
-                            <div className="flex items-center gap-2"><Badge variant="outline" className="bg-green-100 text-green-700">VIP</Badge></div>
-                            <div className="flex items-center gap-2"><User className="h-4 w-4" /> Manager: <strong>Charlotte Giner</strong></div>
-                            <div className="flex items-center gap-2"><User className="h-4 w-4" /> Primary Contact: <strong>Tracy McGuire</strong></div>
-                            <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Location: <strong>Atlanta, GEORGIA, US</strong></div>
-                        </div>
-                    </div>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Button variant="outline"><Bot className="h-4 w-4 mr-2" /> Log</Button>
-                    <Button variant="outline"><MessageSquare className="h-4 w-4 mr-2" /> Message</Button>
-                    <Button variant="outline"><Calendar className="h-4 w-4 mr-2" /> Event</Button>
-                    <Button variant="outline"><Clock className="h-4 w-4 mr-2" /> </Button>
-                    <Button variant="outline"><Pencil className="h-4 w-4 mr-2" /> </Button>
-                    <Button variant="outline">Classic <ChevronDown className="h-4 w-4 ml-2" /></Button>
-                    <Button variant="ghost" size="icon"><MoreHorizontal className="h-4 w-4" /></Button>
-                </div>
-            </div>
-        </header>
+    <div className="space-y-8">
+      <div className="grid grid-cols-[320px_1fr] gap-8 items-start">
+          <div className="flex flex-col gap-8">
+              <div className="flex items-center gap-2">
+                  <h1 className="text-xl font-semibold">Panel de Gestión de Clientes</h1>
+                  <ChevronDown className="h-5 w-5 text-muted-foreground" />
+              </div>
+              <Card>
+                  <CardContent className="p-4 space-y-4">
+                       <div className="relative">
+                          <Input placeholder="Industria" className="h-8" />
+                          <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      </div>
+                       <div className="relative">
+                          <Input placeholder="Responsable" className="h-8" />
+                          <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      </div>
+                       <div className="relative">
+                          <Input placeholder="Tipo de Cliente" className="h-8" />
+                          <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      </div>
+                  </CardContent>
+              </Card>
 
-        <Tabs defaultValue="overview">
-            <TabsList>
-            <TabsTrigger value="overview"><Eye className="h-4 w-4 mr-2" />Overview</TabsTrigger>
-            <TabsTrigger value="stream"><Layers className="h-4 w-4 mr-2" />Stream</TabsTrigger>
-            <TabsTrigger value="billing"><DollarSign className="h-4 w-4 mr-2" />Billing</TabsTrigger>
-            <TabsTrigger value="contacts"><Users className="h-4 w-4 mr-2" />Contacts</TabsTrigger>
-            <TabsTrigger value="details"><FileText className="h-4 w-4 mr-2" />Details</TabsTrigger>
-            <TabsTrigger value="more">More...</TabsTrigger>
-            </TabsList>
-            <TabsContent value="overview" className="mt-4">
-                <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 items-start">
-                    <div className="flex flex-col gap-6">
-                        <Card>
-                            <CardHeader className="flex flex-row items-center justify-between">
-                                <CardTitle>Current Work</CardTitle>
-                                <div>
-                                    <Button variant="ghost" size="sm"><Plus className="h-4 w-4 mr-2" /> Create</Button>
-                                    <Button variant="ghost" size="sm"><Columns2 className="h-4 w-4 mr-2" /> Collapse All</Button>
-                                </div>
-                            </CardHeader>
-                            <CardContent>
-                                <Collapsible defaultOpen>
-                                    <CollapsibleTrigger className="w-full">
-                                        <div className="flex items-center gap-2 text-sm font-semibold py-2">
-                                            <Filter className="h-4 w-4" />
-                                            Requests <Badge variant="secondary" className="ml-1">{clientData.requests.length}</Badge>
-                                            <ChevronDown className="h-4 w-4 ml-auto" />
-                                        </div>
-                                    </CollapsibleTrigger>
-                                    <CollapsibleContent>
-                                        <Table>
-                                            <TableHeader>
-                                                <TableRow>
-                                                    <TableHead>Title</TableHead>
-                                                    <TableHead>Status</TableHead>
-                                                    <TableHead>Age</TableHead>
-                                                    <TableHead>Contact</TableHead>
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {clientData.requests.map((item) => (
-                                                    <TableRow key={item.id}>
-                                                        <TableCell className="font-medium">{item.title}</TableCell>
-                                                        <TableCell>{getStatusBadge(item.status)}</TableCell>
-                                                        <TableCell>{item.age}</TableCell>
-                                                        <TableCell><div className="flex items-center gap-2"><UserAvatar name={item.contact!} /> {item.contact}</div></TableCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </CollapsibleContent>
-                                </Collapsible>
-                                <Collapsible defaultOpen>
-                                    <CollapsibleTrigger className="w-full">
-                                        <div className="flex items-center gap-2 text-sm font-semibold py-2">
-                                            <DollarSign className="h-4 w-4" />
-                                            Sales <Badge variant="secondary" className="ml-1">{clientData.sales.length}</Badge>
-                                            <ChevronDown className="h-4 w-4 ml-auto" />
-                                        </div>
-                                    </CollapsibleTrigger>
-                                    <CollapsibleContent>
-                                        <Table>
-                                            <TableHeader>
-                                                <TableRow>
-                                                    <TableHead>Title</TableHead>
-                                                    <TableHead>Status</TableHead>
-                                                    <TableHead>Value</TableHead>
-                                                    <TableHead>Salesperson</TableHead>
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {clientData.sales.map((item) => (
-                                                    <TableRow key={item.id}>
-                                                        <TableCell className="font-medium">{item.title}</TableCell>
-                                                        <TableCell>{getStatusBadge(item.status)}</TableCell>
-                                                        <TableCell>{item.value}</TableCell>
-                                                        <TableCell><div className="flex items-center gap-2"><UserAvatar name={item.salesperson!} /> {item.salesperson}</div></TableCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </CollapsibleContent>
-                                </Collapsible>
-                                <Collapsible defaultOpen>
-                                    <CollapsibleTrigger className="w-full">
-                                        <div className="flex items-center gap-2 text-sm font-semibold py-2">
-                                            <Briefcase className="h-4 w-4" />
-                                            Projects <Badge variant="secondary" className="ml-1">{clientData.projects.length}</Badge>
-                                            <ChevronDown className="h-4 w-4 ml-auto" />
-                                        </div>
-                                    </CollapsibleTrigger>
-                                    <CollapsibleContent>
-                                        <Table>
-                                            <TableHeader>
-                                                <TableRow>
-                                                    <TableHead>Title</TableHead>
-                                                    <TableHead>Status</TableHead>
-                                                    <TableHead>Budget</TableHead>
-                                                    <TableHead>Manager</TableHead>
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {clientData.projects.map((item) => (
-                                                    <TableRow key={item.id}>
-                                                        <TableCell className="font-medium">{item.title}</TableCell>
-                                                        <TableCell>{getStatusBadge(item.status)}</TableCell>
-                                                        <TableCell>
-                                                            <div className="flex flex-col gap-1">
-                                                                <span>{item.budget?.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} / {item.budgetTarget?.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
-                                                                <Progress value={(item.budget!/item.budgetTarget!)*100} />
-                                                            </div>
-                                                        </TableCell>
-                                                        <TableCell><div className="flex items-center gap-2"><UserAvatar name={item.manager!} /> {item.manager}</div></TableCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </CollapsibleContent>
-                                </Collapsible>
-                                <Collapsible>
-                                    <CollapsibleTrigger className="w-full">
-                                        <div className="flex items-center gap-2 text-sm font-semibold py-2">
-                                            <Ticket className="h-4 w-4" />
-                                            Servicios <Badge variant="secondary" className="ml-1">2</Badge>
-                                            <ChevronDown className="h-4 w-4 ml-auto" />
-                                        </div>
-                                    </CollapsibleTrigger>
-                                    <CollapsibleContent>
-                                        <p className="text-muted-foreground p-4 text-center">No hay servicios para mostrar.</p>
-                                    </CollapsibleContent>
-                                </Collapsible>
-                            </CardContent>
-                        </Card>
-                    </div>
-                    <div className="flex flex-col gap-6">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Summary</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <p className="text-sm text-muted-foreground">A global commercial airline business. This is a VIP customer of ours.</p>
-                                <div className="text-sm space-y-2">
-                                    <div><strong>Business Size</strong><br />9.9</div>
-                                    <div><strong>Services Sold</strong><br /><Badge variant="secondary">Expert Services</Badge></div>
-                                    <div><strong>Client Asset Folder</strong><br /><Link href="#" className="text-primary flex items-center gap-1"><Folder className="h-4 w-4"/> https://googledrive.com</Link></div>
-                                    <div><strong>Location</strong><br /><Link href="#" className="text-primary flex items-center gap-1"><Globe className="h-4 w-4" /> USA</Link></div>
-                                </div>
-                                <Button variant="link" size="sm" className="p-0 text-primary">Show more <ChevronDown className="h-4 w-4 ml-1" /></Button>
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader className="flex-row items-center justify-between">
-                                <CardTitle>Your Privacy</CardTitle>
-                                <Button variant="ghost" size="icon" className="h-8 w-8"><Plus className="h-4 w-4" /></Button>
-                            </CardHeader>
-                            <CardContent className="space-y-3">
-                                <div className="flex items-center gap-3 text-sm">
-                                    <Avatar className="h-8 w-8">
-                                        <AvatarFallback>WL</AvatarFallback>
-                                    </Avatar>
-                                    <div>With <strong>Lancaster Tarson</strong> is <Badge variant="outline"><Lock className="h-3 w-3 mr-1" /> Confidential</Badge></div>
-                                </div>
-                                <div className="flex items-center gap-3 text-sm">
-                                    <Avatar className="h-8 w-8">
-                                        <AvatarFallback>WM</AvatarFallback>
-                                    </Avatar>
-                                    <div>With <strong>Miguel Cabrera</strong> is <Badge variant="outline"><Lock className="h-3 w-3 mr-1" /> Confidential</Badge></div>
-                                </div>
-                                <Button variant="link" size="sm" className="p-0 text-primary">View All Company Privacy</Button>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
-            </TabsContent>
-            <TabsContent value="contacts" className="mt-4">
-                <Card>
-                    <CardContent className="p-6 space-y-8">
-                        <div className="space-y-6">
-                            <div className="grid grid-cols-4 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="prefix">Prefix</Label>
-                                    <Input id="prefix" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="first-name">First name *</Label>
-                                    <Input id="first-name" required />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="middle-name">Middle name</Label>
-                                    <Input id="middle-name" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="last-name">Last name *</Label>
-                                    <Input id="last-name" required />
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="dob">Date of Birth</Label>
-                                    <Input id="dob" type="date" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="contact-type">Contact type</Label>
-                                    <Select>
-                                        <SelectTrigger id="contact-type">
-                                            <SelectValue placeholder="Lead" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="lead">Lead</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="tags">Tags</Label>
-                                <Input id="tags" placeholder="Type to search tags" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="email">Email address</Label>
-                                    <Input id="email" type="email" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="email-type">Email type</Label>
-                                    <Select>
-                                        <SelectTrigger id="email-type">
-                                            <SelectValue placeholder="Home" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="home">Home</SelectItem>
-                                            <SelectItem value="work">Work</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="phone">Phone number</Label>
-                                    <Input id="phone" placeholder="+52( ) - " />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="phone-type">Phone type</Label>
-                                    <Select>
-                                        <SelectTrigger id="phone-type">
-                                            <SelectValue placeholder="Mobile" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="mobile">Mobile</SelectItem>
-                                            <SelectItem value="home">Home</SelectItem>
-                                            <SelectItem value="work">Work</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label>Mexico</Label>
-                                    <Label htmlFor="street-address">Street address</Label>
-                                    <Textarea id="street-address" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="address-type">Address type</Label>
-                                    <Select>
-                                        <SelectTrigger id="address-type">
-                                            <SelectValue placeholder="Home" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="home">Home</SelectItem>
-                                            <SelectItem value="work">Work</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            </div>
-                        </div>
+              <div className="grid grid-cols-2 gap-4">
+                  {kpiCards.map(kpi => (
+                      <Card key={kpi.title} className="text-center">
+                          <CardHeader className="p-4">
+                             <CardDescription className="text-xs h-8">{kpi.title}</CardDescription>
+                          </CardHeader>
+                           <CardContent className="p-4 pt-0">
+                              <p className="text-2xl font-bold">{kpi.value}</p>
+                          </CardContent>
+                      </Card>
+                  ))}
+              </div>
+          </div>
 
-                        <div className="space-y-6">
-                            <h2 className="text-xl font-semibold">Matter details</h2>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="matter-type">Matter type *</Label>
-                                    <Select>
-                                        <SelectTrigger id="matter-type">
-                                            <SelectValue placeholder="Unassigned" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="unassigned">Unassigned</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="matter-status">Matter status *</Label>
-                                    <Select>
-                                        <SelectTrigger id="matter-status">
-                                            <SelectValue placeholder="Lead (Podemos ayudar)" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="lead">Lead (Podemos ayudar)</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="description">Description *</Label>
-                                <Textarea id="description" required />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4 items-start">
-                                <div className="space-y-2">
-                                    <Label htmlFor="estimated-value">Estimated value</Label>
-                                    <Input id="estimated-value" placeholder="Enter a value" />
-                                </div>
-                                <div className="bg-muted p-4 rounded-lg flex items-center gap-4">
-                                    <Sparkles className="h-8 w-8 text-primary" />
-                                    <p className="text-sm text-muted-foreground">
-                                        <strong>Unsure how to estimate value?</strong> Try taking the average revenue of matters of the same type.
-                                    </p>
-                                </div>
-                            </div>
-                             <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="assign-to">Assign to *</Label>
-                                     <Select>
-                                        <SelectTrigger id="assign-to">
-                                             <div className="flex items-center gap-2">
-                                                <Badge variant="secondary" className="cursor-pointer">
-                                                    Elias Bardawil <span className="ml-1"><X className="h-3 w-3"/></span>
-                                                </Badge>
-                                             </div>
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="eb">Elias Bardawil</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="location">Location</Label>
-                                    <Input id="location" placeholder="Select a location" />
-                                </div>
-                            </div>
-                        </div>
-
-                         <div className="space-y-6">
-                            <h2 className="text-xl font-semibold">Matter note</h2>
-                            <div className="space-y-2">
-                                <div className="flex items-center justify-between p-2 border-b">
-                                    <Input placeholder="Enter subject here." className="border-0 focus-visible:ring-0" />
-                                    <div className="flex items-center gap-2 text-muted-foreground">
-                                        <Button variant="ghost" size="icon"><Bold className="h-4 w-4" /></Button>
-                                        <Button variant="ghost" size="icon"><Italic className="h-4 w-4" /></Button>
-                                        <Button variant="ghost" size="icon"><Underline className="h-4 w-4" /></Button>
-                                        <Button variant="ghost" size="icon"><ListIcon className="h-4 w-4" /></Button>
-                                        <Button variant="ghost" size="icon"><ListOrdered className="h-4 w-4" /></Button>
-                                    </div>
-                                </div>
-                                <Textarea placeholder="Enter notes here." className="min-h-[120px] border-t-0 focus-visible:ring-0" />
-                            </div>
-                        </div>
-
-                         <div className="space-y-6">
-                            <h2 className="text-xl font-semibold">Marketing</h2>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="source">Source</Label>
-                                    <Select>
-                                        <SelectTrigger id="source">
-                                            <SelectValue placeholder="Select a source" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="web">Website</SelectItem>
-                                            <SelectItem value="referral">Referral</SelectItem>
-                                            <SelectItem value="advertisement">Advertisement</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="referred-by">Referred by</Label>
-                                     <Select>
-                                        <SelectTrigger id="referred-by">
-                                            <SelectValue placeholder="Select contact" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="contact1">Contact 1</SelectItem>
-                                            <SelectItem value="contact2">Contact 2</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
-            </TabsContent>
-        </Tabs>
-        </div>
+          <div className="grid grid-cols-2 gap-8 items-start">
+              <Card>
+                  <CardHeader className="flex flex-row justify-between items-center">
+                      <CardTitle className="text-base">Clientes por Industria</CardTitle>
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                          <RefreshCw className="h-4 w-4 cursor-pointer" />
+                          <X className="h-4 w-4 cursor-pointer" />
+                      </div>
+                  </CardHeader>
+                  <CardContent className="h-[300px]">
+                       <ChartContainer config={{}} className="w-full h-[300px]">
+                          <ResponsiveContainer width="100%" height="100%">
+                              <PieChart>
+                                  <ChartTooltip 
+                                      content={<ChartTooltipContent 
+                                          formatter={(value) => <span>{value}</span>}
+                                          labelFormatter={(label, payload) => payload?.[0]?.name}
+                                      />} 
+                                  />
+                                  <Pie data={clientsByIndustryData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
+                                      {clientsByIndustryData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
+                                  </Pie>
+                                  <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">20</text>
+                                  <Legend 
+                                      iconType="square"
+                                      wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
+                                      formatter={(value) => <span className="text-muted-foreground">{value}</span>}
+                                  />
+                              </PieChart>
+                          </ResponsiveContainer>
+                      </ChartContainer>
+                  </CardContent>
+                   <CardDescription className="text-center text-xs pb-4">
+                      Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
+                  </CardDescription>
+              </Card>
+                  <Card>
+                  <CardHeader className="flex flex-row justify-between items-center">
+                      <CardTitle className="text-base">Nuevos Clientes por Mes</CardTitle>
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                          <RefreshCw className="h-4 w-4 cursor-pointer" />
+                          <X className="h-4 w-4 cursor-pointer" />
+                      </div>
+                  </CardHeader>
+                  <CardContent className="h-[300px]">
+                      <ChartContainer config={{}} className="w-full h-[300px]">
+                          <ResponsiveContainer width="100%" height="100%">
+                              <RechartsBarChart data={newClientsByMonthData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                  <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+                                  <YAxis 
+                                      allowDecimals={false}
+                                      tickFormatter={(value) => value.toLocaleString()} 
+                                      tick={{ fontSize: 12 }} 
+                                      label={{ value: 'Número de Clientes', angle: -90, position: 'insideLeft', offset: 10, style: { fontSize: '12px' } }} 
+                                  />
+                                  <RechartsTooltip formatter={(value: number) => value.toLocaleString()} />
+                                  <Bar dataKey="value" name="Clientes" fill="#14b8a6" />
+                              </RechartsBarChart>
+                          </ResponsiveContainer>
+                      </ChartContainer>
+                  </CardContent>
+                   <CardDescription className="text-center text-xs pb-4">
+                      Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
+                  </CardDescription>
+              </Card>
+          </div>
+      </div>
+      <Card>
+        <CardHeader>
+            <CardTitle>Lista de Clientes</CardTitle>
+        </CardHeader>
+        <CardContent>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>ID de Cliente</TableHead>
+                        <TableHead>Nombre</TableHead>
+                        <TableHead>Industria</TableHead>
+                        <TableHead>Contacto Principal</TableHead>
+                        <TableHead>Estado</TableHead>
+                        <TableHead>Fecha de Alta</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {clientsData.map((client) => (
+                        <TableRow key={client.id}>
+                            <TableCell className="font-medium">{client.id}</TableCell>
+                            <TableCell>{client.name}</TableCell>
+                            <TableCell><Badge variant="outline">{client.industry}</Badge></TableCell>
+                            <TableCell>{client.primaryContact}</TableCell>
+                            <TableCell>{getStatusBadge(client.status)}</TableCell>
+                            <TableCell>{client.openDate}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </CardContent>
+      </Card>
     </div>
   );
 }
