@@ -251,7 +251,7 @@ export default function DashboardPage() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <FileText className="text-muted-foreground" />
-                        Resumen de Contratos
+                        Contratos Activados®
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
