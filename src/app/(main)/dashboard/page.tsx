@@ -84,7 +84,7 @@ export default function DashboardPage() {
     const today = new Date();
     setDate(today);
     setImportantDates([
-      { date: new Date(today), description: "Reunión de equipo" },
+      { date: today, description: "Reunión de equipo" },
       { date: new Date(new Date().setDate(today.getDate() + 5)), description: "Vencimiento de Contrato X" },
       { date: new Date(new Date().setDate(today.getDate() + 10)), description: "Auditoría interna" },
     ]);
@@ -172,7 +172,7 @@ export default function DashboardPage() {
                 </Card>
                 <Card>
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold">Métricas Clave</CardTitle>
+                        <CardTitle className="text-lg font-semibold">Métricas Legales</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <ul className="space-y-4">
