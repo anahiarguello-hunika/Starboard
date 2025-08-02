@@ -42,7 +42,7 @@ import {
 } from '@/components/ui/collapsible';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import React from 'react';
+import React from "react";
 
 const tasks = [
   {
@@ -235,18 +235,18 @@ const TaskRow = ({ task, level = 0 }: { task: any; level?: number }) => (
 
 const TaskCollapsible = ({ task, level = 0 }: { task: any; level?: number }) => (
     <Collapsible asChild defaultOpen={level < 2 || task.name === 'Measure'}>
-      <React.Fragment>
+      <>
         <TaskRow task={task} level={level} />
         {task.subtasks && task.subtasks.length > 0 && (
           <CollapsibleContent asChild>
-           <React.Fragment>
+           <>
             {task.subtasks.map((subtask: any, index: number) => (
                 <TaskCollapsible key={index} task={subtask} level={level + 1} />
             ))}
-           </React.Fragment>
+           </>
           </CollapsibleContent>
         )}
-      </React.Fragment>
+      </>
     </Collapsible>
 );
 
