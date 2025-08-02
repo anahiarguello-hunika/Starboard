@@ -46,6 +46,7 @@ import {
 } from '@/components/ui/chart';
 import { Pie, PieChart, Cell } from 'recharts';
 import { Calendar } from '@/components/ui/calendar';
+import React, { useState, useEffect } from 'react';
 
 const activeProjects = [
   { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75 },
@@ -75,14 +76,18 @@ const keyMetrics = [
   { name: 'Eficiencia de Costos', value: '33%', trend: 'up' },
 ];
 
-const importantDates = [
-    { date: new Date(), description: "Reunión de equipo" },
-    { date: new Date(new Date().setDate(new Date().getDate() + 5)), description: "Vencimiento de Contrato X" },
-    { date: new Date(new Date().setDate(new Date().getDate() + 10)), description: "Auditoría interna" },
-]
-
-
 export default function DashboardPage() {
+  const [importantDates, setImportantDates] = useState<{ date: Date; description: string }[]>([]);
+
+  useEffect(() => {
+    const today = new Date();
+    setImportantDates([
+      { date: new Date(today), description: "Reunión de equipo" },
+      { date: new Date(new Date().setDate(today.getDate() + 5)), description: "Vencimiento de Contrato X" },
+      { date: new Date(new Date().setDate(today.getDate() + 10)), description: "Auditoría interna" },
+    ]);
+  }, []);
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex justify-between items-start">
