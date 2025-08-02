@@ -263,22 +263,22 @@ export default function ClientsDashboardPage() {
           </div>
       </div>
       <Card>
-        <CardHeader className="flex justify-between items-center">
-            <CardTitle>Lista de Clientes</CardTitle>
-            <div className="flex items-center gap-1 rounded-md bg-muted p-1">
-                <Button variant={view === 'kanban' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
-                    <LayoutGrid className="h-4 w-4 mr-2" />
-                    Kanban
-                </Button>
-                <Button variant={view === 'list' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
-                    <List className="h-4 w-4 mr-2" />
-                    Lista
-                </Button>
-                <Button variant={view === 'table' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
-                    <TableIcon className="h-4 w-4 mr-2" />
-                    Tabla
-                </Button>
-            </div>
+        <CardHeader className="flex flex-row justify-between items-center">
+          <CardTitle>Lista de Clientes</CardTitle>
+          <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+            <Button variant={view === 'kanban' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
+              <LayoutGrid className="h-4 w-4 mr-2" />
+              Kanban
+            </Button>
+            <Button variant={view === 'list' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
+              <List className="h-4 w-4 mr-2" />
+              Lista
+            </Button>
+            <Button variant={view === 'table' ? 'ghost' : 'ghost'} size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
+              <TableIcon className="h-4 w-4 mr-2" />
+              Tabla
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
             {view === 'kanban' && <KanbanView />}
