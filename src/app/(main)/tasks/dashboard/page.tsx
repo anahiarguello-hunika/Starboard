@@ -37,10 +37,10 @@ import { cn } from '@/lib/utils';
 
 
 const tasksInProgressData = [
-  { name: 'Hecho', value: 1, fill: '#14b8a6' },
-  { name: 'En Progreso', value: 2, fill: '#3b82f6' },
-  { name: 'Bloqueado', value: 1, fill: '#ef4444' },
-  { name: 'Por Hacer', value: 1, fill: '#a855f7' },
+  { name: 'Hecho', value: 1, fill: 'hsl(var(--chart-3))' },
+  { name: 'En Progreso', value: 2, fill: 'hsl(var(--chart-2))' },
+  { name: 'Bloqueado', value: 1, fill: 'hsl(var(--chart-4))' },
+  { name: 'Por Hacer', value: 1, fill: 'hsl(var(--chart-1))' },
 ];
 
 const tasksByMonthData = [
@@ -226,7 +226,7 @@ export default function TasksDashboardPage() {
                     {kpiCards.map(kpi => (
                         <Card key={kpi.title} className="text-center">
                             <CardHeader className="p-4">
-                            <CardDescription className="text-xs">{kpi.title}</CardDescription>
+                            <CardDescription className="text-xs h-8">{kpi.title}</CardDescription>
                             </CardHeader>
                             <CardContent className="p-4 pt-0">
                                 <p className="text-2xl font-bold">{kpi.value}</p>
@@ -297,7 +297,7 @@ export default function TasksDashboardPage() {
                                         wrapperStyle={{ fontSize: '12px' }}
                                         formatter={(value) => <span className="text-muted-foreground">{value}</span>}
                                     />
-                                    <Bar dataKey="value" name="Tareas" fill="#14b8a6" />
+                                    <Bar dataKey="value" name="Tareas" fill="hsl(var(--chart-2))" />
                                 </BarChart>
                             </ResponsiveContainer>
                         </ChartContainer>
