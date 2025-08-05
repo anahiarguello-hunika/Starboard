@@ -54,16 +54,16 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, Bar } from 'recharts';
 
 const documentsStatusData = [
-  { name: 'Aprobado', value: 3, fill: '#14b8a6' },
-  { name: 'En Revisión', value: 1, fill: '#f97316' },
-  { name: 'Borrador', value: 1, fill: '#3b82f6' },
+  { name: 'Aprobado', value: 3, fill: 'hsl(var(--chart-2))' },
+  { name: 'En Revisión', value: 1, fill: 'hsl(var(--chart-3))' },
+  { name: 'Borrador', value: 1, fill: 'hsl(var(--foreground))' },
 ];
 
 const documentsByMonthData = [
-  { name: 'May 2024', value: 1, fill: '#14b8a6' },
-  { name: 'Jun 2024', value: 1, fill: '#14b8a6' },
-  { name: 'Jul 2024', value: 1, fill: '#14b8a6' },
-  { name: 'Aug 2024', value: 2, fill: '#14b8a6' },
+  { name: 'May 2024', value: 1 },
+  { name: 'Jun 2024', value: 1 },
+  { name: 'Jul 2024', value: 1 },
+  { name: 'Aug 2024', value: 2 },
 ];
 
 const kpiCards = [
@@ -278,7 +278,7 @@ export default function DocumentsDashboardPage() {
                                         wrapperStyle={{ fontSize: '12px' }}
                                         formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
                                     />
-                                    <Bar dataKey="value" name="Documentos" fill="#14b8a6" />
+                                    <Bar dataKey="value" name="Documentos" fill="hsl(var(--chart-2))" />
                                 </RechartsBarChart>
                             </ResponsiveContainer>
                         </ChartContainer>
