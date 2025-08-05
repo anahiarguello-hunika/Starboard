@@ -337,7 +337,7 @@ const DateCell = ({ dateStr, isEndDate, onDateChange }: { dateStr: string | null
 
 const TaskRow = ({ task, level = 0, onProgressChange, onDateChange }: { task: any, level?: number, onProgressChange: (taskId: string, newProgress: number) => void, onDateChange: (taskId: string, field: 'startDate' | 'endDate', newDate: Date) => void }) => (
   <Collapsible asChild defaultOpen={level < 2}>
-    <>
+    <React.Fragment key={task.id}>
       <TableRow>
         <TableCell style={{ paddingLeft: `${level * 16}px` }}>
           <div className="flex items-center gap-2">
@@ -382,7 +382,7 @@ const TaskRow = ({ task, level = 0, onProgressChange, onDateChange }: { task: an
             </>
         </CollapsibleContent>
       )}
-    </>
+    </React.Fragment>
   </Collapsible>
 );
 
