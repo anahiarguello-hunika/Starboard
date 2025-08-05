@@ -22,6 +22,7 @@ import {
   User,
   MessageSquare,
   File as FileIcon,
+  CalendarIcon,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -54,6 +55,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import { Calendar as CalendarComponent } from '@/components/ui/calendar';
+import { format, parse } from 'date-fns';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
@@ -296,8 +300,42 @@ const ProgressCell = ({ progress, onProgressChange }: { progress: number | null,
     );
 };
 
+const DateCell = ({ dateStr, isEndDate, onDateChange }: { dateStr: string | null; isEndDate?: boolean; onDateChange: (newDate: Date | undefined) => void }) => {
+    if (!dateStr) return null;
+    const [open, setOpen] = React.useState(false);
+    const date = parse(dateStr, 'd/M/yyyy', new Date());
 
-const TaskRow = ({ task, level = 0, onProgressChange }: { task: any, level?: number, onProgressChange: (taskId: string, newProgress: number) => void }) => (
+    return (
+        <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+                <Button
+                    variant={"outline"}
+                    className={cn(
+                        "w-[120px] justify-start text-left font-normal h-auto p-1",
+                        !date && "text-muted-foreground",
+                        isEndDate && new Date() > date ? "bg-destructive/20 border-destructive text-destructive-foreground hover:bg-destructive/30" : ""
+                    )}
+                >
+                    {dateStr}
+                </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0">
+                <CalendarComponent
+                    mode="single"
+                    selected={date}
+                    onSelect={(newDate) => {
+                        onDateChange(newDate);
+                        setOpen(false);
+                    }}
+                    initialFocus
+                />
+            </PopoverContent>
+        </Popover>
+    );
+};
+
+
+const TaskRow = ({ task, level = 0, onProgressChange, onDateChange }: { task: any, level?: number, onProgressChange: (taskId: string, newProgress: number) => void, onDateChange: (taskId: string, field: 'startDate' | 'endDate', newDate: Date) => void }) => (
   <Collapsible asChild defaultOpen={level < 2}>
     <>
       <TableRow>
@@ -325,9 +363,11 @@ const TaskRow = ({ task, level = 0, onProgressChange }: { task: any, level?: num
         </TableCell>
         <TableCell><PriorityBadge priority={task.priority} /></TableCell>
         <TableCell>{getStatusBadge(task.status)}</TableCell>
-        <TableCell>{task.startDate}</TableCell>
         <TableCell>
-            {task.endDate && <Badge variant={new Date(task.endDate.split('/').reverse().join('-')) > new Date() ? 'outline' : 'destructive'} className="font-normal">{task.endDate}</Badge>}
+            <DateCell dateStr={task.startDate} onDateChange={(newDate) => newDate && onDateChange(task.id, 'startDate', newDate)} />
+        </TableCell>
+        <TableCell>
+            <DateCell dateStr={task.endDate} isEndDate onDateChange={(newDate) => newDate && onDateChange(task.id, 'endDate', newDate)} />
         </TableCell>
         <TableCell>
             <ProgressCell progress={task.progress} onProgressChange={(newProgress) => onProgressChange(task.id, newProgress)} />
@@ -337,7 +377,7 @@ const TaskRow = ({ task, level = 0, onProgressChange }: { task: any, level?: num
         <CollapsibleContent asChild>
             <>
             {task.subtasks.map((subtask: any) => (
-                <TaskRow key={subtask.id} task={subtask} level={level + 1} onProgressChange={onProgressChange} />
+                <TaskRow key={subtask.id} task={subtask} level={level + 1} onProgressChange={onProgressChange} onDateChange={onDateChange} />
             ))}
             </>
         </CollapsibleContent>
@@ -349,19 +389,24 @@ const TaskRow = ({ task, level = 0, onProgressChange }: { task: any, level?: num
 export default function GeneralPlaybookPage() {
   const [tasks, setTasks] = React.useState(initialTasks);
 
+  const updateTask = (tasks: any[], taskId: string, field: string, value: any): any[] => {
+      return tasks.map(task => {
+          if (task.id === taskId) {
+              return { ...task, [field]: value };
+          }
+          if (task.subtasks) {
+              return { ...task, subtasks: updateTask(task.subtasks, taskId, field, value) };
+          }
+          return task;
+      });
+  };
+
   const handleProgressChange = (taskId: string, newProgress: number) => {
-    const updateTasks = (taskList: any[]): any[] => {
-        return taskList.map(task => {
-            if (task.id === taskId) {
-                return { ...task, progress: newProgress };
-            }
-            if (task.subtasks) {
-                return { ...task, subtasks: updateTasks(task.subtasks) };
-            }
-            return task;
-        });
-    };
-    setTasks(updateTasks(tasks));
+    setTasks(prevTasks => updateTask(prevTasks, taskId, 'progress', newProgress));
+  };
+
+  const handleDateChange = (taskId: string, field: 'startDate' | 'endDate', newDate: Date) => {
+      setTasks(prevTasks => updateTask(prevTasks, taskId, field, format(newDate, 'd/M/yyyy')));
   };
 
 
@@ -413,7 +458,7 @@ export default function GeneralPlaybookPage() {
             </TableHeader>
             <TableBody>
               {tasks.map((task) => (
-                <TaskRow key={task.id} task={task} onProgressChange={handleProgressChange} />
+                <TaskRow key={task.id} task={task} onProgressChange={handleProgressChange} onDateChange={handleDateChange} />
               ))}
             </TableBody>
           </Table>
