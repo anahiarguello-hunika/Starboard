@@ -37,7 +37,21 @@ import {
   ChevronDown,
   Search,
   RefreshCw,
-  X
+  X,
+  CalendarX,
+  UserCheck,
+  PieChart as PieChartIcon,
+  Timer,
+  BadgeCheck,
+  BookUser,
+  ShieldCheck,
+  GanttChartSquare,
+  Network,
+  ListChecks,
+  SlidersHorizontal,
+  Briefcase,
+  Award,
+  Users
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -47,19 +61,29 @@ import { Input } from '@/components/ui/input';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, Bar } from 'recharts';
 
-const projectNav = [
-    { name: 'Dashboard', icon: LayoutDashboard, active: true, href: "/projects" },
-    { name: '+ Proyecto', icon: PlusCircle, href: "/projects/new-playbook" },
-    { name: 'Progreso', icon: BarChart2, href: "#" },
-    { name: 'Tarea', icon: ListTodo, href: "#" },
-    { name: 'Documentos', icon: File, href: "#" },
-    { name: 'Eventos', icon: Calendar, href: "#" },
-    { name: 'Incidencias', icon: AlertTriangle, href: "#" },
-    { name: 'Analíticas', icon: BarChart, href: "#" },
-    { name: 'Notas', icon: StickyNote, href: "#" },
-    { name: 'Actividad', icon: History, href: "#" },
-    { name: 'Soporte', icon: LifeBuoy, href: "#" },
+const myProjectNav = [
+    { name: 'Mi No Proyecto...', href: '#', icon: CalendarX },
+    { name: 'Empleado Directo...', href: '#', icon: Users },
+    { name: 'Solicitudes de Tareas', href: '#', icon: ClipboardList },
+    { name: 'Mis Tareas', href: '#', icon: UserCheck },
+    { name: 'Mi Utilización', href: '#', icon: PieChartIcon },
+    { name: 'Mis Tiempos de Tarea', href: '#', icon: Timer },
+    { name: 'Mis Controles de Calidad', href: '#', icon: BadgeCheck },
+    { name: 'Tareas de Mis Equipos', href: '#', icon: BookUser },
+    { name: "SLA's de Mis Equipos", href: '#', icon: ShieldCheck },
+    { name: 'Utilización de Mis Equipos', href: '#', icon: GanttChartSquare },
+    { name: 'Tiempos de Tarea de Mis Equipos', href: '#', icon: Network },
 ];
+
+const adminNav = [
+    { name: 'Servicios', href: '#', icon: Briefcase },
+    { name: 'Tareas de Gestión de Proyecto', href: '#', icon: ListChecks },
+    { name: 'Control de Calidad', href: '#', icon: SlidersHorizontal },
+    { name: 'Niveles de Competencia', href: '#', icon: Award },
+    { name: 'Empleados', href: '#', icon: Users },
+    { name: 'Compe de Empleado...', href: '#', icon: UserCheck },
+];
+
 
 const projectsInProgressData = [
   { name: 'Activo', value: 4, fill: 'hsl(var(--chart-2))' },
@@ -251,18 +275,39 @@ export default function ProjectsPage() {
                       {/* Contenido Fijado aquí */}
                     </CollapsibleContent>
                 </Collapsible>
-                 <Collapsible defaultOpen={true}>
+                <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Mi Trabajo
+                        Mi Proyecto
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                         <div className="flex flex-col gap-1 mt-2">
-                        {projectNav.map((item) => (
-                           <Link key={item.name} href={item.href || "#"} className={cn(
-                               'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
-                               item.active ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
-                           )}>
+                        <Link href={'/projects'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'bg-primary/10 text-primary font-semibold' )}>
+                            <LayoutDashboard className="h-5 w-5" />
+                            <span>Dashboard</span>
+                        </Link>
+                        <Link href={'/projects/new-playbook'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
+                            <PlusCircle className="h-5 w-5" />
+                            <span>+ Proyecto</span>
+                        </Link>
+                        {myProjectNav.map((item) => (
+                           <Link key={item.name} href={item.href || "#"} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted')}>
+                               <item.icon className="h-5 w-5" />
+                               <span>{item.name}</span>
+                           </Link>
+                       ))}
+                       </div>
+                    </CollapsibleContent>
+                </Collapsible>
+                <Collapsible defaultOpen={true}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
+                        Administración
+                        <ChevronDown className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="pl-4">
+                        <div className="flex flex-col gap-1 mt-2">
+                        {adminNav.map((item) => (
+                           <Link key={item.name} href={item.href || "#"} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted')}>
                                <item.icon className="h-5 w-5" />
                                <span>{item.name}</span>
                            </Link>
