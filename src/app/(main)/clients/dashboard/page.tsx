@@ -35,10 +35,10 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const clientsByIndustryData = [
-  { name: 'Tecnología', value: 8, fill: '#3b82f6' },
-  { name: 'Finanzas', value: 5, fill: '#f97316' },
-  { name: 'Salud', value: 4, fill: '#14b8a6' },
-  { name: 'Retail', value: 3, fill: '#a855f7' },
+  { name: 'Tecnología', value: 8, fill: 'hsl(var(--chart-1))' },
+  { name: 'Finanzas', value: 5, fill: 'hsl(var(--chart-2))' },
+  { name: 'Salud', value: 4, fill: 'hsl(var(--chart-3))' },
+  { name: 'Retail', value: 3, fill: 'hsl(var(--chart-4))' },
 ];
 
 const newClientsByMonthData = [
@@ -251,7 +251,7 @@ export default function ClientsDashboardPage() {
                                       label={{ value: 'Número de Clientes', angle: -90, position: 'insideLeft', offset: 10, style: { fontSize: '12px' } }} 
                                   />
                                   <RechartsTooltip formatter={(value: number) => value.toLocaleString()} />
-                                  <Bar dataKey="value" name="Clientes" fill="#14b8a6" />
+                                  <Bar dataKey="value" name="Clientes" fill="hsl(var(--chart-3))" />
                               </RechartsBarChart>
                           </ResponsiveContainer>
                       </ChartContainer>

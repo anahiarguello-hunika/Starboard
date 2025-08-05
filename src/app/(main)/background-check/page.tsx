@@ -14,7 +14,7 @@ export default function BackgroundCheckPage() {
     <div className="flex justify-center items-center min-h-[calc(100vh-10rem)] bg-background">
       <Card className="w-full max-w-md shadow-none border-0">
         <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-headline font-bold" style={{color: '#1e2468'}}>
+          <CardTitle className="text-4xl font-headline font-bold text-primary">
             Inicia Sesión
           </CardTitle>
         </CardHeader>
@@ -33,11 +33,11 @@ export default function BackgroundCheckPage() {
               </div>
             </div>
             <div className="flex items-center justify-end">
-              <Link href="#" className="text-sm text-primary hover:underline" style={{color: '#1e2468'}}>
+              <Link href="#" className="text-sm text-primary hover:underline">
                 ¿Olvidaste la contraseña?
               </Link>
             </div>
-            <Button type="submit" className="w-full py-6 rounded-full font-bold text-base" asChild style={{backgroundColor: '#3d4ff2'}}>
+            <Button type="submit" className="w-full py-6 rounded-full font-bold text-base bg-accent text-accent-foreground" asChild>
                 <Link href="https://backgroundcheck.mx/" target="_blank">INICIAR SESIÓN</Link>
             </Button>
             <Button variant="outline" className="w-full py-6 rounded-full font-bold text-base bg-white">

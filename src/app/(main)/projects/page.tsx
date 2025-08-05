@@ -62,14 +62,14 @@ const projectNav = [
 ];
 
 const projectsInProgressData = [
-  { name: 'Activo', value: 4, fill: '#3b82f6' },
-  { name: 'En Espera', value: 1, fill: '#f97316' },
-  { name: 'En Riesgo', value: 1, fill: '#ef4444' },
-  { name: 'Completado', value: 1, fill: '#14b8a6' },
+  { name: 'Activo', value: 4, fill: 'hsl(var(--chart-2))' },
+  { name: 'En Espera', value: 1, fill: 'hsl(var(--chart-3))' },
+  { name: 'En Riesgo', value: 1, fill: 'hsl(var(--destructive))' },
+  { name: 'Completado', value: 1, fill: 'hsl(var(--chart-5))' },
 ];
 
 const projectsByMonthData = [
-  { name: 'Jun 2024', value: 1, fill: '#14b8a6' },
+  { name: 'Jun 2024', value: 1 },
 ];
 
 const kpiCards = [
@@ -369,7 +369,7 @@ export default function ProjectsPage() {
                                             wrapperStyle={{ fontSize: '12px' }}
                                             formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
                                         />
-                                        <Bar dataKey="value" name="Proyectos" fill="#14b8a6" />
+                                        <Bar dataKey="value" name="Proyectos" fill="hsl(var(--chart-3))" />
                                     </RechartsBarChart>
                                 </ResponsiveContainer>
                             </ChartContainer>

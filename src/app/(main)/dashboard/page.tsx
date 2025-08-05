@@ -280,7 +280,7 @@ export default function DashboardPage() {
                         </li>
                         <li className="flex items-center justify-between gap-3">
                              <div className="flex items-center gap-3">
-                                <span className="h-3 w-3 rounded-full bg-black"></span>
+                                <span className="h-3 w-3 rounded-full bg-chart-4"></span>
                                 <span>Contratos trabajados</span>
                             </div>
                              <span className="font-semibold">10</span>

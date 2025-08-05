@@ -24,17 +24,17 @@ import { Pie, PieChart, Cell, Bar, BarChart, XAxis, YAxis, CartesianGrid, Toolti
 import { Input } from "@/components/ui/input";
 
 const contractsInProgressData = [
-  { name: 'Approved', value: 4, fill: '#f97316' },
-  { name: 'Pending Approval', value: 6, fill: '#3b82f6' },
-  { name: 'With Counterparty', value: 7, fill: '#ef4444' },
-  { name: 'Pending Review', value: 1, fill: '#14b8a6' },
-  { name: 'Draft', value: 2, fill: '#a855f7' },
+  { name: 'Approved', value: 4, fill: 'hsl(var(--chart-2))' },
+  { name: 'Pending Approval', value: 6, fill: 'hsl(var(--chart-1))' },
+  { name: 'With Counterparty', value: 7, fill: 'hsl(var(--destructive))' },
+  { name: 'Pending Review', value: 1, fill: 'hsl(var(--chart-3))' },
+  { name: 'Draft', value: 2, fill: 'hsl(var(--chart-5))' },
 ];
 
 const upcomingExpirationsData = [
-  { name: 'Jul 2024', value: 0, fill: '#f97316' },
-  { name: 'Aug 2024', value: 0, fill: '#3b82f6' },
-  { name: 'Sep 2024', value: 200000, fill: '#14b8a6' },
+  { name: 'Jul 2024', value: 0 },
+  { name: 'Aug 2024', value: 0 },
+  { name: 'Sep 2024', value: 200000 },
 ];
 
 const kpiCards = [
@@ -148,7 +148,7 @@ export default function ContractsDashboardPage() {
                                     wrapperStyle={{ fontSize: '12px' }}
                                     formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
                                 />
-                                <Bar dataKey="value" name="Monto del Contrato" fill="#14b8a6" />
+                                <Bar dataKey="value" name="Monto del Contrato" fill="hsl(var(--chart-3))" />
                             </BarChart>
                         </ResponsiveContainer>
                     </ChartContainer>
