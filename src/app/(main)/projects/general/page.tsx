@@ -48,6 +48,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from '@/lib/utils';
 import React from 'react';
 
@@ -128,7 +134,7 @@ const tasks = [
         id: '1.4',
         number: '1.4',
         name: 'Elaboración de propuesta',
-        area: '2. Legal Estraté...',
+        area: '2. Legal Estratégico',
         assignee: null,
         priority: null,
         status: 'En curso',
@@ -142,7 +148,7 @@ const tasks = [
         id: '1.5',
         number: '1.5',
         name: 'Atención de tema de despidos y formalización de contratos l...',
-        area: '3. Legal Gral.',
+        area: '3. Legal General',
         assignee: null,
         priority: null,
         status: 'Retrasado',
@@ -170,7 +176,7 @@ const tasks = [
             id: '1.6.1',
             number: '1.6.1',
             name: 'Gestión de proyecto',
-            area: '5. Administraci...',
+            area: '5. Administración',
             assignee: { name: 'Elias B', initials: 'EB' },
             priority: null,
             status: 'Terminado',
@@ -202,18 +208,41 @@ const getStatusBadge = (status: string | null) => {
     }
 }
 
-const getAreaBadge = (area: string | null) => {
+const areaOptions = [
+    { name: '1. Estratégico', color: 'bg-blue-800 text-white' },
+    { name: '2. Legal Estratégico', color: 'bg-orange-600 text-white' },
+    { name: '3. Legal General', color: 'bg-blue-500 text-white' },
+    { name: '4. RH', color: 'bg-gray-700 text-white' },
+    { name: '5. Administración', color: 'bg-green-200 text-green-900' },
+    { name: '6. Compras', color: 'bg-red-300 text-red-900' },
+    { name: '7. Ventas', color: 'bg-green-700 text-white' },
+    { name: '8. Marketing', color: 'bg-gray-300 text-gray-900' },
+];
+
+const AreaBadge = ({ area }: { area: string | null }) => {
     if (!area) return null;
-    const colors = {
-        '1. Estratégico': 'bg-blue-600 text-white',
-        '2. Legal Estraté...': 'bg-orange-500 text-white',
-        '3. Legal Gral.': 'bg-blue-500 text-white',
-        '4. RH': 'bg-gray-500 text-white',
-        '5. Administraci...': 'bg-green-200 text-green-900',
-    } as Record<string, string>;
-    const colorClass = colors[area] || 'bg-gray-200 text-gray-800';
-    return <Badge className={cn('rounded-md', colorClass)}>{area} <ChevronDown className="h-3 w-3 ml-1" /></Badge>
-}
+    const currentOption = areaOptions.find(opt => opt.name === area);
+    const colorClass = currentOption ? currentOption.color : 'bg-gray-200 text-gray-800';
+    
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Badge className={cn('rounded-md cursor-pointer', colorClass)}>
+                    {area} <ChevronDown className="h-3 w-3 ml-1" />
+                </Badge>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {areaOptions.map(option => (
+                    <DropdownMenuItem key={option.name}>
+                        <div className={cn('w-3 h-3 rounded-full mr-2', option.color)} />
+                        <span>{option.name}</span>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
+    );
+};
+
 
 const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
   <Collapsible asChild defaultOpen={level < 2}>
@@ -233,7 +262,7 @@ const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
             <span className={cn(level > 0 && 'font-normal')}>{task.name}</span>
           </div>
         </TableCell>
-        <TableCell>{getAreaBadge(task.area)}</TableCell>
+        <TableCell><AreaBadge area={task.area} /></TableCell>
         <TableCell>
             {task.assignee && (
                 <Avatar className="h-6 w-6">
