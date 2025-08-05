@@ -24,7 +24,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 const playbooks = [
-    { title: "General", description: "Un playbook de propósito general para cualquier asunto legal.", href: "/projects" },
+    { title: "General", description: "Un playbook de propósito general para cualquier asunto legal.", href: "/projects/general" },
     { title: "Diligencia Debida", description: "Un proceso estructurado para llevar a cabo una diligencia debida exhaustiva.", href: "/projects" },
     { title: "Proceso de M&A", description: "Gestione fusiones y adquisiciones de principio a fin.", href: "/projects/ma-process" },
     { title: "Legal Seis Sigma", description: "Un playbook para gestionar proyectos de mejora de procesos legales.", href: "/projects/six-sigma-legal" },

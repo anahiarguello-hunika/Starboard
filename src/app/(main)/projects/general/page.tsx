@@ -1,0 +1,325 @@
+
+'use client';
+
+import {
+  CheckCircle,
+  Circle,
+  ChevronDown,
+  ChevronRight,
+  Filter,
+  Plus,
+  Search,
+  Users,
+  BarChart2,
+  Calendar,
+  Settings,
+  MoreHorizontal,
+  LayoutGrid,
+  List,
+  CalendarDays,
+  Columns,
+  Presentation,
+  User,
+  MessageSquare,
+  File as FileIcon,
+} from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Progress } from '@/components/ui/progress';
+import { Input } from '@/components/ui/input';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
+import { cn } from '@/lib/utils';
+import React from 'react';
+
+const tasks = [
+  {
+    id: '1',
+    number: '1',
+    name: 'Depto legal Be IT (Pandotek)',
+    area: null,
+    assignee: null,
+    priority: null,
+    status: null,
+    startDate: '28/4/2025',
+    endDate: '31/7/2025',
+    progress: 69,
+    isParent: true,
+    isComplete: true,
+    subtasks: [
+      {
+        id: '1.1',
+        number: '1.1',
+        name: 'Realizar assesment inicial (Alberto) Pantotek',
+        area: null,
+        assignee: null,
+        priority: null,
+        status: null,
+        startDate: null,
+        endDate: null,
+        progress: 0,
+        isParent: false,
+        isComplete: false,
+      },
+      {
+        id: '1.2',
+        number: '1.2',
+        name: 'Revisión de contrato de prestación de servicios',
+        area: null,
+        assignee: null,
+        priority: 'A',
+        status: 'En curso',
+        startDate: '28/4/2025',
+        endDate: '28/4/2025',
+        progress: 100,
+        isParent: true,
+        isComplete: true,
+      },
+      {
+        id: '1.3',
+        number: '1.3',
+        name: 'Revisión de anexos a contrato de servicios',
+        area: '1. Estratégico',
+        assignee: null,
+        priority: 'B',
+        status: 'Pausado',
+        startDate: null,
+        endDate: null,
+        progress: 0,
+        isParent: true,
+        isComplete: true,
+        subtasks: [
+           {
+            id: '1.3.1',
+            number: '1.3.1',
+            name: 'Formato general de anexos',
+            area: null,
+            assignee: { name: 'Elias B', initials: 'EB' },
+            priority: 'B',
+            status: 'Pausado',
+            startDate: null,
+            endDate: null,
+            progress: 0,
+            isParent: false,
+            isComplete: false,
+          }
+        ]
+      },
+      {
+        id: '1.4',
+        number: '1.4',
+        name: 'Elaboración de propuesta',
+        area: '2. Legal Estraté...',
+        assignee: null,
+        priority: null,
+        status: 'En curso',
+        startDate: '7/5/2025',
+        endDate: '7/5/2025',
+        progress: 100,
+        isParent: true,
+        isComplete: true,
+      },
+      {
+        id: '1.5',
+        number: '1.5',
+        name: 'Atención de tema de despidos y formalización de contratos l...',
+        area: '3. Legal Gral.',
+        assignee: null,
+        priority: null,
+        status: 'Retrasado',
+        startDate: '13/6/2025',
+        endDate: '13/6/2025',
+        progress: 100,
+        isParent: true,
+        isComplete: true,
+      },
+      {
+        id: '1.6',
+        number: '1.6',
+        name: 'Reconstrucción de Secretarías Corporativas',
+        area: '4. RH',
+        assignee: null,
+        priority: null,
+        status: null,
+        startDate: '28/4/2025',
+        endDate: '28/7/2025',
+        progress: 99,
+        isParent: true,
+        isComplete: true,
+        subtasks: [
+          {
+            id: '1.6.1',
+            number: '1.6.1',
+            name: 'Gestión de proyecto',
+            area: '5. Administraci...',
+            assignee: { name: 'Elias B', initials: 'EB' },
+            priority: null,
+            status: 'Terminado',
+            startDate: '24/6/2025',
+            endDate: '24/6/2025',
+            progress: 100,
+            isComplete: true,
+          },
+        ],
+      },
+    ],
+  },
+];
+
+
+const getStatusBadge = (status: string | null) => {
+    if (!status) return null;
+    switch (status.toLowerCase()) {
+        case 'en curso':
+            return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">{status}</Badge>;
+        case 'pausado':
+            return <Badge className="bg-gray-200 text-gray-800 hover:bg-gray-200">{status}</Badge>;
+        case 'retrasado':
+            return <Badge variant="destructive">{status}</Badge>;
+        case 'terminado':
+            return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">{status}</Badge>;
+        default:
+            return <Badge variant="secondary">{status}</Badge>;
+    }
+}
+
+const getAreaBadge = (area: string | null) => {
+    if (!area) return null;
+    const colors = {
+        '1. Estratégico': 'bg-blue-600 text-white',
+        '2. Legal Estraté...': 'bg-orange-500 text-white',
+        '3. Legal Gral.': 'bg-blue-500 text-white',
+        '4. RH': 'bg-gray-500 text-white',
+        '5. Administraci...': 'bg-green-200 text-green-900',
+    } as Record<string, string>;
+    const colorClass = colors[area] || 'bg-gray-200 text-gray-800';
+    return <Badge className={cn('rounded-md', colorClass)}>{area} <ChevronDown className="h-3 w-3 ml-1" /></Badge>
+}
+
+const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
+  <Collapsible asChild defaultOpen={level < 2}>
+    <>
+      <TableRow>
+        <TableCell style={{ paddingLeft: `${level * 16}px` }}>
+          <div className="flex items-center gap-2">
+            <Checkbox checked={task.isComplete} />
+            <span>{task.number}</span>
+            {task.subtasks && task.subtasks.length > 0 ? (
+                <CollapsibleTrigger asChild>
+                    <Button variant="ghost" size="icon" className="h-6 w-6">
+                        <ChevronRight className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-90" />
+                    </Button>
+                </CollapsibleTrigger>
+            ) : <div className="w-6 h-6"/> }
+            <span className={cn(level > 0 && 'font-normal')}>{task.name}</span>
+          </div>
+        </TableCell>
+        <TableCell>{getAreaBadge(task.area)}</TableCell>
+        <TableCell>
+            {task.assignee && (
+                <Avatar className="h-6 w-6">
+                    <AvatarFallback className="text-xs bg-red-200 text-red-800">{task.assignee.initials}</AvatarFallback>
+                </Avatar>
+            )}
+        </TableCell>
+        <TableCell>{task.priority}</TableCell>
+        <TableCell>{getStatusBadge(task.status)}</TableCell>
+        <TableCell>{task.startDate}</TableCell>
+        <TableCell>
+            {task.endDate && <Badge variant={new Date(task.endDate.split('/').reverse().join('-')) > new Date() ? 'outline' : 'destructive'} className="font-normal">{task.endDate}</Badge>}
+        </TableCell>
+        <TableCell>
+            {task.progress !== null && <div className="flex items-center gap-2"><Progress value={task.progress} className="w-24 h-2" /> <span className="text-xs">{task.progress}%</span></div>}
+        </TableCell>
+      </TableRow>
+      {task.subtasks && task.subtasks.length > 0 && (
+        <CollapsibleContent asChild>
+            <>
+            {task.subtasks.map((subtask: any) => (
+                <TaskRow key={subtask.id} task={subtask} level={level + 1} />
+            ))}
+            </>
+        </CollapsibleContent>
+      )}
+    </>
+  </Collapsible>
+);
+
+export default function GeneralPlaybookPage() {
+  return (
+    <div className="space-y-4">
+      <header className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+            <h1 className="text-xl font-semibold">Depto Legal BeIT (Pandotek)</h1>
+            <ChevronDown className="h-4 w-4 text-muted-foreground" />
+        </div>
+        <div className="flex items-center gap-2">
+            <Button variant="ghost"><LayoutGrid className="mr-2 h-4 w-4" />Cuadrícula</Button>
+            <Button variant="ghost" className="text-primary"><List className="mr-2 h-4 w-4"/>Panel</Button>
+            <Button variant="ghost"><CalendarDays className="mr-2 h-4 w-4" />Escala de tiempo</Button>
+            <Button variant="ghost"><BarChart2 className="mr-2 h-4 w-4" />Reports</Button>
+            <Button variant="ghost"><Columns className="mr-2 h-4 w-4" />Gráficos</Button>
+            <Button variant="ghost"><Users className="mr-2 h-4 w-4" />Personas</Button>
+            <Button variant="ghost"><Presentation className="mr-2 h-4 w-4" />Objetivos</Button>
+            <Button variant="ghost"><MoreHorizontal className="h-4 w-4" /></Button>
+            <Button variant="ghost"><User className="mr-2 h-4 w-4" />Copilot</Button>
+            <Button><MessageSquare className="mr-2 h-4 w-4" />Compartir</Button>
+        </div>
+      </header>
+      <div className="flex items-center justify-between">
+        <div className="relative w-80">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input placeholder="Filtrar por palabra clave" className="pl-10" />
+        </div>
+        <div className="flex items-center gap-2">
+            <Button variant="ghost"><FileIcon className="mr-2 h-4 w-4" />Línea base</Button>
+            <Button variant="ghost"><Filter className="mr-2 h-4 w-4" />Filtros</Button>
+            <Button variant="ghost"><Settings className="mr-2 h-4 w-4" />Colores condicionales</Button>
+        </div>
+      </div>
+      <Card>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-1/3">Nombre de tarea</TableHead>
+                <TableHead>Área de Impa...</TableHead>
+                <TableHead>Asignad...</TableHead>
+                <TableHead>Priority</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Inicio</TableHead>
+                <TableHead>Finalización</TableHead>
+                <TableHead>% ...</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {tasks.map((task) => (
+                <TaskRow key={task.id} task={task} />
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+      <Button variant="ghost" className="text-muted-foreground"><Plus className="mr-2 h-4 w-4" /> Agregar nueva tarea</Button>
+    </div>
+  );
+}
