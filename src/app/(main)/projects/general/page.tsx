@@ -57,7 +57,7 @@ import {
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-const tasks = [
+const initialTasks = [
   {
     id: '1',
     number: '1',
@@ -267,7 +267,37 @@ const PriorityBadge = ({ priority }: { priority: string | null }) => {
     );
 };
 
-const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
+const ProgressCell = ({ progress, onProgressChange }: { progress: number | null, onProgressChange: (newProgress: number) => void }) => {
+    if (progress === null) return null;
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let value = parseInt(e.target.value, 10);
+        if (isNaN(value)) value = 0;
+        if (value < 0) value = 0;
+        if (value > 100) value = 100;
+        onProgressChange(value);
+    };
+
+    return (
+        <div className="flex items-center gap-2">
+            <Progress value={progress} className="w-24 h-2" />
+            <div className="flex items-center gap-1">
+                <Input
+                    type="number"
+                    value={progress}
+                    onChange={handleChange}
+                    className="w-14 h-6 text-xs p-1 text-right"
+                    min="0"
+                    max="100"
+                />
+                <span className="text-xs">%</span>
+            </div>
+        </div>
+    );
+};
+
+
+const TaskRow = ({ task, level = 0, onProgressChange }: { task: any, level?: number, onProgressChange: (taskId: string, newProgress: number) => void }) => (
   <Collapsible asChild defaultOpen={level < 2}>
     <>
       <TableRow>
@@ -300,14 +330,14 @@ const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
             {task.endDate && <Badge variant={new Date(task.endDate.split('/').reverse().join('-')) > new Date() ? 'outline' : 'destructive'} className="font-normal">{task.endDate}</Badge>}
         </TableCell>
         <TableCell>
-            {task.progress !== null && <div className="flex items-center gap-2"><Progress value={task.progress} className="w-24 h-2" /> <span className="text-xs">{task.progress}%</span></div>}
+            <ProgressCell progress={task.progress} onProgressChange={(newProgress) => onProgressChange(task.id, newProgress)} />
         </TableCell>
       </TableRow>
       {task.subtasks && task.subtasks.length > 0 && (
         <CollapsibleContent asChild>
             <>
             {task.subtasks.map((subtask: any) => (
-                <TaskRow key={subtask.id} task={subtask} level={level + 1} />
+                <TaskRow key={subtask.id} task={subtask} level={level + 1} onProgressChange={onProgressChange} />
             ))}
             </>
         </CollapsibleContent>
@@ -317,6 +347,24 @@ const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
 );
 
 export default function GeneralPlaybookPage() {
+  const [tasks, setTasks] = React.useState(initialTasks);
+
+  const handleProgressChange = (taskId: string, newProgress: number) => {
+    const updateTasks = (taskList: any[]): any[] => {
+        return taskList.map(task => {
+            if (task.id === taskId) {
+                return { ...task, progress: newProgress };
+            }
+            if (task.subtasks) {
+                return { ...task, subtasks: updateTasks(task.subtasks) };
+            }
+            return task;
+        });
+    };
+    setTasks(updateTasks(tasks));
+  };
+
+
   return (
     <div className="space-y-4">
       <header className="flex items-center justify-between">
@@ -365,7 +413,7 @@ export default function GeneralPlaybookPage() {
             </TableHeader>
             <TableBody>
               {tasks.map((task) => (
-                <TaskRow key={task.id} task={task} />
+                <TaskRow key={task.id} task={task} onProgressChange={handleProgressChange} />
               ))}
             </TableBody>
           </Table>
