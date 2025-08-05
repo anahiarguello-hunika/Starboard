@@ -209,25 +209,26 @@ const getStatusBadge = (status: string | null) => {
 }
 
 const areaOptions = [
-    { name: '1. Estratégico', color: 'bg-blue-800 text-white' },
-    { name: '2. Legal Estratégico', color: 'bg-orange-600 text-white' },
-    { name: '3. Legal General', color: 'bg-blue-500 text-white' },
-    { name: '4. RH', color: 'bg-gray-700 text-white' },
-    { name: '5. Administración', color: 'bg-green-200 text-green-900' },
-    { name: '6. Compras', color: 'bg-red-300 text-red-900' },
-    { name: '7. Ventas', color: 'bg-green-700 text-white' },
-    { name: '8. Marketing', color: 'bg-gray-300 text-gray-900' },
+    { name: '1. Estratégico', color: 'bg-blue-800' },
+    { name: '2. Legal Estratégico', color: 'bg-orange-600' },
+    { name: '3. Legal General', color: 'bg-blue-500' },
+    { name: '4. RH', color: 'bg-gray-700' },
+    { name: '5. Administración', color: 'bg-green-200' },
+    { name: '6. Compras', color: 'bg-red-300' },
+    { name: '7. Ventas', color: 'bg-green-700' },
+    { name: '8. Marketing', color: 'bg-gray-300' },
 ];
 
 const AreaBadge = ({ area }: { area: string | null }) => {
     if (!area) return null;
     const currentOption = areaOptions.find(opt => opt.name === area);
-    const colorClass = currentOption ? currentOption.color : 'bg-gray-200 text-gray-800';
+    const colorClass = currentOption ? currentOption.color : 'bg-gray-200';
+    const textColorClass = ['bg-green-200', 'bg-red-300', 'bg-gray-300'].includes(colorClass) ? 'text-gray-900' : 'text-white';
     
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Badge className={cn('rounded-md cursor-pointer', colorClass)}>
+                <Badge className={cn('rounded-md cursor-pointer', colorClass, textColorClass)}>
                     {area} <ChevronDown className="h-3 w-3 ml-1" />
                 </Badge>
             </DropdownMenuTrigger>
@@ -243,6 +244,28 @@ const AreaBadge = ({ area }: { area: string | null }) => {
     );
 };
 
+const priorityOptions = ['A', 'B', 'C', 'D', 'E'];
+
+const PriorityBadge = ({ priority }: { priority: string | null }) => {
+    if (!priority) return null;
+
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="w-full justify-start p-1 h-auto font-normal">
+                    {priority}
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {priorityOptions.map(option => (
+                    <DropdownMenuItem key={option}>
+                        <span>{option}</span>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
+    );
+};
 
 const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
   <Collapsible asChild defaultOpen={level < 2}>
@@ -270,7 +293,7 @@ const TaskRow = ({ task, level = 0 }: { task: any, level?: number }) => (
                 </Avatar>
             )}
         </TableCell>
-        <TableCell>{task.priority}</TableCell>
+        <TableCell><PriorityBadge priority={task.priority} /></TableCell>
         <TableCell>{getStatusBadge(task.status)}</TableCell>
         <TableCell>{task.startDate}</TableCell>
         <TableCell>
