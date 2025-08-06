@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import React from 'react';
@@ -291,7 +290,7 @@ export default function ProjectsPage() {
                             <PlusCircle className="h-5 w-5" />
                             <span>+ Proyecto</span>
                         </Link>
-                        <Link href={'#'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
+                        <Link href={'/projects/report'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
                             <BarChart2 className="h-5 w-5" />
                             <span>Reporte de Proyecto</span>
                         </Link>
