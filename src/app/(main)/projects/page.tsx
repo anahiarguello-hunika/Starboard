@@ -291,6 +291,10 @@ export default function ProjectsPage() {
                             <PlusCircle className="h-5 w-5" />
                             <span>+ Proyecto</span>
                         </Link>
+                        <Link href={'#'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
+                            <BarChart2 className="h-5 w-5" />
+                            <span>Reporte de Proyecto</span>
+                        </Link>
                         {myProjectNav.map((item) => (
                            <Link key={item.name} href={item.href || "#"} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted')}>
                                <item.icon className="h-5 w-5" />
