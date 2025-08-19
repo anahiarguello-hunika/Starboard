@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -154,9 +153,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 bg-sidebar px-4 text-sidebar-foreground sm:px-6">
+        <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b bg-sidebar px-4 text-sidebar-foreground sm:px-6">
           <div className="flex items-center gap-2">
-            <SidebarTrigger className="md:hidden text-sidebar-foreground hover:bg-sidebar-accent" />
+            <SidebarTrigger className="text-sidebar-foreground hover:bg-sidebar-accent md:hidden" />
             <div className="relative w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" />
               <Input
