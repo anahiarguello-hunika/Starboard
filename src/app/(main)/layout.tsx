@@ -24,6 +24,7 @@ import {
   Calendar,
   DollarSign,
   BarChart2,
+  Calculator,
 } from "lucide-react";
 
 import {
@@ -60,6 +61,7 @@ const navItems = [
   { href: "/legal-data-and-metrics", icon: BarChart2, label: "Datos y Métricas Legales" },
   { href: "/background-check", icon: UserSearch, label: "Background check", external: true },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
+  { href: "/cotizador", icon: Calculator, label: "Cotizador" },
   { href: "/customer-portal", icon: BookUser, label: "Portal de Clientes" },
   { href: "/summarize", icon: Sparkles, label: "IA" },
 ];
