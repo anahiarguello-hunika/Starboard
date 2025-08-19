@@ -64,15 +64,15 @@ import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart,
 const myProjectNav = [
     { name: 'Mi No Proyecto...', href: '#', icon: CalendarX },
     { name: 'Empleado Directo...', href: '#', icon: Users },
-    { name: 'Solicitudes de Tareas', href: '#', icon: ClipboardList },
-    { name: 'Mis Tareas', href: '#', icon: UserCheck },
+    { name: 'Solicitud de Proyectos', href: '#', icon: ClipboardList },
+    { name: 'Mis Proyectos', href: '#', icon: UserCheck },
     { name: 'Mi Utilización', href: '#', icon: PieChartIcon },
-    { name: 'Mis Tiempos de Tarea', href: '#', icon: Timer },
+    { name: 'Mis tiempos de Proyecto', href: '#', icon: Timer },
     { name: 'Mis Controles de Calidad', href: '#', icon: BadgeCheck },
-    { name: 'Tareas de Mis Equipos', href: '#', icon: BookUser },
+    { name: 'Proyectos de mis Equipos', href: '#', icon: BookUser },
     { name: "SLA's de Mis Equipos", href: '#', icon: ShieldCheck },
     { name: 'Utilización de Mis Equipos', href: '#', icon: GanttChartSquare },
-    { name: 'Tiempos de Tarea de Mis Equipos', href: '#', icon: Network },
+    { name: 'Tiempos de Proyectos de mis Equipos', href: '#', icon: Network },
 ];
 
 const adminNav = [
@@ -86,7 +86,7 @@ const adminNav = [
 
 
 const projectsInProgressData = [
-  { name: 'Activo', value: 4, fill: 'hsl(var(--chart-2))' },
+  { name: 'Activo', value: 4, fill: 'hsl(var(--chart-1))' },
   { name: 'En Espera', value: 1, fill: 'hsl(var(--chart-3))' },
   { name: 'En Riesgo', value: 1, fill: 'hsl(var(--destructive))' },
   { name: 'Completado', value: 1, fill: 'hsl(var(--chart-5))' },
@@ -418,7 +418,7 @@ export default function ProjectsPage() {
                                             wrapperStyle={{ fontSize: '12px' }}
                                             formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
                                         />
-                                        <Bar dataKey="value" name="Proyectos" fill="hsl(var(--chart-3))" />
+                                        <Bar dataKey="value" name="Proyectos" fill="hsl(var(--primary))" />
                                     </RechartsBarChart>
                                 </ResponsiveContainer>
                             </ChartContainer>
