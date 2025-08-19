@@ -47,7 +47,7 @@ const contractsNav = [
       { name: 'Expiran en más de 12 meses', href: '/contracts/expiring-in-more-than-12-months' },
     ]
   },
-  { name: 'Contratos Asignados a mí', href: '#', icon: UserCheck },
+  { name: 'Mis Contratos', href: '#', icon: UserCheck },
   { name: 'Aprobaciones', href: '#', icon: ThumbsUp },
   { name: 'Contratos por firmar', href: '#', icon: FileSignature },
   { name: 'Contratos Firmados', href: '#', icon: FileCheck2 },
@@ -57,7 +57,6 @@ const contractsNav = [
 
 const myContractsNav = [
     { name: 'Solicitudes de Contratos', href: '#', icon: ClipboardList },
-    { name: 'Mis Contratos', href: '#', icon: UserCheck },
     { name: 'Mi Utilización', href: '#', icon: PieChart },
     { name: 'Mis Tiempos de Contrato', href: '#', icon: Timer },
     { name: 'Mis Controles de Calidad', href: '#', icon: BadgeCheck },
