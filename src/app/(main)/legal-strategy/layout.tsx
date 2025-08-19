@@ -31,11 +31,8 @@ import React from "react";
 
 const planNav = [
     { name: 'Panel Diario', href: '#', icon: LayoutDashboard },
-    { name: 'Planes de una página', href: '/legal-strategy', icon: Map },
+    { name: 'Plan de una página', href: '/legal-strategy', icon: Map },
     { name: 'Métricas Continuas', href: '#', icon: Activity },
-    { name: 'KFFM', href: '#', icon: Box },
-    { name: 'Carriles', href: '#', icon: Layers },
-    { name: 'Sala de Guerra', href: '#', icon: Plane },
 ];
 
 const executeNav = [
@@ -72,7 +69,7 @@ export default function LegalStrategyLayout({
              <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
                 <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Plan
+                        Planeación
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
@@ -91,7 +88,7 @@ export default function LegalStrategyLayout({
                 </Collapsible>
                 <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Ejecutar
+                        Ejecución
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
@@ -107,7 +104,7 @@ export default function LegalStrategyLayout({
                 </Collapsible>
                 <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Crecer
+                        Crecimiento
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
