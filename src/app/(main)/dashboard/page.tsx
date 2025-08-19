@@ -342,7 +342,7 @@ export default function DashboardPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="text-accent" /> $ ROI Legal®
+                  $ ROI Legal®
                 </CardTitle>
                 <CardDescription>
                   Retorno de la inversión en servicios legales.
