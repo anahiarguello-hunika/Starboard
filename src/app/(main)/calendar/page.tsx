@@ -28,7 +28,7 @@ const events: CalendarEvent[] = [
 
 const calendars = {
     'Elias Bardawil': 'bg-primary/20 border-primary text-primary-foreground',
-    'Firm': 'bg-green-500/20 border-green-500 text-green-700',
+    'Firm': 'bg-blue-500/20 border-blue-500 text-blue-700',
     'Tasks': 'bg-orange-500/20 border-orange-500 text-orange-700',
     'Statute of Limitations': 'bg-red-500/20 border-red-500 text-red-700',
 }

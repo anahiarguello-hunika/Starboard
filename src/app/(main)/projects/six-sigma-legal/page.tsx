@@ -308,7 +308,7 @@ export default function SixSigmaLegalPage() {
       <main className="grid grid-cols-[60fr_40fr] gap-0 items-start">
         <div className="flex flex-col gap-4 border-r pr-4">
           <div className="flex items-center gap-2">
-            <Button variant="secondary" className="bg-green-600 text-white hover:bg-green-700 h-8 text-xs">
+            <Button variant="secondary" className="bg-blue-600 text-white hover:bg-blue-700 h-8 text-xs">
               <Plus className="mr-2 h-4 w-4" /> TASK
             </Button>
             <Button variant="outline" className="h-8 text-xs bg-white">REORDER TASKS</Button>
@@ -345,7 +345,7 @@ export default function SixSigmaLegalPage() {
                <div />
               <TabsList className="bg-transparent border-0 p-0 h-auto">
                 <TabsTrigger value="task_info" className="text-xs p-2 h-auto border-b-2 border-gray-600 text-gray-600">TASK INFO</TabsTrigger>
-                <TabsTrigger value="documents" className="text-xs p-2 h-auto border-0 rounded-none">DOCUMENTS <Badge className="ml-2 bg-green-500 text-white rounded-sm text-[8px] px-1 py-0.5">2</Badge></TabsTrigger>
+                <TabsTrigger value="documents" className="text-xs p-2 h-auto border-0 rounded-none">DOCUMENTS <Badge className="ml-2 bg-blue-600 text-white rounded-sm text-[8px] px-1 py-0.5">2</Badge></TabsTrigger>
                 <TabsTrigger value="issues" className="text-xs p-2 h-auto border-0 rounded-none">ISSUES <Badge variant="destructive" className="ml-2 rounded-sm text-[8px] px-1 py-0.5">1</Badge></TabsTrigger>
                 <TabsTrigger value="events" className="text-xs p-2 h-auto border-0 rounded-none">EVENTS <Badge className="ml-2 bg-blue-500 text-white rounded-sm text-[8px] px-1 py-0.5">0</Badge></TabsTrigger>
                 <TabsTrigger value="activity" className="text-xs p-2 h-auto border-0 rounded-none">ACTIVITY</TabsTrigger>
