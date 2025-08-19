@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Link from "next/link";
@@ -82,12 +83,8 @@ const navItems = [
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const adjustedPathname = pathname === '/' ? '/dashboard' : pathname;
-  const [isClient, setIsClient] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsClient(true);
-  }, []);
-
+  
+  const isLegalStrategyActive = adjustedPathname.startsWith('/legal-strategy');
 
   return (
     <SidebarProvider>
@@ -139,7 +136,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <SidebarMenuItem key={item.label}>
                 <SidebarMenuButton
                   asChild
-                  isActive={isClient && !item.external && adjustedPathname.startsWith(item.href)}
+                  isActive={!item.external && (item.href === '/legal-strategy' ? isLegalStrategyActive : adjustedPathname.startsWith(item.href))}
                   tooltip={item.label}
                 >
                   <Link href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined}>
