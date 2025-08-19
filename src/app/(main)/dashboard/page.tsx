@@ -200,7 +200,7 @@ export default function DashboardPage() {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                         <PieChartIcon className="text-muted-foreground" />
-                        Proyectos Activados®
+                        Progreso de Proyectos
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
