@@ -57,6 +57,7 @@ import {
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/legal-strategy", icon: Sparkles, label: "Estrategia Legal" },
   { href: "/clients", icon: Users, label: "Clientes" },
   { href: "/crm", icon: Users, label: "CRM" },
   { href: "/contracts", icon: FileText, label: "Contratos Activados®" },
