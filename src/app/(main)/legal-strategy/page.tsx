@@ -126,6 +126,14 @@ Tecnologia (herramienta, posición interna, usability).`}/>
                             </Section>
                         </div>
                     </div>
+                    <div className="grid grid-cols-2 gap-2">
+                        <Section title="BHAG">
+                           <Textarea rows={4} defaultValue="Blindar el patrimonio de 20,000 dueños de negocios para que cumplan su propósito."/>
+                        </Section>
+                         <Section title="Promesas de Marca">
+                           <Textarea rows={4} defaultValue="Convertirnos en un aliado estratégico de nuestros clientes, eliminando las fricciones entre clientes y abogados, siendo su departamento legal y asesor de confianza, habilitados con las personas, tecnología y procesos necesarios."/>
+                        </Section>
+                    </div>
                 </div>
 
                 {/* Right Column */}
@@ -169,4 +177,3 @@ Tecnologia (herramienta, posición interna, usability).`}/>
         </div>
     );
 }
-
