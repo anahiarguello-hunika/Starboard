@@ -25,6 +25,11 @@ import {
   DollarSign,
   BarChart2,
   Calculator,
+  Search,
+  History,
+  Clock,
+  Plus,
+  ChevronDown,
 } from "lucide-react";
 
 import {
@@ -42,6 +47,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { UserNav } from "./components/user-nav";
 import React from "react";
+import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
@@ -142,12 +154,54 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6">
-          <SidebarTrigger className="md:hidden" />
-          <div className="flex-1">
-            {/* Can add breadcrumbs or page title here */}
+        <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b bg-accent/95 px-4 text-accent-foreground shadow-sm backdrop-blur sm:px-6">
+          <div className="flex items-center gap-2">
+            <SidebarTrigger className="md:hidden text-accent-foreground hover:bg-accent/50" />
+            <div className="relative w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" />
+              <Input
+                placeholder="Search Starboard Abogados"
+                className="pl-10 h-9 bg-accent text-accent-foreground placeholder:text-accent-foreground/80 border-accent-foreground/50 focus-visible:ring-offset-accent focus-visible:ring-accent-foreground"
+              />
+            </div>
+             <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="h-9 border-accent-foreground/50 bg-transparent hover:bg-accent/50 hover:text-accent-foreground">
+                      <History className="mr-2 h-4 w-4" /> Recientes <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Tareas</DropdownMenuItem>
+                <DropdownMenuItem>Proyectos</DropdownMenuItem>
+                <DropdownMenuItem>Contratos</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-          <UserNav />
+          <div className="flex items-center gap-4">
+             <div className="flex items-center gap-2 text-sm">
+                <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-accent/50">
+                  <Clock className="h-5 w-5" />
+                </Button>
+                <span>00:00:00</span>
+                 <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-accent/50">
+                   <Clock className="h-4 w-4" />
+                </Button>
+            </div>
+            <div className="h-6 w-px bg-accent-foreground/50" />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="h-9 hover:bg-accent/50 hover:text-accent-foreground">
+                      Create new <Plus className="ml-2 h-4 w-4" />
+                  </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Tarea</DropdownMenuItem>
+                <DropdownMenuItem>Proyecto</DropdownMenuItem>
+                <DropdownMenuItem>Contrato</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <UserNav />
+          </div>
         </header>
         <main className="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">{children}</main>
       </SidebarInset>
