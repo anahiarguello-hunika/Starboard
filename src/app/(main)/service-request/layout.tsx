@@ -23,7 +23,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import React from "react";
 
 const serviceRequestNav = [
-  { name: 'Dashboard', href: '/service-request', icon: LayoutDashboard },
+  { name: 'Dashboard', href: '/service-request/dashboard', icon: LayoutDashboard },
   { name: 'Nueva Solicitud', href: '/service-request/new', icon: PlusCircle },
 ];
 
@@ -69,7 +69,7 @@ export default function ServiceRequestLayout({
                 </Collapsible>
                  <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Mi Trabajo
+                        Solicitudes de Servicio
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">

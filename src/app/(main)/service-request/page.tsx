@@ -4,6 +4,6 @@
 import { redirect } from 'next/navigation';
 
 export default function ServiceRequestRedirectPage() {
-  redirect('/service-request/new');
+  redirect('/service-request/dashboard');
   return null;
 }
