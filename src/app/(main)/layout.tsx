@@ -103,22 +103,22 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 >
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
-                    fill="white"
+                    fill="currentColor"
                   />
                   <path
                     d="M12 5.5L15.5 10.5H8.5L12 5.5Z"
-                    fill="white"
+                    fill="currentColor"
                   />
                   <path
                     d="M16.5 12L12 18.5L7.5 12H16.5Z"
-                    fill="white"
+                    fill="currentColor"
                   />
                    <g clipPath="url(#clip0_1_2)">
-                    <path d="M12 2L11.2929 2.70711L12 3.41421L12.7071 2.70711L12 2Z" fill="white"/>
-                    <path d="M2 12L2.70711 11.2929L3.41421 12L2.70711 12.7071L2 12Z" fill="white"/>
-                    <path d="M12 22L12.7071 21.2929L12 20.5858L11.2929 21.2929L12 22Z" fill="white"/>
-                    <path d="M22 12L21.2929 12.7071L20.5858 12L21.2929 11.2929L22 12Z" fill="white"/>
-                    <path d="M9.5 18H14.5V16H9.5V18ZM11 7V9H13V7H11ZM11 14V11H13V14H11Z" fill="white"/>
+                    <path d="M12 2L11.2929 2.70711L12 3.41421L12.7071 2.70711L12 2Z" fill="currentColor"/>
+                    <path d="M2 12L2.70711 11.2929L3.41421 12L2.70711 12.7071L2 12Z" fill="currentColor"/>
+                    <path d="M12 22L12.7071 21.2929L12 20.5858L11.2929 21.2929L12 22Z" fill="currentColor"/>
+                    <path d="M22 12L21.2929 12.7071L20.5858 12L21.2929 11.2929L22 12Z" fill="currentColor"/>
+                    <path d="M9.5 18H14.5V16H9.5V18ZM11 7V9H13V7H11ZM11 14V11H13V14H11Z" fill="currentColor"/>
                   </g>
                   <defs>
                     <clipPath id="clip0_1_2">
@@ -166,7 +166,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             </div>
              <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="h-9 border-sidebar-border bg-transparent text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
+                  <Button variant="ghost" className="h-9 border-sidebar-border bg-sidebar text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                       <History className="mr-2 h-4 w-4" /> Recientes <ChevronDown className="ml-2 h-4 w-4" />
                   </Button>
               </DropdownMenuTrigger>
