@@ -161,7 +161,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" />
               <Input
                 placeholder="Search Starboard Abogados"
-                className="pl-10 h-9 bg-sidebar-accent text-sidebar-foreground placeholder:text-sidebar-foreground/80 border-sidebar-border focus-visible:ring-offset-sidebar-background focus-visible:ring-sidebar-ring"
+                className="pl-10 h-9 bg-sidebar-accent text-sidebar-foreground placeholder:text-sidebar-foreground/80 border-transparent focus-visible:ring-offset-sidebar-background focus-visible:ring-sidebar-ring"
               />
             </div>
              <DropdownMenu>
