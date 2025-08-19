@@ -26,7 +26,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Textarea } from "@/components/ui/textarea";
-import { Paperclip, Calendar as CalendarIcon, FilePlus2, ChevronDown } from "lucide-react";
+import { Paperclip, Calendar as CalendarIcon, FilePlus2, ChevronDown, BookCopy } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function NewServiceRequestPage() {
@@ -41,26 +41,44 @@ export default function NewServiceRequestPage() {
             Cree un nuevo servicio para solicitar asistencia del equipo legal.
           </p>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button>
-              <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>1. Contrato de Prestación de Servicios (Cliente)</DropdownMenuItem>
-            <DropdownMenuItem>2. Contrato de Arrendamiento</DropdownMenuItem>
-            <DropdownMenuItem>3. Contrato de Subarrendamiento</DropdownMenuItem>
-            <DropdownMenuItem>4. Contrato de Prestación de Servicio (Prestador)</DropdownMenuItem>
-            <DropdownMenuItem>5. Contrato de Confidencialidad</DropdownMenuItem>
-            <DropdownMenuItem>6. Contrato Individual de Trabajo (Tiempo determinado)</DropdownMenuItem>
-            <DropdownMenuItem>7. Contrato Individual de Trabajo (Indeterminado con tiempo de Prueba)</DropdownMenuItem>
-            <DropdownMenuItem>8. Convenio de Terminación General</DropdownMenuItem>
-            <DropdownMenuItem>9. Convenio de Terminación Laboral</DropdownMenuItem>
-            <DropdownMenuItem>10. Contrato de Préstamo (Obligado Solidario)</DropdownMenuItem>
-            <DropdownMenuItem>11. Contrato de Compraventa de Acciones</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex gap-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button>
+                  <FilePlus2 className="mr-2 h-4 w-4" /> Nuevo Contrato <ChevronDown className="ml-2 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>1. Contrato de Prestación de Servicios (Cliente)</DropdownMenuItem>
+                <DropdownMenuItem>2. Contrato de Arrendamiento</DropdownMenuItem>
+                <DropdownMenuItem>3. Contrato de Subarrendamiento</DropdownMenuItem>
+                <DropdownMenuItem>4. Contrato de Prestación de Servicio (Prestador)</DropdownMenuItem>
+                <DropdownMenuItem>5. Contrato de Confidencialidad</DropdownMenuItem>
+                <DropdownMenuItem>6. Contrato Individual de Trabajo (Tiempo determinado)</DropdownMenuItem>
+                <DropdownMenuItem>7. Contrato Individual de Trabajo (Indeterminado con tiempo de Prueba)</DropdownMenuItem>
+                <DropdownMenuItem>8. Convenio de Terminación General</DropdownMenuItem>
+                <DropdownMenuItem>9. Convenio de Terminación Laboral</DropdownMenuItem>
+                <DropdownMenuItem>10. Contrato de Préstamo (Obligado Solidario)</DropdownMenuItem>
+                <DropdownMenuItem>11. Contrato de Compraventa de Acciones</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  <BookCopy className="mr-2 h-4 w-4" /> Servicio Notarial <ChevronDown className="ml-2 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>1. Constituir Sociedad.</DropdownMenuItem>
+                <DropdownMenuItem>2. Otorgar Poder.</DropdownMenuItem>
+                <DropdownMenuItem>3. Crear Asamblea.</DropdownMenuItem>
+                <DropdownMenuItem>4. Ratificar documento.</DropdownMenuItem>
+                <DropdownMenuItem>5. Protocolizar Asamblea.</DropdownMenuItem>
+                <DropdownMenuItem>6. Otorgar Testamento.</DropdownMenuItem>
+                <DropdownMenuItem>7. Otros</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <Card className="lg:col-span-2">
