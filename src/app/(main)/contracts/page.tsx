@@ -55,6 +55,39 @@ const kpiCards = [
     { title: "Contratos iniciados en el último año", value: "12" },
 ];
 
+const contractsData = [
+    {
+        id: 449,
+        diagram: true,
+        recordType: 'Enmienda',
+        contractTitle: 'test',
+        companyName: 'Firmamex',
+        status: 'Draft',
+        contractManager: 'Agiloft Admin',
+        contractAmount: '$1,000',
+        endDate: '',
+        latestAttachment: 'Contract ID 449 Firmamex SLA Jun 10 2024.docx',
+        dateSubmitted: '',
+        dateSent: '',
+        dateSigned: ''
+    },
+    {
+        id: 383,
+        diagram: true,
+        recordType: 'Contrato',
+        contractTitle: 'Contrato de Arrendamiento de Servicios Legales LLC',
+        companyName: 'Inmobiliaria Los Agapantos, S.A.',
+        status: 'Pending Review',
+        contractManager: 'Agiloft Admin',
+        contractAmount: '',
+        endDate: '30 abr 2024',
+        latestAttachment: 'CBC SOW (40 templates).docx',
+        dateSubmitted: '10 abr 2023 09:39',
+        dateSent: '',
+        dateSigned: ''
+    }
+]
+
 
 export default function ContractsDashboardPage() {
     const getStatusBadge = (status: ExpiringContract['status']) => {
@@ -187,58 +220,76 @@ export default function ContractsDashboardPage() {
             </div>
         </div>
         <Card>
-            <CardHeader>
-              <div className="flex justify-between items-center">
-                  <div>
-                    <h2 className="text-xl font-semibold">Todos los Contratos</h2>
-                    <p className="text-sm text-muted-foreground">38 registro(s) encontrados, 1 página(s). <span className="text-primary cursor-pointer">Click para contar registros de nuevo.</span></p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                      <Button variant="outline"><Plus className="h-4 w-4 mr-2" /> Nuevo</Button>
-                      <Button variant="outline">Vistas <ChevronDown className="h-4 w-4 ml-2" /></Button>
-                      <Button variant="outline">Editar Campos</Button>
-                      <Button variant="outline">Más <ChevronDown className="h-4 w-4 ml-2" /></Button>
-                       <div className="relative">
-                           <Input placeholder="Buscar" className="h-10" />
-                           <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                       </div>
-                  </div>
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="text-xl font-semibold">Todos los Contratos</h2>
+                <p className="text-sm text-muted-foreground">
+                  4 registro(s) encontrados, 1 página(s). <span className="text-primary cursor-pointer">Click para detalles...</span> | <span className="text-primary cursor-pointer">Limpiar Todos los Filtros</span>
+                </p>
               </div>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-12"><Checkbox /></TableHead>
-                    <TableHead>Editar</TableHead>
-                    <TableHead>Diagrama</TableHead>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Título del Contrato</TableHead>
-                    <TableHead>Tipo de Contrato</TableHead>
-                    <TableHead>Nombre del Solicitante</TableHead>
-                    <TableHead>Nombre de la Empresa</TableHead>
-                    <TableHead>Estado</TableHead>
-                    <TableHead>Fecha de Finalización</TableHead>
+              <div className="flex items-center gap-2">
+                <Button variant="outline">
+                  <Plus className="h-4 w-4 mr-2" /> Nuevo
+                </Button>
+                <Button variant="outline">
+                  Vistas <ChevronDown className="h-4 w-4 ml-2" />
+                </Button>
+                <Button variant="outline">Editar Campos</Button>
+                <Button variant="outline">
+                  Más <ChevronDown className="h-4 w-4 ml-2" />
+                </Button>
+                <div className="relative">
+                  <Input placeholder="Buscar" className="h-10" />
+                  <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                </div>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-12"><Checkbox /></TableHead>
+                  <TableHead>Editar</TableHead>
+                  <TableHead>ID</TableHead>
+                  <TableHead>Diagrama</TableHead>
+                  <TableHead>Tipo de Registro</TableHead>
+                  <TableHead>Título del Contrato</TableHead>
+                  <TableHead>Nombre de la Empresa</TableHead>
+                  <TableHead>Estado</TableHead>
+                  <TableHead>Gerente de Contrato</TableHead>
+                  <TableHead>Monto del Contrato</TableHead>
+                  <TableHead>Fecha de Finalización</TableHead>
+                  <TableHead>Último Adjunto</TableHead>
+                  <TableHead>Fecha de Envío</TableHead>
+                  <TableHead>Fecha de Envío para Firma</TableHead>
+                  <TableHead>Fecha de Firma</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {contractsData.map((contract) => (
+                  <TableRow key={contract.id}>
+                      <TableCell><Checkbox /></TableCell>
+                      <TableCell><Pencil className="h-4 w-4 cursor-pointer" /></TableCell>
+                      <TableCell className="text-primary underline cursor-pointer">{contract.id}</TableCell>
+                      <TableCell><Network className="h-4 w-4 text-red-500" /></TableCell>
+                      <TableCell>{contract.recordType}</TableCell>
+                      <TableCell>{contract.contractTitle}</TableCell>
+                      <TableCell>{contract.companyName}</TableCell>
+                      <TableCell>{getStatusBadge(contract.status as ExpiringContract['status'])}</TableCell>
+                      <TableCell>{contract.contractManager}</TableCell>
+                      <TableCell>{contract.contractAmount}</TableCell>
+                      <TableCell>{contract.endDate}</TableCell>
+                      <TableCell className="text-primary underline cursor-pointer flex items-center gap-1"><Paperclip className="h-4 w-4"/> {contract.latestAttachment}</TableCell>
+                      <TableCell>{contract.dateSubmitted}</TableCell>
+                      <TableCell>{contract.dateSent}</TableCell>
+                      <TableCell>{contract.dateSigned}</TableCell>
                   </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {expiringSoonContracts.map((contract) => (
-                    <TableRow key={contract.id}>
-                        <TableCell><Checkbox /></TableCell>
-                        <TableCell><Pencil className="h-4 w-4 cursor-pointer" /></TableCell>
-                        <TableCell><Network className="h-4 w-4 text-green-500" /></TableCell>
-                        <TableCell className="text-primary underline cursor-pointer">{contract.id}</TableCell>
-                        <TableCell>{contract.contractTitle}</TableCell>
-                        <TableCell>{contract.contractType}</TableCell>
-                        <TableCell>{contract.requesterName}</TableCell>
-                        <TableCell>{contract.companyName}</TableCell>
-                        <TableCell>{getStatusBadge(contract.status)}</TableCell>
-                        <TableCell>{contract.endDate}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
         </Card>
     </div>
   );
