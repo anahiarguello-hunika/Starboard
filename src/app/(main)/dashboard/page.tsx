@@ -142,7 +142,7 @@ export default function DashboardPage() {
             </DropdownMenuContent>
           </DropdownMenu>
           <Button variant="outline" asChild>
-            <Link href="/service-request">
+            <Link href="/service-request/new">
               <Ticket className="mr-2 h-4 w-4" />
               Solicitud de Servicio
             </Link>
