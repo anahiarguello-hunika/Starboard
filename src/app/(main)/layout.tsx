@@ -178,7 +178,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             </DropdownMenu>
           </div>
           <div className="flex items-center gap-4">
-             <div className="flex items-center gap-2 text-sm">
+             <Link href="/time-entry" className="flex items-center gap-2 text-sm">
                 <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-sidebar-accent">
                   <Clock className="h-5 w-5" />
                 </Button>
@@ -186,7 +186,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                  <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-sidebar-accent">
                    <Clock className="h-4 w-4" />
                 </Button>
-            </div>
+            </Link>
             <div className="h-6 w-px bg-sidebar-border" />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
