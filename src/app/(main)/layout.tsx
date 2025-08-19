@@ -76,7 +76,7 @@ const navItems = [
   { href: "/background-check", icon: UserSearch, label: "Background check", external: true },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/cotizador", icon: Calculator, label: "Cotizador" },
-  { href: "/customer-portal", icon: BookUser, label: "Portal de Clientes" },
+  { href: "/comunicaciones", icon: BookUser, label: "Comunicaciones" },
   { href: "/summarize", icon: Sparkles, label: "IA" },
 ];
 
