@@ -250,6 +250,7 @@ export default function DashboardPage() {
                     </CardContent>
                 </Card>
               </Link>
+              <Link href="/contracts" className="hover:opacity-80">
               <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
@@ -297,6 +298,7 @@ export default function DashboardPage() {
                     </ul>
                 </CardContent>
               </Card>
+              </Link>
             </div>
 
 
