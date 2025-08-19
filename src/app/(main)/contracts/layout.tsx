@@ -56,8 +56,6 @@ const contractsNav = [
 ];
 
 const myContractsNav = [
-    { name: 'Mi No Contrato...', href: '#', icon: CalendarX },
-    { name: 'Empleado Directo...', href: '#', icon: Users },
     { name: 'Solicitudes de Contratos', href: '#', icon: ClipboardList },
     { name: 'Mis Contratos', href: '#', icon: UserCheck },
     { name: 'Mi Utilización', href: '#', icon: PieChart },
