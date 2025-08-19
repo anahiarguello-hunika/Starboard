@@ -69,12 +69,12 @@ export default function NewServiceRequestPage() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem>1. Constituir Sociedad.</DropdownMenuItem>
-                <DropdownMenuItem>2. Otorgar Poder.</DropdownMenuItem>
-                <DropdownMenuItem>3. Crear Asamblea.</DropdownMenuItem>
-                <DropdownMenuItem>4. Ratificar documento.</DropdownMenuItem>
-                <DropdownMenuItem>5. Protocolizar Asamblea.</DropdownMenuItem>
-                <DropdownMenuItem>6. Otorgar Testamento.</DropdownMenuItem>
+                <DropdownMenuItem>1. Constituir Sociedad</DropdownMenuItem>
+                <DropdownMenuItem>2. Otorgar Poder</DropdownMenuItem>
+                <DropdownMenuItem>3. Crear Asamblea</DropdownMenuItem>
+                <DropdownMenuItem>4. Ratificar documento</DropdownMenuItem>
+                <DropdownMenuItem>5. Protocolizar Asamblea</DropdownMenuItem>
+                <DropdownMenuItem>6. Otorgar Testamento</DropdownMenuItem>
                 <DropdownMenuItem>7. Otros</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
