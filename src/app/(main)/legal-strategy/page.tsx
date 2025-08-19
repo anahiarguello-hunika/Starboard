@@ -58,6 +58,16 @@ const CriticalNumberItem = ({ color }: { color: string }) => (
     </div>
 );
 
+const SwotItem = ({ number, text }: { number: number, text: string }) => (
+     <div className="flex items-center gap-2">
+        <AlignLeft className="h-4 w-4 text-muted-foreground" />
+        <span className="font-bold">{number}</span>
+        <div className="flex-grow">
+            <Input defaultValue={text} className="h-7 text-xs" />
+        </div>
+    </div>
+);
+
 export default function LegalStrategyPage() {
     return (
         <div className="bg-background text-foreground mx-auto p-4 font-sans text-sm">
@@ -213,6 +223,29 @@ Tecnologia (herramienta, posición interna, usability).`}/>
                         <CriticalNumberItem color="bg-lime-500" />
                         <CriticalNumberItem color="bg-yellow-400" />
                         <CriticalNumberItem color="bg-red-600" />
+                    </Section>
+                </div>
+                 {/* Bottom bar sections */}
+                 <div className="col-span-12 grid grid-cols-4 gap-2">
+                    <Section title="Fortalezas/Competencias Clave">
+                        <SwotItem number={1} text="Integridad" />
+                        <SwotItem number={2} text="Interés genuino en el bienestar del cliente" />
+                        <SwotItem number={3} text="Enfocados en mejorar con tecnología alineados con clientes." />
+                    </Section>
+                    <Section title="Debilidades">
+                        <SwotItem number={1} text="Product market fit" />
+                        <SwotItem number={2} text="Estabilidad en ventas" />
+                        <SwotItem number={3} text="Falta especialización y enfoque en nichos" />
+                    </Section>
+                    <Section title="Tendencias">
+                        <SwotItem number={1} text="Popularización de la Inteligencia artificial (Mundial)" />
+                        <SwotItem number={2} text="Cambios al sistema legal en México." />
+                        <SwotItem number={3} text="Participación de grandes empresas en la industria legal" />
+                    </Section>
+                    <Section title="Tendencias: (continuación 4-6)">
+                         <SwotItem number={1} text="Digitalización acelerada." />
+                         <SwotItem number={2} text="Tendencia Legaltech mundial." />
+                         <SwotItem number={3} text="" />
                     </Section>
                 </div>
             </div>
