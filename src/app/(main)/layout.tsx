@@ -40,6 +40,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { UserNav } from "./components/user-nav";
+import React from "react";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
@@ -66,6 +67,12 @@ const navItems = [
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const adjustedPathname = pathname === '/' ? '/dashboard' : pathname;
+  const [isClient, setIsClient] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   return (
     <SidebarProvider>
@@ -117,7 +124,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <SidebarMenuItem key={item.label}>
                 <SidebarMenuButton
                   asChild
-                  isActive={!item.external && adjustedPathname.startsWith(item.href)}
+                  isActive={isClient && !item.external && adjustedPathname.startsWith(item.href)}
                   tooltip={item.label}
                 >
                   <Link href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined}>
