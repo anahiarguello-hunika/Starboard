@@ -300,7 +300,7 @@ export default function DashboardPage() {
 
             <Card className="md:col-span-2">
               <CardHeader>
-                <CardTitle>Progreso de Proyectos</CardTitle>
+                <CardTitle>Proyectos Activados®</CardTitle>
                 <CardDescription>
                   Proyectos legales clave actualmente en curso.
                 </CardDescription>
@@ -440,4 +440,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
