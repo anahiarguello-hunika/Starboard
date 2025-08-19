@@ -164,6 +164,13 @@ Tecnologia (herramienta, posición interna, usability).`}/>
                            <Textarea rows={4} defaultValue="Convertirnos en un aliado estratégico de nuestros clientes, eliminando las fricciones entre clientes y abogados, siendo su departamento legal y asesor de confianza, habilitados con las personas, tecnología y procesos necesarios."/>
                         </Section>
                     </div>
+                    <Section title="Lista de Responsabilidades">
+                        <AccountabilityItem number={1} text="Fortalecer Estructura Organizacional (Personas)" />
+                        <AccountabilityItem number={2} text="Integración de tecnología simple (sistemas y procesos)." />
+                        <AccountabilityItem number={3} text="Mejorar oferta de valor" />
+                        <AccountabilityItem number={4} text="Estrategia de pricing" />
+                        <AccountabilityItem number={5} text="Extracción y uso de datos legales" />
+                    </Section>
                 </div>
 
                 {/* Right Column */}
@@ -194,13 +201,6 @@ Tecnologia (herramienta, posición interna, usability).`}/>
                         <Input defaultValue="EB #4 Terminar herramienta tecnológica..."/>
                         <Input defaultValue="EB #5 Integrar a un Project Manager..."/>
                         <Input defaultValue="EB #6 Integración de Administradora..."/>
-                    </Section>
-                    <Section title="Lista de Responsabilidades">
-                        <AccountabilityItem number={1} text="Fortalecer Estructura Organizacional (Personas)" />
-                        <AccountabilityItem number={2} text="Integración de tecnología simple (sistemas y procesos)." />
-                        <AccountabilityItem number={3} text="Mejorar oferta de valor" />
-                        <AccountabilityItem number={4} text="Estrategia de pricing" />
-                        <AccountabilityItem number={5} text="Extracción y uso de datos legales" />
                     </Section>
                     <Section title="Número Crítico: Personas o B/S">
                         <CriticalNumberItem color="bg-green-600" />
