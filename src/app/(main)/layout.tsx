@@ -154,19 +154,19 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b bg-accent/95 px-4 text-accent-foreground shadow-sm backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 bg-sidebar px-4 text-sidebar-foreground sm:px-6">
           <div className="flex items-center gap-2">
-            <SidebarTrigger className="md:hidden text-accent-foreground hover:bg-accent/50" />
+            <SidebarTrigger className="md:hidden text-sidebar-foreground hover:bg-sidebar-accent" />
             <div className="relative w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" />
               <Input
                 placeholder="Search Starboard Abogados"
-                className="pl-10 h-9 bg-accent text-accent-foreground placeholder:text-accent-foreground/80 border-accent-foreground/50 focus-visible:ring-offset-accent focus-visible:ring-accent-foreground"
+                className="pl-10 h-9 bg-sidebar-accent text-sidebar-foreground placeholder:text-sidebar-foreground/80 border-sidebar-border focus-visible:ring-offset-sidebar-background focus-visible:ring-sidebar-ring"
               />
             </div>
              <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="h-9 border-accent-foreground/50 bg-transparent hover:bg-accent/50 hover:text-accent-foreground">
+                  <Button variant="outline" className="h-9 border-sidebar-border bg-transparent text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                       <History className="mr-2 h-4 w-4" /> Recientes <ChevronDown className="ml-2 h-4 w-4" />
                   </Button>
               </DropdownMenuTrigger>
@@ -179,18 +179,18 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </div>
           <div className="flex items-center gap-4">
              <div className="flex items-center gap-2 text-sm">
-                <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-accent/50">
+                <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-sidebar-accent">
                   <Clock className="h-5 w-5" />
                 </Button>
                 <span>00:00:00</span>
-                 <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-accent/50">
+                 <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-sidebar-accent">
                    <Clock className="h-4 w-4" />
                 </Button>
             </div>
-            <div className="h-6 w-px bg-accent-foreground/50" />
+            <div className="h-6 w-px bg-sidebar-border" />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="h-9 hover:bg-accent/50 hover:text-accent-foreground">
+                  <Button variant="ghost" className="h-9 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                       Create new <Plus className="ml-2 h-4 w-4" />
                   </Button>
               </DropdownMenuTrigger>
