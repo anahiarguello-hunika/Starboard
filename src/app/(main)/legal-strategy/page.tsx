@@ -5,119 +5,168 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-const Section = ({ title, children }: { title: string, children: React.ReactNode }) => (
-    <div className="border border-foreground/30">
-        <h2 className="bg-foreground/10 px-2 py-1 text-sm font-bold">{title}</h2>
-        <div className="p-4 space-y-4">{children}</div>
+const Section = ({ title, children, className }: { title: string, children: React.ReactNode, className?: string }) => (
+    <div className={`border border-foreground/20 rounded-sm ${className}`}>
+        <h2 className="bg-foreground/5 px-2 py-1 text-sm font-bold text-center">{title}</h2>
+        <div className="p-2 space-y-2">{children}</div>
     </div>
 );
 
-const Field = ({ label, children }: { label: string, children: React.ReactNode }) => (
-    <div className="flex items-start gap-4">
-        <label className="w-1/4 pt-2 text-sm font-semibold text-right">{label}</label>
-        <div className="w-3/4">{children}</div>
+const Field = ({ label, children, labelClassName }: { label: string, children: React.ReactNode, labelClassName?: string }) => (
+    <div className="flex items-start gap-2">
+        <label className={`w-1/3 pt-1 text-xs font-semibold text-right ${labelClassName}`}>{label}</label>
+        <div className="w-2/3">{children}</div>
+    </div>
+);
+
+const MiniSection = ({ title, items }: { title: string, items: string[] }) => (
+    <div className="border border-foreground/20 rounded-sm">
+        <h3 className="bg-foreground/5 px-2 py-1 text-xs font-bold text-center">{title}</h3>
+        <div className="p-1 space-y-1">
+            {items.map((item, index) => <Input key={index} defaultValue={item} className="h-7 text-xs" />)}
+        </div>
     </div>
 );
 
 export default function LegalStrategyPage() {
     return (
-        <div className="bg-background text-foreground max-w-7xl mx-auto p-8 font-sans">
-             <header className="text-center mb-8">
-                 <h1 className="text-3xl font-bold font-headline text-primary">Estrategia Legal</h1>
-                 <p className="text-muted-foreground mt-2">
-                    Defina y gestione la estrategia legal de su organización.
-                </p>
-            </header>
-
-            <div className="space-y-6">
-                <Section title="Estrategia y Objetivos">
-                    <Field label="Visión del Departamento Legal">
-                        <Textarea rows={3} placeholder="Describa la visión a largo plazo del departamento legal..." />
-                    </Field>
-                    <Field label="Misión">
-                        <Textarea rows={3} placeholder="Defina el propósito central y la función del departamento legal..." />
-                    </Field>
-                    <Field label="Objetivos Estratégicos (3-5 años)">
-                        <Textarea rows={4} placeholder="Enumere los principales objetivos estratégicos..." />
-                    </Field>
-                    <Field label="Iniciativas Clave del Año">
-                        <Textarea rows={4} placeholder="Enumere las iniciativas específicas para el año en curso..." />
-                    </Field>
-                </Section>
+        <div className="bg-background text-foreground mx-auto p-4 font-sans text-sm">
+            <div className="grid grid-cols-12 gap-2">
                 
-                <Section title="Métricas y KPIs">
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                         <Field label="Reducción de Riesgos (%)">
-                            <Input type="number" placeholder="%" />
-                        </Field>
-                        <Field label="Ahorro de Costos (%)">
-                            <Input type="number" placeholder="%" />
-                        </Field>
-                        <Field label="Tiempo de Ciclo de Contratos (días)">
-                            <Input type="number" placeholder="Días" />
-                        </Field>
-                        <Field label="Satisfacción del Cliente Interno (1-5)">
-                            <Input type="number" placeholder="1-5" />
-                        </Field>
-                        <Field label="KPI Personalizado 1">
-                            <Input placeholder="Definir KPI..." />
-                        </Field>
-                         <Field label="Meta KPI 1">
-                            <Input placeholder="Establecer meta..." />
-                        </Field>
-                    </div>
-                </Section>
+                {/* Top bar sections */}
+                <div className="col-span-2"><MiniSection title="EMPLEADOS" items={["1 Elias B.", "2 Fany G. y Andrea", "3 Selene M."]} /></div>
+                <div className="col-span-2"><MiniSection title="CLIENTE" items={["1 Real Estate: desarrolladores inmobiliarios.", "2 M&A", "3 Tecnología"]} /></div>
+                <div className="col-span-2"><MiniSection title="ACCIONISTAS" items={["1 Elias Bardawil", "2", "3"]} /></div>
+                <div className="col-span-2"><MiniSection title="HACER/COMPRAR" items={["1", "2", "3"]} /></div>
+                <div className="col-span-2"><MiniSection title="VENDER" items={["1 Suscripción Fractional Law®", "2 Suscripción Contracts Activation®", "3 Proyectos legales"]} /></div>
+                <div className="col-span-2"><MiniSection title="MANTENIMIENTO DE REGISTROS" items={["1 Implementar cargo automático Stripe", "2 Vender suscripciones anuales pero a meses.", "3"]} /></div>
+
+                {/* Left column */}
+                <div className="col-span-3 space-y-2">
+                    <Section title="Valores/Creencias Fundamentales (Debería/No Debería)">
+                        <Textarea rows={30} className="text-xs" defaultValue={`Servicio y protección
+Nos mueve el propósito de servir y proteger a nuestros clientes, viéndolos como una extensión de nuestros negocios y familia.
+
+Crecimiento y mejora continua.
+Buscamos la perfección en todo lo que hacemos; continuamente nos esforzamos por mejorar y premiamos en función del mérito.
+
+Integridad para generar confianza duradera.
+Actuar siempre de acuerdo a estándares éticos con honestidad, sinceridad y veracidad en la palabra procurando relaciones ganar-ganar, en donde se privilegie la asistencia estable así como el equilibrio en el largo plazo.
+
+Conocimiento profundo de nuestra práctica.
+Dominio de nuestras habilidades y prácticas mediante la especialización, actualización y constante estudio, que genere experiencia diaria.
+
+Mentalidad empresarial sustentable.
+Apasionados por los negocios, nos orientamos al crecimiento y al logro mediante un emprendimiento constante, siempre buscando entregar valor al Cliente.
+
+Colaboración efectiva.
+Encontramos diversas maneras de colaborar con nuestros Clientes mediante una comunicación efectiva, siendo logrando ser transparentes y eficientes en nuestras intervenciones.
+
+Trabajo en equipo.
+Nos gusta encontrar, conectar y proveer a la persona correcta para agregar valor.`}/>
+                    </Section>
+                </div>
                 
-                <Section title="Gestión de Riesgos">
-                    <Field label="Top 5 Riesgos Legales">
-                        <Textarea rows={5} placeholder="1. ...&#10;2. ...&#10;3. ..." />
-                    </Field>
-                    <Field label="Planes de Mitigación">
-                         <Textarea rows={5} placeholder="Describa las estrategias para mitigar los riesgos principales..." />
-                    </Field>
-                     <Field label="Apetito de Riesgo">
-                        <Input placeholder="Bajo / Medio / Alto" />
-                    </Field>
-                </Section>
-
-                <Section title="Personas y Estructura">
-                    <Field label="Estructura del Equipo">
-                        <Textarea rows={3} placeholder="Describa la estructura actual del equipo (organigrama)..." />
-                    </Field>
-                    <Field label="Necesidades de Contratación">
-                        <Textarea rows={3} placeholder="Especifique los roles a contratar en los próximos 12 meses..." />
-                    </Field>
-                    <Field label="Plan de Desarrollo Profesional">
-                        <Textarea rows={4} placeholder="Detalle las iniciativas de capacitación y desarrollo..." />
-                    </Field>
-                </Section>
-
-                <Section title="Tecnología y Procesos">
-                    <Field label="Hoja de Ruta Tecnológica">
-                        <Textarea rows={3} placeholder="Enumere las herramientas tecnológicas a implementar (ej. CLM, e-billing)..." />
-                    </Field>
-                    <Field label="Iniciativas de Mejora de Procesos">
-                        <Textarea rows={3} placeholder="Describa los procesos a optimizar este año..." />
-                    </Field>
-                </Section>
-
-                <Section title="Presupuesto y Recursos">
-                     <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                         <Field label="Presupuesto Operativo Anual">
-                            <Input type="text" placeholder="$" />
-                        </Field>
-                        <Field label="Gasto en Firmas Externas">
-                            <Input type="text" placeholder="$" />
-                        </Field>
-                         <Field label="Gasto en Tecnología Legal">
-                            <Input type="text" placeholder="$" />
-                        </Field>
-                        <Field label="Justificación de Recursos Adicionales">
-                            <Textarea rows={3} placeholder="Si se necesitan recursos adicionales, justifíquelos aquí..." />
-                        </Field>
+                {/* Center Content */}
+                <div className="col-span-6 space-y-2">
+                    <div className="grid grid-cols-3 gap-2">
+                        <Section title="Metas (3 años)">
+                            <Textarea rows={2} defaultValue="No se encontraron métricas de la compañía en FY2027"/>
+                        </Section>
+                        <Section title="Objetivos (1 año)">
+                             <Textarea rows={2} defaultValue="FY2025 (Termina Dic 31, 2025)"/>
+                             <Input defaultValue="Venta de suscripciones anuales -- / 3" />
+                        </Section>
+                        <Section title="Acciones (QTR)">
+                             <Textarea rows={2} defaultValue="FY2025-Q1 (Termina Mar 31, 2025)"/>
+                             <Input defaultValue="Venta de suscripciones anuales -- / 3" />
+                        </Section>
                     </div>
-                </Section>
+                    <div className="grid grid-cols-2 gap-2">
+                        <Section title="Propósito (Por qué)">
+                            <Textarea rows={3} defaultValue="Ayudar a las personas a cumplir su propósito."/>
+                        </Section>
+                         <Section title="Iniciativas Clave (Prioridades a 1 Año)">
+                            <Input defaultValue="1 Fortalecer Estructura Organizacional (Personas)" className="h-8"/>
+                            <Input defaultValue="2 Integración de tecnología simple (sistemas y procesos)" className="h-8"/>
+                            <Input defaultValue="3 Mejorar oferta de valor" className="h-8"/>
+                        </Section>
+                    </div>
+                     <div className="grid grid-cols-2 gap-2">
+                         <Section title="Acciones (Para Vivir Valores, Propósito, BHAG)">
+                            <Textarea rows={5} defaultValue={`1 Ser una legaltech (ExO) suscripciones accesibles, masificables.
+2 Integrar equipo adecuado
+3 Detallar KPI para medir satisfacción de clientes y eficiencia operativa
+4 Automatizar intake de clientes
+5 Oferta de valor integral`}/>
+                        </Section>
+                         <Section title="Rocas (Prioridades Trimestrales)">
+                            <Input defaultValue="1 Simplificar propuesta de valor de suscripciones" className="h-8"/>
+                            <Input defaultValue="2 16 entrevistas con prospectos calificados..." className="h-8"/>
+                            <Input defaultValue="3 Implementar CLM en Stbd y diseñar MVP..." className="h-8"/>
+                        </Section>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                        <div className="space-y-2">
+                             <Section title="Sandbox">
+                                <Textarea rows={7} placeholder="Enter text here..."/>
+                            </Section>
+                            <Section title="Profit por X">
+                                <Input placeholder="Por Suscripción mensual"/>
+                            </Section>
+                        </div>
+                        <div className="space-y-2">
+                             <Section title="Impulsos/Capacidades Clave (Prioridades de 3-5 Años)">
+                                <Textarea rows={4} defaultValue={`250 suscripciones nuevas al mes (12 por año).
+Modelo de pricing por suscripción legal.
+Tecnologia (herramienta, posición interna, usability).`}/>
+                            </Section>
+                            <Section title="KPI de Promesa de Marca">
+                                <Textarea rows={3} defaultValue={`Retención de clientes por suscripción (KPI asegurar que el churn se mantenga por debajo del 10%)`}/>
+                            </Section>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="col-span-3 space-y-2">
+                     <Section title="Tema (QTR/ANUAL)">
+                         <div className="space-y-2">
+                             <Field label="Fecha Límite" labelClassName="w-2/5"><Input className="h-7"/></Field>
+                             <Field label="Meta Medible/Crítica #" labelClassName="w-2/5"><Input className="h-7"/></Field>
+                         </div>
+                         <div className="border border-foreground/20 rounded-sm mt-4">
+                            <h3 className="bg-foreground/5 px-2 py-1 text-xs font-bold text-center">TEMA</h3>
+                             <div className="p-2 space-y-2">
+                                <h4 className="text-center font-semibold">Diseño del Marcador</h4>
+                                 <Textarea rows={4} placeholder="Celebración..."/>
+                             </div>
+                         </div>
+                     </Section>
+                     <Section title="KPIs Trimestrales Individuales (Quién/Cuándo)">
+                         <Textarea rows={2} defaultValue="FY2025-Q1 (Termina Mar 31, 2025)"/>
+                         <Input defaultValue="Venta de suscripciones anuales --/3/3"/>
+                         <Input defaultValue="Implementación de estrategia Legaltech --/75/75"/>
+                         <Input defaultValue="Retención y recompra --/--/--"/>
+                    </Section>
+                    <Section title="Rocas Trimestrales Individuales">
+                        <Input defaultValue="EB #1 Simplificar propuesta de valor..."/>
+                        <Input defaultValue="EB #2 16 entrevistas con prospectos..."/>
+                        <Input defaultValue="EB #3 Implementar CLM en Stbd..."/>
+                        <Input defaultValue="EB #4 Terminar herramienta tecnológica..."/>
+                        <Input defaultValue="EB #5 Integrar a un Project Manager..."/>
+                        <Input defaultValue="EB #6 Integración de Administradora..."/>
+                    </Section>
+                     <Section title="Responsabilidades">
+                         <Textarea rows={2} defaultValue="No accountability set for this function."/>
+                    </Section>
+                     <Section title="Competencias">
+                         <Textarea rows={2} defaultValue="No Competency set for this function."/>
+                    </Section>
+                </div>
+
             </div>
         </div>
     );
 }
+
