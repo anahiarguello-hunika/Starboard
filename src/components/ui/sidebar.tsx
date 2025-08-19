@@ -118,14 +118,8 @@ const SidebarProvider = React.forwardRef<
       return () => window.removeEventListener("keydown", handleKeyDown)
     }, [toggleSidebar])
 
-    // We add a state so that we can do data-state="expanded" or "collapsed".
-    // This makes it easier to style the sidebar with Tailwind classes.
     const state = open ? "expanded" : "collapsed"
     
-    if (!isMounted) {
-      return null;
-    }
-
     const contextValue = React.useMemo<SidebarContext>(
       () => ({
         state,
@@ -138,6 +132,10 @@ const SidebarProvider = React.forwardRef<
       }),
       [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
     )
+
+    if (!isMounted) {
+      return null;
+    }
 
     return (
       <SidebarContext.Provider value={contextValue}>
