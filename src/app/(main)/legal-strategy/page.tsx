@@ -4,6 +4,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Users, Clock, AlignLeft } from "lucide-react";
 
 const Section = ({ title, children, className }: { title: string, children: React.ReactNode, className?: string }) => (
     <div className={`border border-foreground/20 rounded-sm ${className}`}>
@@ -25,6 +26,35 @@ const MiniSection = ({ title, items }: { title: string, items: string[] }) => (
         <div className="p-1 space-y-1">
             {items.map((item, index) => <Input key={index} defaultValue={item} className="h-7 text-xs" />)}
         </div>
+    </div>
+);
+
+const AccountabilityItem = ({ number, text }: { number: number, text: string }) => (
+    <div className="flex items-center gap-2">
+        <AlignLeft className="h-4 w-4 text-muted-foreground" />
+        <span className="font-bold">{number}</span>
+        <div className="flex-grow">
+            <Input defaultValue={text} className="h-7 text-xs" />
+            <div className="flex items-center gap-4 mt-1">
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <Users className="h-3 w-3" />
+                    <span>Asignar</span>
+                </div>
+                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <Clock className="h-3 w-3" />
+                    <span>Fecha</span>
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+const CriticalNumberItem = ({ color }: { color: string }) => (
+    <div className="flex items-center gap-2">
+        <AlignLeft className="h-4 w-4 text-muted-foreground" />
+        <div className={`w-4 h-4 rounded-sm ${color}`} />
+        <Input className="h-7 text-xs flex-grow" />
+        <span className="text-xs text-muted-foreground">...</span>
     </div>
 );
 
@@ -121,8 +151,8 @@ Nos gusta encontrar, conectar y proveer a la persona correcta para agregar valor
 Modelo de pricing por suscripción legal.
 Tecnologia (herramienta, posición interna, usability).`}/>
                             </Section>
-                            <Section title="KPI de Promesa de Marca">
-                                <Textarea rows={3} defaultValue={`Retención de clientes por suscripción (KPI asegurar que el churn se mantenga por debajo del 10%)`}/>
+                            <Section title="Promesas de Marca">
+                                <Textarea rows={3} defaultValue={`Convertirnos en un aliado estratégico de nuestros clientes, eliminando las fricciones entre clientes y abogados, siendo su departamento legal y asesor de confianza, habilitados con las personas, tecnología y procesos necesarios.`}/>
                             </Section>
                         </div>
                     </div>
@@ -153,7 +183,7 @@ Tecnologia (herramienta, posición interna, usability).`}/>
                      </Section>
                      <Section title="KPIs Trimestrales Individuales (Quién/Cuándo)">
                          <Textarea rows={2} defaultValue="FY2025-Q1 (Termina Mar 31, 2025)"/>
-                         <Input defaultValue="Venta de suscripciones anuales --/3/3"/>
+                         <Input defaultValue="Venta de suscripciones anuales --/3/3" />
                          <Input defaultValue="Implementación de estrategia Legaltech --/75/75"/>
                          <Input defaultValue="Retención y recompra --/--/--"/>
                     </Section>
@@ -165,14 +195,26 @@ Tecnologia (herramienta, posición interna, usability).`}/>
                         <Input defaultValue="EB #5 Integrar a un Project Manager..."/>
                         <Input defaultValue="EB #6 Integración de Administradora..."/>
                     </Section>
-                     <Section title="Responsabilidades">
-                         <Textarea rows={2} defaultValue="No accountability set for this function."/>
+                    <Section title="Lista de Responsabilidades">
+                        <AccountabilityItem number={1} text="Fortalecer Estructura Organizacional (Personas)" />
+                        <AccountabilityItem number={2} text="Integración de tecnología simple (sistemas y procesos)." />
+                        <AccountabilityItem number={3} text="Mejorar oferta de valor" />
+                        <AccountabilityItem number={4} text="Estrategia de pricing" />
+                        <AccountabilityItem number={5} text="Extracción y uso de datos legales" />
                     </Section>
-                     <Section title="Competencias">
-                         <Textarea rows={2} defaultValue="No Competency set for this function."/>
+                    <Section title="Número Crítico: Personas o B/S">
+                        <CriticalNumberItem color="bg-green-600" />
+                        <CriticalNumberItem color="bg-lime-500" />
+                        <CriticalNumberItem color="bg-yellow-400" />
+                        <CriticalNumberItem color="bg-red-600" />
+                    </Section>
+                    <Section title="Número Crítico: Proceso o P/L">
+                        <CriticalNumberItem color="bg-green-600" />
+                        <CriticalNumberItem color="bg-lime-500" />
+                        <CriticalNumberItem color="bg-yellow-400" />
+                        <CriticalNumberItem color="bg-red-600" />
                     </Section>
                 </div>
-
             </div>
         </div>
     );
