@@ -7,6 +7,7 @@ import {
     Pin,
     ChevronDown,
     Users,
+    Briefcase,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,7 +16,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import React from "react";
 
 const clientNav = [
-  // This can be populated later if needed.
+  { name: 'Portal de Clientes', href: '/customer-portal', icon: Briefcase },
 ];
 
 export default function ComunicacionesLayout({
