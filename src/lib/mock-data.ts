@@ -59,6 +59,24 @@ export type ExpiringContract = {
     endDate: string;
 }
 
+export type ServiceRequest = {
+  id: string;
+  name: string;
+  client: string;
+  status: "Activo" | "Cerrado" | "En Espera" | "En Riesgo";
+  requester: string;
+  openDate: string;
+};
+
+export const serviceRequestsData: ServiceRequest[] = [
+  { id: 'REQ-001', name: 'Revisión de Contrato de Renta', client: 'Innovate Inc.', status: 'Activo', requester: 'Alex L', openDate: '2024-07-15' },
+  { id: 'REQ-002', name: 'Consulta sobre PI', client: 'Tech Solutions LLC', status: 'Activo', requester: 'Drew B', openDate: '2024-07-20' },
+  { id: 'REQ-003', name: 'Asesoría en Terminación Laboral', client: 'Capital Group', status: 'Cerrado', requester: 'Siobhan C', openDate: '2024-05-10' },
+  { id: 'REQ-004', name: 'Revisión de Política de Privacidad', client: 'HealthWell Corp', status: 'En Riesgo', requester: 'En Riesgo', openDate: '2024-08-01' },
+  { id: 'REQ-005', name: 'Creación de NDA', client: 'Retail Giant', status: 'En Espera', requester: 'Ade A', openDate: '2024-08-25' },
+];
+
+
 export const contractsData: Contract[] = [
   {
     id: "CTR-001",
