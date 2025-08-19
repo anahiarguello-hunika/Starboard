@@ -195,59 +195,61 @@ export default function DashboardPage() {
              </div>
             
             <div className="flex flex-col gap-6">
-              <Card>
-                  <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                      <PieChartIcon className="text-muted-foreground" />
-                      Proyectos Activados®
-                      </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                      <div className="grid grid-cols-2 gap-4">
-                      <div className="flex flex-col justify-center gap-2">
-                          {projectStatusData.map(item => (
-                              <div key={item.name} className="flex items-center justify-between text-sm">
-                                  <div className="flex items-center gap-2">
-                                      <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
-                                      <span className="text-muted-foreground">{item.name}</span>
-                                  </div>
-                                  <span className="font-semibold">{item.count}</span>
-                              </div>
-                          ))}
-                      </div>
-                      <div className="flex items-center justify-center">
-                        <ChartContainer config={{}} className="w-full h-[120px]">
-                          <PieChart>
-                            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-                            <Pie
-                              data={projectStatusData}
-                              dataKey="count"
-                              nameKey="name"
-                              innerRadius={35}
-                              outerRadius={50}
-                              strokeWidth={2}
-                            >
-                              {projectStatusData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.fill} />
-                              ))}
-                            </Pie>
-                             <text
-                                  x="50%"
-                                  y="50%"
-                                  textAnchor="middle"
-                                  dominantBaseline="middle"
-                                  className="fill-foreground text-center"
+              <Link href="/projects" className="hover:opacity-80">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                        <PieChartIcon className="text-muted-foreground" />
+                        Proyectos Activados®
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col justify-center gap-2">
+                            {projectStatusData.map(item => (
+                                <div key={item.name} className="flex items-center justify-between text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
+                                        <span className="text-muted-foreground">{item.name}</span>
+                                    </div>
+                                    <span className="font-semibold">{item.count}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex items-center justify-center">
+                          <ChartContainer config={{}} className="w-full h-[120px]">
+                            <PieChart>
+                              <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                              <Pie
+                                data={projectStatusData}
+                                dataKey="count"
+                                nameKey="name"
+                                innerRadius={35}
+                                outerRadius={50}
+                                strokeWidth={2}
                               >
-                                  <tspan x="50%" y="52%" className="text-xl font-bold">
-                                  {inProgressPercentage}%
-                                  </tspan>
-                              </text>
-                          </PieChart>
-                        </ChartContainer>
-                      </div>
-                      </div>
-                  </CardContent>
-              </Card>
+                                {projectStatusData.map((entry, index) => (
+                                  <Cell key={`cell-${index}`} fill={entry.fill} />
+                                ))}
+                              </Pie>
+                               <text
+                                    x="50%"
+                                    y="50%"
+                                    textAnchor="middle"
+                                    dominantBaseline="middle"
+                                    className="fill-foreground text-center"
+                                >
+                                    <tspan x="50%" y="52%" className="text-xl font-bold">
+                                    {inProgressPercentage}%
+                                    </tspan>
+                                </text>
+                            </PieChart>
+                          </ChartContainer>
+                        </div>
+                        </div>
+                    </CardContent>
+                </Card>
+              </Link>
               <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
