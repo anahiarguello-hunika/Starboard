@@ -251,11 +251,7 @@ export default function ClientsDashboardPage() {
                                       label={{ value: 'Número de Clientes', angle: -90, position: 'insideLeft', offset: 10, style: { fontSize: '12px' } }} 
                                   />
                                   <RechartsTooltip formatter={(value: number) => value.toLocaleString()} />
-                                  <Bar dataKey="value" name="Clientes">
-                                     {newClientsByMonthData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={'hsl(var(--chart-3))'} />
-                                      ))}
-                                  </Bar>
+                                  <Bar dataKey="value" name="Clientes" fill="hsl(var(--chart-3))" />
                                </RechartsBarChart>
                           </ResponsiveContainer>
                       </ChartContainer>
