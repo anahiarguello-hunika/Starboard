@@ -6,8 +6,7 @@ import {
     Clock,
     Pin,
     ChevronDown,
-    Users,
-    Briefcase,
+    LayoutDashboard,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,9 +14,10 @@ import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
 
-const clientNav = [
-  { name: 'Portal de Clientes', href: '/customer-portal', icon: Briefcase },
+const myWorkNav = [
+  { name: 'Dashboard', href: '#', icon: LayoutDashboard },
 ];
+
 
 export default function ComunicacionesLayout({
   children,
@@ -60,15 +60,15 @@ export default function ComunicacionesLayout({
                 </Collapsible>
                  <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Clientes
+                        Mi Trabajo
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                         <div className="flex flex-col gap-1 mt-2">
-                        {clientNav.map((item, index) => (
+                        {myWorkNav.map((item) => (
                             <Link key={item.name} href={item.href || "#"} className={cn(
                                 'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
-                                (pathname === item.href) ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                                pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
                             )}>
                                 <item.icon className="h-5 w-5" />
                                 <span>{item.name}</span>
