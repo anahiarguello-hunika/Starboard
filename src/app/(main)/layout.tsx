@@ -70,7 +70,6 @@ const navItems = [
   { href: "/financial-management", icon: DollarSign, label: "Gestión Financiera" },
   { href: "/entities", icon: Building2, label: "Gestión de Sociedades"},
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial"},
-  { href: "/legal-audits", icon: BookOpenCheck, label: "Auditorías Legales" },
   { href: "/background-check", icon: UserSearch, label: "Background check", external: true },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/comunicaciones", icon: BookUser, label: "Comunicaciones" },
@@ -81,7 +80,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const adjustedPathname = pathname === '/' ? '/dashboard' : pathname;
   
-  const isLegalStrategyActive = adjustedPathname.startsWith('/legal-strategy');
+  const isLegalStrategyActive = adjustedPathname.startsWith('/legal-strategy') || adjustedPathname.startsWith('/legal-audits');
 
   return (
     <SidebarProvider>
