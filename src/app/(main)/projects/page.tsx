@@ -16,74 +16,20 @@ import { projectsData, type Project } from "@/lib/mock-data";
 import { 
   FileText, 
   Folder, 
-  PlusCircle,
-  LayoutDashboard,
-  BarChart2,
-  ListTodo,
-  File,
-  Calendar,
-  AlertTriangle,
-  BarChart,
-  StickyNote,
-  History,
-  LifeBuoy,
   LayoutGrid,
   List,
   Table as TableIcon,
-  Home,
-  Clock,
-  Pin,
   ChevronDown,
   Search,
   RefreshCw,
   X,
-  CalendarX,
-  UserCheck,
-  PieChart as PieChartIcon,
-  Timer,
-  BadgeCheck,
-  BookUser,
-  ShieldCheck,
-  GanttChartSquare,
-  Network,
-  ListChecks,
-  SlidersHorizontal,
-  Briefcase,
-  Award,
-  Users,
-  ClipboardList
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Input } from '@/components/ui/input';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, Bar } from 'recharts';
-
-const myProjectNav = [
-    { name: 'Mi No Proyecto...', href: '#', icon: CalendarX },
-    { name: 'Empleado Directo...', href: '#', icon: Users },
-    { name: 'Solicitud de Proyectos', href: '#', icon: ClipboardList },
-    { name: 'Mis Proyectos', href: '#', icon: UserCheck },
-    { name: 'Mi Utilización', href: '#', icon: PieChartIcon },
-    { name: 'Mis tiempos de Proyecto', href: '#', icon: Timer },
-    { name: 'Mis Controles de Calidad', href: '#', icon: BadgeCheck },
-    { name: 'Proyectos de mis Equipos', href: '#', icon: BookUser },
-    { name: "SLA's de Mis Equipos", href: '#', icon: ShieldCheck },
-    { name: 'Utilización de Mis Equipos', href: '#', icon: GanttChartSquare },
-    { name: 'Tiempos de Proyectos de mis Equipos', href: '#', icon: Network },
-];
-
-const adminNav = [
-    { name: 'Servicios', href: '#', icon: Briefcase },
-    { name: 'Tareas de Gestión de Proyecto', href: '#', icon: ListChecks },
-    { name: 'Control de Calidad', href: '#', icon: SlidersHorizontal },
-    { name: 'Niveles de Competencia', href: '#', icon: Award },
-    { name: 'Empleados', href: '#', icon: Users },
-    { name: 'Compe de Empleado...', href: '#', icon: UserCheck },
-];
-
 
 const projectsInProgressData = [
   { name: 'Activo', value: 4, fill: 'hsl(var(--chart-1))' },
@@ -244,221 +190,143 @@ export default function ProjectsPage() {
   );
 
   return (
-    <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
-        <div className="flex flex-col gap-4">
-            <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
-                <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
-                    <Home className="h-5 w-5" />
-                    <span>Inicio</span>
-                </a>
-                <Collapsible>
-                  <CollapsibleTrigger className="flex items-center justify-between w-full gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted">
-                     <div className="flex items-center gap-3">
-                        <Clock className="h-5 w-5" />
-                        <span>Reciente</span>
-                    </div>
-                    <ChevronDown className="h-4 w-4" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    {/* Contenido Reciente aquí */}
-                  </CollapsibleContent>
-                </Collapsible>
-                 <Collapsible>
-                    <CollapsibleTrigger className="flex items-center justify-between w-full gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted">
-                       <div className="flex items-center gap-3">
-                          <Pin className="h-5 w-5" />
-                          <span>Fijado</span>
-                      </div>
-                      <ChevronDown className="h-4 w-4" />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      {/* Contenido Fijado aquí */}
-                    </CollapsibleContent>
-                </Collapsible>
-                <Collapsible defaultOpen={true}>
-                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Mi Proyecto
-                        <ChevronDown className="h-4 w-4" />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="pl-4">
-                        <div className="flex flex-col gap-1 mt-2">
-                        <Link href={'/projects'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'bg-primary/10 text-primary font-semibold' )}>
-                            <LayoutDashboard className="h-5 w-5" />
-                            <span>Dashboard</span>
-                        </Link>
-                        <Link href={'/projects/new-playbook'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
-                            <PlusCircle className="h-5 w-5" />
-                            <span>+ Proyecto</span>
-                        </Link>
-                        <Link href={'/projects/report'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
-                            <BarChart2 className="h-5 w-5" />
-                            <span>Reporte de Proyecto</span>
-                        </Link>
-                        {myProjectNav.map((item) => (
-                           <Link key={item.name} href={item.href || "#"} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted')}>
-                               <item.icon className="h-5 w-5" />
-                               <span>{item.name}</span>
-                           </Link>
-                       ))}
-                       </div>
-                    </CollapsibleContent>
-                </Collapsible>
-                <Collapsible defaultOpen={true}>
-                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Administración
-                        <ChevronDown className="h-4 w-4" />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="pl-4">
-                        <div className="flex flex-col gap-1 mt-2">
-                        {adminNav.map((item) => (
-                           <Link key={item.name} href={item.href || "#"} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted')}>
-                               <item.icon className="h-5 w-5" />
-                               <span>{item.name}</span>
-                           </Link>
-                       ))}
-                       </div>
-                    </CollapsibleContent>
-                </Collapsible>
-            </nav>
-        </div>
-        <div className="flex flex-col gap-8">
-            <div className="grid grid-cols-[320px_1fr] gap-8 items-start">
-                <div className="flex flex-col gap-8">
-                     <div className="flex items-center gap-2">
-                        <h1 className="text-xl font-semibold">Panel de Gestión de Proyectos</h1>
-                        <ChevronDown className="h-5 w-5 text-muted-foreground" />
-                    </div>
-                    <Card>
-                        <CardContent className="p-4 space-y-4">
-                            <div className="relative">
-                                <Input placeholder="Departamento" className="h-8" />
-                                <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            </div>
-                            <div className="relative">
-                                <Input placeholder="Gerente de Proyecto" className="h-8" />
-                                <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            </div>
-                            <div className="relative">
-                                <Input placeholder="Tipo de Proyecto" className="h-8" />
-                                <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <div className="grid grid-cols-2 gap-4">
-                        {kpiCards.map(kpi => (
-                            <Card key={kpi.title} className="text-center">
-                                <CardHeader className="p-4">
-                                <CardDescription className="text-xs">{kpi.title}</CardDescription>
-                                </CardHeader>
-                                <CardContent className="p-4 pt-0">
-                                    <p className="text-2xl font-bold">{kpi.value}</p>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
+    <>
+        <div className="grid grid-cols-[320px_1fr] gap-8 items-start">
+            <div className="flex flex-col gap-8">
+                 <div className="flex items-center gap-2">
+                    <h1 className="text-xl font-semibold">Panel de Gestión de Proyectos</h1>
+                    <ChevronDown className="h-5 w-5 text-muted-foreground" />
                 </div>
-                <div className="grid grid-cols-2 gap-8 items-start">
-                    <Card>
-                        <CardHeader className="flex flex-row justify-between items-center">
-                            <CardTitle className="text-base">Proyectos en Progreso</CardTitle>
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                                <RefreshCw className="h-4 w-4 cursor-pointer" />
-                                <X className="h-4 w-4 cursor-pointer" />
-                            </div>
-                        </CardHeader>
-                        <CardContent className="h-[300px]">
-                            <ChartContainer config={{}} className="w-full h-[300px]">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <PieChart>
-                                        <ChartTooltip 
-                                            content={<ChartTooltipContent 
-                                                formatter={(value) => <span>{value}</span>}
-                                                labelFormatter={(label, payload) => payload?.[0]?.name}
-                                            />} 
-                                        />
-                                        <Pie data={projectsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
-                                            {projectsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
-                                        </Pie>
-                                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">7</text>
-                                        <Legend 
-                                            iconType="square"
-                                            wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
-                                            formatter={(value) => <span className="text-muted-foreground">{value}</span>}
-                                        />
-                                    </PieChart>
-                                </ResponsiveContainer>
-                            </ChartContainer>
-                        </CardContent>
-                        <CardDescription className="text-center text-xs pb-4">
-                            Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
-                        </CardDescription>
-                    </Card>
-                    <Card>
-                        <CardHeader className="flex flex-row justify-between items-center">
-                            <CardTitle className="text-base">Proyectos por Mes</CardTitle>
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                                <RefreshCw className="h-4 w-4 cursor-pointer" />
-                                <X className="h-4 w-4 cursor-pointer" />
-                            </div>
-                        </CardHeader>
-                        <CardContent className="h-[300px]">
-                            <ChartContainer config={{}} className="w-full h-[300px]">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <RechartsBarChart data={projectsByMonthData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-                                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                                        <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                                        <YAxis 
-                                            tickFormatter={(value) => value.toLocaleString()} 
-                                            tick={{ fontSize: 12 }} 
-                                            label={{ value: 'Número de Proyectos', angle: -90, position: 'insideLeft', offset: -10, style: { fontSize: '12px' } }} 
-                                        />
-                                        <RechartsTooltip formatter={(value: number) => value.toLocaleString()} />
-                                        <Legend 
-                                            iconType="square" 
-                                            wrapperStyle={{ fontSize: '12px' }}
-                                            formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
-                                        />
-                                        <Bar dataKey="value" name="Proyectos" fill="hsl(var(--primary))" />
-                                    </RechartsBarChart>
-                                </ResponsiveContainer>
-                            </ChartContainer>
-                        </CardContent>
-                        <CardDescription className="text-center text-xs pb-4">
-                            Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
-                        </CardDescription>
-                    </Card>
+                <Card>
+                    <CardContent className="p-4 space-y-4">
+                        <div className="relative">
+                            <Input placeholder="Departamento" className="h-8" />
+                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        </div>
+                        <div className="relative">
+                            <Input placeholder="Gerente de Proyecto" className="h-8" />
+                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        </div>
+                        <div className="relative">
+                            <Input placeholder="Tipo de Proyecto" className="h-8" />
+                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        </div>
+                    </CardContent>
+                </Card>
+                <div className="grid grid-cols-2 gap-4">
+                    {kpiCards.map(kpi => (
+                        <Card key={kpi.title} className="text-center">
+                            <CardHeader className="p-4">
+                            <CardDescription className="text-xs">{kpi.title}</CardDescription>
+                            </CardHeader>
+                            <CardContent className="p-4 pt-0">
+                                <p className="text-2xl font-bold">{kpi.value}</p>
+                            </CardContent>
+                        </Card>
+                    ))}
                 </div>
             </div>
-            
-            <div className="flex items-center justify-between">
-                <div>
-                    <h1 className="text-3xl font-bold tracking-tight font-headline">
-                    Gestión de Proyectos
-                    </h1>
-                    <p className="text-muted-foreground">
-                    Visualice y gestione sus proyectos legales.
-                    </p>
-                </div>
-                <div className="flex items-center gap-1 rounded-md bg-muted p-1">
-                    <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
-                        <LayoutGrid className="h-4 w-4 mr-2" />
-                        Kanban
-                    </Button>
-                    <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
-                        <List className="h-4 w-4 mr-2" />
-                        Lista
-                    </Button>
-                    <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
-                        <TableIcon className="h-4 w-4 mr-2" />
-                        Tabla
-                    </Button>
-                </div>
+            <div className="grid grid-cols-2 gap-8 items-start">
+                <Card>
+                    <CardHeader className="flex flex-row justify-between items-center">
+                        <CardTitle className="text-base">Proyectos en Progreso</CardTitle>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                            <RefreshCw className="h-4 w-4 cursor-pointer" />
+                            <X className="h-4 w-4 cursor-pointer" />
+                        </div>
+                    </CardHeader>
+                    <CardContent className="h-[300px]">
+                        <ChartContainer config={{}} className="w-full h-[300px]">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart>
+                                    <ChartTooltip 
+                                        content={<ChartTooltipContent 
+                                            formatter={(value) => <span>{value}</span>}
+                                            labelFormatter={(label, payload) => payload?.[0]?.name}
+                                        />} 
+                                    />
+                                    <Pie data={projectsInProgressData} dataKey="value" nameKey="name" innerRadius="60%" outerRadius="100%">
+                                        {projectsInProgressData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.fill} />)}
+                                    </Pie>
+                                    <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold fill-foreground">7</text>
+                                    <Legend 
+                                        iconType="square"
+                                        wrapperStyle={{ fontSize: '12px', paddingLeft: '20px' }}
+                                        formatter={(value) => <span className="text-muted-foreground">{value}</span>}
+                                    />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </ChartContainer>
+                    </CardContent>
+                    <CardDescription className="text-center text-xs pb-4">
+                        Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
+                    </CardDescription>
+                </Card>
+                <Card>
+                    <CardHeader className="flex flex-row justify-between items-center">
+                        <CardTitle className="text-base">Proyectos por Mes</CardTitle>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                            <RefreshCw className="h-4 w-4 cursor-pointer" />
+                            <X className="h-4 w-4 cursor-pointer" />
+                        </div>
+                    </CardHeader>
+                    <CardContent className="h-[300px]">
+                        <ChartContainer config={{}} className="w-full h-[300px]">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <RechartsBarChart data={projectsByMonthData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                    <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+                                    <YAxis 
+                                        tickFormatter={(value) => value.toLocaleString()} 
+                                        tick={{ fontSize: 12 }} 
+                                        label={{ value: 'Número de Proyectos', angle: -90, position: 'insideLeft', offset: -10, style: { fontSize: '12px' } }} 
+                                    />
+                                    <RechartsTooltip formatter={(value: number) => value.toLocaleString()} />
+                                    <Legend 
+                                        iconType="square" 
+                                        wrapperStyle={{ fontSize: '12px' }}
+                                        formatter={(value, entry) => <span className="text-muted-foreground">{value}</span>}
+                                    />
+                                    <Bar dataKey="value" name="Proyectos" fill="hsl(var(--primary))" />
+                                </RechartsBarChart>
+                            </ResponsiveContainer>
+                        </ChartContainer>
+                    </CardContent>
+                    <CardDescription className="text-center text-xs pb-4">
+                        Mostrar/Ocultar Leyendas | Haga clic en cualquier segmento para desglosar
+                    </CardDescription>
+                </Card>
             </div>
-            
-            {view === 'kanban' && <KanbanView />}
-            {view === 'list' && <ListView />}
-            {view === 'table' && <TableView />}
         </div>
-    </div>
+        
+        <div className="flex items-center justify-between">
+            <div>
+                <h1 className="text-3xl font-bold tracking-tight font-headline">
+                Gestión de Proyectos
+                </h1>
+                <p className="text-muted-foreground">
+                Visualice y gestione sus proyectos legales.
+                </p>
+            </div>
+            <div className="flex items-center gap-1 rounded-md bg-muted p-1">
+                <Button variant="ghost" size="sm" className={cn(view === 'kanban' && 'bg-background')} onClick={() => setView('kanban')}>
+                    <LayoutGrid className="h-4 w-4 mr-2" />
+                    Kanban
+                </Button>
+                <Button variant="ghost" size="sm" className={cn(view === 'list' && 'bg-background')} onClick={() => setView('list')}>
+                    <List className="h-4 w-4 mr-2" />
+                    Lista
+                </Button>
+                <Button variant="ghost" size="sm" className={cn(view === 'table' && 'bg-background')} onClick={() => setView('table')}>
+                    <TableIcon className="h-4 w-4 mr-2" />
+                    Tabla
+                </Button>
+            </div>
+        </div>
+        
+        {view === 'kanban' && <KanbanView />}
+        {view === 'list' && <ListView />}
+        {view === 'table' && <TableView />}
+    </>
   );
 }
