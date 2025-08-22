@@ -94,7 +94,7 @@ export default function ComunicacionesLayout({
                 </Link>
                  <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Comunicaciones
+                        Portal de Clientes
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
