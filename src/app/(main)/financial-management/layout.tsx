@@ -8,7 +8,9 @@ import {
     ChevronDown,
     LayoutDashboard,
     ListTodo,
-    Calendar
+    Calendar,
+    Receipt,
+    MoreHorizontal,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,8 +18,10 @@ import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
 
-const myWorkNav = [
-  { name: 'Dashboard', href: '/financial-management', icon: LayoutDashboard },
+const financialNav = [
+  { name: 'Dashboard', href: '/financial-management', icon: LayoutDashboard, number: '01' },
+  { name: 'Facturación', href: '#', icon: Receipt, number: '02' },
+  { name: 'Otros', href: '#', icon: MoreHorizontal, number: '03' },
 ];
 
 
@@ -76,17 +80,17 @@ export default function FinancialManagementLayout({
                 </Link>
                 <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Mi Trabajo
+                        Finanzas Legales
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                         <div className="flex flex-col gap-1 mt-2">
-                        {myWorkNav.map((item, index) => (
+                        {financialNav.map((item) => (
                             <Link key={item.name} href={item.href || "#"} className={cn(
                                 'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
                                 pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
                             )}>
-                                <span className="text-xs w-6 text-right">{String(index+1).padStart(2, '0')}</span>
+                                <span className="text-xs w-6 text-right">{item.number}</span>
                                 <item.icon className="h-5 w-5" />
                                 <span>{item.name}</span>
                             </Link>
