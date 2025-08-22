@@ -32,7 +32,7 @@ import React from "react";
 const planNav = [
     { name: 'Panel Diario', href: '#', icon: LayoutDashboard },
     { name: 'Plan de una página', href: '/legal-strategy', icon: Map },
-    { name: 'Métricas Continuas', href: '#', icon: Activity },
+    { name: 'Datos y Métricas Legales', href: '#', icon: BarChart2 },
 ];
 
 const executeNav = [
