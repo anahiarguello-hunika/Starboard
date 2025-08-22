@@ -70,7 +70,6 @@ const navItems = [
   { href: "/financial-management", icon: DollarSign, label: "Gestión Financiera" },
   { href: "/entities", icon: Building2, label: "Gestión de Sociedades"},
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial"},
-  { href: "/trademarks", icon: Award, label: "Marcas y Patentes"},
   { href: "/legal-audits", icon: BookOpenCheck, label: "Auditorías Legales" },
   { href: "/background-check", icon: UserSearch, label: "Background check", external: true },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
