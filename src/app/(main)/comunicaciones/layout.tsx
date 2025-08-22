@@ -9,6 +9,15 @@ import {
     LayoutDashboard,
     ListTodo,
     Calendar,
+    FileText,
+    Briefcase,
+    Folder,
+    DollarSign,
+    Building2,
+    Landmark,
+    BookOpenCheck,
+    UserSearch,
+    Ticket
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -18,6 +27,15 @@ import React from "react";
 
 const clientNav = [
   { name: 'Dashboard', href: '/comunicaciones', icon: LayoutDashboard },
+  { name: 'Contratos Activados®', href: '/contracts', icon: FileText },
+  { name: 'Proyectos Activados®', href: '/projects', icon: Briefcase },
+  { name: 'Gestión de Documentos', href: '/documents', icon: Folder },
+  { name: 'Gestión Financiera', href: '/financial-management', icon: DollarSign },
+  { name: 'Gestión de Sociedades', href: '/entities', icon: Building2 },
+  { name: 'Gestión Patrimonial', href: '/wealth-management', icon: Landmark },
+  { name: 'Auditorías Legales', href: '/legal-audits', icon: BookOpenCheck },
+  { name: 'Background Check', href: '/background-check', icon: UserSearch },
+  { name: 'Solicitud de Servicio', href: '/service-request', icon: Ticket },
 ];
 
 
