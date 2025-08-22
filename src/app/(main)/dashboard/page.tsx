@@ -62,10 +62,14 @@ const projectStatusData = [
   { name: 'Completados', count: 3, fill: 'hsl(var(--border))' },
 ];
 
-const hoursData = [
-  { name: 'Consumidas', value: 5, fill: 'hsl(var(--chart-2))' },
-  { name: 'Restantes', value: 3, fill: 'hsl(var(--border))' },
+const subscriptionsData = [
+  { name: 'Fractional Law®', value: 10, fill: 'hsl(var(--chart-1))' },
+  { name: 'Portal de Clientes', value: 5, fill: 'hsl(var(--chart-2))' },
+  { name: 'Nuevas', value: 3, fill: 'hsl(var(--chart-3))' },
+  { name: 'Renovadas', value: 8, fill: 'hsl(var(--chart-4))' },
 ];
+const totalSubscriptions = subscriptionsData.reduce((sum, item) => sum + item.value, 0);
+
 
 const totalProjects = projectStatusData.reduce((sum, item) => sum + item.count, 0);
 const inProgressPercentage = Math.round((projectStatusData.find(p => p.name === 'En Progreso')!.count / totalProjects) * 100);
@@ -390,14 +394,14 @@ export default function DashboardPage() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Clock className="text-muted-foreground" />
-                        Informe de Suscripción
+                        Informe de Suscripciones
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="flex flex-col justify-center gap-2">
-                            {hoursData.map(item => (
-                                <div key={item.name} className="flex items-center justify-between text-sm">
+                        <div className="flex flex-col justify-center gap-2 text-sm">
+                            {subscriptionsData.map(item => (
+                                <div key={item.name} className="flex items-center justify-between">
                                     <div className="flex items-center gap-2">
                                         <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
                                         <span className="text-muted-foreground">{item.name}</span>
@@ -405,20 +409,22 @@ export default function DashboardPage() {
                                     <span className="font-semibold">{item.value}</span>
                                 </div>
                             ))}
+                            <div className="text-muted-foreground mt-2">Duración mes: 12 meses</div>
+                            <div className="text-muted-foreground">Canceladas: 1</div>
                         </div>
                         <div className="flex items-center justify-center">
                             <ChartContainer config={{}} className="w-full h-[120px]">
                             <PieChart>
                                 <ChartTooltip content={<ChartTooltipContent hideLabel />} />
                                 <Pie
-                                    data={hoursData}
+                                    data={subscriptionsData}
                                     dataKey="value"
                                     nameKey="name"
                                     innerRadius={35}
                                     outerRadius={50}
                                     strokeWidth={2}
                                 >
-                                {hoursData.map((entry, index) => (
+                                {subscriptionsData.map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={entry.fill} />
                                 ))}
                                 </Pie>
@@ -430,7 +436,7 @@ export default function DashboardPage() {
                                     className="fill-foreground text-center"
                                 >
                                     <tspan x="50%" y="52%" className="text-xl font-bold">
-                                    8
+                                    {totalSubscriptions}
                                     </tspan>
                                 </text>
                             </PieChart>
