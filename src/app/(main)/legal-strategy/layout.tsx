@@ -23,7 +23,8 @@ import {
     Home,
     Clock,
     Pin,
-    ListTodo
+    ListTodo,
+    BookOpenCheck
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -35,6 +36,7 @@ const planNav = [
     { name: 'Panel Diario', href: '#', icon: LayoutDashboard },
     { name: 'Plan de una página', href: '/legal-strategy', icon: Map },
     { name: 'Datos y Métricas Legales', href: '#', icon: BarChart2 },
+    { name: 'Auditorías Legales', href: '/legal-audits', icon: BookOpenCheck },
 ];
 
 const executeNav = [
@@ -123,7 +125,7 @@ export default function LegalStrategyLayout({
                         {planNav.map((item) => (
                             <Link key={item.name} href={item.href || "#"} className={cn(
                                 'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
-                                pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                                pathname === item.href || (pathname.startsWith('/legal-audits') && item.href === '/legal-audits') ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
                             )}>
                                 <item.icon className="h-5 w-5" />
                                 <span>{item.name}</span>
