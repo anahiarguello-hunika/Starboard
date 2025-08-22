@@ -31,6 +31,7 @@ import {
   Clock,
   Plus,
   ChevronDown,
+  Settings,
 } from "lucide-react";
 
 import {
@@ -72,6 +73,7 @@ const navItems = [
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/comunicaciones", icon: BookUser, label: "Comunicaciones" },
   { href: "/summarize", icon: Sparkles, label: "IA" },
+  { href: "/settings", icon: Settings, label: "Configuración" },
 ];
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
