@@ -127,7 +127,9 @@ export default function DashboardPage() {
               <DropdownMenuItem asChild>
                 <Link href="/contracts/new/service-agreement">1. Contrato de Prestación de Servicios (Cliente)</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>2. Contrato de Arrendamiento</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/contracts/new/lease-agreement">2. Contrato de Arrendamiento</Link>
+              </DropdownMenuItem>
               <DropdownMenuItem>3. Contrato de Subarrendamiento</DropdownMenuItem>
               <DropdownMenuItem>
                 4. Contrato de Prestación de Servicio (Prestador)
@@ -441,6 +443,7 @@ export default function DashboardPage() {
   );
 
     
+
 
 
 
