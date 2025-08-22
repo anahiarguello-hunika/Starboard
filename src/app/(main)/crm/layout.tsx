@@ -7,7 +7,8 @@ import {
     Pin,
     ChevronDown,
     ListTodo,
-    Calendar
+    Calendar,
+    Calculator,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -68,6 +69,13 @@ export default function CrmLayout({
                 )}>
                     <Calendar className="h-5 w-5" />
                     <span>Calendario</span>
+                </Link>
+                <Link href="/cotizador" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/cotizador') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <Calculator className="h-5 w-5" />
+                    <span>Cotizador</span>
                 </Link>
             </nav>
         </div>
