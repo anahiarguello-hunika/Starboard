@@ -14,6 +14,8 @@ import {
   Calendar as CalendarIcon,
   Clock,
   DollarSign,
+  User,
+  Star,
 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -74,12 +76,17 @@ const totalSubscriptions = subscriptionsData.reduce((sum, item) => sum + item.va
 const totalProjects = projectStatusData.reduce((sum, item) => sum + item.count, 0);
 const inProgressPercentage = Math.round((projectStatusData.find(p => p.name === 'En Progreso')!.count / totalProjects) * 100);
 
-const keyMetrics = [
-  { name: 'Satisfacción', value: '80%', trend: 'up' },
-  { name: 'Capacidad de Respuesta', value: '87%', trend: 'down' },
-  { name: 'Reducción de Riesgo', value: '75%', trend: 'down' },
-  { name: 'Eficiencia de Costos', value: '33%', trend: 'up' },
-];
+const NpsScoreIcon = ({ type, colorClass }: { type: 'detractor' | 'passive' | 'promoter', colorClass: string }) => {
+  if (type === 'promoter') {
+    return <svg className={`w-6 h-6 ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM8 12h8m-4 4V8m4-4l-4 4-4-4"/></svg>; // Placeholder
+  }
+  if (type === 'passive') {
+    return <svg className={`w-6 h-6 ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM8 12h8"/></svg>;
+  }
+  // detractor
+  return <svg className={`w-6 h-6 ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM8 12h8m-4 4V8m4 4l-4-4-4 4"/></svg>; // Placeholder
+};
+
 
 export default function DashboardPage() {
   const [date, setDate] = React.useState<Date | undefined>(undefined);
@@ -177,23 +184,25 @@ export default function DashboardPage() {
                 </Card>
                 <Card>
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold">Métricas Legales</CardTitle>
+                        <CardTitle className="text-lg font-semibold">NPS Legal: 8</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <ul className="space-y-4">
-                            {keyMetrics.map(metric => (
-                                <li key={metric.name} className="flex justify-between items-center text-sm">
-                                    <span>{metric.name}</span>
-                                    <div className="flex items-center gap-2">
-                                        <span className="font-semibold">{metric.value}</span>
-                                        {metric.trend === 'up' ?
-                                            <ArrowUp className="h-4 w-4 text-green-500" /> :
-                                            <ArrowDown className="h-4 w-4 text-red-500" />
-                                        }
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                        <div className="flex flex-col items-center">
+                            <div className="flex w-full justify-between items-end mb-2">
+                                {Array.from({ length: 7 }).map((_, i) => <NpsScoreIcon key={i} type="detractor" colorClass="text-red-500" />)}
+                                {Array.from({ length: 2 }).map((_, i) => <NpsScoreIcon key={i} type="passive" colorClass="text-yellow-500" />)}
+                                {Array.from({ length: 2 }).map((_, i) => <NpsScoreIcon key={i} type="promoter" colorClass="text-green-500" />)}
+                            </div>
+                            <div className="w-full h-2 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 rounded-full" />
+                            <div className="flex w-full justify-between mt-1 text-xs font-bold">
+                                {Array.from({ length: 11 }).map((_, i) => <span key={i}>{i}</span>)}
+                            </div>
+                             <div className="flex w-full justify-between mt-1 text-xs text-muted-foreground">
+                                <span className="flex-1 text-center text-red-500">Detractores</span>
+                                <span className="flex-1 text-center text-yellow-500">Pasivos</span>
+                                 <span className="flex-1 text-center text-green-500">Promotores</span>
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
              </div>
@@ -454,4 +463,5 @@ export default function DashboardPage() {
       </div>
     </div>
   );
-}
+
+    
