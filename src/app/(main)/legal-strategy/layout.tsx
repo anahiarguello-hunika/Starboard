@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import {
@@ -21,7 +22,8 @@ import {
     ChevronDown,
     Home,
     Clock,
-    Pin
+    Pin,
+    ListTodo
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -95,6 +97,22 @@ export default function LegalStrategyLayout({
                       {/* Contenido Fijado aquí */}
                     </CollapsibleContent>
                 </Collapsible>
+                
+                <Link href="/tasks" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/tasks') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <ListTodo className="h-5 w-5" />
+                    <span>Tareas</span>
+                </Link>
+                <Link href="/calendar" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/calendar') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <Calendar className="h-5 w-5" />
+                    <span>Calendario</span>
+                </Link>
+
                 <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
                         Planeación
