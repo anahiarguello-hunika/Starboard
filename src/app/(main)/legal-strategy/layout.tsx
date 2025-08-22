@@ -33,7 +33,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import React from "react";
 
 const planNav = [
-    { name: 'Panel Diario', href: '#', icon: LayoutDashboard },
+    { name: 'Dashboard', href: '#', icon: LayoutDashboard },
     { name: 'Plan de una página', href: '/legal-strategy', icon: Map },
     { name: 'Auditorías Legales', href: '/legal-audits', icon: BookOpenCheck },
 ];
