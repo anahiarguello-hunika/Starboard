@@ -7,6 +7,8 @@ import {
     Pin,
     ChevronDown,
     LayoutDashboard,
+    ListTodo,
+    Calendar,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -14,8 +16,8 @@ import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
 
-const myWorkNav = [
-  { name: 'Dashboard', href: '#', icon: LayoutDashboard },
+const clientNav = [
+  { name: 'Dashboard', href: '/comunicaciones', icon: LayoutDashboard },
 ];
 
 
@@ -58,14 +60,28 @@ export default function ComunicacionesLayout({
                       {/* Contenido Fijado aquí */}
                     </CollapsibleContent>
                 </Collapsible>
+                <Link href="/tasks" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/tasks') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <ListTodo className="h-5 w-5" />
+                    <span>Tareas</span>
+                </Link>
+                <Link href="/calendar" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/calendar') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <Calendar className="h-5 w-5" />
+                    <span>Calendario</span>
+                </Link>
                  <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                        Mi Trabajo
+                        Comunicaciones
                         <ChevronDown className="h-4 w-4" />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                         <div className="flex flex-col gap-1 mt-2">
-                        {myWorkNav.map((item) => (
+                        {clientNav.map((item) => (
                             <Link key={item.name} href={item.href || "#"} className={cn(
                                 'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
                                 pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
