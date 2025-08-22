@@ -179,29 +179,6 @@ export default function DashboardPage() {
                      </div>
                   </CardContent>
                 </Card>
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="text-lg font-semibold">NPS Legal: 8</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="flex flex-col items-center">
-                            <div className="flex w-full justify-between items-end mb-2">
-                                {Array.from({ length: 7 }).map((_, i) => <NpsScoreIcon key={i} type="detractor" colorClass="text-red-500" />)}
-                                {Array.from({ length: 2 }).map((_, i) => <NpsScoreIcon key={i} type="passive" colorClass="text-yellow-500" />)}
-                                {Array.from({ length: 2 }).map((_, i) => <NpsScoreIcon key={i} type="promoter" colorClass="text-green-500" />)}
-                            </div>
-                            <div className="w-full h-2 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 rounded-full" />
-                            <div className="flex w-full justify-between mt-1 text-xs font-bold">
-                                {Array.from({ length: 11 }).map((_, i) => <span key={i}>{i}</span>)}
-                            </div>
-                             <div className="flex w-full justify-between mt-1 text-xs text-muted-foreground">
-                                <span className="flex-1 text-center text-red-500">Detractores</span>
-                                <span className="flex-1 text-center text-yellow-500">Pasivos</span>
-                                 <span className="flex-1 text-center text-green-500">Promotores</span>
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
              </div>
             
             <div className="flex flex-col gap-6">
@@ -462,3 +439,4 @@ export default function DashboardPage() {
   );
 
     
+
