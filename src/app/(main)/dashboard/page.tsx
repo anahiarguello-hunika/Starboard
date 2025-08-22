@@ -69,6 +69,7 @@ const subscriptionsData = [
   { name: 'Portal de Clientes', value: 5, fill: 'hsl(var(--chart-2))' },
   { name: 'Nuevas', value: 3, fill: 'hsl(var(--chart-3))' },
   { name: 'Renovadas', value: 8, fill: 'hsl(var(--chart-4))' },
+  { name: 'Canceladas', value: 1, fill: 'hsl(var(--destructive))' },
 ];
 const totalSubscriptions = subscriptionsData.reduce((sum, item) => sum + item.value, 0);
 
@@ -199,7 +200,7 @@ export default function DashboardPage() {
                                     </div>
                                 ))}
                                 <div className="text-muted-foreground mt-2">Duración mes: 12 meses</div>
-                                <div className="text-muted-foreground">Canceladas: 1</div>
+                                <div className="text-muted-foreground">Churn rate: 8%</div>
                             </div>
                             <div className="flex items-center justify-center">
                                 <ChartContainer config={{}} className="w-full h-[120px]">
@@ -439,5 +440,6 @@ export default function DashboardPage() {
   );
 
     
+
 
 
