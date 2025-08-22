@@ -112,8 +112,8 @@ export default function ComunicacionesPage() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem>
-                1. Contrato de Prestación de Servicios (Cliente)
+              <DropdownMenuItem asChild>
+                <Link href="/contracts/new/service-agreement">1. Contrato de Prestación de Servicios (Cliente)</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>2. Contrato de Arrendamiento</DropdownMenuItem>
               <DropdownMenuItem>3. Contrato de Subarrendamiento</DropdownMenuItem>
