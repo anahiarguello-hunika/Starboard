@@ -179,6 +179,61 @@ export default function DashboardPage() {
                      </div>
                   </CardContent>
                 </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                            <Clock className="text-muted-foreground" />
+                            Informe de Suscripciones
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="flex flex-col justify-center gap-2 text-sm">
+                                {subscriptionsData.map(item => (
+                                    <div key={item.name} className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
+                                            <span className="text-muted-foreground">{item.name}</span>
+                                        </div>
+                                        <span className="font-semibold">{item.value}</span>
+                                    </div>
+                                ))}
+                                <div className="text-muted-foreground mt-2">Duración mes: 12 meses</div>
+                                <div className="text-muted-foreground">Canceladas: 1</div>
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <ChartContainer config={{}} className="w-full h-[120px]">
+                                <PieChart>
+                                    <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                                    <Pie
+                                        data={subscriptionsData}
+                                        dataKey="value"
+                                        nameKey="name"
+                                        innerRadius={35}
+                                        outerRadius={50}
+                                        strokeWidth={2}
+                                    >
+                                    {subscriptionsData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                                    ))}
+                                    </Pie>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        textAnchor="middle"
+                                        dominantBaseline="middle"
+                                        className="fill-foreground text-center"
+                                    >
+                                        <tspan x="50%" y="52%" className="text-xl font-bold">
+                                        {totalSubscriptions}
+                                        </tspan>
+                                    </text>
+                                </PieChart>
+                                </ChartContainer>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
              </div>
             
             <div className="flex flex-col gap-6">
@@ -378,65 +433,11 @@ export default function DashboardPage() {
                     </ul>
                 </CardContent>
             </Card>
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Clock className="text-muted-foreground" />
-                        Informe de Suscripciones
-                    </CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="flex flex-col justify-center gap-2 text-sm">
-                            {subscriptionsData.map(item => (
-                                <div key={item.name} className="flex items-center justify-between">
-                                    <div className="flex items-center gap-2">
-                                        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
-                                        <span className="text-muted-foreground">{item.name}</span>
-                                    </div>
-                                    <span className="font-semibold">{item.value}</span>
-                                </div>
-                            ))}
-                            <div className="text-muted-foreground mt-2">Duración mes: 12 meses</div>
-                            <div className="text-muted-foreground">Canceladas: 1</div>
-                        </div>
-                        <div className="flex items-center justify-center">
-                            <ChartContainer config={{}} className="w-full h-[120px]">
-                            <PieChart>
-                                <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-                                <Pie
-                                    data={subscriptionsData}
-                                    dataKey="value"
-                                    nameKey="name"
-                                    innerRadius={35}
-                                    outerRadius={50}
-                                    strokeWidth={2}
-                                >
-                                {subscriptionsData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={entry.fill} />
-                                ))}
-                                </Pie>
-                                <text
-                                    x="50%"
-                                    y="50%"
-                                    textAnchor="middle"
-                                    dominantBaseline="middle"
-                                    className="fill-foreground text-center"
-                                >
-                                    <tspan x="50%" y="52%" className="text-xl font-bold">
-                                    {totalSubscriptions}
-                                    </tspan>
-                                </text>
-                            </PieChart>
-                            </ChartContainer>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
          </div>
       </div>
     </div>
   );
 
     
+
 
