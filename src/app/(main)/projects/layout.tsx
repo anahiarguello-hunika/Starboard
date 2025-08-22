@@ -127,7 +127,7 @@ export default function ProjectsLayout({
                         </Link>
                         <Link href={'/projects/report'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
                             <BarChart2 className="h-5 w-5" />
-                            <span>Reporte de Proyecto</span>
+                            <span>Informe de Proyecto</span>
                         </Link>
                         {myProjectNav.map((item) => (
                            <Link key={item.name} href={item.href || "#"} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted')}>
