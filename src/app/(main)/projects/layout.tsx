@@ -117,7 +117,7 @@ export default function ProjectsLayout({
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                         <div className="flex flex-col gap-1 mt-2">
-                        <Link href={'/projects'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'bg-primary/10 text-primary font-semibold' )}>
+                        <Link href={'/projects'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', pathname === '/projects' || pathname.startsWith('/projects/general') || pathname.startsWith('/projects/ma-process') || pathname.startsWith('/projects/six-sigma-legal') || pathname.startsWith('/projects/real-estate') ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted' )}>
                             <LayoutDashboard className="h-5 w-5" />
                             <span>Dashboard</span>
                         </Link>
@@ -125,9 +125,13 @@ export default function ProjectsLayout({
                             <PlusCircle className="h-5 w-5" />
                             <span>+ Proyecto</span>
                         </Link>
-                        <Link href={'/projects/report'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted' )}>
+                        <Link href={'/projects/report'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', pathname.startsWith('/projects/report') ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted' )}>
                             <BarChart2 className="h-5 w-5" />
                             <span>Informe de Proyecto</span>
+                        </Link>
+                        <Link href={'/projects/analysis'} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', pathname.startsWith('/projects/analysis') ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted' )}>
+                            <BarChart2 className="h-5 w-5" />
+                            <span>Análisis de Proyectos</span>
                         </Link>
                         {myProjectNav.map((item) => (
                            <Link key={item.name} href={item.href || "#"} className={cn('flex items-center gap-3 px-3 py-2 rounded-lg transition-colors', 'hover:bg-muted')}>
