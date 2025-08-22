@@ -167,19 +167,16 @@ export default function DashboardPage() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <ShieldCheck className="text-accent" /> Cumplimiento Legal Total
+                       NPS Legal: 70%
                     </CardTitle>
-                    <CardDescription>
-                      Estado general de cumplimiento de la organización.
-                    </CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
-                        <span className="text-5xl font-bold text-accent">92%</span>
-                        <span className="text-sm text-green-600 font-semibold">+2% este mes</span>
-                    </div>
-                    <Progress value={92} aria-label="92% de cumplimiento" />
-                    <p className="text-xs text-muted-foreground">Todos los departamentos reportan parámetros normales.</p>
+                     <Progress value={70} aria-label="70% de NPS" />
+                     <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>Detractores: 20</span>
+                        <span>Pasivos: 10</span>
+                        <span>Promotores: 70</span>
+                     </div>
                   </CardContent>
                 </Card>
                 <Card>
