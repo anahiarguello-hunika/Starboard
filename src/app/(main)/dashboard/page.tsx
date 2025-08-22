@@ -344,22 +344,27 @@ export default function DashboardPage() {
          </div>
          <div className="lg:col-span-1 flex flex-col gap-6">
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  $ ROI Legal®
-                </CardTitle>
-                <CardDescription>
-                  Retorno de la inversión en servicios legales.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                    <span className="text-5xl font-bold text-accent">95%</span>
-                    <span className="text-sm text-green-600 font-semibold">+5% este trimestre</span>
-                </div>
-                <Progress value={95} aria-label="95% de ROI" />
-                <p className="text-xs text-muted-foreground">El ROI se calcula en base a la reducción de riesgos y la eficiencia.</p>
-              </CardContent>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        $ ROI Legal®
+                    </CardTitle>
+                    <CardDescription>
+                        Retorno de la inversión en servicios legales.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-4">
+                    <div className="flex justify-between items-baseline">
+                        <div>
+                            <p className="text-sm text-muted-foreground">ROI por Suscripción</p>
+                            <span className="text-4xl font-bold text-accent">95%</span>
+                        </div>
+                        <div>
+                            <p className="text-sm text-muted-foreground">ROI por Cliente</p>
+                            <span className="text-4xl font-bold text-accent">75%</span>
+                        </div>
+                    </div>
+                    <p className="text-xs text-muted-foreground pt-4">El ROI se calcula en base al retorno de inversión por cada suscripción y por cada Cliente.</p>
+                </CardContent>
             </Card>
              <Card>
                 <CardHeader>
