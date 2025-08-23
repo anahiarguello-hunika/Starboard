@@ -93,6 +93,53 @@ export default function LeaseAgreementPage() {
                         <InputField label="CURP Fiador y Obligado Solidario" tooltip="CURP del fiador y obligado solidario." />
                     </CardContent>
                 </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-base">Sección 3</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <InputField label="Cantidad Renta En Número" tooltip="Monto de la renta en número." />
+                        <InputField label="Centavos Renta En Número" tooltip="Centavos de la renta en número." />
+                        <InputField label="Cantidad Renta En Letra" tooltip="Monto de la renta en letra." />
+                        <InputField label="Día Del Mes Pago Renta En Número" tooltip="Día del mes para el pago de la renta en número." />
+                        <InputField label="Día Del Mes Pago Renta En Letra" tooltip="Día del mes para el pago de la renta en letra." />
+                        <InputField label="Fecha Inicio de Pago Renta" tooltip="Fecha de inicio para el pago de la renta." />
+                        <InputField label="Número Cuenta Bancaria Arrendador" tooltip="Número de cuenta bancaria del arrendador." />
+                        <InputField label="CLABE Arrendador" tooltip="CLABE interbancaria del arrendador." />
+                        <InputField label="Nombre Banco Arrendador" tooltip="Nombre del banco del arrendador." />
+                        <InputField label="Correo Electrónico Arrendatario Para Facturas" tooltip="Correo electrónico del arrendatario para facturas." />
+                        <InputField label="Cantidad Penalización Por Falta De Pago En Número" tooltip="Monto de la penalización por falta de pago en número." />
+                        <InputField label="Centavos Penalización Por Falta De Pago En Número" tooltip="Centavos de la penalización por falta de pago en número." />
+                        <InputField label="Cantidad Penalización Por Falta De Pago En Letra" tooltip="Monto de la penalización por falta de pago en letra." />
+                        <InputField label="Vigencia Arrendamiento En Número" tooltip="Vigencia del arrendamiento en número." />
+                        <InputField label="Vigencia Arrendamiento En Letra" tooltip="Vigencia del arrendamiento en letra." />
+                        <InputField label="Duración Arrendamiento Días/Meses/Años" tooltip="Duración del arrendamiento en días, meses o años." />
+                        <InputField label="Fecha Inicio Contrato" tooltip="Fecha de inicio del contrato." />
+                        <InputField label="Fecha Terminación Contrato" tooltip="Fecha de terminación del contrato." />
+                        <InputField label="Número De Meses Renta Para Depósito En Garantía" tooltip="Número de meses de renta para depósito en garantía." />
+                        <InputField label="Cantidad Depósito En Garantía En Número" tooltip="Cantidad del depósito en garantía en número." />
+                        <InputField label="Centavos Depósito En Garantía En Número" tooltip="Centavos del depósito en garantía en número." />
+                        <InputField label="Cantidad Depósito En Garantía En Letra" tooltip="Cantidad del depósito en garantía en letra." />
+                        <InputField label="Domicilio Para Notificaciones Arrendador" tooltip="Domicilio para notificaciones del arrendador." />
+                        <InputField label="Nombre Contacto Para Notificaciones Arrendador" tooltip="Nombre del contacto para notificaciones del arrendador." />
+                        <InputField label="Correo Electrónico Para Notificaciones Arrendador" tooltip="Correo electrónico para notificaciones del arrendador." />
+                        <InputField label="Teléfono Para Notificaciones Arrendador" tooltip="Teléfono para notificaciones del arrendador." />
+                        <InputField label="Domicilio Para Notificaciones Arrendatario" tooltip="Domicilio para notificaciones del arrendatario." />
+                        <InputField label="Nombre Contacto Para Notificaciones Arrendatario" tooltip="Nombre del contacto para notificaciones del arrendatario." />
+                        <InputField label="Correo Electrónico Para Notificaciones Arrendatario" tooltip="Correo electrónico para notificaciones del arrendatario." />
+                        <InputField label="Teléfono Para Notificaciones Arrendatario" tooltip="Teléfono para notificaciones del arrendatario." />
+                        <InputField label="Nombres De Representantes Revocables" tooltip="Nombres de los representantes revocables." />
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-base">Sección 4</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <InputField label="Lugar De Firma" tooltip="Lugar donde se firma el contrato." />
+                        <InputField label="Fecha De Firma" tooltip="Fecha de firma del contrato." />
+                    </CardContent>
+                </Card>
                  <div className="flex justify-end">
                     <Button>Generar Contrato</Button>
                 </div>
