@@ -41,7 +41,7 @@ const documentsNav = [
     { 
         name: 'Información Financiera', 
         icon: DollarSign, 
-        href: "#",
+        href: "/documents/financial-information",
     },
     { 
         name: 'Laboral', 
