@@ -56,7 +56,7 @@ const documentsNav = [
     { 
         name: 'Activos', 
         icon: Package, 
-        href: "#",
+        href: "/documents/assets",
     },
     { name: 'Contratos', 
         icon: FileText, 
