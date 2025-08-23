@@ -2,7 +2,7 @@
 
 'use client';
 
-import { Folder, ChevronRight, FileUp, Link as LinkIcon, Download, Search, LayoutGrid, List } from "lucide-react";
+import { Folder, ChevronRight, FileUp, Link as LinkIcon, Download, Search, LayoutGrid, List, MoreVertical, Pencil, Trash2, Flag, Move, Copy, FileImage, Lock, Share2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import React from "react";
@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Checkbox } from "@/components/ui/checkbox";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const corporateFolders = [
     { name: '01 Escritura Constitutiva', size: '2.5 MB', modified: '2023-10-26' },
@@ -59,7 +60,24 @@ export default function CorporateInformationPage() {
                         <TableCell className="text-muted-foreground">{folder.size}</TableCell>
                         <TableCell className="text-muted-foreground">{folder.modified}</TableCell>
                         <TableCell>
-                            {/* Placeholder for actions */}
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                                <Button variant="ghost" size="icon" className="h-8 w-8"><Lock className="h-4 w-4" /></Button>
+                                <Button variant="ghost" size="icon" className="h-8 w-8"><Download className="h-4 w-4" /></Button>
+                                <Button variant="ghost" size="icon" className="h-8 w-8"><Share2 className="h-4 w-4" /></Button>
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button variant="ghost" size="icon" className="h-8 w-8"><MoreVertical className="h-4 w-4" /></Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end">
+                                        <DropdownMenuItem><Pencil className="mr-2 h-4 w-4" /> Modificar</DropdownMenuItem>
+                                        <DropdownMenuItem><Trash2 className="mr-2 h-4 w-4" /> Eliminar</DropdownMenuItem>
+                                        <DropdownMenuItem><Flag className="mr-2 h-4 w-4" /> Seguir</DropdownMenuItem>
+                                        <DropdownMenuItem><Move className="mr-2 h-4 w-4" /> Mover</DropdownMenuItem>
+                                        <DropdownMenuItem><Copy className="mr-2 h-4 w-4" /> Copiar</DropdownMenuItem>
+                                        <DropdownMenuItem><FileImage className="mr-2 h-4 w-4" /> Marca de agua</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </div>
                         </TableCell>
                     </TableRow>
                 ))}
