@@ -91,7 +91,7 @@ const documentsNav = [
     { 
         name: 'Metodologías', 
         icon: FileText, 
-        href: "#",
+        href: "/documents/methodologies",
     },
     { name: 'Otros', icon: MoreHorizontal, href: "#" },
 ];
