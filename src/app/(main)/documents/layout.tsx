@@ -70,7 +70,7 @@ const documentsNav = [
     { 
         name: 'Seguros', 
         icon: Landmark, 
-        href: "#",
+        href: "/documents/insurance",
     },
     { 
         name: 'Sistemas y TI', 
