@@ -65,7 +65,7 @@ const documentsNav = [
     { 
         name: 'Cumplimiento Legal y Regulatorio', 
         icon: ShieldCheck, 
-        href: "#",
+        href: "/documents/legal-compliance",
     },
     { 
         name: 'Seguros', 
