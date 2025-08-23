@@ -46,7 +46,7 @@ const documentsNav = [
     { 
         name: 'Laboral', 
         icon: Users, 
-        href: "#",
+        href: "/documents/laboral",
     },
     { 
         name: 'Propiedad intelectual', 
