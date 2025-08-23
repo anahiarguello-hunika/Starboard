@@ -189,9 +189,13 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                   </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
+                <DropdownMenuItem>Contacto</DropdownMenuItem>
+                <DropdownMenuItem>Carpeta</DropdownMenuItem>
+                <DropdownMenuItem>Contrato</DropdownMenuItem>
+                <DropdownMenuItem>Evento</DropdownMenuItem>
+                <DropdownMenuItem>Mensaje</DropdownMenuItem>
                 <DropdownMenuItem>Tarea</DropdownMenuItem>
                 <DropdownMenuItem>Proyecto</DropdownMenuItem>
-                <DropdownMenuItem>Contrato</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <UserNav />
