@@ -60,7 +60,7 @@ const documentsNav = [
     },
     { name: 'Contratos', 
         icon: FileText, 
-        href: "#",
+        href: "/documents/contracts",
     },
     { 
         name: 'Cumplimiento Legal y Regulatorio', 
