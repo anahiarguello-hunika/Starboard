@@ -36,7 +36,7 @@ const documentsNav = [
     { 
         name: 'Información Corporativa', 
         icon: Building, 
-        href: "#",
+        href: "/documents/corporate-information",
     },
     { 
         name: 'Información Financiera', 
