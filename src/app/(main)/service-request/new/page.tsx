@@ -28,6 +28,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Paperclip, Calendar as CalendarIcon, FilePlus2, ChevronDown, BookCopy } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import Link from "next/link";
 
 export default function NewServiceRequestPage() {
   return (
@@ -49,8 +50,12 @@ export default function NewServiceRequestPage() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem>1. Contrato de Prestación de Servicios (Cliente)</DropdownMenuItem>
-                <DropdownMenuItem>2. Contrato de Arrendamiento</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/contracts/new/service-agreement">1. Contrato de Prestación de Servicios (Cliente)</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/contracts/new/lease-agreement">2. Contrato de Arrendamiento</Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>3. Contrato de Subarrendamiento</DropdownMenuItem>
                 <DropdownMenuItem>4. Contrato de Prestación de Servicio (Prestador)</DropdownMenuItem>
                 <DropdownMenuItem>5. Contrato de Confidencialidad</DropdownMenuItem>
