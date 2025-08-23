@@ -86,7 +86,7 @@ const documentsNav = [
     { 
         name: 'Miscelaneos', 
         icon: Book, 
-        href: "#",
+        href: "/documents/miscellaneous",
     },
     { 
         name: 'Metodologías', 
