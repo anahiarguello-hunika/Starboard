@@ -76,6 +76,31 @@ export default function ServiceAgreementPage() {
                         <InputField label="RFC Proveedor" tooltip="RFC del proveedor." />
                     </CardContent>
                 </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-base">Sección 3</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <InputField label="Servicios Proveedor" tooltip="Servicios que prestará el proveedor." />
+                        <InputField label="Domicilio Para Recibir Notificaciones Cliente" tooltip="Domicilio del cliente para recibir notificaciones." />
+                        <InputField label="Correo Electrónico Para Recibir Notificaciones Cliente" tooltip="Email del cliente para recibir notificaciones." />
+                        <InputField label="Teléfono Para Recibir Notificaciones Cliente" tooltip="Teléfono del cliente para recibir notificaciones." />
+                        <InputField label="Domicilio Para Recibir Notificaciones Proveedor" tooltip="Domicilio del proveedor para recibir notificaciones." />
+                        <InputField label="Correo Electrónico Para Recibir Notificaciones Proveedor" tooltip="Email del proveedor para recibir notificaciones." />
+                        <InputField label="Teléfono Para Recibir Notificaciones Proveedor" tooltip="Teléfono del proveedor para recibir notificaciones." />
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-base">Sección 4</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <InputField label="Fecha De Firma" tooltip="Fecha de firma del contrato." />
+                    </CardContent>
+                </Card>
+
                  <div className="flex justify-end">
                     <Button>Generar Contrato</Button>
                 </div>
