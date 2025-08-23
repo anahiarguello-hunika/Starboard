@@ -21,6 +21,13 @@ import {
   LayoutGrid,
   List,
   Table as TableIcon,
+  MoreVertical,
+  Pencil,
+  Trash2,
+  Flag,
+  Move,
+  Copy,
+  FileImage,
 } from "lucide-react";
 import {
   ChartContainer,
@@ -34,6 +41,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from '@/lib/utils';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 
 const tasksInProgressData = [
@@ -166,6 +174,7 @@ export default function TasksDashboardPage() {
                     <TableHead>Vertical</TableHead>
                     <TableHead>Estado</TableHead>
                     <TableHead>Fecha de Vencimiento</TableHead>
+                    <TableHead>Acciones</TableHead>
                 </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -189,6 +198,21 @@ export default function TasksDashboardPage() {
                         </Badge>
                     </TableCell>
                     <TableCell>{task.dueDate}</TableCell>
+                    <TableCell>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" size="icon" className="h-8 w-8"><MoreVertical className="h-4 w-4" /></Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <DropdownMenuItem><Pencil className="mr-2 h-4 w-4" /> Modificar</DropdownMenuItem>
+                                <DropdownMenuItem><Trash2 className="mr-2 h-4 w-4" /> Eliminar</DropdownMenuItem>
+                                <DropdownMenuItem><Flag className="mr-2 h-4 w-4" /> Seguir</DropdownMenuItem>
+                                <DropdownMenuItem><Move className="mr-2 h-4 w-4" /> Mover</DropdownMenuItem>
+                                <DropdownMenuItem><Copy className="mr-2 h-4 w-4" /> Copiar</DropdownMenuItem>
+                                <DropdownMenuItem><FileImage className="mr-2 h-4 w-4" /> Marca de agua</DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
@@ -335,3 +359,4 @@ export default function TasksDashboardPage() {
     </div>
   );
 }
+
