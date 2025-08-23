@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Info } from "lucide-react";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 const InputField = ({ label, tooltip, className }: { label: string; tooltip: string; className?: string }) => (
     <div className={cn("space-y-1", className)}>
