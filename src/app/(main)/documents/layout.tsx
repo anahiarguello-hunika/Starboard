@@ -75,7 +75,7 @@ const documentsNav = [
     { 
         name: 'Sistemas y TI', 
         icon: Server, 
-        href: "#",
+        href: "/documents/systems-and-it",
     },
     { name: 'Litigios', 
         icon: Scale, 
