@@ -23,6 +23,7 @@ import {
     FileType,
     Book,
     MoreHorizontal,
+    LayoutDashboard
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -31,66 +32,67 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import React from "react";
 
 const documentsNav = [
+    { name: 'Dashboard', icon: LayoutDashboard, href: "/documents/dashboard"},
     { name: 'Proyectos (Matters)', icon: Briefcase, href: "#"},
     { 
         name: 'Información Corporativa', 
         icon: Building, 
-        href: "#",
+        href: "/documents/corporate-information",
     },
     { 
         name: 'Información Financiera', 
         icon: DollarSign, 
-        href: "#",
+        href: "/documents/financial-information",
     },
     { 
         name: 'Laboral', 
         icon: Users, 
-        href: "#",
+        href: "/documents/laboral",
     },
     { 
         name: 'Propiedad intelectual', 
         icon: BrainCircuit, 
-        href: "#",
+        href: "/documents/intellectual-property",
     },
     { 
         name: 'Activos', 
         icon: Package, 
-        href: "#",
+        href: "/documents/assets",
     },
     { name: 'Contratos', 
         icon: FileText, 
-        href: "#",
+        href: "/documents/contracts",
     },
     { 
         name: 'Cumplimiento Legal y Regulatorio', 
         icon: ShieldCheck, 
-        href: "#",
+        href: "/documents/legal-compliance",
     },
     { 
         name: 'Seguros', 
         icon: Landmark, 
-        href: "#",
+        href: "/documents/insurance",
     },
     { 
         name: 'Sistemas y TI', 
         icon: Server, 
-        href: "#",
+        href: "/documents/systems-and-it",
     },
     { name: 'Litigios', 
         icon: Scale, 
-        href: "#",
+        href: "/documents/litigation",
     },
     { name: 'Concesiones', icon: FileCheck, href: "#" },
     { name: 'Formatos', icon: FileType, href: "#" },
     { 
         name: 'Miscelaneos', 
         icon: Book, 
-        href: "#",
+        href: "/documents/miscellaneous",
     },
     { 
         name: 'Metodologías', 
         icon: FileText, 
-        href: "#",
+        href: "/documents/methodologies",
     },
     { name: 'Otros', icon: MoreHorizontal, href: "#" },
 ];
@@ -156,17 +158,17 @@ export default function WealthManagementLayout({
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                         <div className="flex flex-col gap-1 mt-2">
-                            {documentsNav.map((item, index) => (
-                                <Link key={item.name} href={item.href || "#"} className={cn(
-                                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
-                                    'hover:bg-muted'
-                                )}>
-                                    <span className="text-xs w-6 text-right">{String(index+1).padStart(2, '0')}</span>
-                                    <item.icon className="h-5 w-5" />
-                                    <span>{item.name}</span>
-                                </Link>
-                            ))}
-                        </div>
+                        {documentsNav.map((item, index) => (
+                            <Link key={item.name} href={item.href || "#"} className={cn(
+                                'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
+                                pathname.includes(item.href) ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                            )}>
+                                <span className="text-xs w-6 text-right">{String(index+1).padStart(2, '0')}</span>
+                                <item.icon className="h-5 w-5" />
+                                <span>{item.name}</span>
+                            </Link>
+                        ))}
+                       </div>
                     </CollapsibleContent>
                 </Collapsible>
             </nav>
