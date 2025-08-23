@@ -79,7 +79,7 @@ const documentsNav = [
     },
     { name: 'Litigios', 
         icon: Scale, 
-        href: "#",
+        href: "/documents/litigation",
     },
     { name: 'Concesiones', icon: FileCheck, href: "#" },
     { name: 'Formatos', icon: FileType, href: "#" },
