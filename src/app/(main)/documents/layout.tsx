@@ -51,7 +51,7 @@ const documentsNav = [
     { 
         name: 'Propiedad intelectual', 
         icon: BrainCircuit, 
-        href: "#",
+        href: "/documents/intellectual-property",
     },
     { 
         name: 'Activos', 
