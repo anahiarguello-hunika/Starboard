@@ -14,13 +14,12 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 const assetsFolders = [
     { name: '01 Inmuebles', size: '1.2 GB', modified: '2024-05-21' },
-    { name: '01 Lista de Inmuebles en propiedad', size: '15 MB', modified: '2024-05-20' },
-    { name: '02 Lista de Inmuebles en renta', size: '22 MB', modified: '2024-05-20' },
-    { name: '03 Propiedades Arrendadas', size: '1.1 GB', modified: '2024-05-18' },
-    { name: '04 Otra documentación de Inmuebles y Activos', size: '3.5 MB', modified: '2024-04-15' },
+    { name: '1.1 Lista de Inmuebles en propiedad', size: '15 MB', modified: '2024-05-20' },
+    { name: '1.2 Lista de Inmuebles en renta', size: '22 MB', modified: '2024-05-20' },
+    { name: '1.3 Propiedades Arrendadas', size: '1.1 GB', modified: '2024-05-18' },
     { name: '02 Muebles', size: '8.9 MB', modified: '2024-05-01' },
-    { name: '01 Equipo y Maquinaria', size: '3.2 MB', modified: '2024-03-22' },
-    { name: '02 Otra documentación de Activos', size: '5.7 MB', modified: '2024-05-11' },
+    { name: '2.1 Equipo y Maquinaria', size: '3.2 MB', modified: '2024-03-22' },
+    { name: '2.3 Otra documentación de Activos Muebles', size: '5.7 MB', modified: '2024-05-11' },
 ];
 
 
