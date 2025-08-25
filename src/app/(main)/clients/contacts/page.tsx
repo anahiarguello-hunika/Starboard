@@ -66,7 +66,9 @@ export default function ContactsPage() {
           <Button variant="outline" asChild>
             <Link href="/clients/contacts/new-person">Nueva persona</Link>
           </Button>
-          <Button>Nueva empresa</Button>
+          <Button asChild>
+            <Link href="/clients/contacts/new-company">Nueva empresa</Link>
+          </Button>
         </div>
       </div>
 
