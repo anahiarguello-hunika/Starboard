@@ -17,7 +17,8 @@ import {
     Landmark,
     BookOpenCheck,
     UserSearch,
-    Ticket
+    Ticket,
+    MessageSquare
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -48,7 +49,7 @@ export default function ComunicacionesLayout({
 
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col justify-between h-full">
              <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
                 <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
                     <Home className="h-5 w-5" />
@@ -111,6 +112,15 @@ export default function ComunicacionesLayout({
                        </div>
                     </CollapsibleContent>
                 </Collapsible>
+            </nav>
+            <nav className="flex flex-col gap-1 text-sm text-muted-foreground pb-4">
+                <Link href="/chat" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/chat') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <MessageSquare className="h-5 w-5" />
+                    <span>Chat</span>
+                </Link>
             </nav>
         </div>
         <div className="flex flex-col gap-8">
