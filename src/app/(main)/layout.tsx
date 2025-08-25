@@ -32,6 +32,7 @@ import {
   Plus,
   ChevronDown,
   Settings,
+  MessageSquare,
 } from "lucide-react";
 
 import {
@@ -145,6 +146,16 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
+             <SidebarMenu>
+              <SidebarMenuItem>
+                  <SidebarMenuButton asChild isActive={adjustedPathname.startsWith('/chat')} tooltip="Chat">
+                      <Link href="/chat">
+                          <MessageSquare />
+                          <span>Chat</span>
+                      </Link>
+                  </SidebarMenuButton>
+              </SidebarMenuItem>
+          </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
