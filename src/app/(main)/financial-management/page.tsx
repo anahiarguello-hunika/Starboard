@@ -13,6 +13,7 @@ import {
   Settings,
   HelpCircle,
   Eye,
+  ChevronDown,
 } from "lucide-react";
 import {
   ChartContainer,
@@ -23,6 +24,7 @@ import { Pie, PieChart, Cell, Bar, BarChart as RechartsBarChart, XAxis, YAxis, C
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const billableHoursData = [
     { name: 'Horas Facturadas', value: 3.3, fill: 'hsl(var(--primary))' },
@@ -79,12 +81,23 @@ export default function FinancialManagementPage() {
             <div className="lg:col-span-2 space-y-6">
                 <Card>
                     <CardHeader>
-                        <CardTitle className="flex items-center gap-2">Métricas por Hora de Elias Bardawil <HelpCircle className="h-4 w-4 text-muted-foreground" /></CardTitle>
+                        <CardTitle className="flex items-center gap-2">Métricas de: 
+                             <Select defaultValue="elias">
+                                <SelectTrigger className="w-[180px] h-8 text-base font-bold border-0 shadow-none -ml-2 focus:ring-0">
+                                    <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="elias">Elias Bardawil</SelectItem>
+                                    <SelectItem value="juan">Juan Perez</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                        </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <Tabs defaultValue="today">
                              <div className="flex items-center justify-between">
-                                <CardTitle>Objetivo de Horas Facturables</CardTitle>
+                                <CardTitle>Objetivos de facturación</CardTitle>
                                 <TabsList>
                                     <TabsTrigger value="today">Hoy</TabsTrigger>
                                     <TabsTrigger value="this_week">Esta Semana</TabsTrigger>
