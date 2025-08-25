@@ -25,11 +25,11 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import React from "react";
 
 const clientNav = [
-  { name: 'Dashboard', href: '/clients', icon: LayoutDashboard },
+  { name: 'Dashboard', href: '/clients/dashboard', icon: LayoutDashboard },
   { name: 'Oportunidades', href: '#', icon: DollarSign },
   { name: 'Proyectos', href: '#', icon: Briefcase },
   { name: 'Solicitudes', href: '#', icon: Ticket },
-  { name: 'Contactos', href: '#', icon: Users },
+  { name: 'Contactos', href: '/clients/contacts', icon: Users },
   { name: 'Suscripciones', href: '#', icon: Crown },
   { name: 'Anticipos', href: '#', icon: CreditCard },
   { name: 'Cobranza', href: '#', icon: DollarSign },
@@ -100,7 +100,7 @@ export default function ClientsLayout({
                         {clientNav.map((item, index) => (
                             <Link key={item.name} href={item.href || "#"} className={cn(
                                 'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
-                                (pathname === item.href || (item.href === '/clients' && pathname.startsWith('/clients/dashboard'))) ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                                pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
                             )}>
                                 <item.icon className="h-5 w-5" />
                                 <span>{item.name}</span>
