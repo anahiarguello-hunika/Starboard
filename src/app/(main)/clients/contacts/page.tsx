@@ -63,7 +63,9 @@ export default function ContactsPage() {
         <h1 className="text-3xl font-bold font-headline">Contactos</h1>
         <div className="flex items-center gap-2">
           <Button variant="outline">Administrar etiquetas</Button>
-          <Button variant="outline">Nueva persona</Button>
+          <Button variant="outline" asChild>
+            <Link href="/clients/contacts/new-person">Nueva persona</Link>
+          </Button>
           <Button>Nueva empresa</Button>
         </div>
       </div>
