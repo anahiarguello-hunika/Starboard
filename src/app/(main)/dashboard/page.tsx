@@ -57,10 +57,10 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 
 const activeProjects = [
-  { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75 },
-  { id: "PROJ-002", name: "Auditoría de Cumplimiento Q4", status: "En riesgo", progress: 30 },
-  { id: "PROJ-003", name: "Revisión de Cartera de PI", status: "En curso", progress: 90 },
-  { id: "PROJ-004", name: "Consolidación de Contratos de Proveedores", status: "Necesita revisión", progress: 50 },
+  { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75, priority: 1, roi: 85 },
+  { id: "PROJ-002", name: "Auditoría de Cumplimiento Q4", status: "En riesgo", progress: 30, priority: 2, roi: 60 },
+  { id: "PROJ-003", name: "Revisión de Cartera de PI", status: "En curso", progress: 90, priority: 3, roi: 95 },
+  { id: "PROJ-004", name: "Consolidación de Contratos de Proveedores", status: "Necesita revisión", progress: 50, priority: 4, roi: 70 },
 ];
 
 const projectStatusData = [
@@ -455,14 +455,18 @@ export default function DashboardPage() {
                   <TableHeader>
                     <TableRow>
                       <TableHead>Proyecto</TableHead>
+                      <TableHead>Prioridad</TableHead>
                       <TableHead>Estado</TableHead>
-                      <TableHead className="text-right">Progreso</TableHead>
+                      <TableHead>Progreso</TableHead>
+                      <TableHead>ROI</TableHead>
+                      <TableHead></TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {activeProjects.map((project) => (
                       <TableRow key={project.id}>
                         <TableCell className="font-medium">{project.name}</TableCell>
+                        <TableCell className="text-center">{project.priority}</TableCell>
                         <TableCell>
                           <Badge
                             variant={project.status === 'En riesgo' ? 'destructive' : project.status === 'Necesita revisión' ? 'secondary' : 'default'}
@@ -471,7 +475,11 @@ export default function DashboardPage() {
                             {project.status}
                           </Badge>
                         </TableCell>
-                        <TableCell className="text-right">{project.progress}%</TableCell>
+                        <TableCell>{project.progress}%</TableCell>
+                        <TableCell>{project.roi}%</TableCell>
+                        <TableCell className="text-right">
+                          <Button variant="outline" size="sm">Ver Proyecto</Button>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
