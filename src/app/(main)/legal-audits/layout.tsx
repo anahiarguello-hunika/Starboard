@@ -18,6 +18,7 @@ import {
     ChevronDown,
     ListTodo,
     Calendar,
+    LayoutDashboard,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -25,6 +26,7 @@ import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 
 const auditNav = [
+  { name: 'Dashboard', href: '/legal-audits/dashboard', icon: LayoutDashboard },
   { name: 'Due Dilligence Básico', href: '/legal-audits/basic-due-diligence', icon: BookCheck },
   { name: 'Due Dilligence Completo', href: '/legal-audits/full-due-diligence', icon: BookCopy },
   { name: 'Madurez Legal', href: '/legal-audits/legal-maturity', icon: GraduationCap },
@@ -101,7 +103,6 @@ export default function LegalAuditsLayout({
                                     'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
                                     pathname === item.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
                                 )}>
-                                    <span className="text-xs w-6 text-right">{String(index+1).padStart(2, '0')}</span>
                                     <item.icon className="h-5 w-5" />
                                     <span>{item.name}</span>
                                 </Link>

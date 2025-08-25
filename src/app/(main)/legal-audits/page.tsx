@@ -2,5 +2,5 @@
 import { redirect } from 'next/navigation';
 
 export default function LegalAuditsPage() {
-  redirect('/legal-audits/basic-due-diligence');
+  redirect('/legal-audits/dashboard');
 }
