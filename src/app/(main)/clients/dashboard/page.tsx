@@ -20,7 +20,17 @@ import {
   DollarSign,
   LayoutGrid,
   List,
-  Table as TableIcon
+  Table as TableIcon,
+  Lock,
+  Download,
+  Share2,
+  MoreVertical,
+  Pencil,
+  Trash2,
+  Flag,
+  Move,
+  Copy,
+  FileImage
 } from "lucide-react";
 import {
   ChartContainer,
@@ -33,6 +43,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const clientsByIndustryData = [
   { name: 'Tecnología', value: 8, fill: 'hsl(var(--chart-1))' },
@@ -137,6 +148,7 @@ export default function ClientsDashboardPage() {
                 <TableHead>Contacto Principal</TableHead>
                 <TableHead>Estado</TableHead>
                 <TableHead>Fecha de Alta</TableHead>
+                <TableHead>Acciones</TableHead>
             </TableRow>
         </TableHeader>
         <TableBody>
@@ -148,6 +160,26 @@ export default function ClientsDashboardPage() {
                     <TableCell>{client.primaryContact}</TableCell>
                     <TableCell>{getStatusBadge(client.status)}</TableCell>
                     <TableCell>{client.openDate}</TableCell>
+                    <TableCell>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                            <Button variant="ghost" size="icon" className="h-8 w-8"><Lock className="h-4 w-4" /></Button>
+                            <Button variant="ghost" size="icon" className="h-8 w-8"><Download className="h-4 w-4" /></Button>
+                            <Button variant="ghost" size="icon" className="h-8 w-8"><Share2 className="h-4 w-4" /></Button>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="ghost" size="icon" className="h-8 w-8"><MoreVertical className="h-4 w-4" /></Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuItem><Pencil className="mr-2 h-4 w-4" /> Modificar</DropdownMenuItem>
+                                    <DropdownMenuItem><Trash2 className="mr-2 h-4 w-4" /> Eliminar</DropdownMenuItem>
+                                    <DropdownMenuItem><Flag className="mr-2 h-4 w-4" /> Seguir</DropdownMenuItem>
+                                    <DropdownMenuItem><Move className="mr-2 h-4 w-4" /> Mover</DropdownMenuItem>
+                                    <DropdownMenuItem><Copy className="mr-2 h-4 w-4" /> Copiar</DropdownMenuItem>
+                                    <DropdownMenuItem><FileImage className="mr-2 h-4 w-4" /> Marca de agua</DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
+                    </TableCell>
                 </TableRow>
             ))}
         </TableBody>
