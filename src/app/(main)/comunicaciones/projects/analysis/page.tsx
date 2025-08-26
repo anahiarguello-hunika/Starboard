@@ -245,10 +245,6 @@ export default function ProjectAnalysisPage() {
                     </Table>
                 </CardContent>
             </Card>
-
-            <h1 className="text-2xl font-bold font-headline pt-8">Análisis de Proyectos</h1>
-            
-
         </div>
     );
 }
