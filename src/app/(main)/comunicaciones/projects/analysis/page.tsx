@@ -248,53 +248,6 @@ export default function ProjectAnalysisPage() {
             </Card>
 
             <h1 className="text-2xl font-bold font-headline pt-8">Análisis de Proyectos</h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Matriz de Prioridad</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="h-[300px] w-full">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <ScatterChart margin={{ top: 20, right: 20, bottom: 40, left: 40 }}>
-                                    <CartesianGrid />
-                                    <XAxis type="number" dataKey="x" name="Prioridad del Departamento" unit="" domain={[0, 5]} label={{ value: "Prioridad del Departamento", position: "bottom", offset: 15 }} />
-                                    <YAxis type="number" dataKey="y" name="Prioridad CLOC" unit="" domain={[0, 5]} label={{ value: "Prioridad CLOC", angle: -90, position: 'insideLeft', offset: -20 }} />
-                                    <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                                    <ZAxis type="number" dataKey="z" range={[100, 1000]} />
-                                    <ChartQuadrant x={2.5} y={0} width={2.5} height={2.5} fill="hsl(var(--destructive))" />
-                                    <ChartQuadrant x={0} y={2.5} width={2.5} height={2.5} fill="hsl(var(--destructive))" />
-                                    <ChartQuadrant x={0} y={0} width={2.5} height={2.5} fill="hsl(var(--destructive))" />
-                                    <ChartQuadrant x={2.5} y={2.5} width={2.5} height={2.5} fill="hsl(var(--accent))" label="Alto Potencial de Selección" labelX={3.75} labelY={3.75} />
-                                    <Scatter name="Proyectos" data={priorityMatrixData} fill="hsl(var(--primary))" />
-                                </ScatterChart>
-                            </ResponsiveContainer>
-                        </div>
-                    </CardContent>
-                </Card>
-
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Matriz de Caracterización de Oportunidades</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="h-[300px] w-full">
-                           <ResponsiveContainer width="100%" height="100%">
-                                <ScatterChart margin={{ top: 20, right: 20, bottom: 40, left: 40 }}>
-                                    <CartesianGrid />
-                                    <XAxis type="number" dataKey="x" name="Posicionamiento Estratégico" unit="" domain={[0, 5]} label={{ value: "Posicionamiento Estratégico", position: "bottom", offset: 15 }} />
-                                    <YAxis type="number" dataKey="y" name="Complejidad de la Solución" unit="" domain={[0, 5]} label={{ value: "Complejidad de la Solución", angle: -90, position: 'insideLeft', offset: -20 }} />
-                                    <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                                    <ZAxis type="number" dataKey="z" range={[100, 1000]} />
-                                    <ChartQuadrant x={2.5} y={2.5} width={2.5} height={2.5} fill="hsl(var(--chart-2))" label="Altamente Complejo y Estratégicamente Alineado" labelX={3.75} labelY={3.75} />
-                                    <ChartQuadrant x={2.5} y={0} width={2.5} height={2.5} fill="hsl(var(--accent))" label="Cuadrante Objetivo: Mayor Valor para el Departamento" labelX={3.75} labelY={1.25} />
-                                    <Scatter name="Proyectos" data={opportunityMatrixData} fill="hsl(var(--primary))" />
-                                </ScatterChart>
-                            </ResponsiveContainer>
-                        </div>
-                    </CardContent>
-                </Card>
-            </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <Card>
