@@ -248,37 +248,6 @@ export default function ProjectAnalysisPage() {
 
             <h1 className="text-2xl font-bold font-headline pt-8">Análisis de Proyectos</h1>
             
-            <Card>
-                <CardHeader>
-                    <CardTitle>Retorno de la Inversión</CardTitle>
-                </CardHeader>
-                <CardContent className="h-[400px]">
-                    <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={roiData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis unit="K" />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="inversion" name="Inversión Acumulada, $K" stackId="a" fill="hsl(var(--destructive))" />
-                            <Bar dataKey="retorno" name="Retorno Acumulado, $K" stackId="a" fill="hsl(var(--accent))" />
-                            <Bar dataKey="neto" name="Ahorros o Pérdidas Netas/M o Q, $K" fill="hsl(var(--primary))" />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </CardContent>
-            </Card>
-
-            <Card>
-                <CardHeader>
-                    <CardTitle>Notas/Supuestos del ROI</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <Textarea 
-                        defaultValue="La inversión en la conferencia representa las cinco contribuciones de patrocinadores Platino de $20K. Además, la cuota de participante es de $800 por cada asistente. Los gastos de la conferencia incluyen salas de presentación, comidas y gastos imprevistos."
-                        rows={4}
-                    />
-                </CardContent>
-            </Card>
 
         </div>
     );
