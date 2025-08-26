@@ -60,13 +60,6 @@ const projectManagementData = Array(10).fill({
     status: '',
 });
 
-const todoData = Array(10).fill({
-    done: '',
-    activity: '',
-    responsible: '',
-});
-
-
 export default function ProjectAnalysisPage() {
     return (
         <div className="space-y-6">
@@ -254,29 +247,6 @@ export default function ProjectAnalysisPage() {
                                         </TableCell>
                                         <TableCell className="border-r p-1"></TableCell>
                                         <TableCell className="p-1"></TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                        <Table className="w-auto">
-                             <TableHeader>
-                                <TableRow>
-                                    <TableHead colSpan={3} className="text-center">To Do's</TableHead>
-                                </TableRow>
-                                <TableRow>
-                                    <TableHead>Realizado</TableHead>
-                                    <TableHead className="min-w-[200px]">Actividad</TableHead>
-                                    <TableHead className="min-w-[150px]">Responsable</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                 {todoData.map((row, rowIndex) => (
-                                    <TableRow key={rowIndex}>
-                                        <TableCell className="border-r p-1"></TableCell>
-                                        <TableCell className="border-r p-1"></TableCell>
-                                        <TableCell className="p-1 relative">
-                                             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-red-600" />
-                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
