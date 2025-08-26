@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import {
@@ -118,3 +119,5 @@ export default function ComunicacionesDocumentsPage() {
     </div>
   );
 }
+
+    
