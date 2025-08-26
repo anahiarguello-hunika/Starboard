@@ -315,6 +315,17 @@ export default function DocumentsDashboardPage() {
             </div>
         </div>
 
+        <div className="flex items-center justify-between gap-4">
+            <div className="relative flex-grow max-w-sm">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Buscar en esta carpeta" className="pl-10" />
+            </div>
+            <div className="flex items-center gap-2">
+                <Button variant="outline">Nuevo Documento</Button>
+                <Button>Subir archivo</Button>
+            </div>
+        </div>
+
         {view === 'kanban' && <KanbanView />}
         {view === 'list' && <ListView />}
         {view === 'table' && <TableView />}
