@@ -1,6 +1,5 @@
 
 
-
 "use client";
 
 import Link from "next/link";
@@ -34,6 +33,7 @@ import {
   ChevronDown,
   Settings,
   MessageSquare,
+  LifeBuoy,
 } from "lucide-react";
 
 import {
@@ -148,14 +148,15 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </SidebarContent>
         <SidebarFooter>
              <SidebarMenu>
-              <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={adjustedPathname.startsWith('/chat')} tooltip="Chat">
-                      <Link href="/chat">
-                          <MessageSquare />
-                          <span>Chat</span>
-                      </Link>
-                  </SidebarMenuButton>
-              </SidebarMenuItem>
+                 <SidebarMenuItem>
+                     <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 gap-2">
+                        <LifeBuoy />
+                        <div className="flex flex-col items-start">
+                            <span className="font-semibold">Asistencia Legal</span>
+                            <span className="text-xs text-sidebar-foreground/70">Asesoría legal</span>
+                        </div>
+                    </Button>
+                </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
