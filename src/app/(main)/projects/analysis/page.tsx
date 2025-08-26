@@ -12,10 +12,12 @@ import React from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { format, parseISO } from 'date-fns';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 
 const priorityMatrixData = [{ x: 4, y: 3.5, z: 200 }];
 const opportunityMatrixData = [{ x: 3.2, y: 2, z: 200 }];
@@ -64,6 +66,41 @@ const initialProjectManagementData = Array(10).fill({}).map((_, index) => ({
 
 const priorityOptions = ['Alta', 'Media', 'Baja'];
 const statusOptions = ['En Progreso', 'Completado', 'En Espera', 'Cancelado'];
+
+const impactedProcessOptions = [
+    { name: '1. Estratégico', color: 'bg-blue-800' },
+    { name: '2. Legal Estratégico', color: 'bg-orange-600' },
+    { name: '3. Legal Gral.', color: 'bg-blue-500' },
+    { name: '4. RH', color: 'bg-gray-700' },
+    { name: '5. Administración', color: 'bg-green-200' },
+    { name: '6. Compras', color: 'bg-red-300' },
+    { name: '7. Ventas', color: 'bg-green-700' },
+    { name: '8. Marketing', color: 'bg-gray-300' },
+];
+
+const ImpactedProcessCell = ({ value, onValueChange }: { value: string, onValueChange: (newValue: string) => void }) => {
+    const currentOption = impactedProcessOptions.find(opt => opt.name === value);
+    const colorClass = currentOption ? currentOption.color : 'bg-transparent';
+    const textColorClass = ['bg-green-200', 'bg-red-300', 'bg-gray-300'].includes(colorClass) ? 'text-gray-900' : 'text-white';
+
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="outline" className={cn("w-full justify-start text-left font-normal", currentOption && colorClass, currentOption && textColorClass)}>
+                    {value || 'Seleccionar...'}
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {impactedProcessOptions.map(option => (
+                    <DropdownMenuItem key={option.name} onSelect={() => onValueChange(option.name)}>
+                        <div className={cn('w-3 h-3 rounded-full mr-2', option.color)} />
+                        <span>{option.name}</span>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
+    );
+};
 
 
 const ChartQuadrant = ({ x, y, width, height, fill, label, labelX, labelY }: any) => (
@@ -316,7 +353,12 @@ export default function ProjectAnalysisPage() {
                                     </TableCell>
                                     <TableCell><Input value={row.project} onChange={(e) => handleCellChange(rowIndex, 'project', e.target.value)} /></TableCell>
                                     <TableCell><Input value={row.responsible} onChange={(e) => handleCellChange(rowIndex, 'responsible', e.target.value)} /></TableCell>
-                                    <TableCell><Input value={row.process} onChange={(e) => handleCellChange(rowIndex, 'process', e.target.value)} /></TableCell>
+                                    <TableCell>
+                                         <ImpactedProcessCell 
+                                            value={row.process}
+                                            onValueChange={(value) => handleCellChange(rowIndex, 'process', value)}
+                                        />
+                                    </TableCell>
                                     <TableCell>
                                         <ProgressCell
                                             progress={row.progress}
