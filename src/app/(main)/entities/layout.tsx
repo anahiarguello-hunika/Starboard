@@ -25,12 +25,14 @@ import {
   Pin,
   ListTodo,
   Calendar,
+  LifeBuoy
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
+import { Button } from '@/components/ui/button';
 
 const entityNav = [
   { name: 'Dashboard', href: '#', icon: LayoutDashboard },
@@ -58,7 +60,7 @@ export default function EntitiesLayout({
 
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col justify-between h-full">
           <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
               <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
                   <Home className="h-5 w-5" />
@@ -102,33 +104,39 @@ export default function EntitiesLayout({
                   <Calendar className="h-5 w-5" />
                   <span>Calendario</span>
               </Link>
+                <Collapsible defaultOpen={true}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
+                        Clientes
+                        <ChevronDown className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <h2 className="text-lg font-semibold text-foreground font-headline pl-2 mt-4">
+                        Acme NV/SA
+                      </h2>
+                      <nav className="flex flex-col gap-1 mt-2">
+                        {entityNav.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className={cn(
+                              'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-muted-foreground hover:bg-muted hover:text-foreground',
+                              pathname === item.href ? 'bg-primary/10 text-primary' : ''
+                            )}
+                          >
+                            <item.icon className="h-5 w-5" />
+                            <span>{item.name}</span>
+                          </Link>
+                        ))}
+                      </nav>
+                  </CollapsibleContent>
+                </Collapsible>
           </nav>
-        <Collapsible defaultOpen={true}>
-            <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
-                Clientes
-                <ChevronDown className="h-4 w-4" />
-            </CollapsibleTrigger>
-            <CollapsibleContent>
-              <h2 className="text-lg font-semibold text-foreground font-headline pl-2 mt-4">
-                Acme NV/SA
-              </h2>
-              <nav className="flex flex-col gap-1 mt-2">
-                {entityNav.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={cn(
-                      'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-muted-foreground hover:bg-muted hover:text-foreground',
-                      pathname === item.href ? 'bg-primary/10 text-primary' : ''
-                    )}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    <span>{item.name}</span>
-                  </Link>
-                ))}
-              </nav>
-          </CollapsibleContent>
-        </Collapsible>
+            <nav className="flex flex-col gap-1 text-sm text-muted-foreground pb-4">
+                 <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 gap-2">
+                    <LifeBuoy />
+                    <span className="font-semibold">Asistencia Legal</span>
+                </Button>
+            </nav>
       </div>
 
       <div className="flex flex-col gap-8">{children}</div>

@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import {
@@ -11,12 +12,14 @@ import {
     Calendar,
     Receipt,
     MoreHorizontal,
+    LifeBuoy
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 const financialNav = [
   { name: 'Dashboard', href: '/financial-management', icon: LayoutDashboard, number: '01' },
@@ -34,7 +37,7 @@ export default function FinancialManagementLayout({
 
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col justify-between h-full">
              <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
                 <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
                     <Home className="h-5 w-5" />
@@ -98,6 +101,12 @@ export default function FinancialManagementLayout({
                        </div>
                     </CollapsibleContent>
                 </Collapsible>
+            </nav>
+             <nav className="flex flex-col gap-1 text-sm text-muted-foreground pb-4">
+                 <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 gap-2">
+                    <LifeBuoy />
+                    <span className="font-semibold">Asistencia Legal</span>
+                </Button>
             </nav>
         </div>
         <div className="flex flex-col gap-8">

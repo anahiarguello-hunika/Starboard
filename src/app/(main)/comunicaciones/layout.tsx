@@ -19,13 +19,15 @@ import {
     BookOpenCheck,
     UserSearch,
     Ticket,
-    MessageSquare
+    MessageSquare,
+    LifeBuoy
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
+import { Button } from '@/components/ui/button';
 
 const clientNav = [
   { name: 'Dashboard', href: '/comunicaciones', icon: LayoutDashboard },
@@ -115,13 +117,10 @@ export default function ComunicacionesLayout({
                 </Collapsible>
             </nav>
             <nav className="flex flex-col gap-1 text-sm text-muted-foreground pb-4">
-                <Link href="/chat" className={cn(
-                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
-                    pathname.startsWith('/chat') ? 'bg-primary/10 text-primary font-semibold' : ''
-                )}>
-                    <MessageSquare className="h-5 w-5" />
-                    <span>Chat</span>
-                </Link>
+                <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 gap-2">
+                    <LifeBuoy />
+                    <span className="font-semibold">Asistencia Legal</span>
+                </Button>
             </nav>
         </div>
         <div className="flex flex-col gap-8">

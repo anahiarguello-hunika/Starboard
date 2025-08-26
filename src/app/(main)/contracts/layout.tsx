@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import {
@@ -29,13 +30,15 @@ import {
     SlidersHorizontal,
     Award,
     ListTodo,
-    Calendar
+    Calendar,
+    LifeBuoy,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 const contractsNav = [
   { name: 'Dashboard', href: '/contracts', icon: LayoutDashboard },
@@ -87,7 +90,7 @@ export default function ContractsLayout({
 
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col justify-between h-full">
              <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
                 <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
                     <Home className="h-5 w-5" />

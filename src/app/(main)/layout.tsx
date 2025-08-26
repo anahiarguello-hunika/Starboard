@@ -5,35 +5,35 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  BookOpenCheck,
-  Building2,
-  CircleUser,
-  Crown,
-  FileText,
-  Folder,
-  LayoutDashboard,
-  ListTodo,
-  Scale,
-  Briefcase,
-  Sparkles,
-  Ticket,
-  Landmark,
-  UserSearch,
-  Users,
-  Award,
-  BookUser,
-  Calendar,
-  DollarSign,
-  BarChart2,
-  Calculator,
-  Search,
-  History,
-  Clock,
-  Plus,
-  ChevronDown,
-  Settings,
-  MessageSquare,
-  LifeBuoy,
+    BookOpenCheck,
+    Building2,
+    CircleUser,
+    Crown,
+    FileText,
+    Folder,
+    LayoutDashboard,
+    ListTodo,
+    Scale,
+    Briefcase,
+    Sparkles,
+    Ticket,
+    Landmark,
+    UserSearch,
+    Users,
+    Award,
+    BookUser,
+    Calendar,
+    DollarSign,
+    BarChart2,
+    Calculator,
+    Search,
+    History,
+    Clock,
+    Plus,
+    ChevronDown,
+    Settings,
+    MessageSquare,
+    LifeBuoy,
 } from "lucide-react";
 
 import {
@@ -151,10 +151,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                  <SidebarMenuItem>
                      <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 gap-2">
                         <LifeBuoy />
-                        <div className="flex flex-col items-start">
-                            <span className="font-semibold">Asistencia Legal</span>
-                            <span className="text-xs text-sidebar-foreground/70">Asesoría legal</span>
-                        </div>
+                        <span className="font-semibold">Asistencia Legal</span>
                     </Button>
                 </SidebarMenuItem>
           </SidebarMenu>

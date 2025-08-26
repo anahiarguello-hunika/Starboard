@@ -23,12 +23,14 @@ import {
     ChevronDown,
     LayoutDashboard,
     ListTodo,
-    Calendar
+    Calendar,
+    LifeBuoy,
 } from "lucide-react";
 import Link from 'next/link';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const documentsNav = [
     { name: 'Dashboard', icon: LayoutDashboard, href: "/documents/dashboard"},
@@ -106,7 +108,7 @@ export default function DocumentsLayout({
 
   return (
     <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col justify-between h-full">
             <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
                 <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
                     <Home className="h-5 w-5" />
@@ -169,6 +171,12 @@ export default function DocumentsLayout({
                        </div>
                     </CollapsibleContent>
                 </Collapsible>
+            </nav>
+            <nav className="flex flex-col gap-1 text-sm text-muted-foreground pb-4">
+                 <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 gap-2">
+                    <LifeBuoy />
+                    <span className="font-semibold">Asistencia Legal</span>
+                </Button>
             </nav>
         </div>
         <div className="flex flex-col gap-8">
