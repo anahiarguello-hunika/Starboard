@@ -206,52 +206,41 @@ export default function ProjectAnalysisPage() {
                 <CardHeader>
                     <CardTitle>Administrador de Proyectos Legales</CardTitle>
                 </CardHeader>
-                <CardContent className="overflow-x-auto">
-                    <div className="flex gap-4">
-                        <Table className="w-auto">
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead className="min-w-[100px]">Prioridad</TableHead>
-                                    <TableHead className="min-w-[200px]">Proyecto</TableHead>
-                                    <TableHead className="min-w-[150px]">Responsable</TableHead>
-                                    <TableHead className="min-w-[150px]">Proceso Impactado</TableHead>
-                                    <TableHead className="min-w-[250px]">
-                                        <div className="text-center border-b pb-1 mb-1">Avance</div>
-                                        <div className="grid grid-cols-5 text-center">
-                                            <span>0%</span>
-                                            <span></span>
-                                            <span>50%</span>
-                                            <span></span>
-                                            <span>100%</span>
+                <CardContent>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Prioridad</TableHead>
+                                <TableHead>Proyecto</TableHead>
+                                <TableHead>Responsable</TableHead>
+                                <TableHead>Proceso Impactado</TableHead>
+                                <TableHead>Avance</TableHead>
+                                <TableHead>Agendado</TableHead>
+                                <TableHead>Estatus</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {projectManagementData.map((row, rowIndex) => (
+                                <TableRow key={rowIndex}>
+                                    <TableCell></TableCell>
+                                    <TableCell></TableCell>
+                                    <TableCell></TableCell>
+                                    <TableCell></TableCell>
+                                    <TableCell>
+                                        <div className="flex h-4 rounded-full overflow-hidden">
+                                            <div className="w-[20%] bg-red-500"></div>
+                                            <div className="w-[20%] bg-orange-400"></div>
+                                            <div className="w-[20%] bg-yellow-400"></div>
+                                            <div className="w-[20%] bg-yellow-600/70"></div>
+                                            <div className="w-[20%] bg-green-500"></div>
                                         </div>
-                                    </TableHead>
-                                    <TableHead className="min-w-[120px]">Agendado</TableHead>
-                                    <TableHead className="min-w-[120px]">Estatus</TableHead>
+                                    </TableCell>
+                                    <TableCell></TableCell>
+                                    <TableCell></TableCell>
                                 </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {projectManagementData.map((row, rowIndex) => (
-                                    <TableRow key={rowIndex}>
-                                        <TableCell className="border-r p-1"></TableCell>
-                                        <TableCell className="border-r p-1"></TableCell>
-                                        <TableCell className="border-r p-1"></TableCell>
-                                        <TableCell className="border-r p-1"></TableCell>
-                                        <TableCell className="border-r p-0">
-                                            <div className="grid grid-cols-5 h-full">
-                                                <div className="border-r h-full bg-red-500"></div>
-                                                <div className="border-r h-full bg-orange-400"></div>
-                                                <div className="border-r h-full bg-yellow-400"></div>
-                                                <div className="border-r h-full bg-yellow-600/70"></div>
-                                                <div className="h-full bg-green-500"></div>
-                                            </div>
-                                        </TableCell>
-                                        <TableCell className="border-r p-1"></TableCell>
-                                        <TableCell className="p-1"></TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
+                            ))}
+                        </TableBody>
+                    </Table>
                 </CardContent>
             </Card>
         </div>
