@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis, ScatterChart, ZAxis, Scatter } from "recharts";
@@ -249,63 +248,6 @@ export default function ProjectAnalysisPage() {
 
             <h1 className="text-2xl font-bold font-headline pt-8">Análisis de Proyectos</h1>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Factores de Prioridad</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>Categoría</TableHead>
-                                    <TableHead>Factor</TableHead>
-                                    <TableHead>Valor</TableHead>
-                                    <TableHead>Puntos</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {priorityFactors.map((item, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{item.category}</TableCell>
-                                        <TableCell>{item.factor}</TableCell>
-                                        <TableCell>{item.value}</TableCell>
-                                        <TableCell>{item.points}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </CardContent>
-                </Card>
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Factores de Oportunidad</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>Categoría</TableHead>
-                                    <TableHead>Factor</TableHead>
-                                    <TableHead>Valor</TableHead>
-                                    <TableHead>Puntos</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {opportunityFactors.map((item, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{item.category}</TableCell>
-                                        <TableCell>{item.factor}</TableCell>
-                                        <TableCell>{item.value}</TableCell>
-                                        <TableCell>{item.points}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </CardContent>
-                </Card>
-            </div>
-
             <Card>
                 <CardHeader>
                     <CardTitle>Retorno de la Inversión</CardTitle>
