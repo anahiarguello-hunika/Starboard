@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import React from 'react';
@@ -38,6 +37,16 @@ import {
   RefreshCw,
   X,
   User,
+  MoreVertical,
+  Pencil,
+  Trash2,
+  Flag,
+  Move,
+  Copy,
+  FileImage,
+  Lock,
+  Share2,
+  Download,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -52,6 +61,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart as RechartsBarChart, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, Bar } from 'recharts';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
 const documentsStatusData = [
   { name: 'Aprobado', value: 3, fill: 'hsl(var(--chart-2))' },
@@ -158,6 +168,7 @@ export default function DocumentsDashboardPage() {
                 <TableHead>Versión</TableHead>
                 <TableHead>Estado</TableHead>
                 <TableHead>Última Actualización</TableHead>
+                <TableHead>Acciones</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -173,6 +184,26 @@ export default function DocumentsDashboardPage() {
                     </Badge>
                   </TableCell>
                   <TableCell>{doc.lastUpdated}</TableCell>
+                  <TableCell>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                            <Button variant="ghost" size="icon" className="h-8 w-8"><Lock className="h-4 w-4" /></Button>
+                            <Button variant="ghost" size="icon" className="h-8 w-8"><Download className="h-4 w-4" /></Button>
+                            <Button variant="ghost" size="icon" className="h-8 w-8"><Share2 className="h-4 w-4" /></Button>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="ghost" size="icon" className="h-8 w-8"><MoreVertical className="h-4 w-4" /></Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuItem><Pencil className="mr-2 h-4 w-4" /> Modificar</DropdownMenuItem>
+                                    <DropdownMenuItem><Trash2 className="mr-2 h-4 w-4" /> Eliminar</DropdownMenuItem>
+                                    <DropdownMenuItem><Flag className="mr-2 h-4 w-4" /> Seguir</DropdownMenuItem>
+                                    <DropdownMenuItem><Move className="mr-2 h-4 w-4" /> Mover</DropdownMenuItem>
+                                    <DropdownMenuItem><Copy className="mr-2 h-4 w-4" /> Copiar</DropdownMenuItem>
+                                    <DropdownMenuItem><FileImage className="mr-2 h-4 w-4" /> Marca de agua</DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
+                    </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -312,6 +343,17 @@ export default function DocumentsDashboardPage() {
                     <TableIcon className="h-4 w-4 mr-2" />
                     Tabla
                 </Button>
+            </div>
+        </div>
+
+        <div className="flex items-center justify-between gap-4">
+            <div className="relative flex-grow max-w-sm">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Buscar en esta carpeta" className="pl-10" />
+            </div>
+            <div className="flex items-center gap-2">
+                <Button variant="outline">Nuevo Documento</Button>
+                <Button>Subir archivo</Button>
             </div>
         </div>
 
