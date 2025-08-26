@@ -184,8 +184,70 @@ export default function ProjectAnalysisPage() {
     
     return (
         <div className="space-y-6">
-            <h1 className="text-2xl font-bold font-headline">Análisis de Proyectos</h1>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Administrador de Proyectos Legales</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Prioridad</TableHead>
+                                <TableHead>Proyecto</TableHead>
+                                <TableHead>Responsable</TableHead>
+                                <TableHead>Proceso Impactado</TableHead>
+                                <TableHead>Avance</TableHead>
+                                <TableHead>Agendado</TableHead>
+                                <TableHead>Estatus</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {projectManagementData.map((row, rowIndex) => (
+                                <TableRow key={row.id}>
+                                    <TableCell>
+                                        <Select value={row.priority} onValueChange={(value) => handleCellChange(rowIndex, 'priority', value)}>
+                                            <SelectTrigger><SelectValue placeholder="Seleccionar" /></SelectTrigger>
+                                            <SelectContent>
+                                                {priorityOptions.map(option => <SelectItem key={option} value={option}>{option}</SelectItem>)}
+                                            </SelectContent>
+                                        </Select>
+                                    </TableCell>
+                                    <TableCell><Input value={row.project} onChange={(e) => handleCellChange(rowIndex, 'project', e.target.value)} /></TableCell>
+                                    <TableCell><Input value={row.responsible} onChange={(e) => handleCellChange(rowIndex, 'responsible', e.target.value)} /></TableCell>
+                                    <TableCell>
+                                         <ImpactedProcessCell 
+                                            value={row.process}
+                                            onValueChange={(value) => handleCellChange(rowIndex, 'process', value)}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <ProgressCell
+                                            progress={row.progress}
+                                            onProgressChange={(newProgress) => handleCellChange(rowIndex, 'progress', newProgress)}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <DatePickerCell 
+                                            date={row.scheduled}
+                                            onDateChange={(newDate) => handleCellChange(rowIndex, 'scheduled', newDate)}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <Select value={row.status} onValueChange={(value) => handleCellChange(rowIndex, 'status', value)}>
+                                            <SelectTrigger><SelectValue placeholder="Seleccionar" /></SelectTrigger>
+                                            <SelectContent>
+                                                {statusOptions.map(option => <SelectItem key={option} value={option}>{option}</SelectItem>)}
+                                            </SelectContent>
+                                        </Select>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </CardContent>
+            </Card>
 
+            <h1 className="text-2xl font-bold font-headline pt-8">Análisis de Proyectos</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <Card>
                     <CardHeader>
@@ -323,68 +385,6 @@ export default function ProjectAnalysisPage() {
                 </CardContent>
             </Card>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle>Administrador de Proyectos Legales</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Prioridad</TableHead>
-                                <TableHead>Proyecto</TableHead>
-                                <TableHead>Responsable</TableHead>
-                                <TableHead>Proceso Impactado</TableHead>
-                                <TableHead>Avance</TableHead>
-                                <TableHead>Agendado</TableHead>
-                                <TableHead>Estatus</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {projectManagementData.map((row, rowIndex) => (
-                                <TableRow key={row.id}>
-                                    <TableCell>
-                                        <Select value={row.priority} onValueChange={(value) => handleCellChange(rowIndex, 'priority', value)}>
-                                            <SelectTrigger><SelectValue placeholder="Seleccionar" /></SelectTrigger>
-                                            <SelectContent>
-                                                {priorityOptions.map(option => <SelectItem key={option} value={option}>{option}</SelectItem>)}
-                                            </SelectContent>
-                                        </Select>
-                                    </TableCell>
-                                    <TableCell><Input value={row.project} onChange={(e) => handleCellChange(rowIndex, 'project', e.target.value)} /></TableCell>
-                                    <TableCell><Input value={row.responsible} onChange={(e) => handleCellChange(rowIndex, 'responsible', e.target.value)} /></TableCell>
-                                    <TableCell>
-                                         <ImpactedProcessCell 
-                                            value={row.process}
-                                            onValueChange={(value) => handleCellChange(rowIndex, 'process', value)}
-                                        />
-                                    </TableCell>
-                                    <TableCell>
-                                        <ProgressCell
-                                            progress={row.progress}
-                                            onProgressChange={(newProgress) => handleCellChange(rowIndex, 'progress', newProgress)}
-                                        />
-                                    </TableCell>
-                                    <TableCell>
-                                        <DatePickerCell 
-                                            date={row.scheduled}
-                                            onDateChange={(newDate) => handleCellChange(rowIndex, 'scheduled', newDate)}
-                                        />
-                                    </TableCell>
-                                    <TableCell>
-                                        <Select value={row.status} onValueChange={(value) => handleCellChange(rowIndex, 'status', value)}>
-                                            <SelectTrigger><SelectValue placeholder="Seleccionar" /></SelectTrigger>
-                                            <SelectContent>
-                                                {statusOptions.map(option => <SelectItem key={option} value={option}>{option}</SelectItem>)}
-                                            </SelectContent>
-                                        </Select>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </CardContent>
-            </Card>
         </div>
     );
 }
