@@ -50,6 +50,22 @@ const ChartQuadrant = ({ x, y, width, height, fill, label, labelX, labelY }: any
     </g>
 );
 
+const projectManagementData = Array(10).fill({
+    priority: '',
+    project: '',
+    responsible: '',
+    process: '',
+    progress: [false, false, false, false, false],
+    scheduled: '',
+    status: '',
+});
+
+const todoData = Array(10).fill({
+    done: '',
+    activity: '',
+    responsible: '',
+});
+
 
 export default function ProjectAnalysisPage() {
     return (
@@ -190,6 +206,82 @@ export default function ProjectAnalysisPage() {
                         defaultValue="La inversión en la conferencia representa las cinco contribuciones de patrocinadores Platino de $20K. Además, la cuota de participante es de $800 por cada asistente. Los gastos de la conferencia incluyen salas de presentación, comidas y gastos imprevistos."
                         rows={4}
                     />
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Administrador de Proyectos Legales</CardTitle>
+                </CardHeader>
+                <CardContent className="overflow-x-auto">
+                    <div className="flex gap-4">
+                        <Table className="w-auto">
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead className="min-w-[100px]">Prioridad</TableHead>
+                                    <TableHead className="min-w-[200px]">Proyecto</TableHead>
+                                    <TableHead className="min-w-[150px]">Responsable</TableHead>
+                                    <TableHead className="min-w-[150px]">Proceso Impactado</TableHead>
+                                    <TableHead className="min-w-[250px]">
+                                        <div className="text-center border-b pb-1 mb-1">Avance</div>
+                                        <div className="grid grid-cols-5 text-center">
+                                            <span>0%</span>
+                                            <span></span>
+                                            <span>50%</span>
+                                            <span></span>
+                                            <span>100%</span>
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="min-w-[120px]">Agendado</TableHead>
+                                    <TableHead className="min-w-[120px]">Estatus</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {projectManagementData.map((row, rowIndex) => (
+                                    <TableRow key={rowIndex}>
+                                        <TableCell className="border-r p-1"></TableCell>
+                                        <TableCell className="border-r p-1"></TableCell>
+                                        <TableCell className="border-r p-1"></TableCell>
+                                        <TableCell className="border-r p-1"></TableCell>
+                                        <TableCell className="border-r p-0">
+                                            <div className="grid grid-cols-5 h-full">
+                                                <div className="border-r h-full bg-red-500"></div>
+                                                <div className="border-r h-full bg-orange-400"></div>
+                                                <div className="border-r h-full bg-yellow-400"></div>
+                                                <div className="border-r h-full bg-yellow-600/70"></div>
+                                                <div className="h-full bg-green-500"></div>
+                                            </div>
+                                        </TableCell>
+                                        <TableCell className="border-r p-1"></TableCell>
+                                        <TableCell className="p-1"></TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                        <Table className="w-auto">
+                             <TableHeader>
+                                <TableRow>
+                                    <TableHead colSpan={3} className="text-center">To Do's</TableHead>
+                                </TableRow>
+                                <TableRow>
+                                    <TableHead>Realizado</TableHead>
+                                    <TableHead className="min-w-[200px]">Actividad</TableHead>
+                                    <TableHead className="min-w-[150px]">Responsable</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                 {todoData.map((row, rowIndex) => (
+                                    <TableRow key={rowIndex}>
+                                        <TableCell className="border-r p-1"></TableCell>
+                                        <TableCell className="border-r p-1"></TableCell>
+                                        <TableCell className="p-1 relative">
+                                             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-red-600" />
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
         </div>
