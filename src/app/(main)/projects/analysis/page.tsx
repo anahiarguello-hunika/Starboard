@@ -1,10 +1,21 @@
 
+
 'use client';
 
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis, ScatterChart, ZAxis, Scatter } from "recharts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/progress";
+import React from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { CalendarIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { format, parseISO } from 'date-fns';
 
 const priorityMatrixData = [{ x: 4, y: 3.5, z: 200 }];
 const opportunityMatrixData = [{ x: 3.2, y: 2, z: 200 }];
@@ -40,6 +51,20 @@ const roiData = [
   { name: 'Q7', inversion: -100, retorno: 280, neto: 180 },
 ];
 
+const initialProjectManagementData = Array(10).fill({}).map((_, index) => ({
+    id: index,
+    priority: '',
+    project: '',
+    responsible: '',
+    process: '',
+    progress: 50,
+    scheduled: null,
+    status: '',
+}));
+
+const priorityOptions = ['Alta', 'Media', 'Baja'];
+const statusOptions = ['En Progreso', 'Completado', 'En Espera', 'Cancelado'];
+
 
 const ChartQuadrant = ({ x, y, width, height, fill, label, labelX, labelY }: any) => (
     <g>
@@ -50,17 +75,76 @@ const ChartQuadrant = ({ x, y, width, height, fill, label, labelX, labelY }: any
     </g>
 );
 
-const projectManagementData = Array(10).fill({
-    priority: '',
-    project: '',
-    responsible: '',
-    process: '',
-    progress: [false, false, false, false, false],
-    scheduled: '',
-    status: '',
-});
+const ProgressCell = ({ progress, onProgressChange }: { progress: number, onProgressChange: (newProgress: number) => void }) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let value = parseInt(e.target.value, 10);
+        if (isNaN(value)) value = 0;
+        if (value < 0) value = 0;
+        if (value > 100) value = 100;
+        onProgressChange(value);
+    };
+
+    return (
+        <div className="flex items-center gap-2">
+            <Progress value={progress} className="w-24 h-4" />
+            <div className="flex items-center gap-1">
+                <Input
+                    type="number"
+                    value={progress}
+                    onChange={handleChange}
+                    className="w-16 h-8 text-xs p-1 text-right"
+                    min="0"
+                    max="100"
+                />
+                <span className="text-xs">%</span>
+            </div>
+        </div>
+    );
+};
+
+const DatePickerCell = ({ date, onDateChange }: { date: Date | null, onDateChange: (newDate: Date | undefined) => void }) => {
+    const [open, setOpen] = React.useState(false);
+
+    return (
+        <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+                <Button
+                    variant={"outline"}
+                    className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !date && "text-muted-foreground"
+                    )}
+                >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {date ? format(date, "PPP") : <span>Elige una fecha</span>}
+                </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0">
+                <Calendar
+                    mode="single"
+                    selected={date || undefined}
+                    onSelect={(d) => {
+                        onDateChange(d);
+                        setOpen(false);
+                    }}
+                    initialFocus
+                />
+            </PopoverContent>
+        </Popover>
+    );
+};
 
 export default function ProjectAnalysisPage() {
+    const [projectManagementData, setProjectManagementData] = React.useState(initialProjectManagementData);
+
+    const handleCellChange = (rowIndex: number, field: string, value: any) => {
+        setProjectManagementData(prevData => {
+            const newData = [...prevData];
+            newData[rowIndex] = { ...newData[rowIndex], [field]: value };
+            return newData;
+        });
+    };
+    
     return (
         <div className="space-y-6">
             <h1 className="text-2xl font-bold font-headline">Análisis de Proyectos</h1>
@@ -221,22 +305,38 @@ export default function ProjectAnalysisPage() {
                         </TableHeader>
                         <TableBody>
                             {projectManagementData.map((row, rowIndex) => (
-                                <TableRow key={rowIndex}>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
+                                <TableRow key={row.id}>
                                     <TableCell>
-                                        <div className="flex h-4 rounded-full overflow-hidden">
-                                            <div className="w-[20%] bg-red-500"></div>
-                                            <div className="w-[20%] bg-orange-400"></div>
-                                            <div className="w-[20%] bg-yellow-400"></div>
-                                            <div className="w-[20%] bg-yellow-600/70"></div>
-                                            <div className="w-[20%] bg-green-500"></div>
-                                        </div>
+                                        <Select value={row.priority} onValueChange={(value) => handleCellChange(rowIndex, 'priority', value)}>
+                                            <SelectTrigger><SelectValue placeholder="Seleccionar" /></SelectTrigger>
+                                            <SelectContent>
+                                                {priorityOptions.map(option => <SelectItem key={option} value={option}>{option}</SelectItem>)}
+                                            </SelectContent>
+                                        </Select>
                                     </TableCell>
-                                    <TableCell></TableCell>
-                                    <TableCell></TableCell>
+                                    <TableCell><Input value={row.project} onChange={(e) => handleCellChange(rowIndex, 'project', e.target.value)} /></TableCell>
+                                    <TableCell><Input value={row.responsible} onChange={(e) => handleCellChange(rowIndex, 'responsible', e.target.value)} /></TableCell>
+                                    <TableCell><Input value={row.process} onChange={(e) => handleCellChange(rowIndex, 'process', e.target.value)} /></TableCell>
+                                    <TableCell>
+                                        <ProgressCell
+                                            progress={row.progress}
+                                            onProgressChange={(newProgress) => handleCellChange(rowIndex, 'progress', newProgress)}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <DatePickerCell 
+                                            date={row.scheduled}
+                                            onDateChange={(newDate) => handleCellChange(rowIndex, 'scheduled', newDate)}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <Select value={row.status} onValueChange={(value) => handleCellChange(rowIndex, 'status', value)}>
+                                            <SelectTrigger><SelectValue placeholder="Seleccionar" /></SelectTrigger>
+                                            <SelectContent>
+                                                {statusOptions.map(option => <SelectItem key={option} value={option}>{option}</SelectItem>)}
+                                            </SelectContent>
+                                        </Select>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
