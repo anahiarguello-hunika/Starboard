@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import {
@@ -28,15 +29,15 @@ import React from "react";
 
 const clientNav = [
   { name: 'Dashboard', href: '/comunicaciones', icon: LayoutDashboard },
-  { name: 'Contratos Activados®', href: '/contracts', icon: FileText },
-  { name: 'Proyectos Activados®', href: '/projects', icon: Briefcase },
-  { name: 'Gestión de Documentos', href: '/documents', icon: Folder },
-  { name: 'Gestión Financiera', href: '/financial-management', icon: DollarSign },
-  { name: 'Gestión de Sociedades', href: '/entities', icon: Building2 },
-  { name: 'Gestión Patrimonial', href: '/wealth-management', icon: Landmark },
-  { name: 'Auditorías Legales', href: '/legal-audits', icon: BookOpenCheck },
+  { name: 'Contratos Activados®', href: '/comunicaciones/contracts', icon: FileText },
+  { name: 'Proyectos Activados®', href: '/comunicaciones/projects', icon: Briefcase },
+  { name: 'Gestión de Documentos', href: '/comunicaciones/documents', icon: Folder },
+  { name: 'Gestión Financiera', href: '/comunicaciones/financial-management', icon: DollarSign },
+  { name: 'Gestión de Sociedades', href: '/comunicaciones/entities', icon: Building2 },
+  { name: 'Gestión Patrimonial', href: '/comunicaciones/wealth-management', icon: Landmark },
+  { name: 'Auditorías Legales', href: '/comunicaciones/legal-audits', icon: BookOpenCheck },
   { name: 'Background Check', href: '/background-check', icon: UserSearch },
-  { name: 'Solicitud de Servicio', href: '/service-request', icon: Ticket },
+  { name: 'Solicitud de Servicio', href: '/comunicaciones/service-request', icon: Ticket },
 ];
 
 
