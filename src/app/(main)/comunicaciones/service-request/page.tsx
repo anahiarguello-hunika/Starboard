@@ -84,7 +84,7 @@ export default function NewServiceRequestPage() {
                 <DropdownMenuItem>7. Otros</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button className="bg-green-600 hover:bg-green-700">
+            <Button className="bg-gray-500 hover:bg-gray-600">
               <Award className="mr-2 h-4 w-4" /> Nueva Marca
             </Button>
         </div>
