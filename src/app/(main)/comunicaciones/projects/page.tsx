@@ -15,7 +15,6 @@ import ProjectsDashboardPage from './dashboard/page';
 const projectsNav = [
   { name: 'Dashboard', href: '/comunicaciones/projects/dashboard', icon: LayoutDashboard },
   { name: '+ Proyecto', href: '/comunicaciones/projects/new-playbook', icon: PlusCircle },
-  { name: 'Informe de Proyecto', href: '/comunicaciones/projects/report', icon: BarChart2 },
   { name: 'Análisis de Proyectos', href: '/comunicaciones/projects/analysis', icon: BarChart2 },
 ];
 
