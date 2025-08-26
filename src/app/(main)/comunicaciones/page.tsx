@@ -15,6 +15,8 @@ import {
   Calendar as CalendarIcon,
   Clock,
   DollarSign,
+  Award,
+  BookCopy,
 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -144,6 +146,25 @@ export default function ComunicacionesPage() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  <BookCopy className="mr-2 h-4 w-4" /> Servicio Notarial <ChevronDown className="ml-2 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>1. Constituir Sociedad</DropdownMenuItem>
+                <DropdownMenuItem>2. Otorgar Poder</DropdownMenuItem>
+                <DropdownMenuItem>3. Crear Asamblea</DropdownMenuItem>
+                <DropdownMenuItem>4. Ratificar documento</DropdownMenuItem>
+                <DropdownMenuItem>5. Protocolizar Asamblea</DropdownMenuItem>
+                <DropdownMenuItem>6. Otorgar Testamento</DropdownMenuItem>
+                <DropdownMenuItem>7. Otros</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button className="bg-green-600 hover:bg-green-700">
+              <Award className="mr-2 h-4 w-4" /> Nueva Marca
+            </Button>
           <Button variant="outline" asChild>
             <Link href="/service-request/new">
               <Ticket className="mr-2 h-4 w-4" />

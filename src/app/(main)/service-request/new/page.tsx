@@ -26,7 +26,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Textarea } from "@/components/ui/textarea";
-import { Paperclip, Calendar as CalendarIcon, FilePlus2, ChevronDown, BookCopy } from "lucide-react";
+import { Paperclip, Calendar as CalendarIcon, FilePlus2, ChevronDown, BookCopy, Award } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
 
@@ -83,6 +83,9 @@ export default function NewServiceRequestPage() {
                 <DropdownMenuItem>7. Otros</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+             <Button className="bg-green-600 hover:bg-green-700">
+              <Award className="mr-2 h-4 w-4" /> Nueva Marca
+            </Button>
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
