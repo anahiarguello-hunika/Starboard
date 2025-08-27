@@ -57,6 +57,16 @@ import { Calendar } from '@/components/ui/calendar';
 import React, { useState, useEffect } from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const activeProjects = [
   { id: "PROJ-001", name: "Proyecto Alfa", status: "En curso", progress: 75, priority: 1, roi: 85 },
@@ -97,6 +107,7 @@ const NpsScoreIcon = ({ type, colorClass }: { type: 'detractor' | 'passive' | 'p
 
 const TodaysAgenda = () => {
     const [isVisible, setIsVisible] = useState(true);
+    const [isTaskDialogOpen, setIsTaskDialogOpen] = useState(false);
 
     if (!isVisible) {
         return (
@@ -128,7 +139,7 @@ const TodaysAgenda = () => {
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent>
-                                <DropdownMenuItem>Nueva tarea</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setIsTaskDialogOpen(true)}>Nueva tarea</DropdownMenuItem>
                                 <DropdownMenuItem>Nueva cita</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
@@ -162,7 +173,7 @@ const TodaysAgenda = () => {
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent>
-                                <DropdownMenuItem>Nueva tarea</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setIsTaskDialogOpen(true)}>Nueva tarea</DropdownMenuItem>
                                 <DropdownMenuItem>Nueva cita</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
@@ -180,6 +191,42 @@ const TodaysAgenda = () => {
                     </div>
                 </CardContent>
             </Card>
+
+            <Dialog open={isTaskDialogOpen} onOpenChange={setIsTaskDialogOpen}>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Nueva Tarea</DialogTitle>
+                  <DialogDescription>
+                    Complete los detalles de su nueva tarea.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="task-name" className="text-right">
+                      Tarea
+                    </Label>
+                    <Input id="task-name" placeholder="Nombre de la tarea" className="col-span-3" />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="task-description" className="text-right">
+                      Descripción
+                    </Label>
+                    <Textarea id="task-description" placeholder="Descripción de la tarea" className="col-span-3" />
+                  </div>
+                   <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="task-date" className="text-right">
+                      Fecha
+                    </Label>
+                    <Input id="task-date" type="date" className="col-span-3" />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button variant="outline" onClick={() => setIsTaskDialogOpen(false)}>Cancelar</Button>
+                  <Button type="submit" onClick={() => setIsTaskDialogOpen(false)}>Guardar</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+
         </div>
     )
 }
@@ -568,3 +615,4 @@ export default function DashboardPage() {
   );
 
     
+
