@@ -193,7 +193,7 @@ const TodaysAgenda = () => {
             </Card>
 
             <Dialog open={isTaskDialogOpen} onOpenChange={setIsTaskDialogOpen}>
-              <DialogContent className="sm:max-w-[425px]">
+              <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                   <DialogTitle>Nueva Tarea</DialogTitle>
                   <DialogDescription>
@@ -201,23 +201,17 @@ const TodaysAgenda = () => {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="task-name" className="text-right">
-                      Tarea
-                    </Label>
-                    <Input id="task-name" placeholder="Nombre de la tarea" className="col-span-3" />
+                  <div className="space-y-2">
+                    <Label htmlFor="task-name">Tarea</Label>
+                    <Input id="task-name" placeholder="Nombre de la tarea" />
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="task-description" className="text-right">
-                      Descripción
-                    </Label>
-                    <Textarea id="task-description" placeholder="Descripción de la tarea" className="col-span-3" />
+                  <div className="space-y-2">
+                    <Label htmlFor="task-description">Descripción</Label>
+                    <Textarea id="task-description" placeholder="Descripción de la tarea" />
                   </div>
-                   <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="task-date" className="text-right">
-                      Fecha
-                    </Label>
-                    <Input id="task-date" type="date" className="col-span-3" />
+                   <div className="space-y-2">
+                    <Label htmlFor="task-date">Fecha</Label>
+                    <Input id="task-date" type="date" placeholder="dd/mm/aaaa" />
                   </div>
                 </div>
                 <DialogFooter>
@@ -615,5 +609,6 @@ export default function DashboardPage() {
   );
 
     
+
 
 
