@@ -12,7 +12,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-const testamentoFolders: any[] = [];
+const testamentoFolders = [
+    { name: '01 Testamentos Otorgados', size: '1.2 GB', modified: '2024-05-21' },
+    { name: '02 Testamentos Cancelados', size: '850 KB', modified: '2024-05-20' },
+    { name: '03 Proyecto de Testamentos', size: '3.5 MB', modified: '2024-05-18' },
+    { name: '04 Instrucciones de última voluntad', size: '2.1 MB', modified: '2024-05-17' },
+];
 
 
 export default function TestamentoPage() {
@@ -114,4 +119,3 @@ export default function TestamentoPage() {
         </div>
     );
 }
-
