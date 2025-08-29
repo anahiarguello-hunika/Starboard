@@ -25,15 +25,15 @@ import { cn } from "@/lib/utils";
 
 const playbooks = [
     { title: "General", description: "Un playbook de propósito general para cualquier asunto legal.", href: "/projects/general" },
-    { title: "Diligencia Debida", description: "Un proceso estructurado para llevar a cabo una diligencia debida exhaustiva.", href: "/projects" },
+    { title: "Due Dilligence", description: "Un proceso estructurado para llevar a cabo una diligencia debida exhaustiva.", href: "/projects" },
     { title: "Proceso de M&A", description: "Gestione fusiones y adquisiciones de principio a fin.", href: "/projects/ma-process" },
-    { title: "Legal Seis Sigma", description: "Un playbook para gestionar proyectos de mejora de procesos legales.", href: "/projects/six-sigma-legal" },
+    { title: "Legal Six Sigma", description: "Un playbook para gestionar proyectos de mejora de procesos legales.", href: "/projects/six-sigma-legal" },
     { title: "Creación de Fondos", description: "Agilice el proceso de creación de un nuevo fondo de inversión.", href: "/projects" },
     { title: "Tecnología", description: "Maneje asuntos legales relacionados con la tecnología como PI y licencias.", href: "/projects" },
-    { title: "Transformación", description: "Guíe a su organización a través de importantes transformaciones legales.", href: "/projects" },
+    { title: "Transformación de Sociedades", description: "Guíe a su organización a través de importantes transformaciones legales.", href: "/projects" },
     { title: "Contratos", description: "Un playbook dedicado a la gestión del ciclo de vida de los contratos.", href: "/projects" },
     { title: "Bienes Raíces", description: "Gestione transacciones y asuntos de bienes raíces.", href: "/projects/real-estate" },
-    { title: "Derecho Fraccional", description: "Gestione servicios legales para múltiples clientes como abogado fraccional.", href: "/projects" },
+    { title: "Fraccional Law", description: "Gestione servicios legales para múltiples clientes como abogado fraccional.", href: "/projects" },
 ]
 
 export default function NewPlaybookPage() {
