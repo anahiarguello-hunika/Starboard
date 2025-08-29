@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { Folder, ChevronRight, FileUp, Link as LinkIcon, Download, Search, LayoutGrid, List, MoreVertical, Pencil, Trash2, Flag, Move, Copy, FileImage, Lock, Share2 } from "lucide-react";
@@ -91,10 +90,10 @@ export default function CorporateInformationPage() {
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                     <span>Documentos</span>
                     <ChevronRight className="h-4 w-4" />
-                    <span className="text-foreground">Información Corporativa</span>
+                    <span className="text-foreground">Inversiones en Sociedades</span>
                 </div>
                 <h1 className="text-3xl font-bold tracking-tight font-headline">
-                    01 Secretaría Corporativa
+                    01 Inversiones en Sociedades
                 </h1>
             </div>
              <div className="flex items-center justify-between gap-4">
