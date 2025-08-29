@@ -87,10 +87,10 @@ export default function IntellectualPropertyPage() {
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                     <span>Documentos</span>
                     <ChevronRight className="h-4 w-4" />
-                    <span className="text-foreground">Propiedad Intelectual</span>
+                    <span className="text-foreground">Marcas y Propiedad Intelectual</span>
                 </div>
                 <h1 className="text-3xl font-bold tracking-tight font-headline">
-                    05 Propiedad intelectual
+                    05 Marcas y Propiedad intelectual
                 </h1>
             </div>
              <div className="flex items-center justify-between gap-4">

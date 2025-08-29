@@ -44,7 +44,7 @@ const wealthManagementNav = [
         href: "/wealth-management/laboral",
     },
     { 
-        name: 'Propiedad intelectual', 
+        name: 'Marcas y Propiedad Intelectual', 
         icon: BrainCircuit, 
         href: "/wealth-management/intellectual-property",
     },
