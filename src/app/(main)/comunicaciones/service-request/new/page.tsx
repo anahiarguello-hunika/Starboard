@@ -86,7 +86,7 @@ export default function NewServiceRequestPage() {
                 <DropdownMenuItem>7. Otros</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button className="bg-gray-500 hover:bg-gray-600">
+             <Button className="bg-gray-500 hover:bg-gray-600">
               <Award className="mr-2 h-4 w-4" /> Nueva Marca
             </Button>
         </div>
@@ -237,7 +237,7 @@ export default function NewServiceRequestPage() {
                         </div>
                          <div className="grid gap-2">
                             <Label htmlFor="start-date">Fecha de inicio deseada</Label>
-                            <div className="flex gap-2">
+                             <div className="flex gap-2">
                                 <Select>
                                     <SelectTrigger>
                                         <SelectValue placeholder="Inmediato, ASAP, Flexible" />
@@ -249,17 +249,17 @@ export default function NewServiceRequestPage() {
                                     </SelectContent>
                                 </Select>
                                 <Popover>
-                                <PopoverTrigger asChild>
-                                    <Button variant="outline" className="w-auto px-3"><CalendarIcon className="h-4 w-4" /></Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-auto p-0"><Calendar mode="single" /></PopoverContent>
-                            </Popover>
+                                    <PopoverTrigger asChild>
+                                        <Button variant="outline" className="w-auto px-3"><CalendarIcon className="h-4 w-4" /></Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-auto p-0"><Calendar mode="single" /></PopoverContent>
+                                </Popover>
                             </div>
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="end-date">Fecha de fin deseada</Label>
-                            <div className="flex gap-2">
-                                <Select>
+                             <div className="flex gap-2">
+                                 <Select>
                                     <SelectTrigger>
                                         <SelectValue placeholder="Inmediato, ASAP, Flexible" />
                                     </SelectTrigger>
@@ -336,3 +336,4 @@ export default function NewServiceRequestPage() {
     </div>
   );
 }
+
