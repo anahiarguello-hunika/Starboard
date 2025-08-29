@@ -201,7 +201,7 @@ export default function DocumentsDashboardPage() {
         <div className="grid grid-cols-[320px_1fr] gap-8 items-start">
             <div className="flex flex-col gap-8">
                     <div className="flex items-center gap-2">
-                    <h1 className="text-xl font-semibold">Panel de Gestión de Documentos</h1>
+                    <h1 className="text-xl font-semibold">Panel de Gestión Patrimonial</h1>
                     <ChevronDown className="h-5 w-5 text-muted-foreground" />
                 </div>
                 <Card>
@@ -309,7 +309,7 @@ export default function DocumentsDashboardPage() {
         <div className="flex items-center justify-between">
             <div>
                 <h1 className="text-3xl font-bold tracking-tight font-headline">
-                Gestión de Documentos y Contratos
+                Gestión Patrimonial
                 </h1>
                 <p className="text-muted-foreground">
                 Visualice y gestione sus documentos y contratos legales.
@@ -348,5 +348,3 @@ export default function DocumentsDashboardPage() {
     </div>
   );
 }
-
-    
