@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { Folder, ChevronRight, FileUp, Link as LinkIcon, Download, Search, LayoutGrid, List, MoreVertical, Pencil, Trash2, Flag, Move, Copy, FileImage, Lock, Share2 } from "lucide-react";
@@ -90,7 +89,7 @@ export default function LaboralPage() {
                     <span className="text-foreground">Información Laboral</span>
                 </div>
                 <h1 className="text-3xl font-bold tracking-tight font-headline">
-                    04 Laboral
+                    04 Empleados
                 </h1>
             </div>
              <div className="flex items-center justify-between gap-4">
