@@ -29,7 +29,7 @@ const wealthManagementNav = [
     { name: 'Dashboard', icon: LayoutDashboard, href: "/wealth-management/dashboard"},
     { name: 'Proyectos (Matters)', icon: Briefcase, href: "#"},
     { 
-        name: 'Información Corporativa', 
+        name: 'Inversiones en Sociedades', 
         icon: Building, 
         href: "/wealth-management/corporate-information",
     },
@@ -39,7 +39,7 @@ const wealthManagementNav = [
         href: "/wealth-management/financial-information",
     },
     { 
-        name: 'Laboral', 
+        name: 'Empleados', 
         icon: Users, 
         href: "/wealth-management/laboral",
     },
@@ -58,7 +58,7 @@ const wealthManagementNav = [
         href: "/wealth-management/contracts",
     },
     { 
-        name: 'Cumplimiento Legal y Regulatorio', 
+        name: 'Cumplimiento Legal', 
         icon: ShieldCheck, 
         href: "/wealth-management/legal-compliance",
     },
@@ -68,7 +68,7 @@ const wealthManagementNav = [
         href: "/wealth-management/insurance",
     },
     { 
-        name: 'Sistemas y TI', 
+        name: 'Sistemas', 
         icon: Server, 
         href: "/wealth-management/systems-and-it",
     },
