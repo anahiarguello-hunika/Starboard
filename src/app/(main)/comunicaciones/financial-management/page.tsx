@@ -30,6 +30,7 @@ import {
 } from '@/components/ui/chart';
 import { Pie, PieChart, Cell, ResponsiveContainer } from 'recharts';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const memberData = [
   { name: 'Elias Bardawil', value: 45.73, fill: 'hsl(var(--chart-2))' },
