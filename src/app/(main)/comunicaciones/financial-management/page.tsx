@@ -185,7 +185,7 @@ export default function FinancialManagementPage() {
                         <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="text-center">
                                 <h3 className="font-semibold mb-4">Miembro <ChevronDown className="inline h-4 w-4" /></h3>
-                                <div className="h-[200px] w-full">
+                                <ChartContainer config={{}} className="h-[200px] w-full">
                                     <ResponsiveContainer>
                                         <PieChart>
                                             <Pie data={memberData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
@@ -193,7 +193,7 @@ export default function FinancialManagementPage() {
                                             </Pie>
                                         </PieChart>
                                     </ResponsiveContainer>
-                                </div>
+                                </ChartContainer>
                                 <div className="mt-4 space-y-2 text-left">
                                     {memberTime.map((item, index) => (
                                         <LegendItem key={item.name} color={memberData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
@@ -202,7 +202,7 @@ export default function FinancialManagementPage() {
                             </div>
                             <div className="text-center">
                                 <h3 className="font-semibold mb-4">Fase <ChevronDown className="inline h-4 w-4" /></h3>
-                                <div className="h-[200px] w-full">
+                                <ChartContainer config={{}} className="h-[200px] w-full">
                                     <ResponsiveContainer>
                                         <PieChart>
                                             <Pie data={phaseData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
@@ -210,7 +210,7 @@ export default function FinancialManagementPage() {
                                             </Pie>
                                         </PieChart>
                                     </ResponsiveContainer>
-                                </div>
+                                </ChartContainer>
                                 <div className="mt-4 space-y-2 text-left">
                                     {phaseTime.map((item, index) => (
                                         <LegendItem key={item.name} color={phaseData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
@@ -219,7 +219,7 @@ export default function FinancialManagementPage() {
                             </div>
                             <div className="text-center">
                                 <h3 className="font-semibold mb-4">Etiqueta <ChevronDown className="inline h-4 w-4" /></h3>
-                                <div className="h-[200px] w-full">
+                                <ChartContainer config={{}} className="h-[200px] w-full">
                                     <ResponsiveContainer>
                                         <PieChart>
                                             <Pie data={tagData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
@@ -227,7 +227,7 @@ export default function FinancialManagementPage() {
                                             </Pie>
                                         </PieChart>
                                     </ResponsiveContainer>
-                                </div>
+                                </ChartContainer>
                                 <div className="mt-4 space-y-2 text-left">
                                     {tagTime.map((item, index) => (
                                         <LegendItem key={item.name} color={tagData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
@@ -307,7 +307,7 @@ export default function FinancialManagementPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="grid grid-cols-2 gap-6 items-center">
-                             <div className="h-[250px] w-full">
+                             <ChartContainer config={{}} className="h-[250px] w-full">
                                 <ResponsiveContainer>
                                     <PieChart>
                                         <ChartTooltip
@@ -323,7 +323,7 @@ export default function FinancialManagementPage() {
                                         <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-2xl font-bold fill-foreground">14:15</text>
                                     </PieChart>
                                 </ResponsiveContainer>
-                            </div>
+                            </ChartContainer>
                             <div className="space-y-2 text-left">
                                 {memberTime.map((item, index) => (
                                     <LegendItem key={item.name} color={memberData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
