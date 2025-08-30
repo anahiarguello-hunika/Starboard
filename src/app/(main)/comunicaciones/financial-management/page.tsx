@@ -21,6 +21,8 @@ import {
   Users,
   Tag,
   List,
+  GripHorizontal,
+  Settings,
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import {
@@ -31,6 +33,7 @@ import {
 import { Pie, PieChart, Cell, ResponsiveContainer } from 'recharts';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const memberData = [
   { name: 'Elias Bardawil', value: 45.73, fill: 'hsl(var(--chart-2))' },
@@ -60,6 +63,12 @@ const tagData = [
 
 const tagTime = [
     { name: 'Untagged', time: '14:15', percentage: '100.00%' },
+];
+
+const teamMembers = [
+    { name: 'Elias Bardawil', totalTime: '6:31', totalCost: 'US$651.67' },
+    { name: 'Andrea Torres', totalTime: '4:00', totalCost: 'US$200.00' },
+    { name: 'Stephany', totalTime: '3:44', totalCost: 'US$224.00' },
 ];
 
 
@@ -117,120 +126,214 @@ export default function FinancialManagementPage() {
             </div>
              <Tabs defaultValue="overview" className="mt-4">
                 <TabsList className="border-0 p-0 h-auto bg-transparent">
-                    <TabsTrigger value="overview" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Overview</TabsTrigger>
-                    <TabsTrigger value="team" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Team</TabsTrigger>
-                    <TabsTrigger value="phases" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Phases</TabsTrigger>
-                    <TabsTrigger value="tags" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Tags</TabsTrigger>
-                    <TabsTrigger value="tasks" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Tasks</TabsTrigger>
+                    <TabsTrigger value="overview" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Resumen</TabsTrigger>
+                    <TabsTrigger value="team" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Equipo</TabsTrigger>
+                    <TabsTrigger value="phases" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Fases</TabsTrigger>
+                    <TabsTrigger value="tags" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Etiquetas</TabsTrigger>
+                    <TabsTrigger value="tasks" className="text-primary-foreground/80 data-[state=active]:bg-primary/50 data-[state=active]:text-primary-foreground rounded-t-md px-4 pb-2 pt-1 border-b-2 border-transparent data-[state=active]:border-primary-foreground">Tareas</TabsTrigger>
                 </TabsList>
+                 <TabsContent value="overview" className="pt-6">
+                    <div className="flex justify-end">
+                        <Button variant="outline" className="bg-transparent text-primary-foreground/80 border-primary-foreground/50 hover:bg-primary/80 hover:text-primary-foreground">Todo el tiempo</Button>
+                    </div>
+                     <div className="flex gap-4 mt-4">
+                        <KpiCard title="Presupuesto" value="14h de 13h">
+                            <Progress value={100} className="h-2 bg-red-200 [&>div]:bg-red-500" />
+                            <p className="text-sm font-semibold text-red-600 mt-1">110%</p>
+                        </KpiCard>
+                        <KpiCard title="Tiempo total" value="14:15">
+                            <div className="text-xs text-primary-foreground/80 space-y-1">
+                                <div className="flex justify-between"><span>Tiempo facturable</span><span>14:15</span></div>
+                                <div className="flex justify-between"><span>Tiempo no facturable</span><span>0:00</span></div>
+                            </div>
+                        </KpiCard>
+                        <KpiCard title="Costos internos" value="US$1,075.67">
+                            <div className="text-xs text-primary-foreground/80 space-y-1">
+                                <div className="flex justify-between"><span>Costos laborales</span><span>US$1,075.67</span></div>
+                                <div className="flex justify-between"><span>Gastos</span><span>US$0.00</span></div>
+                            </div>
+                        </KpiCard>
+                        <KpiCard title="Dinero facturado" value="US$0.00">
+                             <div className="text-xs text-primary-foreground/80 space-y-1">
+                                <div className="flex justify-between"><span>Trabajo facturado</span><span>US$0.00</span></div>
+                                <div className="flex justify-between"><span>Gastos facturados</span><span>US$0.00</span></div>
+                            </div>
+                        </KpiCard>
+                        <KpiCard title="Dinero no facturado" value="US$3,181.66">
+                             <div className="text-xs text-primary-foreground/80 space-y-1">
+                                <div className="flex justify-between"><span>Trabajo no facturado</span><span>US$3,181.66</span></div>
+                                <div className="flex justify-between"><span>Gastos no facturados</span><span>US$0.00</span></div>
+                            </div>
+                        </KpiCard>
+                    </div>
+                     <Card className="mt-6 bg-card/80">
+                        <CardHeader className="flex flex-row justify-between items-center">
+                            <CardTitle>Resumen</CardTitle>
+                            <div className="flex items-center gap-2">
+                                <span className="text-sm text-muted-foreground">Métrica:</span>
+                                <Select defaultValue="time">
+                                    <SelectTrigger className="w-[120px]">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="time">Tiempo</SelectItem>
+                                        <SelectItem value="cost">Costo</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="text-center">
+                                <h3 className="font-semibold mb-4">Miembro <ChevronDown className="inline h-4 w-4" /></h3>
+                                <div className="h-[200px] w-full">
+                                    <ResponsiveContainer>
+                                        <PieChart>
+                                            <Pie data={memberData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
+                                                {memberData.map(entry => <Cell key={entry.name} fill={entry.fill} />)}
+                                            </Pie>
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="mt-4 space-y-2 text-left">
+                                    {memberTime.map((item, index) => (
+                                        <LegendItem key={item.name} color={memberData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <h3 className="font-semibold mb-4">Fase <ChevronDown className="inline h-4 w-4" /></h3>
+                                <div className="h-[200px] w-full">
+                                    <ResponsiveContainer>
+                                        <PieChart>
+                                            <Pie data={phaseData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
+                                                {phaseData.map(entry => <Cell key={entry.name} fill={entry.fill} />)}
+                                            </Pie>
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="mt-4 space-y-2 text-left">
+                                    {phaseTime.map((item, index) => (
+                                        <LegendItem key={item.name} color={phaseData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <h3 className="font-semibold mb-4">Etiqueta <ChevronDown className="inline h-4 w-4" /></h3>
+                                <div className="h-[200px] w-full">
+                                    <ResponsiveContainer>
+                                        <PieChart>
+                                            <Pie data={tagData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
+                                                {tagData.map(entry => <Cell key={entry.name} fill={entry.fill} />)}
+                                            </Pie>
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="mt-4 space-y-2 text-left">
+                                    {tagTime.map((item, index) => (
+                                        <LegendItem key={item.name} color={tagData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
+                                    ))}
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+                <TabsContent value="team" className="pt-6">
+                    <Card>
+                        <CardHeader>
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <Select defaultValue="member">
+                                        <SelectTrigger className="w-[180px]">
+                                            <SelectValue />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="member">Mostrar: Miembro</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                     <Select defaultValue="none">
+                                        <SelectTrigger className="w-[180px]">
+                                            <SelectValue placeholder="Desglose por: Ninguno"/>
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="none">Ninguno</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                    <Button variant="ghost" size="icon"><Settings className="h-5 w-5 text-muted-foreground" /></Button>
+                                </div>
+                            </div>
+                        </CardHeader>
+                        <CardContent>
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Nombre</TableHead>
+                                        <TableHead className="text-right">Tiempo total</TableHead>
+                                        <TableHead className="text-right">Costo total</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {teamMembers.map((member) => (
+                                        <TableRow key={member.name}>
+                                            <TableCell className="font-medium">{member.name}</TableCell>
+                                            <TableCell className="text-right flex justify-end items-center gap-2">
+                                                {member.totalTime}
+                                                <Button variant="ghost" size="icon" className="h-6 w-6"><GripHorizontal className="h-4 w-4 text-muted-foreground" /></Button>
+                                            </TableCell>
+                                            <TableCell className="text-right">{member.totalCost}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                            <div className="flex justify-end mt-4">
+                                <Button><Edit className="mr-2 h-4 w-4" /> Editar equipo</Button>
+                            </div>
+                        </CardContent>
+                    </Card>
+                     <Card className="mt-6">
+                        <CardHeader className="flex flex-row justify-end items-center">
+                            <div className="flex items-center gap-2">
+                                <span className="text-sm text-muted-foreground">Métrica:</span>
+                                <Select defaultValue="time">
+                                    <SelectTrigger className="w-[120px]">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="time">Tiempo</SelectItem>
+                                        <SelectItem value="cost">Costo</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="grid grid-cols-2 gap-6 items-center">
+                             <div className="h-[250px] w-full">
+                                <ResponsiveContainer>
+                                    <PieChart>
+                                        <ChartTooltip
+                                            content={<ChartTooltipContent 
+                                                formatter={(value, name) => `${name}: ${value}%`}
+                                            />} 
+                                        />
+                                        <Pie data={memberData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%" cx="50%" cy="50%">
+                                            {memberData.map((entry, index) => (
+                                                <Cell key={`cell-${index}`} fill={entry.fill} />
+                                            ))}
+                                        </Pie>
+                                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-2xl font-bold fill-foreground">14:15</text>
+                                    </PieChart>
+                                </ResponsiveContainer>
+                            </div>
+                            <div className="space-y-2 text-left">
+                                {memberTime.map((item, index) => (
+                                    <LegendItem key={item.name} color={memberData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
+                                ))}
+                            </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
             </Tabs>
         </header>
-
-      <div className="flex justify-end">
-        <Button variant="outline">All time</Button>
-      </div>
-
-      <div className="flex gap-4">
-            <KpiCard title="Budget" value="14h out of 13h">
-                <Progress value={100} className="h-2 bg-red-200 [&>div]:bg-red-500" />
-                <p className="text-sm font-semibold text-red-600 mt-1">110%</p>
-            </KpiCard>
-            <KpiCard title="Total time" value="14:15">
-                <div className="text-xs text-muted-foreground space-y-1">
-                    <div className="flex justify-between"><span>Billable time</span><span>14:15</span></div>
-                    <div className="flex justify-between"><span>Not billable time</span><span>0:00</span></div>
-                </div>
-            </KpiCard>
-             <KpiCard title="Internal costs" value="US$1,075.67">
-                <div className="text-xs text-muted-foreground space-y-1">
-                    <div className="flex justify-between"><span>Labour costs</span><span>US$1,075.67</span></div>
-                    <div className="flex justify-between"><span>Expenses</span><span>US$0.00</span></div>
-                </div>
-            </KpiCard>
-             <KpiCard title="Billed money" value="US$0.00">
-                <div className="text-xs text-muted-foreground space-y-1">
-                    <div className="flex justify-between"><span>Billed labor</span><span>US$0.00</span></div>
-                    <div className="flex justify-between"><span>Billed expenses</span><span>US$0.00</span></div>
-                </div>
-            </KpiCard>
-             <KpiCard title="Unbilled money" value="US$3,181.66">
-                <div className="text-xs text-muted-foreground space-y-1">
-                    <div className="flex justify-between"><span>Unbilled labor</span><span>US$3,181.66</span></div>
-                    <div className="flex justify-between"><span>Unbilled expenses</span><span>US$0.00</span></div>
-                </div>
-            </KpiCard>
-      </div>
-      
-      <Card>
-        <CardHeader className="flex flex-row justify-between items-center">
-            <CardTitle>Overview</CardTitle>
-            <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground">Metric:</span>
-                <Select defaultValue="time">
-                    <SelectTrigger className="w-[120px]">
-                        <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="time">Time</SelectItem>
-                        <SelectItem value="cost">Cost</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-                <h3 className="font-semibold mb-4">Member <ChevronDown className="inline h-4 w-4" /></h3>
-                <div className="h-[200px] w-full">
-                    <ResponsiveContainer>
-                        <PieChart>
-                            <Pie data={memberData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
-                                {memberData.map(entry => <Cell key={entry.name} fill={entry.fill} />)}
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
-                <div className="mt-4 space-y-2 text-left">
-                     {memberTime.map((item, index) => (
-                        <LegendItem key={item.name} color={memberData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
-                     ))}
-                </div>
-            </div>
-            <div className="text-center">
-                <h3 className="font-semibold mb-4">Phase <ChevronDown className="inline h-4 w-4" /></h3>
-                <div className="h-[200px] w-full">
-                    <ResponsiveContainer>
-                        <PieChart>
-                            <Pie data={phaseData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
-                                {phaseData.map(entry => <Cell key={entry.name} fill={entry.fill} />)}
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
-                 <div className="mt-4 space-y-2 text-left">
-                     {phaseTime.map((item, index) => (
-                        <LegendItem key={item.name} color={phaseData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
-                     ))}
-                </div>
-            </div>
-            <div className="text-center">
-                <h3 className="font-semibold mb-4">Tag <ChevronDown className="inline h-4 w-4" /></h3>
-                <div className="h-[200px] w-full">
-                     <ResponsiveContainer>
-                        <PieChart>
-                            <Pie data={tagData} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="100%">
-                                {tagData.map(entry => <Cell key={entry.name} fill={entry.fill} />)}
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
-                 <div className="mt-4 space-y-2 text-left">
-                     {tagTime.map((item, index) => (
-                        <LegendItem key={item.name} color={tagData[index].fill} name={item.name} time={item.time} percentage={item.percentage} />
-                     ))}
-                </div>
-            </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
