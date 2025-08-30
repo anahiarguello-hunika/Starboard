@@ -23,6 +23,7 @@ import {
   List,
   GripHorizontal,
   Settings,
+  Calendar as CalendarIcon,
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import {
@@ -34,6 +35,9 @@ import { Pie, PieChart, Cell, ResponsiveContainer } from 'recharts';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { es } from 'date-fns/locale';
 
 const memberData = [
   { name: 'Elias Bardawil', value: 45.73, fill: 'hsl(var(--chart-2))' },
@@ -71,6 +75,12 @@ const teamMembers = [
     { name: 'Stephany', totalTime: '3:44', totalCost: 'US$224.00' },
 ];
 
+const dateRanges = [
+    'Hoy', 'Ayer', 'Esta semana', 'Este mes', 'Este año', 'Semana pasada', 
+    'Mes pasado', 'Últimos 7 días', 'Últimos 15 días', 'Últimos 30 días', 
+    'Últimos 3 meses', 'Últimos 6 meses', 'Últimos 12 meses', 'Todo el tiempo', 'Personalizado'
+];
+
 
 const KpiCard = ({ title, value, children }: { title: string, value: string, children: React.ReactNode }) => (
     <Card className="flex-1">
@@ -95,6 +105,8 @@ const LegendItem = ({ color, name, time, percentage }: { color: string, name: st
 )
 
 export default function FinancialManagementPage() {
+    const [date, setDate] = React.useState<Date | undefined>(new Date(2025, 7, 29));
+
   return (
     <div className="space-y-6">
         <header className="bg-primary/90 text-primary-foreground -mx-8 -mt-8 px-8 py-4">
@@ -134,7 +146,37 @@ export default function FinancialManagementPage() {
                 </TabsList>
                  <TabsContent value="overview" className="pt-6">
                     <div className="flex justify-end">
-                        <Button variant="outline" className="bg-transparent text-primary-foreground/80 border-primary-foreground/50 hover:bg-primary/80 hover:text-primary-foreground">Todo el tiempo</Button>
+                        <Popover>
+                            <PopoverTrigger asChild>
+                               <Button variant="outline" className="bg-transparent text-primary-foreground/80 border-primary-foreground/50 hover:bg-primary/80 hover:text-primary-foreground">Todo el tiempo</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0 flex" align="end">
+                                <div className="p-2 border-r">
+                                    <div className="flex flex-col items-start gap-1">
+                                        {dateRanges.map(range => (
+                                            <Button key={range} variant={range === 'Todo el tiempo' ? 'secondary' : 'ghost'} className="w-full justify-start h-8 px-2">
+                                                {range}
+                                            </Button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="p-2">
+                                    <p className="text-sm font-semibold text-center">TODO EL TIEMPO</p>
+                                    <p className="text-sm text-muted-foreground text-center mb-2">-</p>
+                                    <Calendar
+                                        mode="single"
+                                        selected={date}
+                                        onSelect={setDate}
+                                        numberOfMonths={2}
+                                        locale={es}
+                                    />
+                                     <div className="flex justify-end gap-2 mt-2">
+                                        <Button variant="ghost">Cancelar</Button>
+                                        <Button className="bg-green-600 hover:bg-green-700">Aplicar</Button>
+                                    </div>
+                                </div>
+                            </PopoverContent>
+                        </Popover>
                     </div>
                      <div className="flex gap-4 mt-4">
                         <KpiCard title="Presupuesto" value="14h de 13h">
