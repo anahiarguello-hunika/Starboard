@@ -73,6 +73,7 @@ const navItems = [
   { href: "/financial-management", icon: DollarSign, label: "Gestión Financiera" },
   { href: "/entities", icon: Building2, label: "Gestión de Sociedades"},
   { href: "/wealth-management", icon: Landmark, label: "Gestión Patrimonial"},
+  { href: "/laboral", icon: Users, label: "Gestión Laboral" },
   { href: "/background-check", icon: UserSearch, label: "Background check" },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/comunicaciones", icon: BookUser, label: "Comunicaciones" },
