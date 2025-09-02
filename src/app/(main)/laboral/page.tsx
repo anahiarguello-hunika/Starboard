@@ -119,15 +119,15 @@ export default function ContractsDashboardPage() {
                 <Card>
                     <CardContent className="p-4 space-y-4">
                          <div className="relative">
+                            <Input placeholder="Empresa" className="h-8" />
+                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        </div>
+                         <div className="relative">
                             <Input placeholder="Departamento" className="h-8" />
                             <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         </div>
                          <div className="relative">
-                            <Input placeholder="Gerente de Contrato" className="h-8" />
-                            <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        </div>
-                         <div className="relative">
-                            <Input placeholder="Tipo de Contrato" className="h-8" />
+                            <Input placeholder="Empleado" className="h-8" />
                             <Search className="absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         </div>
                     </CardContent>
