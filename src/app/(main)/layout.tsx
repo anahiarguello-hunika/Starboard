@@ -34,6 +34,7 @@ import {
     Settings,
     MessageSquare,
     LifeBuoy,
+    LogIn,
 } from "lucide-react";
 
 import {
@@ -61,6 +62,7 @@ import {
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/login", icon: LogIn, label: "Login" },
   { href: "/legal-strategy", icon: Sparkles, label: "Estrategia Legal" },
   { href: "/clients", icon: Users, label: "Clientes" },
   { href: "/crm", icon: Users, label: "CRM" },
