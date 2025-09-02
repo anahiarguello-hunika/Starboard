@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email("Correo electrónico inválido").max(100, "El correo no debe exceder los 100 caracteres."),
@@ -22,6 +23,7 @@ const formSchema = z.object({
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -32,11 +34,19 @@ export default function LoginPage() {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    toast({
-        title: "Inicio de sesión exitoso",
-        description: "¡Bienvenido de vuelta!",
-    })
+    if (values.email === 'test@starboard.legal' && values.password === 'password123') {
+        toast({
+            title: "Inicio de sesión exitoso",
+            description: "¡Bienvenido de vuelta!",
+        });
+        router.push('/dashboard');
+    } else {
+        toast({
+            variant: "destructive",
+            title: "Error de inicio de sesión",
+            description: "Correo electrónico o contraseña incorrectos.",
+        });
+    }
   };
 
   return (
