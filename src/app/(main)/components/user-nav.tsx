@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -12,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CircleUser, CreditCard, LogOut, Settings } from "lucide-react";
+import Link from "next/link";
 
 export function UserNav() {
   return (
@@ -47,9 +49,11 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Cerrar sesión</span>
+        <DropdownMenuItem asChild>
+          <Link href="/login">
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Cerrar sesión</span>
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
