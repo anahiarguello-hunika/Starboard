@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { AtSign, Eye, EyeOff, Lock, Mail } from "lucide-react";
@@ -50,7 +51,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-10rem)] bg-background">
+    <div className="flex justify-center items-center min-h-screen bg-background">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-headline font-bold text-primary">
