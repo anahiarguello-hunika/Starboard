@@ -1,0 +1,158 @@
+
+'use client';
+
+import {
+    LayoutDashboard,
+    FileClock,
+    UserCheck,
+    FileCheck2,
+    FileSignature,
+    FileX2,
+    Scale,
+    ThumbsUp,
+    ChevronDown,
+    Home,
+    Clock,
+    Pin,
+    Users,
+    ListTodo,
+    Calendar,
+    LifeBuoy
+} from "lucide-react";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from "@/lib/utils";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import React from "react";
+
+const laboralNav = [
+  { name: 'Dashboard', href: '/laboral/dashboard', icon: LayoutDashboard },
+  {
+    name: 'Vencimientos',
+    icon: FileClock,
+    submenu: [
+      { name: 'Expiran en 30 días', href: '/laboral/expiring-soon' },
+      { name: 'Expiran en 90 días', href: '/laboral/expiring-in-90-days' },
+      { name: 'Expiran en 12 meses', href: '/laboral/expiring-in-12-months' },
+      { name: 'Expiran en más de 12 meses', href: '/laboral/expiring-in-more-than-12-months' },
+    ]
+  },
+  { name: 'Mis Contratos', href: '#', icon: UserCheck },
+  { name: 'Aprobaciones', href: '#', icon: ThumbsUp },
+  { name: 'Contratos por firmar', href: '#', icon: FileSignature },
+  { name: 'Contratos Firmados', href: '#', icon: FileCheck2 },
+  { name: 'Contratos Cancelados', href: '#', icon: FileX2 },
+  { name: 'Contratos en litigio', href: '#', icon: Scale },
+];
+
+
+export default function LaboralLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+
+  return (
+    <div className="grid grid-cols-[280px_1fr] gap-8 items-start">
+        <div className="flex flex-col justify-between h-full">
+             <nav className="flex flex-col gap-1 text-sm text-muted-foreground">
+                <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-foreground hover:bg-muted">
+                    <Home className="h-5 w-5" />
+                    <span>Inicio</span>
+                </a>
+                <Collapsible>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted">
+                     <div className="flex items-center gap-3">
+                        <Clock className="h-5 w-5" />
+                        <span>Reciente</span>
+                    </div>
+                    <ChevronDown className="h-4 w-4" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    {/* Contenido Reciente aquí */}
+                  </CollapsibleContent>
+                </Collapsible>
+                 <Collapsible>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted">
+                       <div className="flex items-center gap-3">
+                          <Pin className="h-5 w-5" />
+                          <span>Fijado</span>
+                      </div>
+                      <ChevronDown className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      {/* Contenido Fijado aquí */}
+                    </CollapsibleContent>
+                </Collapsible>
+                <Link href="/tasks" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/tasks') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <ListTodo className="h-5 w-5" />
+                    <span>Tareas</span>
+                </Link>
+                <Link href="/calendar" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted',
+                    pathname.startsWith('/calendar') ? 'bg-primary/10 text-primary font-semibold' : ''
+                )}>
+                    <Calendar className="h-5 w-5" />
+                    <span>Calendario</span>
+                </Link>
+                 <Collapsible defaultOpen={true}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
+                        Gestión Laboral
+                        <ChevronDown className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="pl-4">
+                        <div className="flex flex-col gap-1 mt-2">
+                        {laboralNav.map((item, index) => (
+                            item.submenu ? (
+                                <Collapsible defaultOpen={true} key={item.name}>
+                                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 rounded-lg transition-colors hover:bg-muted">
+                                        <div className="flex items-center gap-3">
+                                            <item.icon className="h-5 w-5" />
+                                            <span>{item.name}</span>
+                                        </div>
+                                        <ChevronDown className="h-4 w-4" />
+                                    </CollapsibleTrigger>
+                                    <CollapsibleContent className="pl-8">
+                                        <div className="flex flex-col gap-1 mt-1">
+                                            {item.submenu.map(subItem => (
+                                                <Link key={subItem.name} href={subItem.href || "#"} className={cn(
+                                                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-xs',
+                                                    pathname === subItem.href ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                                                )}>
+                                                    <span>{subItem.name}</span>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </CollapsibleContent>
+                                </Collapsible>
+                            ) : (
+                                <Link key={item.name} href={item.href || "#"} className={cn(
+                                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors',
+                                    pathname.startsWith(item.href) ? 'bg-primary/10 text-primary font-semibold' : 'hover:bg-muted'
+                                )}>
+                                    <item.icon className="h-5 w-5" />
+                                    <span>{item.name}</span>
+                                </Link>
+                            )
+                        ))}
+                       </div>
+                    </CollapsibleContent>
+                </Collapsible>
+            </nav>
+            <nav className="flex flex-col gap-1 text-sm text-muted-foreground pb-4">
+                 <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 gap-2">
+                    <LifeBuoy />
+                    <span className="font-semibold">Asistencia Legal</span>
+                </Button>
+            </nav>
+        </div>
+        <div className="flex flex-col gap-8">
+            {children}
+        </div>
+    </div>
+  );
+}
