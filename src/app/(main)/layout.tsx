@@ -1,6 +1,6 @@
 
 
-"use client";
+'use client';
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,6 +35,9 @@ import {
     MessageSquare,
     LifeBuoy,
     LogIn,
+    Compass,
+    Languages,
+    MoreHorizontal
 } from "lucide-react";
 
 import {
@@ -48,6 +51,9 @@ import {
   SidebarProvider,
   SidebarInset,
   SidebarTrigger,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { UserNav } from "./components/user-nav";
@@ -59,6 +65,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/login", icon: LogIn, label: "Login" },
@@ -77,9 +85,13 @@ const navItems = [
   { href: "/background-check", icon: UserSearch, label: "Background check" },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/comunicaciones", icon: BookUser, label: "Comunicaciones" },
-  { href: "/summarize", icon: Sparkles, label: "IA" },
-  { href: "/settings", icon: Settings, label: "Configuración" },
 ];
+
+const otrasHerramientasNav = [
+    { href: "/otras-herramientas/investigaciones", icon: Compass, label: "01 Investigaciones" },
+    { href: "/otras-herramientas/traducciones", icon: Languages, label: "02 Traducciones" },
+    { href: "/otras-herramientas/otros", icon: MoreHorizontal, label: "03 Otros" },
+]
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -147,6 +159,55 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
+             <Collapsible>
+                <CollapsibleTrigger asChild>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton className="w-full">
+                            <Sparkles />
+                            <span>Otras Herramientas</span>
+                            <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                    <SidebarMenuSub>
+                        {otrasHerramientasNav.map((item) => (
+                        <SidebarMenuSubItem key={item.label}>
+                            <SidebarMenuSubButton asChild isActive={adjustedPathname.startsWith(item.href)}>
+                                <Link href={item.href}>
+                                    <item.icon />
+                                    <span>{item.label}</span>
+                                </Link>
+                            </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                        ))}
+                    </SidebarMenuSub>
+                </CollapsibleContent>
+            </Collapsible>
+             <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={adjustedPathname.startsWith('/summarize')}
+                  tooltip={"IA"}
+                >
+                  <Link href={'/summarize'}>
+                    <Sparkles />
+                    <span>IA</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={adjustedPathname.startsWith('/settings')}
+                  tooltip={"Configuración"}
+                >
+                  <Link href={'/settings'}>
+                    <Settings />
+                    <span>Configuración</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
