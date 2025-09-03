@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import {
@@ -37,7 +36,6 @@ import { Button } from '@/components/ui/button';
 const entityNav = [
   { name: 'Dashboard', href: '#', icon: LayoutDashboard },
   { name: 'Resumen', href: '/entities/overview', icon: Users },
-  { name: 'Recordatorios', href: '#', icon: Siren },
   { name: 'Gobernanza', href: '#', icon: Scale },
   { name: 'Delegaciones', href: '#', icon: HeartHandshake },
   { name: 'Propiedad', href: '#', icon: Landmark },
