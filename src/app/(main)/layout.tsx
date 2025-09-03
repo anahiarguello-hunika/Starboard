@@ -51,9 +51,6 @@ import {
   SidebarProvider,
   SidebarInset,
   SidebarTrigger,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { UserNav } from "./components/user-nav";
@@ -85,13 +82,8 @@ const navItems = [
   { href: "/background-check", icon: UserSearch, label: "Background check" },
   { href: "/service-request", icon: Ticket, label: "Solicitud de Servicio" },
   { href: "/comunicaciones", icon: BookUser, label: "Comunicaciones" },
+  { href: "/otras-herramientas", icon: Sparkles, label: "Otras Herramientas" },
 ];
-
-const otrasHerramientasNav = [
-    { href: "/otras-herramientas/investigaciones", icon: Compass, label: "01 Investigaciones" },
-    { href: "/otras-herramientas/traducciones", icon: Languages, label: "02 Traducciones" },
-    { href: "/otras-herramientas/otros", icon: MoreHorizontal, label: "03 Otros" },
-]
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -159,31 +151,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
-             <Collapsible>
-                <CollapsibleTrigger asChild>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton className="w-full">
-                            <Sparkles />
-                            <span>Otras Herramientas</span>
-                            <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                    <SidebarMenuSub>
-                        {otrasHerramientasNav.map((item) => (
-                        <SidebarMenuSubItem key={item.label}>
-                            <SidebarMenuSubButton asChild isActive={adjustedPathname.startsWith(item.href)}>
-                                <Link href={item.href}>
-                                    <item.icon />
-                                    <span>{item.label}</span>
-                                </Link>
-                            </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                        ))}
-                    </SidebarMenuSub>
-                </CollapsibleContent>
-            </Collapsible>
              <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
