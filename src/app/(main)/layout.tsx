@@ -61,8 +61,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navItems = [
-  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/login", icon: LogIn, label: "Login" },
+  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/legal-strategy", icon: Sparkles, label: "Estrategia Legal" },
   { href: "/clients", icon: Users, label: "Clientes" },
   { href: "/crm", icon: Users, label: "CRM" },
