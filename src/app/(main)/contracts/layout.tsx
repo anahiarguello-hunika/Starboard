@@ -32,6 +32,7 @@ import {
     ListTodo,
     Calendar,
     LifeBuoy,
+    Siren,
 } from "lucide-react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -133,6 +134,12 @@ export default function ContractsLayout({
                 )}>
                     <Calendar className="h-5 w-5" />
                     <span>Calendario</span>
+                </Link>
+                <Link href="#" className={cn(
+                    'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-muted'
+                )}>
+                    <Siren className="h-5 w-5" />
+                    <span>Recordatorios</span>
                 </Link>
                  <Collapsible defaultOpen={true}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 mt-4 text-base font-semibold text-foreground">
