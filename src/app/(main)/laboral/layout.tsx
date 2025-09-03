@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import {
@@ -24,6 +25,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 const laboralNav = [
   { name: 'Dashboard', href: '/laboral/dashboard', icon: LayoutDashboard },
